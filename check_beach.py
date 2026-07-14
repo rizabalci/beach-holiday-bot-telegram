@@ -53,6 +53,10 @@ ROLLING_WINDOW = int((os.environ.get("ROLLING_WINDOW") or "14"))  # days of hist
 HOTEL_SPLIT = int((os.environ.get("HOTEL_SPLIT") or "1"))     # 2 = sharing a double room
 
 MAX_DIGEST_DEALS = int((os.environ.get("MAX_DIGEST_DEALS") or "15"))
+# Compact market overview appended to every digest: best total per destination,
+# cheapest first. Set 0 to disable. 73 = all destinations (observation mode).
+OVERVIEW_N = int((os.environ.get("OVERVIEW_N") or "73"))
+
 # Send a digest of the cheapest totals even when nothing beats a target
 ALWAYS_DIGEST = (os.environ.get("ALWAYS_DIGEST") or "true").lower() in ("1", "true", "yes")
 PACE_SECONDS = float((os.environ.get("PACE_SECONDS") or "0.2"))
@@ -437,6 +441,18 @@ def main():
             f"<a href=\"{d['booking_top']}\">Best rated</a> · "
             f"<a href=\"{d['airbnb']}\">Airbnb</a>"
         )
+        lines.append("")
+    if OVERVIEW_N > 0 and best_by_dest:
+        shown = {d["dest"] for d in alerts}
+        overview = sorted(best_by_dest.values(), key=lambda d: d["total"])[:OVERVIEW_N]
+        lines.append("\U0001F4CA <b>Market overview</b> (best total per destination)")
+        for d in overview:
+            mark = " \U0001F525" if d["dest"] in shown else ""
+            dep = datetime.fromisoformat(d["depart"]).strftime("%d %b")
+            lines.append(
+                f"{d['country'].split(' ', 1)[0]} {d['name']} — €{d['total']} "
+                f"({dep}, {d['nights']}n, ✈️€{d['flight']}){mark}"
+            )
         lines.append("")
     lines.append("<i>Totals = live flight + seasonal hotel estimate (budget 3-star, per person). Stay links open live Booking.com and Airbnb results for the exact dates in a beach-walkable area, cheapest and best-rated first — no car needed. Always verify before booking.</i>")
 
