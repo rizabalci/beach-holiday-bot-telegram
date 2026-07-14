@@ -146,6 +146,16 @@ BEACH_DESTINATIONS = {
     "RMF": ("Marsa Alam", "\U0001F1EA\U0001F1EC Egypt", "Marsa Alam", 35, 60, 300),
     "TLV": ("Tel Aviv", "\U0001F1EE\U0001F1F1 Israel", "Tel Aviv", 90, 120, 380),
     "DXB": ("Dubai", "\U0001F1E6\U0001F1EA UAE", "Dubai", 60, 90, 450),
+    # Coverage completions
+    "OPO": ("Porto / Matosinhos", "\U0001F1F5\U0001F1F9 Portugal", "Porto", 55, 85, 270),
+    "RJK": ("Rijeka / Kvarner Bay", "\U0001F1ED\U0001F1F7 Croatia", "Opatija", 45, 80, 240),
+    "TPS": ("Trapani / San Vito Lo Capo", "\U0001F1EE\U0001F1F9 Italy", "San Vito Lo Capo", 45, 80, 250),
+    "RMI": ("Rimini / Adriatic Riviera", "\U0001F1EE\U0001F1F9 Italy", "Rimini", 45, 75, 240),
+    "GOA": ("Genoa / Liguria", "\U0001F1EE\U0001F1F9 Italy", "Genoa", 55, 85, 270),
+    "KVA": ("Kavala / Thassos", "\U0001F1EC\U0001F1F7 Greece", "Kavala", 40, 70, 260),
+    "VOL": ("Volos / Pelion", "\U0001F1EC\U0001F1F7 Greece", "Volos", 40, 70, 260),
+    "SMI": ("Samos", "\U0001F1EC\U0001F1F7 Greece", "Samos", 40, 75, 290),
+    "AOK": ("Karpathos", "\U0001F1EC\U0001F1F7 Greece", "Karpathos", 45, 80, 300),
 }
 
 # Destinations whose high season is winter sun (Nov-Mar) instead of summer
