@@ -30,31 +30,31 @@ from datetime import date, datetime, timedelta
 
 # ---------------------------------------------------------------- config ----
 
-TP_TOKEN = os.environ.get("TP_TOKEN", "")
-TG_TOKEN = os.environ.get("TG_TOKEN", "")
-TG_CHAT_ID = os.environ.get("TG_CHAT_ID", "")
+TP_TOKEN = (os.environ.get("TP_TOKEN") or "")
+TG_TOKEN = (os.environ.get("TG_TOKEN") or "")
+TG_CHAT_ID = (os.environ.get("TG_CHAT_ID") or "")
 
-ORIGINS = [o.strip().upper() for o in os.environ.get("ORIGINS", "VIE,BTS").split(",") if o.strip()]
+ORIGINS = [o.strip().upper() for o in (os.environ.get("ORIGINS") or "VIE,BTS").split(",") if o.strip()]
 
 # Scan the next N weekends (a "weekend" = one Thursday departure + one Friday departure)
-SCAN_WEEKENDS = int(os.environ.get("SCAN_WEEKENDS", "8"))
+SCAN_WEEKENDS = int((os.environ.get("SCAN_WEEKENDS") or "8"))
 
 # Trip lengths in nights to test for each departure day
-TRIP_NIGHTS = [int(n) for n in os.environ.get("TRIP_NIGHTS", "3,4").split(",")]
+TRIP_NIGHTS = [int(n) for n in (os.environ.get("TRIP_NIGHTS") or "3,4").split(",")]
 
 # Global fallback: alert on any total below this (EUR, per person)
-TOTAL_THRESHOLD_EUR = float(os.environ.get("TOTAL_THRESHOLD_EUR", "250"))
+TOTAL_THRESHOLD_EUR = float((os.environ.get("TOTAL_THRESHOLD_EUR") or "250"))
 
 # Rolling-average drop alert (0.25 = 25% below the destination's recent average)
-ROLLING_DROP_PCT = float(os.environ.get("ROLLING_DROP_PCT", "0.25"))
-ROLLING_WINDOW = int(os.environ.get("ROLLING_WINDOW", "14"))  # days of history
+ROLLING_DROP_PCT = float((os.environ.get("ROLLING_DROP_PCT") or "0.25"))
+ROLLING_WINDOW = int((os.environ.get("ROLLING_WINDOW") or "14"))  # days of history
 
 # Hotel settings
-HOTEL_SPLIT = int(os.environ.get("HOTEL_SPLIT", "1"))     # 2 = sharing a double room
+HOTEL_SPLIT = int((os.environ.get("HOTEL_SPLIT") or "1"))     # 2 = sharing a double room
 
-MAX_DIGEST_DEALS = int(os.environ.get("MAX_DIGEST_DEALS", "15"))
-PACE_SECONDS = float(os.environ.get("PACE_SECONDS", "0.2"))
-DRY_RUN = os.environ.get("DRY_RUN", "").lower() in ("1", "true", "yes")
+MAX_DIGEST_DEALS = int((os.environ.get("MAX_DIGEST_DEALS") or "15"))
+PACE_SECONDS = float((os.environ.get("PACE_SECONDS") or "0.2"))
+DRY_RUN = (os.environ.get("DRY_RUN") or "").lower() in ("1", "true", "yes")
 
 HISTORY_FILE = "price_history.json"
 SITE_DATA_FILE = "deals.json"
@@ -126,10 +126,30 @@ BEACH_DESTINATIONS = {
     "AGA": ("Agadir", "\U0001F1F2\U0001F1E6 Morocco", "Agadir", 40, 65, 300),
     "NBE": ("Hammamet / Enfidha", "\U0001F1F9\U0001F1F3 Tunisia", "Hammamet", 35, 60, 260),
     "DJE": ("Djerba", "\U0001F1F9\U0001F1F3 Tunisia", "Djerba", 35, 60, 280),
+    # France
+    "NCE": ("Nice / French Riviera", "\U0001F1EB\U0001F1F7 France", "Nice", 70, 110, 300),
+    "MRS": ("Marseille / Calanques", "\U0001F1EB\U0001F1F7 France", "Marseille", 60, 90, 280),
+    # Spain additions
+    "MAH": ("Menorca", "\U0001F1EA\U0001F1F8 Spain", "Menorca", 55, 95, 290),
+    "GRO": ("Girona / Costa Brava", "\U0001F1EA\U0001F1F8 Spain", "Lloret de Mar", 45, 75, 240),
+    "ACE": ("Lanzarote", "\U0001F1EA\U0001F1F8 Spain", "Lanzarote", 50, 85, 320),
+    # Italy additions
+    "BDS": ("Brindisi / Salento", "\U0001F1EE\U0001F1F9 Italy", "Brindisi", 45, 80, 250),
+    "SUF": ("Lamezia / Tropea", "\U0001F1EE\U0001F1F9 Italy", "Tropea", 45, 75, 250),
+    "AHO": ("Alghero, Sardinia", "\U0001F1EE\U0001F1F9 Italy", "Alghero", 50, 85, 280),
+    # Greece additions
+    "EFL": ("Kefalonia", "\U0001F1EC\U0001F1F7 Greece", "Kefalonia", 50, 90, 290),
+    "PVK": ("Preveza / Lefkada", "\U0001F1EC\U0001F1F7 Greece", "Lefkada", 45, 85, 280),
+    "JSI": ("Skiathos", "\U0001F1EC\U0001F1F7 Greece", "Skiathos", 50, 95, 300),
+    "KLX": ("Kalamata / Peloponnese", "\U0001F1EC\U0001F1F7 Greece", "Kalamata", 45, 80, 270),
+    # Winter sun stretch
+    "RMF": ("Marsa Alam", "\U0001F1EA\U0001F1EC Egypt", "Marsa Alam", 35, 60, 300),
+    "TLV": ("Tel Aviv", "\U0001F1EE\U0001F1F1 Israel", "Tel Aviv", 90, 120, 380),
+    "DXB": ("Dubai", "\U0001F1E6\U0001F1EA UAE", "Dubai", 60, 90, 450),
 }
 
 # Destinations whose high season is winter sun (Nov-Mar) instead of summer
-WINTER_SUN = {"TFS", "LPA", "FUE", "HRG", "SSH", "AGA"}
+WINTER_SUN = {"TFS", "LPA", "FUE", "ACE", "HRG", "SSH", "RMF", "AGA", "DXB"}
 
 # ------------------------------------------------------------ http utils ----
 
