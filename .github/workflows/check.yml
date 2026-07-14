@@ -1,0 +1,55 @@
+name: Beach holiday scan
+
+on:
+  schedule:
+    - cron: "0 7 * * *"   # 07:00 UTC daily, same slot as the sibling bots
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (print digest instead of sending to Telegram)"
+        required: false
+        default: "false"
+      total_threshold:
+        description: "Override global total threshold in EUR"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: beach-bot
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run beach scan
+        env:
+          TP_TOKEN: ${{ secrets.TP_TOKEN }}
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          ORIGINS: ${{ vars.ORIGINS }}
+          SCAN_WEEKENDS: ${{ vars.SCAN_WEEKENDS }}
+          TRIP_NIGHTS: ${{ vars.TRIP_NIGHTS }}
+          TOTAL_THRESHOLD_EUR: ${{ github.event.inputs.total_threshold || vars.TOTAL_THRESHOLD_EUR }}
+          ROLLING_DROP_PCT: ${{ vars.ROLLING_DROP_PCT }}
+          HOTEL_SPLIT: ${{ vars.HOTEL_SPLIT }}
+          DRY_RUN: ${{ github.event.inputs.dry_run }}
+        run: python check_beach.py
+
+      - name: Commit history + site data
+        run: |
+          git config user.name "beach-bot"
+          git config user.email "actions@github.com"
+          git add price_history.json deals.json || true
+          git diff --cached --quiet || git commit -m "Daily beach scan $(date -u +%F)"
+          git push
