@@ -26,7 +26,7 @@ import sys
 import time
 import urllib.parse
 import urllib.request
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 
 # ---------------------------------------------------------------- config ----
 
@@ -53,6 +53,8 @@ ROLLING_WINDOW = int((os.environ.get("ROLLING_WINDOW") or "14"))  # days of hist
 HOTEL_SPLIT = int((os.environ.get("HOTEL_SPLIT") or "1"))     # 2 = sharing a double room
 
 MAX_DIGEST_DEALS = int((os.environ.get("MAX_DIGEST_DEALS") or "15"))
+# Send a digest of the cheapest totals even when nothing beats a target
+ALWAYS_DIGEST = (os.environ.get("ALWAYS_DIGEST") or "true").lower() in ("1", "true", "yes")
 PACE_SECONDS = float((os.environ.get("PACE_SECONDS") or "0.2"))
 DRY_RUN = (os.environ.get("DRY_RUN") or "").lower() in ("1", "true", "yes")
 
@@ -399,14 +401,24 @@ def main():
     save_history(history)
     write_site_data(all_deals, alerts)
 
+    fallback = False
     if not alerts:
-        print("No deals beat targets today. No message sent.")
-        return
+        if not ALWAYS_DIGEST:
+            print("No deals beat targets today. No message sent.")
+            return
+        fallback = True
+        alerts = sorted(best_by_dest.values(), key=lambda d: d["total"])[:8]
+        for d in alerts:
+            d["reasons"] = ["cheapest today"]
 
     alerts.sort(key=lambda d: d["total"])
     alerts = alerts[:MAX_DIGEST_DEALS]
 
-    lines = ["\U0001F3D6 <b>Beach Holiday Deals — 3-4 day trips from Vienna</b>", ""]
+    if fallback:
+        lines = ["\U0001F3D6 <b>Beach check-in — no target-beating deals today.</b>",
+                 "Cheapest 3-4 day totals right now:", ""]
+    else:
+        lines = ["\U0001F3D6 <b>Beach Holiday Deals — 3-4 day trips from Vienna</b>", ""]
     for d in alerts:
         lines.append(
             f"<b>{d['country'].split(' ', 1)[0]} {d['name']}</b> — <b>€{d['total']}</b> total"
@@ -436,7 +448,7 @@ def write_site_data(all_deals, alerts):
     """deals.json for an optional GitHub Pages dashboard, same pattern as worldwide bot."""
     alert_keys = {(d["dest"], d["depart"], d["origin"], d["nights"]) for d in alerts}
     payload = {
-        "generated_at": datetime.utcnow().isoformat() + "Z",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
         "origins": ORIGINS,
         "deal_count": len(all_deals),
         "deals": sorted(all_deals, key=lambda d: d["total"])[:200],
