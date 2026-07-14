@@ -80,7 +80,7 @@ BEACH_DESTINATIONS = {
     "LPA": ("Gran Canaria", "\U0001F1EA\U0001F1F8 Spain", "Las Palmas de Gran Canaria", 50, 85, 320),
     "FUE": ("Fuerteventura", "\U0001F1EA\U0001F1F8 Spain", "Fuerteventura", 50, 85, 320),
     # Greece
-    "ATH": ("Athens / Riviera", "\U0001F1EC\U0001F1F7 Greece", "Athens", 50, 80, 240),
+    "ATH": ("Athens / Riviera", "\U0001F1EC\U0001F1F7 Greece", "Glyfada", 55, 85, 240),
     "SKG": ("Thessaloniki / Halkidiki", "\U0001F1EC\U0001F1F7 Greece", "Thessaloniki", 45, 70, 230),
     "HER": ("Heraklion, Crete", "\U0001F1EC\U0001F1F7 Greece", "Heraklion", 45, 80, 270),
     "CHQ": ("Chania, Crete", "\U0001F1EC\U0001F1F7 Greece", "Chania", 50, 90, 280),
@@ -99,7 +99,7 @@ BEACH_DESTINATIONS = {
     "TGD": ("Podgorica (coast 1h)", "\U0001F1F2\U0001F1EA Montenegro", "Budva", 35, 70, 230),
     "TIA": ("Tirana / Albanian Riviera", "\U0001F1E6\U0001F1F1 Albania", "Durres", 30, 55, 210),
     # Italy + Malta
-    "NAP": ("Naples / Amalfi", "\U0001F1EE\U0001F1F9 Italy", "Naples", 60, 95, 270),
+    "NAP": ("Naples / Sorrento", "\U0001F1EE\U0001F1F9 Italy", "Sorrento", 60, 100, 280),
     "PMO": ("Palermo, Sicily", "\U0001F1EE\U0001F1F9 Italy", "Palermo", 50, 80, 250),
     "CTA": ("Catania, Sicily", "\U0001F1EE\U0001F1F9 Italy", "Catania", 50, 80, 250),
     "CAG": ("Cagliari, Sardinia", "\U0001F1EE\U0001F1F9 Italy", "Cagliari", 55, 90, 270),
@@ -108,7 +108,7 @@ BEACH_DESTINATIONS = {
     "MLA": ("Malta", "\U0001F1F2\U0001F1F9 Malta", "Malta", 55, 95, 260),
     # Portugal
     "FAO": ("Faro / Algarve", "\U0001F1F5\U0001F1F9 Portugal", "Faro", 55, 95, 290),
-    "LIS": ("Lisbon / Cascais", "\U0001F1F5\U0001F1F9 Portugal", "Lisbon", 65, 95, 290),
+    "LIS": ("Lisbon / Cascais", "\U0001F1F5\U0001F1F9 Portugal", "Cascais", 65, 100, 290),
     # Cyprus
     "LCA": ("Larnaca", "\U0001F1E8\U0001F1FE Cyprus", "Larnaca", 50, 85, 280),
     "PFO": ("Paphos", "\U0001F1E8\U0001F1FE Cyprus", "Paphos", 50, 85, 280),
@@ -147,11 +147,12 @@ BEACH_DESTINATIONS = {
     "TLV": ("Tel Aviv", "\U0001F1EE\U0001F1F1 Israel", "Tel Aviv", 90, 120, 380),
     "DXB": ("Dubai", "\U0001F1E6\U0001F1EA UAE", "Dubai", 60, 90, 450),
     # Coverage completions
-    "OPO": ("Porto / Matosinhos", "\U0001F1F5\U0001F1F9 Portugal", "Porto", 55, 85, 270),
+    "OPO": ("Porto / Matosinhos", "\U0001F1F5\U0001F1F9 Portugal", "Matosinhos", 50, 80, 270),
     "RJK": ("Rijeka / Kvarner Bay", "\U0001F1ED\U0001F1F7 Croatia", "Opatija", 45, 80, 240),
     "TPS": ("Trapani / San Vito Lo Capo", "\U0001F1EE\U0001F1F9 Italy", "San Vito Lo Capo", 45, 80, 250),
     "RMI": ("Rimini / Adriatic Riviera", "\U0001F1EE\U0001F1F9 Italy", "Rimini", 45, 75, 240),
     "GOA": ("Genoa / Liguria", "\U0001F1EE\U0001F1F9 Italy", "Genoa", 55, 85, 270),
+    "VCE": ("Venice / Lido & Jesolo", "\U0001F1EE\U0001F1F9 Italy", "Lido di Jesolo", 55, 90, 260),
     "KVA": ("Kavala / Thassos", "\U0001F1EC\U0001F1F7 Greece", "Kavala", 40, 70, 260),
     "VOL": ("Volos / Pelion", "\U0001F1EC\U0001F1F7 Greece", "Volos", 40, 70, 260),
     "SMI": ("Samos", "\U0001F1EC\U0001F1F7 Greece", "Samos", 40, 75, 290),
@@ -233,12 +234,22 @@ def _dest_row(dest):
     return name, country, city, low, high, target
 
 
-def booking_url(dest, checkin, checkout):
+def booking_url(dest, checkin, checkout, order="price"):
+    """order: 'price' = cheapest first, 'bayesian_review_score' = best rated."""
     city = urllib.parse.quote(BEACH_DESTINATIONS[dest][2])
     return (
         f"https://www.booking.com/searchresults.html?ss={city}"
         f"&checkin={checkin.isoformat()}&checkout={checkout.isoformat()}"
-        f"&group_adults={HOTEL_SPLIT}&no_rooms=1&order=price"
+        f"&group_adults={HOTEL_SPLIT}&no_rooms=1&order={order}"
+    )
+
+
+def airbnb_url(dest, checkin, checkout):
+    city = urllib.parse.quote(BEACH_DESTINATIONS[dest][2])
+    return (
+        f"https://www.airbnb.com/s/{city}/homes"
+        f"?checkin={checkin.isoformat()}&checkout={checkout.isoformat()}"
+        f"&adults={HOTEL_SPLIT}"
     )
 
 
@@ -359,7 +370,10 @@ def main():
                     "target": target,
                     "url": ("https://www.aviasales.com" + flight["link"])
                     if flight.get("link") else aviasales_search_url(origin, dest, depart, ret),
-                    "hotels_url": booking_url(dest, depart, ret),
+                    "area": BEACH_DESTINATIONS[dest][2],
+                    "booking_cheap": booking_url(dest, depart, ret, "price"),
+                    "booking_top": booking_url(dest, depart, ret, "bayesian_review_score"),
+                    "airbnb": airbnb_url(dest, depart, ret),
                 }
                 all_deals.append(deal)
                 if dest not in best_by_dest or total < best_by_dest[dest]["total"]:
@@ -404,10 +418,15 @@ def main():
         lines.append(
             f"   \U0001F4C5 {d['depart']} → {d['return']} · {', '.join(d['reasons'])}"
         )
-        lines.append(f"   ✈️ {d['url']}")
-        lines.append(f"   🏨 {d['hotels_url']}")
+        lines.append(f"   ✈️ <a href=\"{d['url']}\">Book flight</a>")
+        lines.append(
+            f"   🏨 Stay in {d['area']} (beach walkable): "
+            f"<a href=\"{d['booking_cheap']}\">Cheapest</a> · "
+            f"<a href=\"{d['booking_top']}\">Best rated</a> · "
+            f"<a href=\"{d['airbnb']}\">Airbnb</a>"
+        )
         lines.append("")
-    lines.append("<i>Totals = live flight + seasonal hotel estimate (budget 3-star, per person). Hotel links open live Booking.com prices for the exact dates — always verify before booking.</i>")
+    lines.append("<i>Totals = live flight + seasonal hotel estimate (budget 3-star, per person). Stay links open live Booking.com and Airbnb results for the exact dates in a beach-walkable area, cheapest and best-rated first — no car needed. Always verify before booking.</i>")
 
     send_telegram("\n".join(lines))
     print(f"Sent digest with {len(alerts)} deals.")
