@@ -405,59 +405,45 @@ def main():
     save_history(history)
     write_site_data(all_deals, alerts)
 
-    fallback = False
-    if not alerts:
-        if not ALWAYS_DIGEST:
-            print("No deals beat targets today. No message sent.")
-            return
-        fallback = True
-        alerts = sorted(best_by_dest.values(), key=lambda d: d["total"])[:8]
-        for d in alerts:
-            d["reasons"] = ["cheapest today"]
+    if not alerts and not ALWAYS_DIGEST:
+        print("No deals beat targets today. No message sent.")
+        return
 
     alerts.sort(key=lambda d: d["total"])
-    alerts = alerts[:MAX_DIGEST_DEALS]
+    top_deals = alerts[:MAX_DIGEST_DEALS]
+    alert_dests = {d["dest"] for d in alerts}
 
-    if fallback:
-        lines = ["\U0001F3D6 <b>Beach check-in — no target-beating deals today.</b>",
-                 "Cheapest 3-4 day totals right now:", ""]
+    # Full board: every destination, cheapest first, with full links.
+    board = sorted(best_by_dest.values(), key=lambda d: d["total"])[:OVERVIEW_N] \
+        if OVERVIEW_N > 0 else []
+
+    today = date.today().strftime("%d %b %Y")
+    if top_deals:
+        header = f"\U0001F3D6 <b>Beach Holiday Deals — {today}</b>\n{len(top_deals)} deal(s) beat target today. Full board below."
     else:
-        lines = ["\U0001F3D6 <b>Beach Holiday Deals — 3-4 day trips from Vienna</b>", ""]
-    for d in alerts:
-        lines.append(
-            f"<b>{d['country'].split(' ', 1)[0]} {d['name']}</b> — <b>€{d['total']}</b> total"
-        )
-        lines.append(
+        header = f"\U0001F3D6 <b>Beach Holiday check-in — {today}</b>\nNo target-beating deals today. Full board of cheapest 3-4 day totals from Vienna:"
+    lines = [header, ""]
+
+    def deal_block(d, flame=False):
+        star = " \U0001F525" if flame else ""
+        return [
+            f"<b>{d['country'].split(' ', 1)[0]} {d['name']}</b> — <b>€{d['total']}</b>{star}",
             f"   ✈️ €{d['flight']} RT {d['origin']}  🏨 ~€{d['hotel_total']} est. "
-            f"({d['nights']}n × €{d['hotel_night']})"
-        )
-        lines.append(
-            f"   \U0001F4C5 {d['depart']} → {d['return']} · {', '.join(d['reasons'])}"
-        )
-        lines.append(f"   ✈️ <a href=\"{d['url']}\">Book flight</a>")
-        lines.append(
-            f"   🏨 Stay in {d['area']} (beach walkable): "
+            f"({d['nights']}n × €{d['hotel_night']}) · {d['depart']} → {d['return']}",
+            f"   <a href=\"{d['url']}\">Book flight</a> · Stay in {d['area']}: "
             f"<a href=\"{d['booking_cheap']}\">Cheapest</a> · "
             f"<a href=\"{d['booking_top']}\">Best rated</a> · "
-            f"<a href=\"{d['airbnb']}\">Airbnb</a>"
-        )
-        lines.append("")
-    if OVERVIEW_N > 0 and best_by_dest:
-        shown = {d["dest"] for d in alerts}
-        overview = sorted(best_by_dest.values(), key=lambda d: d["total"])[:OVERVIEW_N]
-        lines.append("\U0001F4CA <b>Market overview</b> (best total per destination)")
-        for d in overview:
-            mark = " \U0001F525" if d["dest"] in shown else ""
-            dep = datetime.fromisoformat(d["depart"]).strftime("%d %b")
-            lines.append(
-                f"{d['country'].split(' ', 1)[0]} {d['name']} — €{d['total']} "
-                f"({dep}, {d['nights']}n, ✈️€{d['flight']}){mark}"
-            )
-        lines.append("")
-    lines.append("<i>Totals = live flight + seasonal hotel estimate (budget 3-star, per person). Stay links open live Booking.com and Airbnb results for the exact dates in a beach-walkable area, cheapest and best-rated first — no car needed. Always verify before booking.</i>")
+            f"<a href=\"{d['airbnb']}\">Airbnb</a>",
+            "",
+        ]
+
+    for d in board:
+        lines += deal_block(d, flame=d["dest"] in alert_dests)
+
+    lines.append("<i>Totals = live flight + seasonal hotel estimate (budget 3-star, per person). 🔥 = beats target. Stay links open live Booking.com and Airbnb for the exact dates in a beach-walkable area — no car needed. Always verify before booking.</i>")
 
     send_telegram("\n".join(lines))
-    print(f"Sent digest with {len(alerts)} deals.")
+    print(f"Sent digest: {len(board)} destinations, {len(top_deals)} beating target.")
 
 
 def write_site_data(all_deals, alerts):
