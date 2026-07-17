@@ -40,7 +40,7 @@ ORIGINS = [o.strip().upper() for o in (os.environ.get("ORIGINS") or "VIE,BTS").s
 SCAN_WEEKENDS = int((os.environ.get("SCAN_WEEKENDS") or "8"))
 
 # Trip lengths in nights to test for each departure day
-TRIP_NIGHTS = [int(n) for n in (os.environ.get("TRIP_NIGHTS") or "3,4").split(",")]
+TRIP_NIGHTS = [int(n) for n in (os.environ.get("TRIP_NIGHTS") or "3,4,5").split(",")]
 
 # Global fallback: alert on any total below this (EUR, per person)
 TOTAL_THRESHOLD_EUR = float((os.environ.get("TOTAL_THRESHOLD_EUR") or "250"))
@@ -122,10 +122,6 @@ BEACH_DESTINATIONS = {
     "VAR": ("Varna", "\U0001F1E7\U0001F1EC Bulgaria", "Varna", 35, 65, 200),
     "BOJ": ("Burgas / Sunny Beach", "\U0001F1E7\U0001F1EC Bulgaria", "Burgas", 30, 60, 200),
     # Turkey coast
-    "AYT": ("Antalya", "\U0001F1F9\U0001F1F7 Turkey", "Antalya", 40, 75, 240),
-    "BJV": ("Bodrum", "\U0001F1F9\U0001F1F7 Turkey", "Bodrum", 50, 95, 280),
-    "DLM": ("Dalaman / Fethiye", "\U0001F1F9\U0001F1F7 Turkey", "Fethiye", 40, 80, 260),
-    "ADB": ("Izmir / Cesme", "\U0001F1F9\U0001F1F7 Turkey", "Izmir", 40, 75, 250),
     # North Africa + Red Sea
     "HRG": ("Hurghada", "\U0001F1EA\U0001F1EC Egypt", "Hurghada", 35, 60, 300),
     "SSH": ("Sharm El Sheikh", "\U0001F1EA\U0001F1EC Egypt", "Sharm el-Sheikh", 35, 60, 300),
