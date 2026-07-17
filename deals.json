@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-07-17T16:09:46.647201+00:00",
+ "generated_at": "2026-07-17T17:03:46.495993+00:00",
  "origins": [
   "VIE",
   "BTS"
  ],
- "deal_count": 185,
+ "deal_count": 186,
  "deals": [
   {
    "dest": "TIA",
@@ -24,7 +24,9 @@
    "area": "Durres",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-07-31&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-07-31&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-07-31&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-07-31&checkout=2026-08-03&adults=1",
+   "flight_hours": 1.7,
+   "sea_temp": 26
   },
   {
    "dest": "TIA",
@@ -44,7 +46,9 @@
    "area": "Durres",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-07-23&checkout=2026-07-26&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-07-23&checkout=2026-07-26&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-07-23&checkout=2026-07-26&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-07-23&checkout=2026-07-26&adults=1",
+   "flight_hours": 1.7,
+   "sea_temp": 26
   },
   {
    "dest": "PMO",
@@ -64,7 +68,9 @@
    "area": "Palermo",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-09-03&checkout=2026-09-06&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-09-03&checkout=2026-09-06&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Palermo/homes?checkin=2026-09-03&checkout=2026-09-06&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Palermo/homes?checkin=2026-09-03&checkout=2026-09-06&adults=1",
+   "flight_hours": 2.0,
+   "sea_temp": 27
   },
   {
    "dest": "TIA",
@@ -84,7 +90,9 @@
    "area": "Durres",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-07-23&checkout=2026-07-26&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-07-23&checkout=2026-07-26&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-07-23&checkout=2026-07-26&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-07-23&checkout=2026-07-26&adults=1",
+   "flight_hours": 1.7,
+   "sea_temp": 26
   },
   {
    "dest": "ATH",
@@ -104,7 +112,9 @@
    "area": "Glyfada",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Glyfada&checkin=2026-08-07&checkout=2026-08-10&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Glyfada&checkin=2026-08-07&checkout=2026-08-10&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Glyfada/homes?checkin=2026-08-07&checkout=2026-08-10&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Glyfada/homes?checkin=2026-08-07&checkout=2026-08-10&adults=1",
+   "flight_hours": 2.3,
+   "sea_temp": 26
   },
   {
    "dest": "TIA",
@@ -124,7 +134,9 @@
    "area": "Durres",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-08-14&checkout=2026-08-18&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-08-14&checkout=2026-08-18&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-08-14&checkout=2026-08-18&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-08-14&checkout=2026-08-18&adults=1",
+   "flight_hours": 1.7,
+   "sea_temp": 26
   },
   {
    "dest": "TIA",
@@ -144,7 +156,9 @@
    "area": "Durres",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 1.7,
+   "sea_temp": 26
   },
   {
    "dest": "TIA",
@@ -164,7 +178,9 @@
    "area": "Durres",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-08-28&checkout=2026-09-01&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-08-28&checkout=2026-09-01&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-08-28&checkout=2026-09-01&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-08-28&checkout=2026-09-01&adults=1",
+   "flight_hours": 1.7,
+   "sea_temp": 26
   },
   {
    "dest": "TIA",
@@ -184,7 +200,9 @@
    "area": "Durres",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-08-27&checkout=2026-08-31&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-08-27&checkout=2026-08-31&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-08-27&checkout=2026-08-31&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-08-27&checkout=2026-08-31&adults=1",
+   "flight_hours": 1.7,
+   "sea_temp": 26
   },
   {
    "dest": "BOJ",
@@ -204,7 +222,9 @@
    "area": "Burgas",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Burgas&checkin=2026-08-21&checkout=2026-08-24&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Burgas&checkin=2026-08-21&checkout=2026-08-24&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Burgas/homes?checkin=2026-08-21&checkout=2026-08-24&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Burgas/homes?checkin=2026-08-21&checkout=2026-08-24&adults=1",
+   "flight_hours": 1.9,
+   "sea_temp": 26
   },
   {
    "dest": "TFS",
@@ -224,7 +244,9 @@
    "area": "Tenerife",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Tenerife&checkin=2026-09-04&checkout=2026-09-07&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Tenerife&checkin=2026-09-04&checkout=2026-09-07&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Tenerife/homes?checkin=2026-09-04&checkout=2026-09-07&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Tenerife/homes?checkin=2026-09-04&checkout=2026-09-07&adults=1",
+   "flight_hours": 5.0,
+   "sea_temp": 23
   },
   {
    "dest": "TIA",
@@ -244,7 +266,9 @@
    "area": "Durres",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1",
+   "flight_hours": 1.7,
+   "sea_temp": 26
   },
   {
    "dest": "PMO",
@@ -264,7 +288,9 @@
    "area": "Palermo",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-08-06&checkout=2026-08-09&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-08-06&checkout=2026-08-09&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Palermo/homes?checkin=2026-08-06&checkout=2026-08-09&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Palermo/homes?checkin=2026-08-06&checkout=2026-08-09&adults=1",
+   "flight_hours": 2.0,
+   "sea_temp": 27
   },
   {
    "dest": "BOJ",
@@ -284,7 +310,9 @@
    "area": "Burgas",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Burgas&checkin=2026-08-28&checkout=2026-08-31&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Burgas&checkin=2026-08-28&checkout=2026-08-31&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Burgas/homes?checkin=2026-08-28&checkout=2026-08-31&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Burgas/homes?checkin=2026-08-28&checkout=2026-08-31&adults=1",
+   "flight_hours": 1.9,
+   "sea_temp": 26
   },
   {
    "dest": "TIA",
@@ -304,7 +332,9 @@
    "area": "Durres",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1",
+   "flight_hours": 1.7,
+   "sea_temp": 26
   },
   {
    "dest": "SUF",
@@ -324,7 +354,9 @@
    "area": "Tropea",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Tropea&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Tropea&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Tropea/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Tropea/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 1.8,
+   "sea_temp": 27
   },
   {
    "dest": "CTA",
@@ -344,7 +376,9 @@
    "area": "Catania",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Catania&checkin=2026-07-24&checkout=2026-07-27&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Catania&checkin=2026-07-24&checkout=2026-07-27&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Catania/homes?checkin=2026-07-24&checkout=2026-07-27&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Catania/homes?checkin=2026-07-24&checkout=2026-07-27&adults=1",
+   "flight_hours": 2.0,
+   "sea_temp": 26
   },
   {
    "dest": "ACE",
@@ -364,7 +398,9 @@
    "area": "Lanzarote",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Lanzarote&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Lanzarote&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Lanzarote/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Lanzarote/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 5.0,
+   "sea_temp": 23
   },
   {
    "dest": "PMO",
@@ -384,7 +420,9 @@
    "area": "Palermo",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Palermo/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Palermo/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1",
+   "flight_hours": 2.0,
+   "sea_temp": 27
   },
   {
    "dest": "VCE",
@@ -404,7 +442,9 @@
    "area": "Lido di Jesolo",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Lido%20di%20Jesolo&checkin=2026-09-11&checkout=2026-09-14&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Lido%20di%20Jesolo&checkin=2026-09-11&checkout=2026-09-14&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Lido%20di%20Jesolo/homes?checkin=2026-09-11&checkout=2026-09-14&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Lido%20di%20Jesolo/homes?checkin=2026-09-11&checkout=2026-09-14&adults=1",
+   "flight_hours": 1.1,
+   "sea_temp": 26
   },
   {
    "dest": "PMO",
@@ -424,7 +464,9 @@
    "area": "Palermo",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-07-31&checkout=2026-08-04&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-07-31&checkout=2026-08-04&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Palermo/homes?checkin=2026-07-31&checkout=2026-08-04&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Palermo/homes?checkin=2026-07-31&checkout=2026-08-04&adults=1",
+   "flight_hours": 2.0,
+   "sea_temp": 27
   },
   {
    "dest": "ATH",
@@ -444,7 +486,9 @@
    "area": "Glyfada",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Glyfada&checkin=2026-09-11&checkout=2026-09-15&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Glyfada&checkin=2026-09-11&checkout=2026-09-15&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Glyfada/homes?checkin=2026-09-11&checkout=2026-09-15&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Glyfada/homes?checkin=2026-09-11&checkout=2026-09-15&adults=1",
+   "flight_hours": 2.3,
+   "sea_temp": 26
   },
   {
    "dest": "CTA",
@@ -464,7 +508,9 @@
    "area": "Catania",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Catania&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Catania&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Catania/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Catania/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1",
+   "flight_hours": 2.0,
+   "sea_temp": 26
   },
   {
    "dest": "NAP",
@@ -484,7 +530,9 @@
    "area": "Sorrento",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Sorrento&checkin=2026-08-20&checkout=2026-08-23&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Sorrento&checkin=2026-08-20&checkout=2026-08-23&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Sorrento/homes?checkin=2026-08-20&checkout=2026-08-23&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Sorrento/homes?checkin=2026-08-20&checkout=2026-08-23&adults=1",
+   "flight_hours": 1.7,
+   "sea_temp": 26
   },
   {
    "dest": "DBV",
@@ -504,7 +552,9 @@
    "area": "Dubrovnik",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Dubrovnik&checkin=2026-09-10&checkout=2026-09-13&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Dubrovnik&checkin=2026-09-10&checkout=2026-09-13&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Dubrovnik/homes?checkin=2026-09-10&checkout=2026-09-13&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Dubrovnik/homes?checkin=2026-09-10&checkout=2026-09-13&adults=1",
+   "flight_hours": 1.4,
+   "sea_temp": 25
   },
   {
    "dest": "MLA",
@@ -524,7 +574,9 @@
    "area": "Malta",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Malta&checkin=2026-09-11&checkout=2026-09-14&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Malta&checkin=2026-09-11&checkout=2026-09-14&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Malta/homes?checkin=2026-09-11&checkout=2026-09-14&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Malta/homes?checkin=2026-09-11&checkout=2026-09-14&adults=1",
+   "flight_hours": 2.0,
+   "sea_temp": 27
   },
   {
    "dest": "TIA",
@@ -544,7 +596,9 @@
    "area": "Durres",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-08-14&checkout=2026-08-18&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-08-14&checkout=2026-08-18&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-08-14&checkout=2026-08-18&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-08-14&checkout=2026-08-18&adults=1",
+   "flight_hours": 1.7,
+   "sea_temp": 26
   },
   {
    "dest": "HER",
@@ -564,7 +618,9 @@
    "area": "Heraklion",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Heraklion&checkin=2026-09-11&checkout=2026-09-14&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Heraklion&checkin=2026-09-11&checkout=2026-09-14&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Heraklion/homes?checkin=2026-09-11&checkout=2026-09-14&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Heraklion/homes?checkin=2026-09-11&checkout=2026-09-14&adults=1",
+   "flight_hours": 2.7,
+   "sea_temp": 26
   },
   {
    "dest": "PMO",
@@ -584,7 +640,9 @@
    "area": "Palermo",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-08-20&checkout=2026-08-23&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-08-20&checkout=2026-08-23&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Palermo/homes?checkin=2026-08-20&checkout=2026-08-23&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Palermo/homes?checkin=2026-08-20&checkout=2026-08-23&adults=1",
+   "flight_hours": 2.0,
+   "sea_temp": 27
   },
   {
    "dest": "PMI",
@@ -604,7 +662,9 @@
    "area": "Palma de Mallorca",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-09-11&checkout=2026-09-14&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-09-11&checkout=2026-09-14&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-09-11&checkout=2026-09-14&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-09-11&checkout=2026-09-14&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 26
   },
   {
    "dest": "SUF",
@@ -624,7 +684,9 @@
    "area": "Tropea",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Tropea&checkin=2026-08-27&checkout=2026-08-31&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Tropea&checkin=2026-08-27&checkout=2026-08-31&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Tropea/homes?checkin=2026-08-27&checkout=2026-08-31&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Tropea/homes?checkin=2026-08-27&checkout=2026-08-31&adults=1",
+   "flight_hours": 1.8,
+   "sea_temp": 27
   },
   {
    "dest": "AGP",
@@ -644,7 +706,9 @@
    "area": "Malaga",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Malaga&checkin=2026-07-31&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Malaga&checkin=2026-07-31&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Malaga/homes?checkin=2026-07-31&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Malaga/homes?checkin=2026-07-31&checkout=2026-08-03&adults=1",
+   "flight_hours": 3.0,
+   "sea_temp": 22
   },
   {
    "dest": "PMI",
@@ -664,7 +728,9 @@
    "area": "Palma de Mallorca",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-07-30&checkout=2026-08-02&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-07-30&checkout=2026-08-02&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-07-30&checkout=2026-08-02&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-07-30&checkout=2026-08-02&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 26
   },
   {
    "dest": "AGP",
@@ -684,7 +750,9 @@
    "area": "Malaga",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Malaga&checkin=2026-08-20&checkout=2026-08-23&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Malaga&checkin=2026-08-20&checkout=2026-08-23&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Malaga/homes?checkin=2026-08-20&checkout=2026-08-23&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Malaga/homes?checkin=2026-08-20&checkout=2026-08-23&adults=1",
+   "flight_hours": 3.0,
+   "sea_temp": 22
   },
   {
    "dest": "PMO",
@@ -704,7 +772,9 @@
    "area": "Palermo",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-08-27&checkout=2026-08-31&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-08-27&checkout=2026-08-31&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Palermo/homes?checkin=2026-08-27&checkout=2026-08-31&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Palermo/homes?checkin=2026-08-27&checkout=2026-08-31&adults=1",
+   "flight_hours": 2.0,
+   "sea_temp": 27
   },
   {
    "dest": "PMI",
@@ -724,7 +794,9 @@
    "area": "Palma de Mallorca",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-07-23&checkout=2026-07-26&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-07-23&checkout=2026-07-26&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-07-23&checkout=2026-07-26&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-07-23&checkout=2026-07-26&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 26
   },
   {
    "dest": "BRI",
@@ -744,7 +816,9 @@
    "area": "Bari",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Bari&checkin=2026-08-27&checkout=2026-08-31&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Bari&checkin=2026-08-27&checkout=2026-08-31&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Bari/homes?checkin=2026-08-27&checkout=2026-08-31&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Bari/homes?checkin=2026-08-27&checkout=2026-08-31&adults=1",
+   "flight_hours": 1.5,
+   "sea_temp": 26
   },
   {
    "dest": "MRS",
@@ -764,7 +838,9 @@
    "area": "Marseille",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Marseille&checkin=2026-09-11&checkout=2026-09-14&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Marseille&checkin=2026-09-11&checkout=2026-09-14&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Marseille/homes?checkin=2026-09-11&checkout=2026-09-14&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Marseille/homes?checkin=2026-09-11&checkout=2026-09-14&adults=1",
+   "flight_hours": 1.6,
+   "sea_temp": 24
   },
   {
    "dest": "TGD",
@@ -784,7 +860,9 @@
    "area": "Budva",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Budva&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Budva&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Budva/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Budva/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1",
+   "flight_hours": 1.4,
+   "sea_temp": 25
   },
   {
    "dest": "BCN",
@@ -804,7 +882,9 @@
    "area": "Barcelona",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-06&checkout=2026-08-09&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-06&checkout=2026-08-09&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-06&checkout=2026-08-09&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-06&checkout=2026-08-09&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 25
   },
   {
    "dest": "CHQ",
@@ -824,7 +904,9 @@
    "area": "Chania",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Chania&checkin=2026-09-11&checkout=2026-09-14&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Chania&checkin=2026-09-11&checkout=2026-09-14&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Chania/homes?checkin=2026-09-11&checkout=2026-09-14&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Chania/homes?checkin=2026-09-11&checkout=2026-09-14&adults=1",
+   "flight_hours": 2.7,
+   "sea_temp": 26
   },
   {
    "dest": "TIA",
@@ -844,7 +926,9 @@
    "area": "Durres",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-08-13&checkout=2026-08-18&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-08-13&checkout=2026-08-18&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-08-13&checkout=2026-08-18&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-08-13&checkout=2026-08-18&adults=1",
+   "flight_hours": 1.7,
+   "sea_temp": 26
   },
   {
    "dest": "ATH",
@@ -864,7 +948,9 @@
    "area": "Glyfada",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Glyfada&checkin=2026-09-10&checkout=2026-09-13&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Glyfada&checkin=2026-09-10&checkout=2026-09-13&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Glyfada/homes?checkin=2026-09-10&checkout=2026-09-13&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Glyfada/homes?checkin=2026-09-10&checkout=2026-09-13&adults=1",
+   "flight_hours": 2.3,
+   "sea_temp": 26
   },
   {
    "dest": "PMI",
@@ -884,7 +970,9 @@
    "area": "Palma de Mallorca",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-08-27&checkout=2026-08-30&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-08-27&checkout=2026-08-30&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-08-27&checkout=2026-08-30&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-08-27&checkout=2026-08-30&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 26
   },
   {
    "dest": "PUY",
@@ -904,7 +992,9 @@
    "area": "Pula",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Pula&checkin=2026-09-03&checkout=2026-09-07&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Pula&checkin=2026-09-03&checkout=2026-09-07&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Pula/homes?checkin=2026-09-03&checkout=2026-09-07&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Pula/homes?checkin=2026-09-03&checkout=2026-09-07&adults=1",
+   "flight_hours": 1.0,
+   "sea_temp": 24
   },
   {
    "dest": "PUY",
@@ -924,7 +1014,9 @@
    "area": "Pula",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Pula&checkin=2026-09-03&checkout=2026-09-08&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Pula&checkin=2026-09-03&checkout=2026-09-08&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Pula/homes?checkin=2026-09-03&checkout=2026-09-08&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Pula/homes?checkin=2026-09-03&checkout=2026-09-08&adults=1",
+   "flight_hours": 1.0,
+   "sea_temp": 24
   },
   {
    "dest": "BCN",
@@ -944,7 +1036,9 @@
    "area": "Barcelona",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-14&checkout=2026-08-17&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-14&checkout=2026-08-17&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-14&checkout=2026-08-17&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-14&checkout=2026-08-17&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 25
   },
   {
    "dest": "TIA",
@@ -964,7 +1058,9 @@
    "area": "Durres",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-08-13&checkout=2026-08-18&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-08-13&checkout=2026-08-18&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-08-13&checkout=2026-08-18&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-08-13&checkout=2026-08-18&adults=1",
+   "flight_hours": 1.7,
+   "sea_temp": 26
   },
   {
    "dest": "CTA",
@@ -984,7 +1080,9 @@
    "area": "Catania",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Catania&checkin=2026-08-27&checkout=2026-08-31&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Catania&checkin=2026-08-27&checkout=2026-08-31&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Catania/homes?checkin=2026-08-27&checkout=2026-08-31&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Catania/homes?checkin=2026-08-27&checkout=2026-08-31&adults=1",
+   "flight_hours": 2.0,
+   "sea_temp": 26
   },
   {
    "dest": "LIS",
@@ -1004,7 +1102,9 @@
    "area": "Cascais",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Cascais&checkin=2026-09-10&checkout=2026-09-13&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Cascais&checkin=2026-09-10&checkout=2026-09-13&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Cascais/homes?checkin=2026-09-10&checkout=2026-09-13&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Cascais/homes?checkin=2026-09-10&checkout=2026-09-13&adults=1",
+   "flight_hours": 3.5,
+   "sea_temp": 20
   },
   {
    "dest": "EFL",
@@ -1024,7 +1124,9 @@
    "area": "Kefalonia",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Kefalonia&checkin=2026-07-24&checkout=2026-07-27&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Kefalonia&checkin=2026-07-24&checkout=2026-07-27&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Kefalonia/homes?checkin=2026-07-24&checkout=2026-07-27&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Kefalonia/homes?checkin=2026-07-24&checkout=2026-07-27&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 27
   },
   {
    "dest": "ALC",
@@ -1044,7 +1146,9 @@
    "area": "Alicante",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-08-21&checkout=2026-08-25&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-08-21&checkout=2026-08-25&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-08-21&checkout=2026-08-25&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-08-21&checkout=2026-08-25&adults=1",
+   "flight_hours": 2.7,
+   "sea_temp": 26
   },
   {
    "dest": "TGD",
@@ -1064,7 +1168,9 @@
    "area": "Budva",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Budva&checkin=2026-07-24&checkout=2026-07-27&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Budva&checkin=2026-07-24&checkout=2026-07-27&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Budva/homes?checkin=2026-07-24&checkout=2026-07-27&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Budva/homes?checkin=2026-07-24&checkout=2026-07-27&adults=1",
+   "flight_hours": 1.4,
+   "sea_temp": 25
   },
   {
    "dest": "ALC",
@@ -1084,7 +1190,9 @@
    "area": "Alicante",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-07-23&checkout=2026-07-26&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-07-23&checkout=2026-07-26&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-07-23&checkout=2026-07-26&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-07-23&checkout=2026-07-26&adults=1",
+   "flight_hours": 2.7,
+   "sea_temp": 26
   },
   {
    "dest": "DBV",
@@ -1104,7 +1212,9 @@
    "area": "Dubrovnik",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Dubrovnik&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Dubrovnik&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Dubrovnik/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Dubrovnik/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1",
+   "flight_hours": 1.4,
+   "sea_temp": 25
   },
   {
    "dest": "MLA",
@@ -1124,7 +1234,9 @@
    "area": "Malta",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Malta&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Malta&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Malta/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Malta/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1",
+   "flight_hours": 2.0,
+   "sea_temp": 27
   },
   {
    "dest": "CFU",
@@ -1144,7 +1256,9 @@
    "area": "Corfu",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1",
+   "flight_hours": 1.8,
+   "sea_temp": 27
   },
   {
    "dest": "CHQ",
@@ -1164,7 +1278,9 @@
    "area": "Chania",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Chania&checkin=2026-09-03&checkout=2026-09-06&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Chania&checkin=2026-09-03&checkout=2026-09-06&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Chania/homes?checkin=2026-09-03&checkout=2026-09-06&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Chania/homes?checkin=2026-09-03&checkout=2026-09-06&adults=1",
+   "flight_hours": 2.7,
+   "sea_temp": 26
   },
   {
    "dest": "BCN",
@@ -1184,7 +1300,9 @@
    "area": "Barcelona",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-06&checkout=2026-08-09&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-06&checkout=2026-08-09&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-06&checkout=2026-08-09&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-06&checkout=2026-08-09&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 25
   },
   {
    "dest": "TGD",
@@ -1204,7 +1322,9 @@
    "area": "Budva",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Budva&checkin=2026-08-06&checkout=2026-08-10&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Budva&checkin=2026-08-06&checkout=2026-08-10&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Budva/homes?checkin=2026-08-06&checkout=2026-08-10&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Budva/homes?checkin=2026-08-06&checkout=2026-08-10&adults=1",
+   "flight_hours": 1.4,
+   "sea_temp": 25
   },
   {
    "dest": "RHO",
@@ -1224,7 +1344,9 @@
    "area": "Rhodes",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Rhodes&checkin=2026-08-21&checkout=2026-08-24&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Rhodes&checkin=2026-08-21&checkout=2026-08-24&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Rhodes/homes?checkin=2026-08-21&checkout=2026-08-24&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Rhodes/homes?checkin=2026-08-21&checkout=2026-08-24&adults=1",
+   "flight_hours": 2.8,
+   "sea_temp": 27
   },
   {
    "dest": "BCN",
@@ -1244,7 +1366,9 @@
    "area": "Barcelona",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-07-31&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-07-31&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-07-31&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-07-31&checkout=2026-08-03&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 25
   },
   {
    "dest": "SSH",
@@ -1264,7 +1388,9 @@
    "area": "Sharm el-Sheikh",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Sharm%20el-Sheikh&checkin=2026-09-04&checkout=2026-09-09&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Sharm%20el-Sheikh&checkin=2026-09-04&checkout=2026-09-09&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Sharm%20el-Sheikh/homes?checkin=2026-09-04&checkout=2026-09-09&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Sharm%20el-Sheikh/homes?checkin=2026-09-04&checkout=2026-09-09&adults=1",
+   "flight_hours": 4.2,
+   "sea_temp": 29
   },
   {
    "dest": "NCE",
@@ -1284,7 +1410,9 @@
    "area": "Nice",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-09-11&checkout=2026-09-14&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-09-11&checkout=2026-09-14&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-09-11&checkout=2026-09-14&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-09-11&checkout=2026-09-14&adults=1",
+   "flight_hours": 1.5,
+   "sea_temp": 25
   },
   {
    "dest": "ALC",
@@ -1304,7 +1432,9 @@
    "area": "Alicante",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-07-24&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-07-24&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-07-24&checkout=2026-07-28&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-07-24&checkout=2026-07-28&adults=1",
+   "flight_hours": 2.7,
+   "sea_temp": 26
   },
   {
    "dest": "BCN",
@@ -1324,7 +1454,9 @@
    "area": "Barcelona",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-07&checkout=2026-08-10&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-07&checkout=2026-08-10&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-07&checkout=2026-08-10&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-07&checkout=2026-08-10&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 25
   },
   {
    "dest": "BOJ",
@@ -1344,7 +1476,9 @@
    "area": "Burgas",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Burgas&checkin=2026-08-13&checkout=2026-08-17&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Burgas&checkin=2026-08-13&checkout=2026-08-17&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Burgas/homes?checkin=2026-08-13&checkout=2026-08-17&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Burgas/homes?checkin=2026-08-13&checkout=2026-08-17&adults=1",
+   "flight_hours": 1.9,
+   "sea_temp": 26
   },
   {
    "dest": "HRG",
@@ -1364,7 +1498,9 @@
    "area": "Hurghada",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Hurghada&checkin=2026-08-13&checkout=2026-08-18&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Hurghada&checkin=2026-08-13&checkout=2026-08-18&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Hurghada/homes?checkin=2026-08-13&checkout=2026-08-18&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Hurghada/homes?checkin=2026-08-13&checkout=2026-08-18&adults=1",
+   "flight_hours": 4.0,
+   "sea_temp": 29
   },
   {
    "dest": "AGP",
@@ -1384,7 +1520,9 @@
    "area": "Malaga",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Malaga&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Malaga&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Malaga/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Malaga/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1",
+   "flight_hours": 3.0,
+   "sea_temp": 22
   },
   {
    "dest": "RHO",
@@ -1404,7 +1542,9 @@
    "area": "Rhodes",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Rhodes&checkin=2026-07-23&checkout=2026-07-27&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Rhodes&checkin=2026-07-23&checkout=2026-07-27&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Rhodes/homes?checkin=2026-07-23&checkout=2026-07-27&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Rhodes/homes?checkin=2026-07-23&checkout=2026-07-27&adults=1",
+   "flight_hours": 2.8,
+   "sea_temp": 27
   },
   {
    "dest": "CFU",
@@ -1424,7 +1564,9 @@
    "area": "Corfu",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-07-24&checkout=2026-07-27&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-07-24&checkout=2026-07-27&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-07-24&checkout=2026-07-27&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-07-24&checkout=2026-07-27&adults=1",
+   "flight_hours": 1.8,
+   "sea_temp": 27
   },
   {
    "dest": "NCE",
@@ -1444,7 +1586,9 @@
    "area": "Nice",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-08-20&checkout=2026-08-23&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-08-20&checkout=2026-08-23&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-08-20&checkout=2026-08-23&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-08-20&checkout=2026-08-23&adults=1",
+   "flight_hours": 1.5,
+   "sea_temp": 25
   },
   {
    "dest": "FUE",
@@ -1464,7 +1608,9 @@
    "area": "Fuerteventura",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Fuerteventura&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Fuerteventura&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Fuerteventura/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Fuerteventura/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 5.1,
+   "sea_temp": 23
   },
   {
    "dest": "ACE",
@@ -1484,7 +1630,9 @@
    "area": "Lanzarote",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Lanzarote&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Lanzarote&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Lanzarote/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Lanzarote/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
+   "flight_hours": 5.0,
+   "sea_temp": 23
   },
   {
    "dest": "PMI",
@@ -1504,7 +1652,9 @@
    "area": "Palma de Mallorca",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 26
   },
   {
    "dest": "ALC",
@@ -1524,7 +1674,9 @@
    "area": "Alicante",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-09-10&checkout=2026-09-15&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-09-10&checkout=2026-09-15&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-09-10&checkout=2026-09-15&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-09-10&checkout=2026-09-15&adults=1",
+   "flight_hours": 2.7,
+   "sea_temp": 26
   },
   {
    "dest": "SKG",
@@ -1544,7 +1696,9 @@
    "area": "Thessaloniki",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Thessaloniki&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Thessaloniki&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Thessaloniki/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Thessaloniki/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
+   "flight_hours": 1.8,
+   "sea_temp": 26
   },
   {
    "dest": "TPS",
@@ -1564,7 +1718,9 @@
    "area": "San Vito Lo Capo",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=San%20Vito%20Lo%20Capo&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=San%20Vito%20Lo%20Capo&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/San%20Vito%20Lo%20Capo/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/San%20Vito%20Lo%20Capo/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 2.0,
+   "sea_temp": 27
   },
   {
    "dest": "ALC",
@@ -1584,7 +1740,9 @@
    "area": "Alicante",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 2.7,
+   "sea_temp": 26
   },
   {
    "dest": "TFS",
@@ -1604,7 +1762,9 @@
    "area": "Tenerife",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Tenerife&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Tenerife&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Tenerife/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Tenerife/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1",
+   "flight_hours": 5.0,
+   "sea_temp": 23
   },
   {
    "dest": "ALC",
@@ -1624,7 +1784,9 @@
    "area": "Alicante",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 2.7,
+   "sea_temp": 26
   },
   {
    "dest": "EFL",
@@ -1644,7 +1806,9 @@
    "area": "Kefalonia",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Kefalonia&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Kefalonia&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Kefalonia/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Kefalonia/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 27
   },
   {
    "dest": "CFU",
@@ -1664,7 +1828,9 @@
    "area": "Corfu",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 1.8,
+   "sea_temp": 27
   },
   {
    "dest": "CFU",
@@ -1684,7 +1850,9 @@
    "area": "Corfu",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 1.8,
+   "sea_temp": 27
   },
   {
    "dest": "ZAD",
@@ -1704,7 +1872,9 @@
    "area": "Zadar",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Zadar&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Zadar&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Zadar/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Zadar/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
+   "flight_hours": 1.2,
+   "sea_temp": 25
   },
   {
    "dest": "JSI",
@@ -1724,7 +1894,9 @@
    "area": "Skiathos",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Skiathos&checkin=2026-08-14&checkout=2026-08-17&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Skiathos&checkin=2026-08-14&checkout=2026-08-17&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Skiathos/homes?checkin=2026-08-14&checkout=2026-08-17&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Skiathos/homes?checkin=2026-08-14&checkout=2026-08-17&adults=1",
+   "flight_hours": 2.1,
+   "sea_temp": 26
   },
   {
    "dest": "TPS",
@@ -1744,7 +1916,9 @@
    "area": "San Vito Lo Capo",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=San%20Vito%20Lo%20Capo&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=San%20Vito%20Lo%20Capo&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/San%20Vito%20Lo%20Capo/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/San%20Vito%20Lo%20Capo/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 2.0,
+   "sea_temp": 27
   },
   {
    "dest": "TFS",
@@ -1764,7 +1938,9 @@
    "area": "Tenerife",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Tenerife&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Tenerife&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Tenerife/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Tenerife/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 5.0,
+   "sea_temp": 23
   },
   {
    "dest": "ATH",
@@ -1784,7 +1960,9 @@
    "area": "Glyfada",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Glyfada&checkin=2026-09-11&checkout=2026-09-15&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Glyfada&checkin=2026-09-11&checkout=2026-09-15&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Glyfada/homes?checkin=2026-09-11&checkout=2026-09-15&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Glyfada/homes?checkin=2026-09-11&checkout=2026-09-15&adults=1",
+   "flight_hours": 2.3,
+   "sea_temp": 26
   },
   {
    "dest": "CAG",
@@ -1804,7 +1982,9 @@
    "area": "Cagliari",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Cagliari&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Cagliari&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Cagliari/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Cagliari/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 1.9,
+   "sea_temp": 26
   },
   {
    "dest": "MLA",
@@ -1824,7 +2004,9 @@
    "area": "Malta",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Malta&checkin=2026-09-11&checkout=2026-09-15&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Malta&checkin=2026-09-11&checkout=2026-09-15&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Malta/homes?checkin=2026-09-11&checkout=2026-09-15&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Malta/homes?checkin=2026-09-11&checkout=2026-09-15&adults=1",
+   "flight_hours": 2.0,
+   "sea_temp": 27
   },
   {
    "dest": "HER",
@@ -1844,7 +2026,31 @@
    "area": "Heraklion",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Heraklion&checkin=2026-07-31&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Heraklion&checkin=2026-07-31&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Heraklion/homes?checkin=2026-07-31&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Heraklion/homes?checkin=2026-07-31&checkout=2026-08-03&adults=1",
+   "flight_hours": 2.7,
+   "sea_temp": 26
+  },
+  {
+   "dest": "BCN",
+   "name": "Barcelona",
+   "country": "\ud83c\uddea\ud83c\uddf8 Spain",
+   "origin": "VIE",
+   "depart": "2026-07-30",
+   "return": "2026-08-02",
+   "nights": 3,
+   "weekend": "30 Jul\u201331 Jul weekend",
+   "flight": 198,
+   "hotel_night": 105,
+   "hotel_total": 315,
+   "total": 513,
+   "target": 280,
+   "url": "https://www.aviasales.com/search/VIE3007BCN02081?t=VY17854290001785437700000145VIEBCN17856711001785680100000150BCNVIE_b7853b42f0e5d4f7d210d113ac68cfcb_17778&search_date=17072026&expected_price_uuid=019f70cd-78ea-8030-2b94-1399622a4bf4&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=egjNhB9HIaVIy1zjg_hNyw&expected_price_source=share&expected_price_currency=eur&expected_price=198",
+   "area": "Barcelona",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-07-30&checkout=2026-08-02&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-07-30&checkout=2026-08-02&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-07-30&checkout=2026-08-02&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 25
   },
   {
    "dest": "DBV",
@@ -1864,7 +2070,9 @@
    "area": "Dubrovnik",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Dubrovnik&checkin=2026-07-23&checkout=2026-07-26&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Dubrovnik&checkin=2026-07-23&checkout=2026-07-26&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Dubrovnik/homes?checkin=2026-07-23&checkout=2026-07-26&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Dubrovnik/homes?checkin=2026-07-23&checkout=2026-07-26&adults=1",
+   "flight_hours": 1.4,
+   "sea_temp": 25
   },
   {
    "dest": "NAP",
@@ -1884,7 +2092,9 @@
    "area": "Sorrento",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Sorrento&checkin=2026-08-27&checkout=2026-08-31&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Sorrento&checkin=2026-08-27&checkout=2026-08-31&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Sorrento/homes?checkin=2026-08-27&checkout=2026-08-31&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Sorrento/homes?checkin=2026-08-27&checkout=2026-08-31&adults=1",
+   "flight_hours": 1.7,
+   "sea_temp": 26
   },
   {
    "dest": "RHO",
@@ -1904,7 +2114,9 @@
    "area": "Rhodes",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Rhodes&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Rhodes&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Rhodes/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Rhodes/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 2.8,
+   "sea_temp": 27
   },
   {
    "dest": "NAP",
@@ -1924,7 +2136,9 @@
    "area": "Sorrento",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Sorrento&checkin=2026-08-07&checkout=2026-08-11&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Sorrento&checkin=2026-08-07&checkout=2026-08-11&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Sorrento/homes?checkin=2026-08-07&checkout=2026-08-11&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Sorrento/homes?checkin=2026-08-07&checkout=2026-08-11&adults=1",
+   "flight_hours": 1.7,
+   "sea_temp": 26
   },
   {
    "dest": "PMO",
@@ -1944,7 +2158,9 @@
    "area": "Palermo",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-08-14&checkout=2026-08-19&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-08-14&checkout=2026-08-19&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Palermo/homes?checkin=2026-08-14&checkout=2026-08-19&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Palermo/homes?checkin=2026-08-14&checkout=2026-08-19&adults=1",
+   "flight_hours": 2.0,
+   "sea_temp": 27
   },
   {
    "dest": "NCE",
@@ -1964,7 +2180,9 @@
    "area": "Nice",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-07-31&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-07-31&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-07-31&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-07-31&checkout=2026-08-03&adults=1",
+   "flight_hours": 1.5,
+   "sea_temp": 25
   },
   {
    "dest": "CTA",
@@ -1984,7 +2202,9 @@
    "area": "Catania",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Catania&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Catania&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Catania/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Catania/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
+   "flight_hours": 2.0,
+   "sea_temp": 26
   },
   {
    "dest": "PMO",
@@ -2004,7 +2224,9 @@
    "area": "Palermo",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Palermo/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Palermo/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
+   "flight_hours": 2.0,
+   "sea_temp": 27
   },
   {
    "dest": "VLC",
@@ -2024,7 +2246,9 @@
    "area": "Valencia",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Valencia&checkin=2026-08-28&checkout=2026-09-02&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Valencia&checkin=2026-08-28&checkout=2026-09-02&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Valencia/homes?checkin=2026-08-28&checkout=2026-09-02&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Valencia/homes?checkin=2026-08-28&checkout=2026-09-02&adults=1",
+   "flight_hours": 2.5,
+   "sea_temp": 26
   },
   {
    "dest": "ALC",
@@ -2044,7 +2268,9 @@
    "area": "Alicante",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-08-07&checkout=2026-08-12&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-08-07&checkout=2026-08-12&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-08-07&checkout=2026-08-12&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-08-07&checkout=2026-08-12&adults=1",
+   "flight_hours": 2.7,
+   "sea_temp": 26
   },
   {
    "dest": "CFU",
@@ -2064,7 +2290,9 @@
    "area": "Corfu",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1",
+   "flight_hours": 1.8,
+   "sea_temp": 27
   },
   {
    "dest": "BCN",
@@ -2084,7 +2312,9 @@
    "area": "Barcelona",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 25
   },
   {
    "dest": "KGS",
@@ -2104,7 +2334,9 @@
    "area": "Kos",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Kos&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Kos&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Kos/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Kos/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1",
+   "flight_hours": 2.7,
+   "sea_temp": 27
   },
   {
    "dest": "NAP",
@@ -2124,7 +2356,9 @@
    "area": "Sorrento",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Sorrento&checkin=2026-09-11&checkout=2026-09-15&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Sorrento&checkin=2026-09-11&checkout=2026-09-15&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Sorrento/homes?checkin=2026-09-11&checkout=2026-09-15&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Sorrento/homes?checkin=2026-09-11&checkout=2026-09-15&adults=1",
+   "flight_hours": 1.7,
+   "sea_temp": 26
   },
   {
    "dest": "BRI",
@@ -2144,7 +2378,9 @@
    "area": "Bari",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Bari&checkin=2026-07-24&checkout=2026-07-29&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Bari&checkin=2026-07-24&checkout=2026-07-29&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Bari/homes?checkin=2026-07-24&checkout=2026-07-29&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Bari/homes?checkin=2026-07-24&checkout=2026-07-29&adults=1",
+   "flight_hours": 1.5,
+   "sea_temp": 26
   },
   {
    "dest": "BCN",
@@ -2164,7 +2400,9 @@
    "area": "Barcelona",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-07&checkout=2026-08-11&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-07&checkout=2026-08-11&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-07&checkout=2026-08-11&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-07&checkout=2026-08-11&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 25
   },
   {
    "dest": "MLA",
@@ -2184,7 +2422,9 @@
    "area": "Malta",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Malta&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Malta&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Malta/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Malta/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 2.0,
+   "sea_temp": 27
   },
   {
    "dest": "CHQ",
@@ -2204,7 +2444,9 @@
    "area": "Chania",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Chania&checkin=2026-07-23&checkout=2026-07-26&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Chania&checkin=2026-07-23&checkout=2026-07-26&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Chania/homes?checkin=2026-07-23&checkout=2026-07-26&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Chania/homes?checkin=2026-07-23&checkout=2026-07-26&adults=1",
+   "flight_hours": 2.7,
+   "sea_temp": 26
   },
   {
    "dest": "SKG",
@@ -2224,7 +2466,31 @@
    "area": "Thessaloniki",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Thessaloniki&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Thessaloniki&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Thessaloniki/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Thessaloniki/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
+   "flight_hours": 1.8,
+   "sea_temp": 26
+  },
+  {
+   "dest": "ZTH",
+   "name": "Zakynthos",
+   "country": "\ud83c\uddec\ud83c\uddf7 Greece",
+   "origin": "VIE",
+   "depart": "2026-07-30",
+   "return": "2026-08-03",
+   "nights": 4,
+   "weekend": "30 Jul\u201331 Jul weekend",
+   "flight": 211,
+   "hotel_night": 85,
+   "hotel_total": 340,
+   "total": 551,
+   "target": 280,
+   "url": "https://www.aviasales.com/search/VIE3007ZTH03081?t=W417854086001785441000000480VIEPMOZTH17857530001785834300001415ZTHMXPBGYVIE_6a77322db903aaff53107c819272528d_18956&search_date=17072026&expected_price_uuid=019f6fa3-b164-8030-273a-181db889bd44&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=WEmC1Aulv5AR4mThx8yahA&expected_price_source=share&expected_price_currency=eur&expected_price=211",
+   "area": "Zakynthos",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Zakynthos&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Zakynthos&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Zakynthos/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 27
   },
   {
    "dest": "MLA",
@@ -2244,27 +2510,9 @@
    "area": "Malta",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Malta&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Malta&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Malta/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
-  },
-  {
-   "dest": "ZTH",
-   "name": "Zakynthos",
-   "country": "\ud83c\uddec\ud83c\uddf7 Greece",
-   "origin": "VIE",
-   "depart": "2026-07-30",
-   "return": "2026-08-03",
-   "nights": 4,
-   "weekend": "30 Jul\u201331 Jul weekend",
-   "flight": 212,
-   "hotel_night": 85,
-   "hotel_total": 340,
-   "total": 552,
-   "target": 280,
-   "url": "https://www.aviasales.com/search/VIE3007ZTH03081?t=W417854086001785441000000480VIEPMOZTH17857530001785834300001415ZTHMXPBGYVIE_6a77322db903aaff53107c819272528d_18956&search_date=17072026&expected_price_uuid=019f6fa3-b164-8030-273a-181db889bd44&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=WEmC1Aulv5AR4mThx8yahA&expected_price_source=share&expected_price_currency=eur&expected_price=212",
-   "area": "Zakynthos",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Zakynthos&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Zakynthos&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Zakynthos/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Malta/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 2.0,
+   "sea_temp": 27
   },
   {
    "dest": "NCE",
@@ -2284,7 +2532,9 @@
    "area": "Nice",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-08-06&checkout=2026-08-09&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-08-06&checkout=2026-08-09&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-08-06&checkout=2026-08-09&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-08-06&checkout=2026-08-09&adults=1",
+   "flight_hours": 1.5,
+   "sea_temp": 25
   },
   {
    "dest": "AHO",
@@ -2304,7 +2554,9 @@
    "area": "Alghero",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Alghero&checkin=2026-08-07&checkout=2026-08-12&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Alghero&checkin=2026-08-07&checkout=2026-08-12&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Alghero/homes?checkin=2026-08-07&checkout=2026-08-12&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Alghero/homes?checkin=2026-08-07&checkout=2026-08-12&adults=1",
+   "flight_hours": 1.8,
+   "sea_temp": 25
   },
   {
    "dest": "AGP",
@@ -2324,7 +2576,9 @@
    "area": "Malaga",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Malaga&checkin=2026-09-11&checkout=2026-09-16&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Malaga&checkin=2026-09-11&checkout=2026-09-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Malaga/homes?checkin=2026-09-11&checkout=2026-09-16&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Malaga/homes?checkin=2026-09-11&checkout=2026-09-16&adults=1",
+   "flight_hours": 3.0,
+   "sea_temp": 22
   },
   {
    "dest": "BCN",
@@ -2344,7 +2598,9 @@
    "area": "Barcelona",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-27&checkout=2026-08-31&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-27&checkout=2026-08-31&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-27&checkout=2026-08-31&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-27&checkout=2026-08-31&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 25
   },
   {
    "dest": "AHO",
@@ -2364,7 +2620,9 @@
    "area": "Alghero",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Alghero&checkin=2026-08-07&checkout=2026-08-12&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Alghero&checkin=2026-08-07&checkout=2026-08-12&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Alghero/homes?checkin=2026-08-07&checkout=2026-08-12&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Alghero/homes?checkin=2026-08-07&checkout=2026-08-12&adults=1",
+   "flight_hours": 1.8,
+   "sea_temp": 25
   },
   {
    "dest": "NCE",
@@ -2384,7 +2642,9 @@
    "area": "Nice",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-07-30&checkout=2026-08-02&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-07-30&checkout=2026-08-02&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-07-30&checkout=2026-08-02&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-07-30&checkout=2026-08-02&adults=1",
+   "flight_hours": 1.5,
+   "sea_temp": 25
   },
   {
    "dest": "EFL",
@@ -2404,7 +2664,9 @@
    "area": "Kefalonia",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Kefalonia&checkin=2026-07-24&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Kefalonia&checkin=2026-07-24&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Kefalonia/homes?checkin=2026-07-24&checkout=2026-07-28&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Kefalonia/homes?checkin=2026-07-24&checkout=2026-07-28&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 27
   },
   {
    "dest": "IBZ",
@@ -2424,7 +2686,9 @@
    "area": "Ibiza",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Ibiza&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Ibiza&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Ibiza/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Ibiza/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 26
   },
   {
    "dest": "CHQ",
@@ -2444,7 +2708,9 @@
    "area": "Chania",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Chania&checkin=2026-07-23&checkout=2026-07-27&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Chania&checkin=2026-07-23&checkout=2026-07-27&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Chania/homes?checkin=2026-07-23&checkout=2026-07-27&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Chania/homes?checkin=2026-07-23&checkout=2026-07-27&adults=1",
+   "flight_hours": 2.7,
+   "sea_temp": 26
   },
   {
    "dest": "KGS",
@@ -2464,7 +2730,9 @@
    "area": "Kos",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Kos&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Kos&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Kos/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Kos/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
+   "flight_hours": 2.7,
+   "sea_temp": 27
   },
   {
    "dest": "IBZ",
@@ -2484,7 +2752,9 @@
    "area": "Ibiza",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Ibiza&checkin=2026-09-11&checkout=2026-09-14&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Ibiza&checkin=2026-09-11&checkout=2026-09-14&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Ibiza/homes?checkin=2026-09-11&checkout=2026-09-14&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Ibiza/homes?checkin=2026-09-11&checkout=2026-09-14&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 26
   },
   {
    "dest": "PMI",
@@ -2504,7 +2774,9 @@
    "area": "Palma de Mallorca",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-09-03&checkout=2026-09-08&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-09-03&checkout=2026-09-08&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-09-03&checkout=2026-09-08&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-09-03&checkout=2026-09-08&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 26
   },
   {
    "dest": "CFU",
@@ -2524,7 +2796,9 @@
    "area": "Corfu",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
+   "flight_hours": 1.8,
+   "sea_temp": 27
   },
   {
    "dest": "HRG",
@@ -2544,7 +2818,9 @@
    "area": "Hurghada",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Hurghada&checkin=2026-08-14&checkout=2026-08-19&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Hurghada&checkin=2026-08-14&checkout=2026-08-19&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Hurghada/homes?checkin=2026-08-14&checkout=2026-08-19&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Hurghada/homes?checkin=2026-08-14&checkout=2026-08-19&adults=1",
+   "flight_hours": 4.0,
+   "sea_temp": 29
   },
   {
    "dest": "OLB",
@@ -2564,7 +2840,9 @@
    "area": "Olbia",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Olbia&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Olbia&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Olbia/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Olbia/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 1.6,
+   "sea_temp": 26
   },
   {
    "dest": "CFU",
@@ -2584,7 +2862,9 @@
    "area": "Corfu",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-07-24&checkout=2026-07-29&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-07-24&checkout=2026-07-29&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-07-24&checkout=2026-07-29&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-07-24&checkout=2026-07-29&adults=1",
+   "flight_hours": 1.8,
+   "sea_temp": 27
   },
   {
    "dest": "PUY",
@@ -2604,7 +2884,9 @@
    "area": "Pula",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Pula&checkin=2026-09-04&checkout=2026-09-09&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Pula&checkin=2026-09-04&checkout=2026-09-09&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Pula/homes?checkin=2026-09-04&checkout=2026-09-09&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Pula/homes?checkin=2026-09-04&checkout=2026-09-09&adults=1",
+   "flight_hours": 1.0,
+   "sea_temp": 24
   },
   {
    "dest": "ALC",
@@ -2624,7 +2906,9 @@
    "area": "Alicante",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-08-13&checkout=2026-08-18&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-08-13&checkout=2026-08-18&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-08-13&checkout=2026-08-18&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-08-13&checkout=2026-08-18&adults=1",
+   "flight_hours": 2.7,
+   "sea_temp": 26
   },
   {
    "dest": "NCE",
@@ -2644,7 +2928,9 @@
    "area": "Nice",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 1.5,
+   "sea_temp": 25
   },
   {
    "dest": "OPO",
@@ -2664,7 +2950,9 @@
    "area": "Matosinhos",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Matosinhos&checkin=2026-08-21&checkout=2026-08-25&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Matosinhos&checkin=2026-08-21&checkout=2026-08-25&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Matosinhos/homes?checkin=2026-08-21&checkout=2026-08-25&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Matosinhos/homes?checkin=2026-08-21&checkout=2026-08-25&adults=1",
+   "flight_hours": 3.5,
+   "sea_temp": 19
   },
   {
    "dest": "IBZ",
@@ -2684,7 +2972,9 @@
    "area": "Ibiza",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Ibiza&checkin=2026-07-24&checkout=2026-07-27&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Ibiza&checkin=2026-07-24&checkout=2026-07-27&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Ibiza/homes?checkin=2026-07-24&checkout=2026-07-27&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Ibiza/homes?checkin=2026-07-24&checkout=2026-07-27&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 26
   },
   {
    "dest": "PMI",
@@ -2704,7 +2994,9 @@
    "area": "Palma de Mallorca",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 26
   },
   {
    "dest": "ALC",
@@ -2724,7 +3016,9 @@
    "area": "Alicante",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-08-13&checkout=2026-08-18&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-08-13&checkout=2026-08-18&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-08-13&checkout=2026-08-18&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-08-13&checkout=2026-08-18&adults=1",
+   "flight_hours": 2.7,
+   "sea_temp": 26
   },
   {
    "dest": "ALC",
@@ -2744,7 +3038,9 @@
    "area": "Alicante",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-08-07&checkout=2026-08-12&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-08-07&checkout=2026-08-12&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-08-07&checkout=2026-08-12&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-08-07&checkout=2026-08-12&adults=1",
+   "flight_hours": 2.7,
+   "sea_temp": 26
   },
   {
    "dest": "CFU",
@@ -2764,7 +3060,9 @@
    "area": "Corfu",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-08-13&checkout=2026-08-17&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-08-13&checkout=2026-08-17&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-08-13&checkout=2026-08-17&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-08-13&checkout=2026-08-17&adults=1",
+   "flight_hours": 1.8,
+   "sea_temp": 27
   },
   {
    "dest": "RHO",
@@ -2784,7 +3082,9 @@
    "area": "Rhodes",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Rhodes&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Rhodes&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Rhodes/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Rhodes/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
+   "flight_hours": 2.8,
+   "sea_temp": 27
   },
   {
    "dest": "NCE",
@@ -2804,7 +3104,9 @@
    "area": "Nice",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-08-28&checkout=2026-09-01&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-08-28&checkout=2026-09-01&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-08-28&checkout=2026-09-01&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-08-28&checkout=2026-09-01&adults=1",
+   "flight_hours": 1.5,
+   "sea_temp": 25
   },
   {
    "dest": "NAP",
@@ -2824,7 +3126,9 @@
    "area": "Sorrento",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Sorrento&checkin=2026-07-31&checkout=2026-08-05&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Sorrento&checkin=2026-07-31&checkout=2026-08-05&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Sorrento/homes?checkin=2026-07-31&checkout=2026-08-05&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Sorrento/homes?checkin=2026-07-31&checkout=2026-08-05&adults=1",
+   "flight_hours": 1.7,
+   "sea_temp": 26
   },
   {
    "dest": "LCA",
@@ -2844,7 +3148,9 @@
    "area": "Larnaca",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Larnaca&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Larnaca&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Larnaca/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Larnaca/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 3.3,
+   "sea_temp": 28
   },
   {
    "dest": "LCA",
@@ -2864,7 +3170,9 @@
    "area": "Larnaca",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Larnaca&checkin=2026-09-04&checkout=2026-09-09&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Larnaca&checkin=2026-09-04&checkout=2026-09-09&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Larnaca/homes?checkin=2026-09-04&checkout=2026-09-09&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Larnaca/homes?checkin=2026-09-04&checkout=2026-09-09&adults=1",
+   "flight_hours": 3.3,
+   "sea_temp": 28
   },
   {
    "dest": "TFS",
@@ -2884,7 +3192,9 @@
    "area": "Tenerife",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Tenerife&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Tenerife&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Tenerife/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Tenerife/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
+   "flight_hours": 5.0,
+   "sea_temp": 23
   },
   {
    "dest": "NCE",
@@ -2904,7 +3214,9 @@
    "area": "Nice",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 1.5,
+   "sea_temp": 25
   },
   {
    "dest": "JMK",
@@ -2924,7 +3236,9 @@
    "area": "Mykonos",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Mykonos&checkin=2026-07-31&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Mykonos&checkin=2026-07-31&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Mykonos/homes?checkin=2026-07-31&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Mykonos/homes?checkin=2026-07-31&checkout=2026-08-03&adults=1",
+   "flight_hours": 2.8,
+   "sea_temp": 26
   },
   {
    "dest": "LIS",
@@ -2944,7 +3258,9 @@
    "area": "Cascais",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Cascais&checkin=2026-07-31&checkout=2026-08-04&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Cascais&checkin=2026-07-31&checkout=2026-08-04&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Cascais/homes?checkin=2026-07-31&checkout=2026-08-04&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Cascais/homes?checkin=2026-07-31&checkout=2026-08-04&adults=1",
+   "flight_hours": 3.5,
+   "sea_temp": 20
   },
   {
    "dest": "RHO",
@@ -2964,7 +3280,9 @@
    "area": "Rhodes",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Rhodes&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Rhodes&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Rhodes/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Rhodes/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
+   "flight_hours": 2.8,
+   "sea_temp": 27
   },
   {
    "dest": "JSI",
@@ -2984,7 +3302,9 @@
    "area": "Skiathos",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Skiathos&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Skiathos&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Skiathos/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Skiathos/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
+   "flight_hours": 2.1,
+   "sea_temp": 26
   },
   {
    "dest": "PFO",
@@ -3004,7 +3324,9 @@
    "area": "Paphos",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Paphos&checkin=2026-07-24&checkout=2026-07-29&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Paphos&checkin=2026-07-24&checkout=2026-07-29&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Paphos/homes?checkin=2026-07-24&checkout=2026-07-29&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Paphos/homes?checkin=2026-07-24&checkout=2026-07-29&adults=1",
+   "flight_hours": 3.4,
+   "sea_temp": 28
   },
   {
    "dest": "NCE",
@@ -3024,7 +3346,9 @@
    "area": "Nice",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-08-21&checkout=2026-08-25&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-08-21&checkout=2026-08-25&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-08-21&checkout=2026-08-25&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-08-21&checkout=2026-08-25&adults=1",
+   "flight_hours": 1.5,
+   "sea_temp": 25
   },
   {
    "dest": "RHO",
@@ -3044,7 +3368,9 @@
    "area": "Rhodes",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Rhodes&checkin=2026-07-24&checkout=2026-07-29&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Rhodes&checkin=2026-07-24&checkout=2026-07-29&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Rhodes/homes?checkin=2026-07-24&checkout=2026-07-29&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Rhodes/homes?checkin=2026-07-24&checkout=2026-07-29&adults=1",
+   "flight_hours": 2.8,
+   "sea_temp": 27
   },
   {
    "dest": "LCA",
@@ -3064,7 +3390,9 @@
    "area": "Larnaca",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Larnaca&checkin=2026-09-03&checkout=2026-09-08&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Larnaca&checkin=2026-09-03&checkout=2026-09-08&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Larnaca/homes?checkin=2026-09-03&checkout=2026-09-08&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Larnaca/homes?checkin=2026-09-03&checkout=2026-09-08&adults=1",
+   "flight_hours": 3.3,
+   "sea_temp": 28
   },
   {
    "dest": "LCA",
@@ -3084,7 +3412,9 @@
    "area": "Larnaca",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Larnaca&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Larnaca&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Larnaca/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Larnaca/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 3.3,
+   "sea_temp": 28
   },
   {
    "dest": "JMK",
@@ -3104,7 +3434,9 @@
    "area": "Mykonos",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Mykonos&checkin=2026-08-28&checkout=2026-08-31&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Mykonos&checkin=2026-08-28&checkout=2026-08-31&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Mykonos/homes?checkin=2026-08-28&checkout=2026-08-31&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Mykonos/homes?checkin=2026-08-28&checkout=2026-08-31&adults=1",
+   "flight_hours": 2.8,
+   "sea_temp": 26
   },
   {
    "dest": "RHO",
@@ -3124,7 +3456,9 @@
    "area": "Rhodes",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Rhodes&checkin=2026-07-24&checkout=2026-07-29&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Rhodes&checkin=2026-07-24&checkout=2026-07-29&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Rhodes/homes?checkin=2026-07-24&checkout=2026-07-29&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Rhodes/homes?checkin=2026-07-24&checkout=2026-07-29&adults=1",
+   "flight_hours": 2.8,
+   "sea_temp": 27
   },
   {
    "dest": "PFO",
@@ -3144,7 +3478,9 @@
    "area": "Paphos",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Paphos&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Paphos&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Paphos/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Paphos/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1",
+   "flight_hours": 3.4,
+   "sea_temp": 28
   },
   {
    "dest": "IBZ",
@@ -3164,7 +3500,9 @@
    "area": "Ibiza",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Ibiza&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Ibiza&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Ibiza/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Ibiza/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 26
   },
   {
    "dest": "PMI",
@@ -3184,7 +3522,9 @@
    "area": "Palma de Mallorca",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-07-24&checkout=2026-07-29&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-07-24&checkout=2026-07-29&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-07-24&checkout=2026-07-29&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-07-24&checkout=2026-07-29&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 26
   },
   {
    "dest": "KVA",
@@ -3204,7 +3544,9 @@
    "area": "Kavala",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Kavala&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Kavala&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Kavala/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Kavala/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
+   "flight_hours": 1.9,
+   "sea_temp": 26
   },
   {
    "dest": "OLB",
@@ -3224,7 +3566,9 @@
    "area": "Olbia",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Olbia&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Olbia&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Olbia/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Olbia/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 1.6,
+   "sea_temp": 26
   },
   {
    "dest": "NCE",
@@ -3244,7 +3588,9 @@
    "area": "Nice",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-08-06&checkout=2026-08-10&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-08-06&checkout=2026-08-10&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-08-06&checkout=2026-08-10&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-08-06&checkout=2026-08-10&adults=1",
+   "flight_hours": 1.5,
+   "sea_temp": 25
   },
   {
    "dest": "IBZ",
@@ -3264,7 +3610,9 @@
    "area": "Ibiza",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Ibiza&checkin=2026-08-06&checkout=2026-08-10&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Ibiza&checkin=2026-08-06&checkout=2026-08-10&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Ibiza/homes?checkin=2026-08-06&checkout=2026-08-10&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Ibiza/homes?checkin=2026-08-06&checkout=2026-08-10&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 26
   },
   {
    "dest": "DXB",
@@ -3284,7 +3632,9 @@
    "area": "Dubai",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Dubai&checkin=2026-09-04&checkout=2026-09-08&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Dubai&checkin=2026-09-04&checkout=2026-09-08&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Dubai/homes?checkin=2026-09-04&checkout=2026-09-08&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Dubai/homes?checkin=2026-09-04&checkout=2026-09-08&adults=1",
+   "flight_hours": 6.0,
+   "sea_temp": 33
   },
   {
    "dest": "LCA",
@@ -3304,7 +3654,9 @@
    "area": "Larnaca",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Larnaca&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Larnaca&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Larnaca/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Larnaca/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
+   "flight_hours": 3.3,
+   "sea_temp": 28
   },
   {
    "dest": "NCE",
@@ -3324,7 +3676,9 @@
    "area": "Nice",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-07-31&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-07-31&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-07-31&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-07-31&checkout=2026-08-03&adults=1",
+   "flight_hours": 1.5,
+   "sea_temp": 25
   },
   {
    "dest": "IBZ",
@@ -3344,7 +3698,9 @@
    "area": "Ibiza",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Ibiza&checkin=2026-08-14&checkout=2026-08-18&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Ibiza&checkin=2026-08-14&checkout=2026-08-18&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Ibiza/homes?checkin=2026-08-14&checkout=2026-08-18&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Ibiza/homes?checkin=2026-08-14&checkout=2026-08-18&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 26
   },
   {
    "dest": "BCN",
@@ -3364,7 +3720,9 @@
    "area": "Barcelona",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 25
   },
   {
    "dest": "LCA",
@@ -3384,7 +3742,9 @@
    "area": "Larnaca",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Larnaca&checkin=2026-07-24&checkout=2026-07-29&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Larnaca&checkin=2026-07-24&checkout=2026-07-29&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Larnaca/homes?checkin=2026-07-24&checkout=2026-07-29&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Larnaca/homes?checkin=2026-07-24&checkout=2026-07-29&adults=1",
+   "flight_hours": 3.3,
+   "sea_temp": 28
   },
   {
    "dest": "IBZ",
@@ -3404,7 +3764,9 @@
    "area": "Ibiza",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Ibiza&checkin=2026-08-07&checkout=2026-08-11&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Ibiza&checkin=2026-08-07&checkout=2026-08-11&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Ibiza/homes?checkin=2026-08-07&checkout=2026-08-11&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Ibiza/homes?checkin=2026-08-07&checkout=2026-08-11&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 26
   },
   {
    "dest": "IBZ",
@@ -3424,7 +3786,9 @@
    "area": "Ibiza",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Ibiza&checkin=2026-07-31&checkout=2026-08-04&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Ibiza&checkin=2026-07-31&checkout=2026-08-04&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Ibiza/homes?checkin=2026-07-31&checkout=2026-08-04&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Ibiza/homes?checkin=2026-07-31&checkout=2026-08-04&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 26
   },
   {
    "dest": "NCE",
@@ -3444,7 +3808,9 @@
    "area": "Nice",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-08-27&checkout=2026-09-01&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-08-27&checkout=2026-09-01&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-08-27&checkout=2026-09-01&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-08-27&checkout=2026-09-01&adults=1",
+   "flight_hours": 1.5,
+   "sea_temp": 25
   },
   {
    "dest": "TIV",
@@ -3464,7 +3830,9 @@
    "area": "Kotor",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Kotor&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Kotor&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Kotor/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Kotor/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
+   "flight_hours": 1.3,
+   "sea_temp": 25
   },
   {
    "dest": "JMK",
@@ -3484,7 +3852,9 @@
    "area": "Mykonos",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Mykonos&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Mykonos&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Mykonos/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Mykonos/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1",
+   "flight_hours": 2.8,
+   "sea_temp": 26
   },
   {
    "dest": "JMK",
@@ -3504,7 +3874,9 @@
    "area": "Mykonos",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Mykonos&checkin=2026-07-31&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Mykonos&checkin=2026-07-31&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Mykonos/homes?checkin=2026-07-31&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Mykonos/homes?checkin=2026-07-31&checkout=2026-08-03&adults=1",
+   "flight_hours": 2.8,
+   "sea_temp": 26
   },
   {
    "dest": "JMK",
@@ -3524,7 +3896,9 @@
    "area": "Mykonos",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Mykonos&checkin=2026-08-06&checkout=2026-08-09&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Mykonos&checkin=2026-08-06&checkout=2026-08-09&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Mykonos/homes?checkin=2026-08-06&checkout=2026-08-09&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Mykonos/homes?checkin=2026-08-06&checkout=2026-08-09&adults=1",
+   "flight_hours": 2.8,
+   "sea_temp": 26
   },
   {
    "dest": "JTR",
@@ -3544,7 +3918,9 @@
    "area": "Santorini",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Santorini&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Santorini&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Santorini/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Santorini/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 2.9,
+   "sea_temp": 26
   },
   {
    "dest": "IBZ",
@@ -3564,7 +3940,9 @@
    "area": "Ibiza",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Ibiza&checkin=2026-07-30&checkout=2026-08-04&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Ibiza&checkin=2026-07-30&checkout=2026-08-04&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Ibiza/homes?checkin=2026-07-30&checkout=2026-08-04&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Ibiza/homes?checkin=2026-07-30&checkout=2026-08-04&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 26
   },
   {
    "dest": "IBZ",
@@ -3584,7 +3962,9 @@
    "area": "Ibiza",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Ibiza&checkin=2026-08-07&checkout=2026-08-12&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Ibiza&checkin=2026-08-07&checkout=2026-08-12&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Ibiza/homes?checkin=2026-08-07&checkout=2026-08-12&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Ibiza/homes?checkin=2026-08-07&checkout=2026-08-12&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 26
   },
   {
    "dest": "IBZ",
@@ -3604,7 +3984,9 @@
    "area": "Ibiza",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Ibiza&checkin=2026-07-31&checkout=2026-08-05&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Ibiza&checkin=2026-07-31&checkout=2026-08-05&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Ibiza/homes?checkin=2026-07-31&checkout=2026-08-05&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Ibiza/homes?checkin=2026-07-31&checkout=2026-08-05&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 26
   },
   {
    "dest": "JMK",
@@ -3624,7 +4006,9 @@
    "area": "Mykonos",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Mykonos&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Mykonos&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Mykonos/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Mykonos/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 2.8,
+   "sea_temp": 26
   },
   {
    "dest": "JMK",
@@ -3644,7 +4028,9 @@
    "area": "Mykonos",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Mykonos&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Mykonos&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Mykonos/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Mykonos/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 2.8,
+   "sea_temp": 26
   },
   {
    "dest": "TLV",
@@ -3664,7 +4050,9 @@
    "area": "Tel Aviv",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Tel%20Aviv&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Tel%20Aviv&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Tel%20Aviv/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Tel%20Aviv/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
+   "flight_hours": 3.5,
+   "sea_temp": 29
   },
   {
    "dest": "JMK",
@@ -3684,7 +4072,9 @@
    "area": "Mykonos",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Mykonos&checkin=2026-08-14&checkout=2026-08-18&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Mykonos&checkin=2026-08-14&checkout=2026-08-18&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Mykonos/homes?checkin=2026-08-14&checkout=2026-08-18&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Mykonos/homes?checkin=2026-08-14&checkout=2026-08-18&adults=1",
+   "flight_hours": 2.8,
+   "sea_temp": 26
   },
   {
    "dest": "JMK",
@@ -3704,7 +4094,9 @@
    "area": "Mykonos",
    "booking_cheap": "https://www.booking.com/searchresults.html?ss=Mykonos&checkin=2026-07-24&checkout=2026-07-29&group_adults=1&no_rooms=1&order=price",
    "booking_top": "https://www.booking.com/searchresults.html?ss=Mykonos&checkin=2026-07-24&checkout=2026-07-29&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Mykonos/homes?checkin=2026-07-24&checkout=2026-07-29&adults=1"
+   "airbnb": "https://www.airbnb.com/s/Mykonos/homes?checkin=2026-07-24&checkout=2026-07-29&adults=1",
+   "flight_hours": 2.8,
+   "sea_temp": 26
   }
  ],
  "alerts": []
