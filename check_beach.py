@@ -62,6 +62,10 @@ OVERVIEW_N = int((os.environ.get("OVERVIEW_N") or "73"))
 ALWAYS_DIGEST = (os.environ.get("ALWAYS_DIGEST") or "true").lower() in ("1", "true", "yes")
 PACE_SECONDS = float((os.environ.get("PACE_SECONDS") or "0.2"))
 DRY_RUN = (os.environ.get("DRY_RUN") or "").lower() in ("1", "true", "yes")
+SILENT_REFRESH = (os.environ.get("SILENT_REFRESH") or "").lower() in ("1", "true", "yes")
+
+# Link shown at the top of each digest so you can compare everything in the browser.
+DASHBOARD_URL = os.environ.get("DASHBOARD_URL") or "https://rizabalci.github.io/beach-holiday-bot-telegram/dashboard.html"
 
 HISTORY_FILE = "price_history.json"
 SITE_DATA_FILE = "deals.json"
@@ -164,6 +168,30 @@ BEACH_DESTINATIONS = {
 
 # Destinations whose high season is winter sun (Nov-Mar) instead of summer
 WINTER_SUN = {"TFS", "LPA", "FUE", "ACE", "HRG", "SSH", "RMF", "AGA", "DXB"}
+
+# Static per-destination metadata for the dashboard: approx flight time from
+# VIE (hours) and typical August sea temperature (°C). Used only for filtering
+# and display; does not affect price logic.
+DEST_META = {
+    "PMI": (2.2, 26), "IBZ": (2.2, 26), "AGP": (3.0, 22), "ALC": (2.7, 26),
+    "VLC": (2.5, 26), "BCN": (2.2, 25), "TFS": (5.0, 23), "LPA": (5.2, 23),
+    "FUE": (5.1, 23), "ACE": (5.0, 23), "MAH": (2.3, 26), "GRO": (2.2, 25),
+    "ATH": (2.3, 26), "SKG": (1.8, 26), "HER": (2.7, 26), "CHQ": (2.7, 26),
+    "RHO": (2.8, 27), "KGS": (2.7, 27), "JTR": (2.9, 26), "JMK": (2.8, 26),
+    "CFU": (1.8, 27), "ZTH": (2.2, 27), "EFL": (2.2, 27), "PVK": (2.0, 27),
+    "JSI": (2.1, 26), "KLX": (2.6, 26), "KVA": (1.9, 26), "VOL": (2.0, 26),
+    "SMI": (2.9, 27), "AOK": (3.0, 27),
+    "SPU": (1.2, 25), "DBV": (1.4, 25), "ZAD": (1.2, 25), "PUY": (1.0, 24),
+    "RJK": (1.1, 24), "TIV": (1.3, 25), "TGD": (1.4, 25), "TIA": (1.7, 26),
+    "NAP": (1.7, 26), "PMO": (2.0, 27), "CTA": (2.0, 26), "CAG": (1.9, 26),
+    "OLB": (1.6, 26), "BRI": (1.5, 26), "TPS": (2.0, 27), "RMI": (1.3, 26),
+    "GOA": (1.3, 24), "VCE": (1.1, 26), "BDS": (1.6, 26), "AHO": (1.8, 25), "SUF": (1.8, 27),
+    "MLA": (2.0, 27), "FAO": (3.4, 22), "LIS": (3.5, 20), "OPO": (3.5, 19),
+    "LCA": (3.3, 28), "PFO": (3.4, 28), "VAR": (1.8, 26), "BOJ": (1.9, 26),
+    "NCE": (1.5, 25), "MRS": (1.6, 24),
+    "HRG": (4.0, 29), "SSH": (4.2, 29), "RMF": (4.3, 29), "AGA": (4.3, 22),
+    "NBE": (2.3, 26), "DJE": (2.5, 27), "TLV": (3.5, 29), "DXB": (6.0, 33),
+}
 
 # ------------------------------------------------------------ http utils ----
 
@@ -294,42 +322,59 @@ def record_history(history, dest, best_total):
 
 
 def _split_on_lines(text, limit=3500):
+    """Split into <=limit chunks on newline boundaries so HTML tags stay intact."""
     chunks, cur = [], ""
-    for line in text.split(chr(10)):
+    for line in text.split("\n"):
         if len(cur) + len(line) + 1 > limit and cur:
-            chunks.append(cur); cur = ""
-        cur += line + chr(10)
+            chunks.append(cur)
+            cur = ""
+        cur += line + "\n"
     if cur.strip():
         chunks.append(cur)
     return chunks
 
 
 def _tg_send_one(url, chunk):
-    payload = urllib.parse.urlencode({"chat_id": TG_CHAT_ID, "text": chunk,
-        "parse_mode": "HTML", "disable_web_page_preview": "true"}).encode()
+    payload = urllib.parse.urlencode({
+        "chat_id": TG_CHAT_ID,
+        "text": chunk,
+        "parse_mode": "HTML",
+        "disable_web_page_preview": "true",
+    }).encode()
     for attempt in range(4):
         try:
-            urllib.request.urlopen(urllib.request.Request(url, data=payload), timeout=20)
+            req = urllib.request.Request(url, data=payload)
+            urllib.request.urlopen(req, timeout=20)
             return True
         except urllib.error.HTTPError as exc:
-            if exc.code == 429:
-                w = 3*(attempt+1); print(f"  . rate limited {w}s"); time.sleep(w); continue
-            print(f"  ! telegram HTTP {exc.code}: {exc.read().decode(chr(39)+'utf-8'+chr(39),'ignore')[:200]}")
+            if exc.code == 429:  # rate limited — back off and retry
+                wait = 3 * (attempt + 1)
+                print(f"  . rate limited, waiting {wait}s")
+                time.sleep(wait)
+                continue
+            body = exc.read().decode("utf-8", "ignore")[:200]
+            print(f"  ! telegram HTTP {exc.code}: {body}")
             return False
         except Exception as exc:
-            print(f"  ! telegram send failed: {exc}"); time.sleep(2)
+            print(f"  ! telegram send failed: {exc}")
+            time.sleep(2)
     return False
 
 
 def send_telegram(text):
     if DRY_RUN:
-        print("---- DRY RUN, telegram message below ----"); print(text); return
+        print("---- DRY RUN, telegram message below ----")
+        print(text)
+        return
     url = f"https://api.telegram.org/bot{TG_TOKEN}/sendMessage"
-    chunks = _split_on_lines(text); sent = 0
-    for chunk in chunks:
-        if _tg_send_one(url, chunk): sent += 1
-        time.sleep(1.2)
+    chunks = _split_on_lines(text)
+    sent = 0
+    for i, chunk in enumerate(chunks):
+        if _tg_send_one(url, chunk):
+            sent += 1
+        time.sleep(1.2)  # stay under Telegram's burst limit
     print(f"  telegram: sent {sent}/{len(chunks)} chunks")
+
 
 # ------------------------------------------------------------ main scan -----
 
@@ -393,6 +438,8 @@ def main():
                     "booking_cheap": booking_url(dest, depart, ret, "price"),
                     "booking_top": booking_url(dest, depart, ret, "bayesian_review_score"),
                     "airbnb": airbnb_url(dest, depart, ret),
+                    "flight_hours": DEST_META.get(dest, (None, None))[0],
+                    "sea_temp": DEST_META.get(dest, (None, None))[1],
                 }
                 all_deals.append(deal)
                 if dest not in best_by_dest or total < best_by_dest[dest]["total"]:
@@ -432,9 +479,9 @@ def main():
 
     today = date.today().strftime("%d %b %Y")
     if top_deals:
-        header = f"\U0001F3D6 <b>Beach Holiday Deals — {today}</b>\n{len(top_deals)} deal(s) beat target today. Full board below."
+        header = (f"\U0001F3D6 <b>Beach Holiday Deals — {today}</b>\n{len(top_deals)} deal(s) beat target today. Full board below.\n\U0001F4CA <a href=\"{DASHBOARD_URL}\">Compare all in browser</a>")
     else:
-        header = f"\U0001F3D6 <b>Beach Holiday check-in — {today}</b>\nNo target-beating deals today. Full board of cheapest 3-4 day totals from Vienna:"
+        header = (f"\U0001F3D6 <b>Beach Holiday check-in — {today}</b>\nNo target-beating deals today. Full board of cheapest totals from Vienna:\n\U0001F4CA <a href=\"{DASHBOARD_URL}\">Compare all in browser</a>")
     lines = [header, ""]
 
     def deal_block(d, flame=False):
@@ -455,6 +502,9 @@ def main():
 
     lines.append("<i>Totals = live flight + seasonal hotel estimate (budget 3-star, per person). 🔥 = beats target. Stay links open live Booking.com and Airbnb for the exact dates in a beach-walkable area — no car needed. Always verify before booking.</i>")
 
+    if SILENT_REFRESH:
+        print(f"Silent refresh: wrote deals.json ({len(board)} destinations), no Telegram sent.")
+        return
     send_telegram("\n".join(lines))
     print(f"Sent digest: {len(board)} destinations, {len(top_deals)} beating target.")
 
