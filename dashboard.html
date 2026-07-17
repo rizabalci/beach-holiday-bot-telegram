@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beach Deals — from Vienna</title>
+<style>
+  :root {
+    --deep: #003b4a;      /* deep sea */
+    --mid: #0a7d8c;       /* lagoon */
+    --shallow: #4fc3d4;   /* shallow water */
+    --foam: #eaf7f9;
+    --sand: #f6efe2;
+    --sand-line: #e4d8c2;
+    --ink: #05242c;
+    --hot: #ff7a4d;       /* deal flame */
+    --hot-soft: #fff0e9;
+    --paper: #fbfaf6;
+    --shadow: 0 1px 2px rgba(0,40,50,.06), 0 6px 20px rgba(0,40,50,.05);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px 80px; }
+
+  header.hero {
+    background:
+      radial-gradient(120% 140% at 85% -20%, var(--shallow) 0%, transparent 45%),
+      linear-gradient(160deg, var(--deep), var(--mid));
+    color: #fff;
+    padding: 42px 0 34px;
+    margin-bottom: 26px;
+  }
+  header.hero .wrap { padding-bottom: 0; }
+  .hero h1 {
+    margin: 0;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .hero p { margin: 8px 0 0; opacity: .82; font-size: 15px; }
+  .updated { margin-top: 14px; font-size: 12.5px; opacity: .7; }
+  .updated b { opacity: 1; font-weight: 600; }
+
+  .controls {
+    background: #fff;
+    border: 1px solid var(--sand-line);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    padding: 18px;
+    margin-bottom: 22px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px 18px;
+    align-items: end;
+  }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label {
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .06em; color: var(--mid);
+  }
+  .field select, .field input {
+    font: inherit; font-size: 14px; padding: 9px 10px;
+    border: 1px solid var(--sand-line); border-radius: 9px; background: var(--paper);
+    color: var(--ink); width: 100%;
+  }
+  .field .rangeval { font-size: 12px; color: #6a7f84; font-weight: 600; }
+  input[type=range] { accent-color: var(--mid); padding: 0; }
+
+  .toolbar {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-bottom: 14px; flex-wrap: wrap;
+  }
+  .count { font-size: 14px; color: #567; }
+  .count b { color: var(--ink); font-size: 16px; }
+  .toggle { display: inline-flex; border: 1px solid var(--sand-line); border-radius: 10px; overflow: hidden; }
+  .toggle button {
+    font: inherit; font-size: 13px; font-weight: 600; padding: 8px 16px;
+    border: 0; background: #fff; color: var(--mid); cursor: pointer;
+  }
+  .toggle button.on { background: var(--mid); color: #fff; }
+  .reset {
+    font: inherit; font-size: 13px; font-weight: 600; padding: 8px 14px;
+    border: 1px solid var(--sand-line); border-radius: 10px; background: #fff;
+    color: #567; cursor: pointer;
+  }
+  .reset:hover { border-color: var(--mid); color: var(--mid); }
+
+  /* table */
+  .tablewrap { overflow-x: auto; border: 1px solid var(--sand-line); border-radius: 14px; background: #fff; box-shadow: var(--shadow); }
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px; min-width: 820px; }
+  thead th {
+    text-align: left; padding: 13px 14px; background: var(--sand);
+    font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: #6a5c40;
+    cursor: pointer; user-select: none; white-space: nowrap; border-bottom: 1px solid var(--sand-line);
+  }
+  thead th .arrow { opacity: .4; font-size: 10px; }
+  thead th.sorted { color: var(--ink); }
+  thead th.sorted .arrow { opacity: 1; }
+  tbody td { padding: 12px 14px; border-bottom: 1px solid #f1ecdf; vertical-align: middle; }
+  tbody tr:hover { background: #fafdfd; }
+  tbody tr.deal { background: var(--hot-soft); }
+  tbody tr.deal:hover { background: #ffe8dd; }
+  .dest { font-weight: 700; }
+  .flag { font-size: 15px; margin-right: 5px; }
+  .total { font-weight: 800; font-size: 15px; color: var(--deep); white-space: nowrap; }
+  .flame { color: var(--hot); font-weight: 700; margin-left: 5px; font-size: 12px; }
+  .sub { color: #7a8a8e; font-size: 12px; }
+  .temp { font-weight: 700; }
+  .temp.warm { color: #e8802a; }
+  .temp.hot { color: var(--hot); }
+  .links a {
+    display: inline-block; font-size: 12px; font-weight: 600; text-decoration: none;
+    color: var(--mid); margin-right: 9px; white-space: nowrap;
+  }
+  .links a:hover { text-decoration: underline; }
+  .links a.fly { color: var(--deep); }
+
+  /* cards */
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .card {
+    background: #fff; border: 1px solid var(--sand-line); border-radius: 16px;
+    box-shadow: var(--shadow); padding: 16px 17px; position: relative; overflow: hidden;
+  }
+  .card.deal { border-color: #ffc9b3; }
+  .card.deal::before {
+    content: "🔥 beats target"; position: absolute; top: 12px; right: -30px;
+    background: var(--hot); color: #fff; font-size: 10px; font-weight: 800;
+    letter-spacing: .04em; padding: 3px 34px; transform: rotate(35deg);
+  }
+  .card h3 { margin: 0 0 2px; font-size: 17px; font-weight: 800; }
+  .card .country { font-size: 12.5px; color: #7a8a8e; margin-bottom: 12px; }
+  .card .big { font-size: 30px; font-weight: 800; color: var(--deep); line-height: 1; }
+  .card .big small { font-size: 13px; font-weight: 600; color: #7a8a8e; }
+  .card .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 10px; margin: 14px 0; font-size: 12.5px; }
+  .card .grid2 div { color: #567; }
+  .card .grid2 b { color: var(--ink); }
+  .card .clinks { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .card .clinks a {
+    font-size: 12px; font-weight: 700; text-decoration: none; padding: 6px 10px;
+    border-radius: 8px; background: var(--paper); border: 1px solid var(--sand-line); color: var(--mid);
+  }
+  .card .clinks a.fly { background: var(--deep); color: #fff; border-color: var(--deep); }
+  .card .clinks a:hover { border-color: var(--mid); }
+
+  .empty { text-align: center; padding: 60px 20px; color: #7a8a8e; }
+  .empty h3 { color: var(--ink); margin: 0 0 6px; }
+  footer { text-align: center; font-size: 12px; color: #9aa; margin-top: 40px; }
+  .hidden { display: none !important; }
+  @media (max-width: 560px) {
+    .controls { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <h1>Beach deals from Vienna</h1>
+    <p>3–5 day trips · flight + hotel per person · sorted so the best value floats to the top.</p>
+    <div class="updated" id="updated"></div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="controls" id="controls">
+    <div class="field">
+      <label>Depart from</label>
+      <select id="f-origin"><option value="">Any airport</option></select>
+    </div>
+    <div class="field">
+      <label>Country</label>
+      <select id="f-country"><option value="">All countries</option></select>
+    </div>
+    <div class="field">
+      <label>Nights</label>
+      <select id="f-nights">
+        <option value="">3, 4 or 5</option>
+        <option value="3">3 nights</option>
+        <option value="4">4 nights</option>
+        <option value="5">5 nights</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Depart after</label>
+      <input type="date" id="f-from">
+    </div>
+    <div class="field">
+      <label>Return before</label>
+      <input type="date" id="f-to">
+    </div>
+    <div class="field">
+      <label>Max total <span class="rangeval" id="v-budget"></span></label>
+      <input type="range" id="f-budget" min="100" max="800" step="10">
+    </div>
+    <div class="field">
+      <label>Min sea temp <span class="rangeval" id="v-temp"></span></label>
+      <input type="range" id="f-temp" min="18" max="33" step="1" value="18">
+    </div>
+    <div class="field">
+      <label>Max flight <span class="rangeval" id="v-fly"></span></label>
+      <input type="range" id="f-fly" min="1" max="6" step="0.5" value="6">
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <div class="count"><b id="count">0</b> <span id="countword">options</span> · <span id="dealcount">0</span> beat target</div>
+    <div style="display:flex; gap:10px;">
+      <button class="reset" id="reset">Reset filters</button>
+      <div class="toggle">
+        <button id="tab-table" class="on">Table</button>
+        <button id="tab-cards">Cards</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="view-table" class="tablewrap">
+    <table>
+      <thead>
+        <tr>
+          <th data-sort="name">Destination <span class="arrow"></span></th>
+          <th data-sort="total" class="sorted">Total <span class="arrow">▲</span></th>
+          <th data-sort="flight">Flight <span class="arrow"></span></th>
+          <th data-sort="hotel_total">Hotel <span class="arrow"></span></th>
+          <th data-sort="nights">Nights <span class="arrow"></span></th>
+          <th data-sort="depart">Dates <span class="arrow"></span></th>
+          <th data-sort="sea_temp">Sea <span class="arrow"></span></th>
+          <th data-sort="flight_hours">Flight time <span class="arrow"></span></th>
+          <th>Book</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+
+  <div id="view-cards" class="cards hidden"></div>
+
+  <div id="empty" class="empty hidden">
+    <h3>Nothing matches these filters</h3>
+    <p>Loosen the budget, sea temp or dates to see more options.</p>
+  </div>
+
+  <footer>
+    Prices are cached flight estimates + seasonal hotel estimates. Always verify on the booking site before booking.<br>
+    Data refreshes daily from the scanner. 🔥 = beats its destination target.
+  </footer>
+</div>
+
+<script>
+const state = { deals: [], filtered: [], sortKey: "total", sortDir: 1, view: "table" };
+
+function fmtDate(iso) {
+  const d = new Date(iso + "T00:00:00");
+  return d.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+}
+function tempClass(t) { return t >= 28 ? "hot" : t >= 25 ? "warm" : ""; }
+
+async function load() {
+  let raw;
+  try {
+    const res = await fetch("deals.json", { cache: "no-store" });
+    raw = await res.json();
+  } catch (e) {
+    document.getElementById("updated").textContent = "Could not load deals.json — run the scanner first.";
+    return;
+  }
+  // best entry per destination+nights+origin already; keep the cheapest per dest+nights so table isn't 6000 rows
+  const seen = new Map();
+  for (const d of raw.deals) {
+    const key = d.dest + "|" + d.nights + "|" + d.origin;
+    if (!seen.has(key) || d.total < seen.get(key).total) seen.set(key, d);
+  }
+  const alertKeys = new Set((raw.alerts || []).map(a => a.dest + "|" + a.depart + "|" + a.origin + "|" + a.nights));
+  state.deals = [...seen.values()].map(d => ({
+    ...d,
+    isDeal: alertKeys.has(d.dest + "|" + d.depart + "|" + d.origin + "|" + d.nights)
+  }));
+
+  const when = raw.generated_at ? new Date(raw.generated_at).toLocaleString("en-GB", {dateStyle:"medium", timeStyle:"short"}) : "unknown";
+  document.getElementById("updated").innerHTML = "Last updated <b>" + when + "</b> · " + state.deals.length + " destination options";
+
+  buildFilterOptions();
+  initControls();
+  apply();
+}
+
+function buildFilterOptions() {
+  const origins = [...new Set(state.deals.map(d => d.origin))].sort();
+  const countries = [...new Set(state.deals.map(d => d.country))].sort();
+  const os = document.getElementById("f-origin");
+  origins.forEach(o => os.add(new Option(o, o)));
+  const cs = document.getElementById("f-country");
+  countries.forEach(c => cs.add(new Option(c, c)));
+  const maxT = Math.max(...state.deals.map(d => d.total));
+  const b = document.getElementById("f-budget");
+  b.max = Math.ceil(maxT / 10) * 10; b.value = b.max;
+}
+
+function initControls() {
+  const ids = ["f-origin","f-country","f-nights","f-from","f-to","f-budget","f-temp","f-fly"];
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    el.addEventListener("input", apply);
+    el.addEventListener("change", apply);
+  });
+  document.getElementById("reset").addEventListener("click", resetFilters);
+  document.getElementById("tab-table").addEventListener("click", () => setView("table"));
+  document.getElementById("tab-cards").addEventListener("click", () => setView("cards"));
+  document.querySelectorAll("thead th[data-sort]").forEach(th => {
+    th.addEventListener("click", () => {
+      const k = th.dataset.sort;
+      if (state.sortKey === k) state.sortDir *= -1;
+      else { state.sortKey = k; state.sortDir = (k === "name" || k === "depart") ? 1 : 1; }
+      render();
+    });
+  });
+  syncRangeLabels();
+}
+
+function resetFilters() {
+  document.getElementById("f-origin").value = "";
+  document.getElementById("f-country").value = "";
+  document.getElementById("f-nights").value = "";
+  document.getElementById("f-from").value = "";
+  document.getElementById("f-to").value = "";
+  const b = document.getElementById("f-budget"); b.value = b.max;
+  document.getElementById("f-temp").value = 18;
+  document.getElementById("f-fly").value = 6;
+  apply();
+}
+
+function syncRangeLabels() {
+  document.getElementById("v-budget").textContent = "€" + document.getElementById("f-budget").value;
+  document.getElementById("v-temp").textContent = document.getElementById("f-temp").value + "°C";
+  document.getElementById("v-fly").textContent = "≤" + document.getElementById("f-fly").value + "h";
+}
+
+function apply() {
+  syncRangeLabels();
+  const origin = document.getElementById("f-origin").value;
+  const country = document.getElementById("f-country").value;
+  const nights = document.getElementById("f-nights").value;
+  const from = document.getElementById("f-from").value;
+  const to = document.getElementById("f-to").value;
+  const budget = +document.getElementById("f-budget").value;
+  const temp = +document.getElementById("f-temp").value;
+  const fly = +document.getElementById("f-fly").value;
+
+  state.filtered = state.deals.filter(d => {
+    if (origin && d.origin !== origin) return false;
+    if (country && d.country !== country) return false;
+    if (nights && d.nights !== +nights) return false;
+    if (from && d.depart < from) return false;
+    if (to && d.return > to) return false;
+    if (d.total > budget) return false;
+    if ((d.sea_temp ?? 0) < temp) return false;
+    if ((d.flight_hours ?? 99) > fly) return false;
+    return true;
+  });
+  render();
+}
+
+function sortData(rows) {
+  const k = state.sortKey, dir = state.sortDir;
+  return rows.slice().sort((a, b) => {
+    let x = a[k], y = b[k];
+    if (typeof x === "string") return x.localeCompare(y) * dir;
+    return ((x ?? 0) - (y ?? 0)) * dir;
+  });
+}
+
+function render() {
+  const rows = sortData(state.filtered);
+  document.getElementById("count").textContent = rows.length;
+  document.getElementById("countword").textContent = rows.length === 1 ? "option" : "options";
+  document.getElementById("dealcount").textContent = rows.filter(r => r.isDeal).length;
+
+  // header arrows
+  document.querySelectorAll("thead th[data-sort]").forEach(th => {
+    const a = th.querySelector(".arrow");
+    if (th.dataset.sort === state.sortKey) { th.classList.add("sorted"); a.textContent = state.sortDir === 1 ? "▲" : "▼"; }
+    else { th.classList.remove("sorted"); a.textContent = ""; }
+  });
+
+  const empty = rows.length === 0;
+  document.getElementById("empty").classList.toggle("hidden", !empty);
+  document.getElementById("view-table").classList.toggle("hidden", empty || state.view !== "table");
+  document.getElementById("view-cards").classList.toggle("hidden", empty || state.view !== "cards");
+  if (empty) return;
+
+  if (state.view === "table") renderTable(rows);
+  else renderCards(rows);
+}
+
+function renderTable(rows) {
+  const flag = c => c.split(" ")[0];
+  const cc = c => c.split(" ").slice(1).join(" ");
+  document.getElementById("tbody").innerHTML = rows.map(d => `
+    <tr class="${d.isDeal ? "deal" : ""}">
+      <td class="dest"><span class="flag">${flag(d.country)}</span>${d.name}<div class="sub">${cc(d.country)}</div></td>
+      <td class="total">€${d.total}${d.isDeal ? '<span class="flame">🔥</span>' : ''}</td>
+      <td>€${d.flight}<div class="sub">${d.origin}</div></td>
+      <td>~€${d.hotel_total}<div class="sub">€${d.hotel_night}/n</div></td>
+      <td>${d.nights}</td>
+      <td>${fmtDate(d.depart)}<div class="sub">→ ${fmtDate(d.return)}</div></td>
+      <td class="temp ${tempClass(d.sea_temp)}">${d.sea_temp ?? "–"}°</td>
+      <td>${d.flight_hours ?? "–"}h</td>
+      <td class="links">
+        <a class="fly" href="${d.url}" target="_blank" rel="noopener">Flight</a>
+        <a href="${d.booking_cheap}" target="_blank" rel="noopener">Hotel</a>
+        <a href="${d.airbnb}" target="_blank" rel="noopener">Airbnb</a>
+      </td>
+    </tr>`).join("");
+}
+
+function renderCards(rows) {
+  const flag = c => c.split(" ")[0];
+  const cc = c => c.split(" ").slice(1).join(" ");
+  document.getElementById("view-cards").innerHTML = rows.map(d => `
+    <div class="card ${d.isDeal ? "deal" : ""}">
+      <h3>${flag(d.country)} ${d.name}</h3>
+      <div class="country">${cc(d.country)} · ${d.origin}</div>
+      <div class="big">€${d.total} <small>total / person</small></div>
+      <div class="grid2">
+        <div>Flight <b>€${d.flight}</b></div>
+        <div>Hotel <b>~€${d.hotel_total}</b></div>
+        <div>Dates <b>${fmtDate(d.depart)}–${fmtDate(d.return)}</b></div>
+        <div>Nights <b>${d.nights}</b></div>
+        <div>Sea <b class="temp ${tempClass(d.sea_temp)}">${d.sea_temp ?? "–"}°C</b></div>
+        <div>Flight time <b>${d.flight_hours ?? "–"}h</b></div>
+      </div>
+      <div class="clinks">
+        <a class="fly" href="${d.url}" target="_blank" rel="noopener">Book flight</a>
+        <a href="${d.booking_cheap}" target="_blank" rel="noopener">Hotels</a>
+        <a href="${d.airbnb}" target="_blank" rel="noopener">Airbnb</a>
+      </div>
+    </div>`).join("");
+}
+
+function setView(v) {
+  state.view = v;
+  document.getElementById("tab-table").classList.toggle("on", v === "table");
+  document.getElementById("tab-cards").classList.toggle("on", v === "cards");
+  render();
+}
+
+load();
+</script>
+</body>
+</html>
