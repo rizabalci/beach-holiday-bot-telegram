@@ -25,6 +25,7 @@ import os
 import sys
 import time
 import urllib.parse
+import urllib.error
 import urllib.request
 from datetime import date, datetime, timedelta, timezone
 
@@ -292,27 +293,45 @@ def record_history(history, dest, best_total):
 # ------------------------------------------------------------ telegram ------
 
 
+def _split_on_lines(text, limit=3500):
+    chunks, cur = [], ""
+    for line in text.split("
+"):
+        if len(cur) + len(line) + 1 > limit and cur:
+            chunks.append(cur); cur = ""
+        cur += line + "
+"
+    if cur.strip():
+        chunks.append(cur)
+    return chunks
+
+
+def _tg_send_one(url, chunk):
+    payload = urllib.parse.urlencode({"chat_id": TG_CHAT_ID, "text": chunk,
+        "parse_mode": "HTML", "disable_web_page_preview": "true"}).encode()
+    for attempt in range(4):
+        try:
+            urllib.request.urlopen(urllib.request.Request(url, data=payload), timeout=20)
+            return True
+        except urllib.error.HTTPError as exc:
+            if exc.code == 429:
+                w = 3*(attempt+1); print(f"  . rate limited {w}s"); time.sleep(w); continue
+            print(f"  ! telegram HTTP {exc.code}: {exc.read().decode(chr(39)+'utf-8'+chr(39),'ignore')[:200]}")
+            return False
+        except Exception as exc:
+            print(f"  ! telegram send failed: {exc}"); time.sleep(2)
+    return False
+
+
 def send_telegram(text):
     if DRY_RUN:
-        print("---- DRY RUN, telegram message below ----")
-        print(text)
-        return
+        print("---- DRY RUN, telegram message below ----"); print(text); return
     url = f"https://api.telegram.org/bot{TG_TOKEN}/sendMessage"
-    for chunk_start in range(0, len(text), 3800):
-        chunk = text[chunk_start:chunk_start + 3800]
-        payload = urllib.parse.urlencode({
-            "chat_id": TG_CHAT_ID,
-            "text": chunk,
-            "parse_mode": "HTML",
-            "disable_web_page_preview": "true",
-        }).encode()
-        req = urllib.request.Request(url, data=payload)
-        try:
-            urllib.request.urlopen(req, timeout=20)
-        except Exception as exc:
-            print(f"  ! telegram send failed: {exc}")
-        time.sleep(0.5)
-
+    chunks = _split_on_lines(text); sent = 0
+    for chunk in chunks:
+        if _tg_send_one(url, chunk): sent += 1
+        time.sleep(1.2)
+    print(f"  telegram: sent {sent}/{len(chunks)} chunks")
 
 # ------------------------------------------------------------ main scan -----
 
