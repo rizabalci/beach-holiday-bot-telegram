@@ -295,12 +295,10 @@ def record_history(history, dest, best_total):
 
 def _split_on_lines(text, limit=3500):
     chunks, cur = [], ""
-    for line in text.split("
-"):
+    for line in text.split(chr(10)):
         if len(cur) + len(line) + 1 > limit and cur:
             chunks.append(cur); cur = ""
-        cur += line + "
-"
+        cur += line + chr(10)
     if cur.strip():
         chunks.append(cur)
     return chunks
