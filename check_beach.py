@@ -38,10 +38,13 @@ TG_CHAT_ID = (os.environ.get("TG_CHAT_ID") or "")
 ORIGINS = [o.strip().upper() for o in (os.environ.get("ORIGINS") or "VIE,BTS").split(",") if o.strip()]
 
 # Scan the next N weekends (a "weekend" = one Thursday departure + one Friday departure)
-SCAN_WEEKENDS = int((os.environ.get("SCAN_WEEKENDS") or "8"))
+SCAN_WEEKENDS = int((os.environ.get("SCAN_WEEKENDS") or "6"))
 
 # Trip lengths in nights to test for each departure day
-TRIP_NIGHTS = [int(n) for n in (os.environ.get("TRIP_NIGHTS") or "3,4,5").split(",")]
+TRIP_NIGHTS = [int(n) for n in (os.environ.get("TRIP_NIGHTS") or "2,3,4,5").split(",")]
+
+# Departure weekdays to scan (Mon=0 ... Sun=6). Default Thu, Fri, Sat.
+DEPART_DAYS = [int(x) for x in (os.environ.get("DEPART_DAYS") or "3,4,5").split(",")]
 
 # Global fallback: alert on any total below this (EUR, per person)
 TOTAL_THRESHOLD_EUR = float((os.environ.get("TOTAL_THRESHOLD_EUR") or "250"))
@@ -380,20 +383,27 @@ def send_telegram(text):
 
 
 def candidate_trips():
-    """Yield (label, depart_date, nights) for the next SCAN_WEEKENDS weekends."""
+    """Yield (label, depart_date, nights) for the next SCAN_WEEKENDS weekends.
+
+    Departure days are configurable via DEPART_DAYS (weekday numbers, Mon=0).
+    Default 3,4,5 = Thursday, Friday, Saturday — Saturday departures matter
+    because a Sat->Mon or Sat->Tue trip costs only 1-2 work days off.
+    """
     today = date.today()
     thursdays = []
     d = today + timedelta(days=2)  # never scan trips leaving tomorrow
     while len(thursdays) < SCAN_WEEKENDS:
-        if d.weekday() == 3:  # Thursday
+        if d.weekday() == 3:  # Thursday anchors each weekend
             thursdays.append(d)
         d += timedelta(days=1)
     for thu in thursdays:
-        fri = thu + timedelta(days=1)
-        label = f"{thu.strftime('%d %b')}–{fri.strftime('%d %b')} weekend"
-        for nights in TRIP_NIGHTS:
-            yield label, thu, nights
-            yield label, fri, nights
+        label = f"{thu.strftime('%d %b')} weekend"
+        for offset in sorted(DEPART_DAYS):
+            dep = thu + timedelta(days=offset - 3)  # 3=Thu, 4=Fri, 5=Sat
+            if dep < today + timedelta(days=2):
+                continue
+            for nights in TRIP_NIGHTS:
+                yield label, dep, nights
 
 
 def main():
@@ -489,7 +499,9 @@ def main():
         return [
             f"<b>{d['country'].split(' ', 1)[0]} {d['name']}</b> — <b>€{d['total']}</b>{star}",
             f"   ✈️ €{d['flight']} RT {d['origin']}  🏨 ~€{d['hotel_total']} est. "
-            f"({d['nights']}n × €{d['hotel_night']}) · {d['depart']} → {d['return']}",
+            f"({d['nights']}n × €{d['hotel_night']})",
+            f"   \U0001F4C5 {fmt_day(d['depart'])} → {fmt_day(d['return'])} · "
+            f"{work_days_off(d['depart'], d['return'])} days off work",
             f"   <a href=\"{d['url']}\">Book flight</a> · Stay in {d['area']}: "
             f"<a href=\"{d['booking_cheap']}\">Cheapest</a> · "
             f"<a href=\"{d['booking_top']}\">Best rated</a> · "
@@ -507,6 +519,24 @@ def main():
         return
     send_telegram("\n".join(lines))
     print(f"Sent digest: {len(board)} destinations, {len(top_deals)} beating target.")
+
+
+def fmt_day(iso):
+    """'Thu 10 Sep' from an ISO date."""
+    d = datetime.fromisoformat(iso).date() if isinstance(iso, str) else iso
+    return d.strftime("%a %d %b")
+
+
+def work_days_off(dep_iso, ret_iso):
+    """Mon-Fri days between depart and return inclusive = holiday days needed."""
+    d = datetime.fromisoformat(dep_iso).date()
+    end = datetime.fromisoformat(ret_iso).date()
+    n = 0
+    while d <= end:
+        if d.weekday() < 5:
+            n += 1
+        d += timedelta(days=1)
+    return n
 
 
 def write_site_data(all_deals, alerts):
