@@ -120,6 +120,15 @@
   }
   .links a:hover { text-decoration: underline; }
   .links a.fly { color: var(--deep); }
+  .wk { display:inline-block; font-size:10.5px; font-weight:700; padding:2px 7px; border-radius:20px; margin-top:3px; white-space:nowrap; }
+  .wk.full { background:#e3f6ea; color:#137a45; }
+  .wk.part { background:#fff3d9; color:#8a6100; }
+  .wk.none { background:#f0f2f5; color:#6b7684; }
+  .offdays { font-size:11.5px; color:#7a8a8e; }
+  .wknd { display:inline-block; margin-top:4px; font-size:10.5px; font-weight:700; padding:2px 7px;
+          border-radius:20px; background:#e6f7ea; color:#1a7f4b; letter-spacing:.02em; }
+  .wkday { display:inline-block; margin-top:4px; font-size:10.5px; font-weight:600; padding:2px 7px;
+           border-radius:20px; background:#f3f1ea; color:#8a8574; }
 
   /* cards */
   .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
@@ -205,6 +214,17 @@
       <label>Max flight <span class="rangeval" id="v-fly"></span></label>
       <input type="range" id="f-fly" min="1" max="6" step="0.5" value="6">
     </div>
+    <div class="field">
+      <label>Days off needed</label>
+      <select id="f-wknd">
+        <option value="">Any</option>
+        <option value="1">1 day off</option>
+        <option value="2">Max 2 days off</option>
+        <option value="3">Max 3 days off</option>
+        <option value="wknd2">Covers Sat + Sun</option>
+        <option value="wknd1">Any weekend day</option>
+      </select>
+    </div>
   </div>
 
   <div class="toolbar">
@@ -227,6 +247,7 @@
           <th data-sort="flight">Flight <span class="arrow"></span></th>
           <th data-sort="hotel_total">Hotel <span class="arrow"></span></th>
           <th data-sort="nights">Nights <span class="arrow"></span></th>
+          <th data-sort="_daysoff">Days off <span class="arrow"></span></th>
           <th data-sort="depart">Dates <span class="arrow"></span></th>
           <th data-sort="sea_temp">Sea <span class="arrow"></span></th>
           <th data-sort="flight_hours">Flight time <span class="arrow"></span></th>
@@ -255,7 +276,42 @@ const state = { deals: [], filtered: [], sortKey: "total", sortDir: 1, view: "ta
 
 function fmtDate(iso) {
   const d = new Date(iso + "T00:00:00");
-  return d.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+  return d.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" });
+}
+// True if the stay covers any Sat or Sun (depart..return inclusive)
+function coversWeekend(depIso, retIso) {
+  const d = new Date(depIso + "T00:00:00"), end = new Date(retIso + "T00:00:00");
+  for (let x = new Date(d); x <= end; x.setDate(x.getDate() + 1)) {
+    const w = x.getDay();
+    if (w === 0 || w === 6) return true;
+  }
+  return false;
+}
+// How many weekend days the trip includes
+function weekendDays(depIso, retIso) {
+  const d = new Date(depIso + "T00:00:00"), end = new Date(retIso + "T00:00:00");
+  let n = 0;
+  for (let x = new Date(d); x <= end; x.setDate(x.getDate() + 1)) {
+    const w = x.getDay();
+    if (w === 0 || w === 6) n++;
+  }
+  return n;
+}
+function weekendBadge(depIso, retIso) {
+  const w = weekendDays(depIso, retIso);
+  if (w >= 2) return '<span class="wk full">Sat + Sun</span>';
+  if (w === 1) return '<span class="wk part">1 weekend day</span>';
+  return '<span class="wk none">weekdays only</span>';
+}
+// Work days (Mon-Fri) you'd need to book off, depart..return inclusive
+function workDaysOff(depIso, retIso) {
+  const d = new Date(depIso + "T00:00:00"), end = new Date(retIso + "T00:00:00");
+  let n = 0;
+  for (let x = new Date(d); x <= end; x.setDate(x.getDate() + 1)) {
+    const w = x.getDay();
+    if (w >= 1 && w <= 5) n++;
+  }
+  return n;
 }
 function tempClass(t) { return t >= 28 ? "hot" : t >= 25 ? "warm" : ""; }
 
@@ -301,7 +357,7 @@ function buildFilterOptions() {
 }
 
 function initControls() {
-  const ids = ["f-origin","f-country","f-nights","f-from","f-to","f-budget","f-temp","f-fly"];
+  const ids = ["f-origin","f-country","f-nights","f-from","f-to","f-budget","f-temp","f-fly","f-wknd"];
   ids.forEach(id => {
     const el = document.getElementById(id);
     el.addEventListener("input", apply);
@@ -330,6 +386,7 @@ function resetFilters() {
   const b = document.getElementById("f-budget"); b.value = b.max;
   document.getElementById("f-temp").value = 18;
   document.getElementById("f-fly").value = 6;
+  document.getElementById("f-wknd").value = "";
   apply();
 }
 
@@ -349,6 +406,7 @@ function apply() {
   const budget = +document.getElementById("f-budget").value;
   const temp = +document.getElementById("f-temp").value;
   const fly = +document.getElementById("f-fly").value;
+  const wknd = document.getElementById("f-wknd").value;
 
   state.filtered = state.deals.filter(d => {
     if (origin && d.origin !== origin) return false;
@@ -359,6 +417,9 @@ function apply() {
     if (d.total > budget) return false;
     if ((d.sea_temp ?? 0) < temp) return false;
     if ((d.flight_hours ?? 99) > fly) return false;
+    if (wknd === "wknd2") { if (weekendDays(d.depart, d.return) < 2) return false; }
+    else if (wknd === "wknd1") { if (weekendDays(d.depart, d.return) < 1) return false; }
+    else if (wknd) { if (workDaysOff(d.depart, d.return) > +wknd) return false; }
     return true;
   });
   render();
@@ -367,7 +428,9 @@ function apply() {
 function sortData(rows) {
   const k = state.sortKey, dir = state.sortDir;
   return rows.slice().sort((a, b) => {
-    let x = a[k], y = b[k];
+    let x, y;
+    if (k === "_daysoff") { x = workDaysOff(a.depart, a.return); y = workDaysOff(b.depart, b.return); }
+    else { x = a[k]; y = b[k]; }
     if (typeof x === "string") return x.localeCompare(y) * dir;
     return ((x ?? 0) - (y ?? 0)) * dir;
   });
@@ -406,7 +469,9 @@ function renderTable(rows) {
       <td>€${d.flight}<div class="sub">${d.origin}</div></td>
       <td>~€${d.hotel_total}<div class="sub">€${d.hotel_night}/n</div></td>
       <td>${d.nights}</td>
-      <td>${fmtDate(d.depart)}<div class="sub">→ ${fmtDate(d.return)}</div></td>
+      <td><b>${workDaysOff(d.depart, d.return)}</b></td>
+      <td>${fmtDate(d.depart)}<div class="sub">→ ${fmtDate(d.return)}</div>
+        <div>${weekendBadge(d.depart, d.return)}</div></td>
       <td class="temp ${tempClass(d.sea_temp)}">${d.sea_temp ?? "–"}°</td>
       <td>${d.flight_hours ?? "–"}h</td>
       <td class="links">
@@ -428,8 +493,8 @@ function renderCards(rows) {
       <div class="grid2">
         <div>Flight <b>€${d.flight}</b></div>
         <div>Hotel <b>~€${d.hotel_total}</b></div>
-        <div>Dates <b>${fmtDate(d.depart)}–${fmtDate(d.return)}</b></div>
-        <div>Nights <b>${d.nights}</b></div>
+        <div>Dates <b>${fmtDate(d.depart)} – ${fmtDate(d.return)}</b></div>
+        <div>Nights <b>${d.nights}</b><br>${weekendBadge(d.depart, d.return)}<br><span class="wknd">${workDaysOff(d.depart, d.return)} work days off</span></div>
         <div>Sea <b class="temp ${tempClass(d.sea_temp)}">${d.sea_temp ?? "–"}°C</b></div>
         <div>Flight time <b>${d.flight_hours ?? "–"}h</b></div>
       </div>
