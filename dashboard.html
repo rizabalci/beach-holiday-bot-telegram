@@ -129,6 +129,9 @@
           border-radius:20px; background:#e6f7ea; color:#1a7f4b; letter-spacing:.02em; }
   .wkday { display:inline-block; margin-top:4px; font-size:10.5px; font-weight:600; padding:2px 7px;
            border-radius:20px; background:#f3f1ea; color:#8a8574; }
+  .wday { display:inline-block; font-weight:700; color: #0b4d5f; background:#e6f0f2;
+          padding:1px 5px; border-radius:3px; font-size:11.5px; margin-right:3px;
+          text-transform: uppercase; letter-spacing:.03em; }
 
   /* cards */
   .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
@@ -276,7 +279,9 @@ const state = { deals: [], filtered: [], sortKey: "total", sortDir: 1, view: "ta
 
 function fmtDate(iso) {
   const d = new Date(iso + "T00:00:00");
-  return d.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" });
+  const weekday = d.toLocaleDateString("en-GB", { weekday: "short" });
+  const rest = d.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+  return `<span class="wday">${weekday}</span> ${rest}`;
 }
 // True if the stay covers any Sat or Sun (depart..return inclusive)
 function coversWeekend(depIso, retIso) {
