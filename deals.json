@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-07-18T15:52:16.721624+00:00",
+ "generated_at": "2026-07-18T19:35:47.635454+00:00",
  "origins": [
   "VIE",
   "BTS"
  ],
- "deal_count": 241,
+ "deal_count": 237,
  "deals": [
   {
    "dest": "TIA",
@@ -77,7 +77,7 @@
    "reasons": [
     "below \u20ac260 target",
     "under \u20ac250 global cap",
-    "25%+ below 2-week avg (\u20ac408)"
+    "25%+ below 2-week avg (\u20ac376)"
    ]
   },
   {
@@ -212,30 +212,8 @@
    "flight_hours": 1.5,
    "sea_temp": 26,
    "reasons": [
-    "25%+ below 2-week avg (\u20ac442)"
+    "25%+ below 2-week avg (\u20ac390)"
    ]
-  },
-  {
-   "dest": "ATH",
-   "name": "Athens / Riviera",
-   "country": "\ud83c\uddec\ud83c\uddf7 Greece",
-   "origin": "BTS",
-   "depart": "2026-08-14",
-   "return": "2026-08-16",
-   "nights": 2,
-   "weekend": "13 Aug weekend",
-   "flight": 140,
-   "hotel_night": 85,
-   "hotel_total": 170,
-   "total": 310,
-   "target": 240,
-   "url": "https://www.aviasales.com/search/BTS1408ATH16081?t=FR17867373001786749000000135BTSATH17868828001786887900000145ATHBTS_de625dc81b51fd29589a9b78e1663cc4_12426&search_date=14072026&expected_price_uuid=019f6169-13c1-8030-2981-b2a58ab75f9a&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=SCNJ09JX0PpYuOkNxFnZtQ&expected_price_source=share&expected_price_currency=eur&expected_price=140",
-   "area": "Glyfada",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Glyfada&checkin=2026-08-14&checkout=2026-08-16&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Glyfada&checkin=2026-08-14&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Glyfada/homes?checkin=2026-08-14&checkout=2026-08-16&adults=1",
-   "flight_hours": 2.3,
-   "sea_temp": 26
   },
   {
    "dest": "TIA",
@@ -436,6 +414,28 @@
    "sea_temp": 26
   },
   {
+   "dest": "ATH",
+   "name": "Athens / Riviera",
+   "country": "\ud83c\uddec\ud83c\uddf7 Greece",
+   "origin": "BTS",
+   "depart": "2026-08-14",
+   "return": "2026-08-16",
+   "nights": 2,
+   "weekend": "13 Aug weekend",
+   "flight": 168,
+   "hotel_night": 85,
+   "hotel_total": 170,
+   "total": 338,
+   "target": 240,
+   "url": "https://www.aviasales.com/search/BTS1408ATH16081?t=W617867373001786749000000135BTSATH17869239001787012100001530ATHJMKBTS_05683b3cd769200e66cf8d0afb8ccc68_14984&search_date=18072026&expected_price_uuid=019f7651-afb2-8030-2039-c07aa076b0ab&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=WZ0rFqDNJsVDF_i13TrfpA&expected_price_source=share&expected_price_currency=eur&expected_price=168",
+   "area": "Glyfada",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Glyfada&checkin=2026-08-14&checkout=2026-08-16&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Glyfada&checkin=2026-08-14&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Glyfada/homes?checkin=2026-08-14&checkout=2026-08-16&adults=1",
+   "flight_hours": 2.3,
+   "sea_temp": 26
+  },
+  {
    "dest": "SKG",
    "name": "Thessaloniki / Halkidiki",
    "country": "\ud83c\uddec\ud83c\uddf7 Greece",
@@ -479,7 +479,7 @@
    "flight_hours": 2.5,
    "sea_temp": 26,
    "reasons": [
-    "25%+ below 2-week avg (\u20ac525)"
+    "25%+ below 2-week avg (\u20ac465)"
    ]
   },
   {
@@ -899,6 +899,28 @@
    "airbnb": "https://www.airbnb.com/s/Zadar/homes?checkin=2026-08-06&checkout=2026-08-08&adults=1",
    "flight_hours": 1.2,
    "sea_temp": 25
+  },
+  {
+   "dest": "ATH",
+   "name": "Athens / Riviera",
+   "country": "\ud83c\uddec\ud83c\uddf7 Greece",
+   "origin": "BTS",
+   "depart": "2026-08-14",
+   "return": "2026-08-17",
+   "nights": 3,
+   "weekend": "13 Aug weekend",
+   "flight": 127,
+   "hotel_night": 85,
+   "hotel_total": 255,
+   "total": 382,
+   "target": 240,
+   "url": "https://www.aviasales.com/search/BTS1408ATH17081?t=W617867373001786749000000135BTSATH17870106001787015700000145ATHBTS_ca2de36f528ea4455f251bbae688002f_11348&search_date=18072026&expected_price_uuid=019f7651-e62c-8030-2422-4ec109216838&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Zde6Xj-7JCsEz9LOskQhsg&expected_price_source=share&expected_price_currency=eur&expected_price=127",
+   "area": "Glyfada",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Glyfada&checkin=2026-08-14&checkout=2026-08-17&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Glyfada&checkin=2026-08-14&checkout=2026-08-17&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Glyfada/homes?checkin=2026-08-14&checkout=2026-08-17&adults=1",
+   "flight_hours": 2.3,
+   "sea_temp": 26
   },
   {
    "dest": "TIA",
@@ -1382,10 +1404,7 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Olbia&checkin=2026-08-14&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Olbia/homes?checkin=2026-08-14&checkout=2026-08-16&adults=1",
    "flight_hours": 1.6,
-   "sea_temp": 26,
-   "reasons": [
-    "25%+ below 2-week avg (\u20ac572)"
-   ]
+   "sea_temp": 26
   },
   {
    "dest": "BCN",
@@ -1982,6 +2001,28 @@
    "sea_temp": 26
   },
   {
+   "dest": "ATH",
+   "name": "Athens / Riviera",
+   "country": "\ud83c\uddec\ud83c\uddf7 Greece",
+   "origin": "BTS",
+   "depart": "2026-08-14",
+   "return": "2026-08-18",
+   "nights": 4,
+   "weekend": "13 Aug weekend",
+   "flight": 119,
+   "hotel_night": 85,
+   "hotel_total": 340,
+   "total": 459,
+   "target": 240,
+   "url": "https://www.aviasales.com/search/BTS1408ATH18081?t=FR17867373001786749000000135BTSATH17870745001787079600000145ATHBTS_2ef15c96fa3e5bbf01863e6a948e5578_10633&search_date=18072026&expected_price_uuid=019f7651-8775-8030-e3c4-841936346c66&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=E5zoht4jau0Z1JT-xS9TfA&expected_price_source=share&expected_price_currency=eur&expected_price=119",
+   "area": "Glyfada",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Glyfada&checkin=2026-08-14&checkout=2026-08-18&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Glyfada&checkin=2026-08-14&checkout=2026-08-18&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Glyfada/homes?checkin=2026-08-14&checkout=2026-08-18&adults=1",
+   "flight_hours": 2.3,
+   "sea_temp": 26
+  },
+  {
    "dest": "LIS",
    "name": "Lisbon / Cascais",
    "country": "\ud83c\uddf5\ud83c\uddf9 Portugal",
@@ -2002,28 +2043,6 @@
    "airbnb": "https://www.airbnb.com/s/Cascais/homes?checkin=2026-07-31&checkout=2026-08-02&adults=1",
    "flight_hours": 3.5,
    "sea_temp": 20
-  },
-  {
-   "dest": "EFL",
-   "name": "Kefalonia",
-   "country": "\ud83c\uddec\ud83c\uddf7 Greece",
-   "origin": "VIE",
-   "depart": "2026-07-24",
-   "return": "2026-07-27",
-   "nights": 3,
-   "weekend": "23 Jul weekend",
-   "flight": 190,
-   "hotel_night": 90,
-   "hotel_total": 270,
-   "total": 460,
-   "target": 290,
-   "url": "https://www.aviasales.com/search/VIE2407EFL27071?t=FR17848992001784910300000125VIEEFL17851458001785149700000125EFLVIE_4ee4466a09a448131f40aafb74c37aa2_16721&search_date=11072026&expected_price_uuid=019f527b-201f-8030-ada6-aab6aabe6986&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=2og_ChDnQZ75w8sFgavmdQ&expected_price_source=share&expected_price_currency=eur&expected_price=190",
-   "area": "Kefalonia",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Kefalonia&checkin=2026-07-24&checkout=2026-07-27&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Kefalonia&checkin=2026-07-24&checkout=2026-07-27&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Kefalonia/homes?checkin=2026-07-24&checkout=2026-07-27&adults=1",
-   "flight_hours": 2.2,
-   "sea_temp": 27
   },
   {
    "dest": "NCE",
@@ -2068,28 +2087,6 @@
    "airbnb": "https://www.airbnb.com/s/Budva/homes?checkin=2026-07-24&checkout=2026-07-27&adults=1",
    "flight_hours": 1.4,
    "sea_temp": 25
-  },
-  {
-   "dest": "ALC",
-   "name": "Alicante / Costa Blanca",
-   "country": "\ud83c\uddea\ud83c\uddf8 Spain",
-   "origin": "VIE",
-   "depart": "2026-07-23",
-   "return": "2026-07-26",
-   "nights": 3,
-   "weekend": "23 Jul weekend",
-   "flight": 227,
-   "hotel_night": 80,
-   "hotel_total": 240,
-   "total": 467,
-   "target": 240,
-   "url": "https://www.aviasales.com/search/VIE2307ALC26071?t=FR17847936001784822400000480VIEIBZALC17850852001785165600001340ALCMXPBGYVIE_a9b043b6a53f28fa977aae86cda65f34_19946&search_date=11072026&expected_price_uuid=019f51d0-890e-8030-a24c-b2b1b0bf3ae4&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=5bfxvuTgNjMDi-ettyBayA&expected_price_source=share&expected_price_currency=eur&expected_price=227",
-   "area": "Alicante",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-07-23&checkout=2026-07-26&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-07-23&checkout=2026-07-26&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-07-23&checkout=2026-07-26&adults=1",
-   "flight_hours": 2.7,
-   "sea_temp": 26
   },
   {
    "dest": "DBV",
@@ -2441,32 +2438,7 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Dubai&checkin=2026-08-15&checkout=2026-08-17&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Dubai/homes?checkin=2026-08-15&checkout=2026-08-17&adults=1",
    "flight_hours": 6.0,
-   "sea_temp": 33,
-   "reasons": [
-    "25%+ below 2-week avg (\u20ac651)"
-   ]
-  },
-  {
-   "dest": "CFU",
-   "name": "Corfu",
-   "country": "\ud83c\uddec\ud83c\uddf7 Greece",
-   "origin": "VIE",
-   "depart": "2026-07-24",
-   "return": "2026-07-27",
-   "nights": 3,
-   "weekend": "23 Jul weekend",
-   "flight": 232,
-   "hotel_night": 85,
-   "hotel_total": 255,
-   "total": 487,
-   "target": 270,
-   "url": "https://www.aviasales.com/search/VIE2407CFU27071?t=W417849067001785024600001905VIELINMXPCFU17851110001785163800000940CFUMXPLINVIE_ed34143deb72e72a93848b9d429ace30_20428&search_date=11072026&expected_price_uuid=019f527b-2461-8030-e5f1-45d6a1889ab5&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=cC4PFLMRINvX4RbkhQN4PQ&expected_price_source=share&expected_price_currency=eur&expected_price=232",
-   "area": "Corfu",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-07-24&checkout=2026-07-27&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-07-24&checkout=2026-07-27&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-07-24&checkout=2026-07-27&adults=1",
-   "flight_hours": 1.8,
-   "sea_temp": 27
+   "sea_temp": 33
   },
   {
    "dest": "FUE",
@@ -2777,6 +2749,28 @@
    "sea_temp": 27
   },
   {
+   "dest": "DBV",
+   "name": "Dubrovnik",
+   "country": "\ud83c\udded\ud83c\uddf7 Croatia",
+   "origin": "VIE",
+   "depart": "2026-07-23",
+   "return": "2026-07-26",
+   "nights": 3,
+   "weekend": "23 Jul weekend",
+   "flight": 159,
+   "hotel_night": 115,
+   "hotel_total": 345,
+   "total": 504,
+   "target": 300,
+   "url": "https://www.aviasales.com/search/VIE2307DBV26071?t=OS17848425001784847000000075VIEDBV17850495001785054300000080DBVVIE_1dae858742b803aa86b0edd1510820b3_14195&search_date=18072026&expected_price_uuid=019f766b-8c37-8030-6834-21940e83714e&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=EkQLRFewjdOIOCVP8PT1Hw&expected_price_source=share&expected_price_currency=eur&expected_price=159",
+   "area": "Dubrovnik",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Dubrovnik&checkin=2026-07-23&checkout=2026-07-26&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Dubrovnik&checkin=2026-07-23&checkout=2026-07-26&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Dubrovnik/homes?checkin=2026-07-23&checkout=2026-07-26&adults=1",
+   "flight_hours": 1.4,
+   "sea_temp": 25
+  },
+  {
    "dest": "CFU",
    "name": "Corfu",
    "country": "\ud83c\uddec\ud83c\uddf7 Greece",
@@ -2819,28 +2813,6 @@
    "airbnb": "https://www.airbnb.com/s/Zadar/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
    "flight_hours": 1.2,
    "sea_temp": 25
-  },
-  {
-   "dest": "JSI",
-   "name": "Skiathos",
-   "country": "\ud83c\uddec\ud83c\uddf7 Greece",
-   "origin": "VIE",
-   "depart": "2026-08-14",
-   "return": "2026-08-17",
-   "nights": 3,
-   "weekend": "13 Aug weekend",
-   "flight": 221,
-   "hotel_night": 95,
-   "hotel_total": 285,
-   "total": 506,
-   "target": 300,
-   "url": "https://www.aviasales.com/search/VIE1408JSI17081?t=FR17866866001786786500001605VIEFCOJSI17869845001787092500001860JSIBTSFCOVIE_b738eeb1abad6a83decf27f21c0134ec_19452&search_date=11072026&expected_price_uuid=019f5233-0177-8030-2b50-79df42a8481c&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=51rJwWKmvvR2WIfqxwu17g&expected_price_source=share&expected_price_currency=eur&expected_price=221",
-   "area": "Skiathos",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Skiathos&checkin=2026-08-14&checkout=2026-08-17&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Skiathos&checkin=2026-08-14&checkout=2026-08-17&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Skiathos/homes?checkin=2026-08-14&checkout=2026-08-17&adults=1",
-   "flight_hours": 2.1,
-   "sea_temp": 26
   },
   {
    "dest": "TPS",
@@ -2931,28 +2903,6 @@
    "sea_temp": 27
   },
   {
-   "dest": "EFL",
-   "name": "Kefalonia",
-   "country": "\ud83c\uddec\ud83c\uddf7 Greece",
-   "origin": "VIE",
-   "depart": "2026-07-25",
-   "return": "2026-07-28",
-   "nights": 3,
-   "weekend": "23 Jul weekend",
-   "flight": 241,
-   "hotel_night": 90,
-   "hotel_total": 270,
-   "total": 511,
-   "target": 290,
-   "url": "https://www.aviasales.com/search/VIE2507EFL28071?t=A317849805001784991600000125VIEEFL17852775001785321600000795EFLATHVIE_f29605b38eca03a53596a31aa1a97084_21227&search_date=11072026&expected_price_uuid=019f526d-c261-8030-e95f-c5189f2ec637&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=j2j0jbadR_VYmskZKotzqw&expected_price_source=share&expected_price_currency=eur&expected_price=241",
-   "area": "Kefalonia",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Kefalonia&checkin=2026-07-25&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Kefalonia&checkin=2026-07-25&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Kefalonia/homes?checkin=2026-07-25&checkout=2026-07-28&adults=1",
-   "flight_hours": 2.2,
-   "sea_temp": 27
-  },
-  {
    "dest": "BOJ",
    "name": "Burgas / Sunny Beach",
    "country": "\ud83c\udde7\ud83c\uddec Bulgaria",
@@ -2994,28 +2944,6 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-07-30&checkout=2026-08-02&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-07-30&checkout=2026-08-02&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 25
-  },
-  {
-   "dest": "DBV",
-   "name": "Dubrovnik",
-   "country": "\ud83c\udded\ud83c\uddf7 Croatia",
-   "origin": "VIE",
-   "depart": "2026-07-23",
-   "return": "2026-07-26",
-   "nights": 3,
-   "weekend": "23 Jul weekend",
-   "flight": 168,
-   "hotel_night": 115,
-   "hotel_total": 345,
-   "total": 513,
-   "target": 300,
-   "url": "https://www.aviasales.com/search/VIE2307DBV26071?t=FR17848224001784827200000080VIEDBV17850984001785103500000085DBVVIE_88ed3c628d41a608cb1b531c69991ee5_14954&search_date=15072026&expected_price_uuid=019f6739-29af-8030-2c6d-794add8507fb&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=AWnD0WsQfLbSNp6pQN3MyQ&expected_price_source=share&expected_price_currency=eur&expected_price=168",
-   "area": "Dubrovnik",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Dubrovnik&checkin=2026-07-23&checkout=2026-07-26&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Dubrovnik&checkin=2026-07-23&checkout=2026-07-26&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Dubrovnik/homes?checkin=2026-07-23&checkout=2026-07-26&adults=1",
-   "flight_hours": 1.4,
    "sea_temp": 25
   },
   {
@@ -3771,6 +3699,28 @@
    "name": "Nice / French Riviera",
    "country": "\ud83c\uddeb\ud83c\uddf7 France",
    "origin": "VIE",
+   "depart": "2026-07-31",
+   "return": "2026-08-03",
+   "nights": 3,
+   "weekend": "30 Jul weekend",
+   "flight": 227,
+   "hotel_night": 110,
+   "hotel_total": 330,
+   "total": 557,
+   "target": 300,
+   "url": "https://www.aviasales.com/search/VIE3107NCE03081?t=OS17854821001785488400000105VIENCE17857503001785756300000100NCEVIE_fc03d7258ed05b6734c331a0c8d3ea83_20316&search_date=18072026&expected_price_uuid=019f75ef-e1a9-8030-a188-70f89bba6303&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=M632rXXbL9Nc40ZsnE1QaA&expected_price_source=share&expected_price_currency=eur&expected_price=227",
+   "area": "Nice",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-07-31&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-07-31&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-07-31&checkout=2026-08-03&adults=1",
+   "flight_hours": 1.5,
+   "sea_temp": 25
+  },
+  {
+   "dest": "NCE",
+   "name": "Nice / French Riviera",
+   "country": "\ud83c\uddeb\ud83c\uddf7 France",
+   "origin": "VIE",
    "depart": "2026-07-30",
    "return": "2026-08-02",
    "nights": 3,
@@ -3787,28 +3737,6 @@
    "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-07-30&checkout=2026-08-02&adults=1",
    "flight_hours": 1.5,
    "sea_temp": 25
-  },
-  {
-   "dest": "EFL",
-   "name": "Kefalonia",
-   "country": "\ud83c\uddec\ud83c\uddf7 Greece",
-   "origin": "VIE",
-   "depart": "2026-07-24",
-   "return": "2026-07-28",
-   "nights": 4,
-   "weekend": "23 Jul weekend",
-   "flight": 198,
-   "hotel_night": 90,
-   "hotel_total": 360,
-   "total": 558,
-   "target": 290,
-   "url": "https://www.aviasales.com/search/VIE2407EFL28071?t=A317848992001784910300000125VIEEFL17852775001785321600000795EFLATHVIE_97eeb9e87e2515c5795b6105655b1354_17411&search_date=11072026&expected_price_uuid=019f526d-645e-8030-6d15-431acb2be7cc&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=HVCrsfpNepiIGfR6pcqIOA&expected_price_source=share&expected_price_currency=eur&expected_price=198",
-   "area": "Kefalonia",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Kefalonia&checkin=2026-07-24&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Kefalonia&checkin=2026-07-24&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Kefalonia/homes?checkin=2026-07-24&checkout=2026-07-28&adults=1",
-   "flight_hours": 2.2,
-   "sea_temp": 27
   },
   {
    "dest": "IBZ",
@@ -4425,6 +4353,72 @@
    "airbnb": "https://www.airbnb.com/s/Rhodes/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
    "flight_hours": 2.8,
    "sea_temp": 27
+  },
+  {
+   "dest": "JSI",
+   "name": "Skiathos",
+   "country": "\ud83c\uddec\ud83c\uddf7 Greece",
+   "origin": "VIE",
+   "depart": "2026-07-23",
+   "return": "2026-07-28",
+   "nights": 5,
+   "weekend": "23 Jul weekend",
+   "flight": 134,
+   "hotel_night": 95,
+   "hotel_total": 475,
+   "total": 609,
+   "target": 300,
+   "url": "https://www.aviasales.com/search/VIE2307JSI28071?t=U217847888001784832300000665VIEBGYJSI17852352001785315600001400JSIMXPBGYVIE_fbe02746f556458261677ab7116528d7_11701&search_date=13072026&expected_price_uuid=019f5d2f-3760-8030-ec31-982b5729b74c&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=HKDq4I77TnxDuwcaco4-HQ&expected_price_source=share&expected_price_currency=eur&expected_price=134",
+   "area": "Skiathos",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Skiathos&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Skiathos&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Skiathos/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
+   "flight_hours": 2.1,
+   "sea_temp": 26
+  },
+  {
+   "dest": "PFO",
+   "name": "Paphos",
+   "country": "\ud83c\udde8\ud83c\uddfe Cyprus",
+   "origin": "VIE",
+   "depart": "2026-07-24",
+   "return": "2026-07-29",
+   "nights": 5,
+   "weekend": "23 Jul weekend",
+   "flight": 185,
+   "hotel_night": 85,
+   "hotel_total": 425,
+   "total": 610,
+   "target": 280,
+   "url": "https://www.aviasales.com/search/VIE2407PFO29071?t=FR17849223001784936400000175VIEPFO17853471001785355200000195PFOVIE_c45aa1ac3e21f0b28cfaacd1c41408dc_16234&search_date=14072026&expected_price_uuid=019f6017-3d31-8030-2c03-3606bbddfadf&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=ykFVjEFx_CEkTgDbUey9jg&expected_price_source=share&expected_price_currency=eur&expected_price=185",
+   "area": "Paphos",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Paphos&checkin=2026-07-24&checkout=2026-07-29&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Paphos&checkin=2026-07-24&checkout=2026-07-29&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Paphos/homes?checkin=2026-07-24&checkout=2026-07-29&adults=1",
+   "flight_hours": 3.4,
+   "sea_temp": 28
+  },
+  {
+   "dest": "SPU",
+   "name": "Split",
+   "country": "\ud83c\udded\ud83c\uddf7 Croatia",
+   "origin": "VIE",
+   "depart": "2026-07-25",
+   "return": "2026-07-29",
+   "nights": 4,
+   "weekend": "23 Jul weekend",
+   "flight": 231,
+   "hotel_night": 95,
+   "hotel_total": 380,
+   "total": 611,
+   "target": 260,
+   "url": "https://www.aviasales.com/search/VIE2507SPU29071?t=VY17849913001785057300001100VIEBCNSPU17853153001785336600000355SPULINVIE_506a2fa97f59561b4cbad27e3943d31a_20250&search_date=14072026&expected_price_uuid=019f5fc3-e820-8030-a6dd-be28f2848c12&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=DnrYTtevIFBSX9EtXFRFJg&expected_price_source=share&expected_price_currency=eur&expected_price=231",
+   "area": "Split",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Split&checkin=2026-07-25&checkout=2026-07-29&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Split&checkin=2026-07-25&checkout=2026-07-29&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Split/homes?checkin=2026-07-25&checkout=2026-07-29&adults=1",
+   "flight_hours": 1.2,
+   "sea_temp": 25
   }
  ],
  "alerts": [
@@ -4450,7 +4444,7 @@
    "flight_hours": 2.5,
    "sea_temp": 26,
    "reasons": [
-    "25%+ below 2-week avg (\u20ac525)"
+    "25%+ below 2-week avg (\u20ac465)"
    ]
   },
   {
@@ -4479,31 +4473,6 @@
    ]
   },
   {
-   "dest": "OLB",
-   "name": "Olbia, Sardinia",
-   "country": "\ud83c\uddee\ud83c\uddf9 Italy",
-   "origin": "VIE",
-   "depart": "2026-08-14",
-   "return": "2026-08-16",
-   "nights": 2,
-   "weekend": "13 Aug weekend",
-   "flight": 194,
-   "hotel_night": 110,
-   "hotel_total": 220,
-   "total": 414,
-   "target": 300,
-   "url": "https://www.aviasales.com/search/VIE1408OLB16081?t=OS17867103001786716900000110VIEOLB17868816001786898100000275OLBMUCVIE_32cb29e4e1cb0ae00311cdda5ed772ca_17196&search_date=14072026&expected_price_uuid=019f61a8-bf26-8030-62c0-22de2ffbca8e&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Tcs6bAkNjYjOfmOGbsOczw&expected_price_source=share&expected_price_currency=eur&expected_price=194",
-   "area": "Olbia",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Olbia&checkin=2026-08-14&checkout=2026-08-16&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Olbia&checkin=2026-08-14&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Olbia/homes?checkin=2026-08-14&checkout=2026-08-16&adults=1",
-   "flight_hours": 1.6,
-   "sea_temp": 26,
-   "reasons": [
-    "25%+ below 2-week avg (\u20ac572)"
-   ]
-  },
-  {
    "dest": "BRI",
    "name": "Bari / Puglia",
    "country": "\ud83c\uddee\ud83c\uddf9 Italy",
@@ -4525,32 +4494,7 @@
    "flight_hours": 1.5,
    "sea_temp": 26,
    "reasons": [
-    "25%+ below 2-week avg (\u20ac442)"
-   ]
-  },
-  {
-   "dest": "DXB",
-   "name": "Dubai",
-   "country": "\ud83c\udde6\ud83c\uddea UAE",
-   "origin": "VIE",
-   "depart": "2026-08-15",
-   "return": "2026-08-17",
-   "nights": 2,
-   "weekend": "13 Aug weekend",
-   "flight": 366,
-   "hotel_night": 60,
-   "hotel_total": 120,
-   "total": 486,
-   "target": 450,
-   "url": "https://www.aviasales.com/search/VIE1508SHJ17081?t=PC17868243001786938300001780VIESAWSHJ17869512001787045700001695SHJSAWVIE_e7763619cf6e94553121d6ed12a0396b_32657&search_date=15072026&expected_price_uuid=019f6647-6d25-8030-2914-426fd3741290&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=I8n7y_OKjjHLk7Xr9bbDCQ&expected_price_source=share&expected_price_currency=eur&expected_price=366",
-   "area": "Dubai",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Dubai&checkin=2026-08-15&checkout=2026-08-17&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Dubai&checkin=2026-08-15&checkout=2026-08-17&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Dubai/homes?checkin=2026-08-15&checkout=2026-08-17&adults=1",
-   "flight_hours": 6.0,
-   "sea_temp": 33,
-   "reasons": [
-    "25%+ below 2-week avg (\u20ac651)"
+    "25%+ below 2-week avg (\u20ac390)"
    ]
   },
   {
@@ -4577,7 +4521,7 @@
    "reasons": [
     "below \u20ac260 target",
     "under \u20ac250 global cap",
-    "25%+ below 2-week avg (\u20ac408)"
+    "25%+ below 2-week avg (\u20ac376)"
    ]
   }
  ]
