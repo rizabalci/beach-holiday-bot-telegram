@@ -172,6 +172,31 @@ BEACH_DESTINATIONS = {
 # Destinations whose high season is winter sun (Nov-Mar) instead of summer
 WINTER_SUN = {"TFS", "LPA", "FUE", "ACE", "HRG", "SSH", "RMF", "AGA", "DXB"}
 
+# Destinations where a rental car is genuinely needed to enjoy the trip:
+# beaches spread far from airport, no walkable options, or coast requiring
+# a car to explore properly (Sardinia, Puglia, Algarve, Albanian Riviera, etc).
+# Empty for destinations with walkable/transit access (Zadar, Split, Malta,
+# Barcelona, Rimini, Venice, Nice, Lisbon/Cascais).
+CAR_NEEDED = {
+    # Spain — spread coastal beaches
+    "PMI", "IBZ", "AGP", "TFS", "LPA", "FUE", "MAH", "GRO", "ACE",
+    # Greece — spread island beaches / peninsula exploration
+    "SKG", "HER", "CHQ", "RHO", "KGS", "CFU", "ZTH", "EFL", "PVK", "KLX",
+    "KVA", "VOL", "SMI", "AOK",
+    # Croatia — Istria coast exploration
+    "PUY",
+    # Montenegro / Albania — coast is 1h+ from airport
+    "TGD", "TIA",
+    # Italy — Sardinia + spread Southern coasts
+    "CAG", "OLB", "BRI", "BDS", "SUF", "AHO", "TPS",
+    # Portugal — Algarve coast spread
+    "FAO",
+    # France — Calanques access
+    "MRS",
+    # North Africa / Red Sea — resort transfers only
+    "HRG", "SSH", "AGA", "NBE", "DJE", "RMF",
+}
+
 # Static per-destination metadata for the dashboard: approx flight time from
 # VIE (hours) and typical August sea temperature (°C). Used only for filtering
 # and display; does not affect price logic.
@@ -213,14 +238,14 @@ def http_get_json(url, timeout=25):
 
 
 def fetch_flight_rt(origin, dest, depart, ret):
-    """Cheapest cached round-trip price (EUR) or None."""
+    """Cheapest cached DIRECT round-trip price (EUR) or None. No layovers."""
     params = {
         "origin": origin,
         "destination": dest,
         "departure_at": depart.isoformat(),
         "return_at": ret.isoformat(),
         "one_way": "false",
-        "direct": "false",
+        "direct": "true",
         "sorting": "price",
         "limit": 1,
         "currency": CURRENCY,
@@ -231,16 +256,30 @@ def fetch_flight_rt(origin, dest, depart, ret):
     if not data or not data.get("data"):
         return None
     t = data["data"][0]
+    # Belt-and-suspenders: reject anything with transfers even if API misreports
+    if t.get("transfers", 0) > 0 or t.get("return_transfers", 0) > 0:
+        return None
     price = t.get("price")
     link = t.get("link")
     return {"price": float(price), "link": link} if price else None
 
 
 def aviasales_search_url(origin, dest, depart, ret):
-    """Human-facing fallback search link."""
-    d1 = depart.strftime("%d%m")
-    d2 = ret.strftime("%d%m")
-    return f"https://www.aviasales.com/search/{origin}{d1}{dest}{d2}1"
+    """Deprecated — kept for backwards compat but returns Skyscanner direct-only."""
+    return skyscanner_direct_url(origin, dest, depart, ret)
+
+
+def skyscanner_direct_url(origin, dest, depart, ret):
+    """Skyscanner search URL pre-filtered to direct flights only.
+    Format: /transport/flights/{from}/{to}/{yymmdd}/{yymmdd}/?adults=1&preferdirects=true
+    """
+    d1 = depart.strftime("%y%m%d")
+    d2 = ret.strftime("%y%m%d")
+    return (
+        f"https://www.skyscanner.net/transport/flights/"
+        f"{origin.lower()}/{dest.lower()}/{d1}/{d2}/"
+        f"?adults=1&preferdirects=true"
+    )
 
 
 # -------------------------------------------------------------- hotels ------
@@ -442,9 +481,9 @@ def main():
                     "hotel_total": round(hotel_cost),
                     "total": round(total),
                     "target": target,
-                    "url": ("https://www.aviasales.com" + flight["link"])
-                    if flight.get("link") else aviasales_search_url(origin, dest, depart, ret),
+                    "url": skyscanner_direct_url(origin, dest, depart, ret),
                     "area": BEACH_DESTINATIONS[dest][2],
+                    "needs_car": dest in CAR_NEEDED,
                     "booking_cheap": booking_url(dest, depart, ret, "price"),
                     "booking_top": booking_url(dest, depart, ret, "bayesian_review_score"),
                     "airbnb": airbnb_url(dest, depart, ret),

@@ -228,6 +228,14 @@
         <option value="wknd1">Any weekend day</option>
       </select>
     </div>
+    <div class="field">
+      <label>Rental car</label>
+      <select id="f-car">
+        <option value="">Any</option>
+        <option value="no">🚶 No car needed</option>
+        <option value="yes">🚗 Car needed</option>
+      </select>
+    </div>
   </div>
 
   <div class="toolbar">
@@ -362,7 +370,7 @@ function buildFilterOptions() {
 }
 
 function initControls() {
-  const ids = ["f-origin","f-country","f-nights","f-from","f-to","f-budget","f-temp","f-fly","f-wknd"];
+  const ids = ["f-origin","f-country","f-nights","f-from","f-to","f-budget","f-temp","f-fly","f-wknd","f-car"];
   ids.forEach(id => {
     const el = document.getElementById(id);
     el.addEventListener("input", apply);
@@ -392,6 +400,7 @@ function resetFilters() {
   document.getElementById("f-temp").value = 18;
   document.getElementById("f-fly").value = 6;
   document.getElementById("f-wknd").value = "";
+  document.getElementById("f-car").value = "";
   apply();
 }
 
@@ -412,6 +421,7 @@ function apply() {
   const temp = +document.getElementById("f-temp").value;
   const fly = +document.getElementById("f-fly").value;
   const wknd = document.getElementById("f-wknd").value;
+  const car = document.getElementById("f-car").value;
 
   state.filtered = state.deals.filter(d => {
     if (origin && d.origin !== origin) return false;
@@ -425,6 +435,8 @@ function apply() {
     if (wknd === "wknd2") { if (weekendDays(d.depart, d.return) < 2) return false; }
     else if (wknd === "wknd1") { if (weekendDays(d.depart, d.return) < 1) return false; }
     else if (wknd) { if (workDaysOff(d.depart, d.return) > +wknd) return false; }
+    if (car === "no" && d.needs_car) return false;
+    if (car === "yes" && !d.needs_car) return false;
     return true;
   });
   render();
@@ -469,7 +481,7 @@ function renderTable(rows) {
   const cc = c => c.split(" ").slice(1).join(" ");
   document.getElementById("tbody").innerHTML = rows.map(d => `
     <tr class="${d.isDeal ? "deal" : ""}">
-      <td class="dest"><span class="flag">${flag(d.country)}</span>${d.name}<div class="sub">${cc(d.country)}</div></td>
+      <td class="dest"><span class="flag">${flag(d.country)}</span>${d.name}${d.needs_car ? '<span class="car" title="Rental car recommended">🚗</span>' : ''}<div class="sub">${cc(d.country)}</div></td>
       <td class="total">€${d.total}${d.isDeal ? '<span class="flame">🔥</span>' : ''}</td>
       <td>€${d.flight}<div class="sub">${d.origin}</div></td>
       <td>~€${d.hotel_total}<div class="sub">€${d.hotel_night}/n</div></td>
@@ -492,7 +504,7 @@ function renderCards(rows) {
   const cc = c => c.split(" ").slice(1).join(" ");
   document.getElementById("view-cards").innerHTML = rows.map(d => `
     <div class="card ${d.isDeal ? "deal" : ""}">
-      <h3>${flag(d.country)} ${d.name}</h3>
+      <h3>${flag(d.country)} ${d.name}${d.needs_car ? ' <span class="car" title="Rental car recommended">🚗</span>' : ''}</h3>
       <div class="country">${cc(d.country)} · ${d.origin}</div>
       <div class="big">€${d.total} <small>total / person</small></div>
       <div class="grid2">
