@@ -132,9 +132,11 @@
   .wday { display:inline-block; font-weight:700; color: var(--deep); background:#e6f0f2;
           padding:1px 5px; border-radius:3px; font-size:11.5px; margin-right:3px;
           text-transform: uppercase; letter-spacing:.03em; }
-  .car { display:inline-block; margin-left:6px; font-size:14px; cursor:help;
-         opacity:0.85; vertical-align:middle; }
-  .car:hover { opacity:1; }
+  .car { display:inline-block; margin-left:6px; font-size:13px; cursor:help;
+         vertical-align:middle; padding:1px 4px; border-radius:4px; }
+  .car.essential { opacity:1; background:#fdecea; box-shadow:inset 0 0 0 1px #f0c4bb; }
+  .car.optional  { opacity:.45; filter:grayscale(1); }
+  .car:hover { opacity:1; filter:none; }
   td.allin { font-weight:700; color:#5c6b70; white-space:nowrap; }
   td.allin .sub { font-weight:400; }
   .allin-line { font-size:13px; color:#5c6b70; margin:-6px 0 12px; }
@@ -148,6 +150,15 @@
   td.ftime .sub { font-variant-numeric: tabular-nums; letter-spacing:-.01em; }
   .beachnote { margin-top:10px; padding:8px 10px; background:#f3f6f4;
                border-radius:6px; font-size:12px; color:#5c6b70; line-height:1.45; }
+  .trend { display:inline-block; margin-left:6px; font-size:10.5px; font-weight:700;
+           padding:2px 6px; border-radius:20px; cursor:help; white-space:nowrap;
+           vertical-align:middle; letter-spacing:.02em; }
+  .trend.good { background:#e3f6ea; color:#137a45; }
+  .trend.bad  { background:#fdecea; color:#b23c22; }
+  .trend.mid  { background:#f0f2f5; color:#6b7684; }
+  .peak { display:inline-block; margin-top:4px; margin-left:4px; font-size:10.5px;
+          font-weight:700; padding:2px 7px; border-radius:20px; cursor:help;
+          background:#fdecea; color:#b23c22; white-space:nowrap; }
 
   /* cards */
   .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
@@ -249,7 +260,8 @@
       <select id="f-car">
         <option value="">Any</option>
         <option value="no">🚶 No car needed</option>
-        <option value="yes">🚗 Car needed</option>
+        <option value="ok">🚶 No car, or optional</option>
+        <option value="essential">🚗 Car essential</option>
       </select>
     </div>
   </div>
@@ -302,8 +314,36 @@
 <script>
 const state = { deals: [], filtered: [], sortKey: "total", sortDir: 1, view: "table" };
 
-const ACCESS_ICON = { walk: "🚶", bus: "🚌", taxi: "🚕" };
-const ACCESS_LABEL = { walk: "Walk to beach", bus: "Bus to beach", taxi: "Taxi to beach" };
+// Price versus this destination's own recent history. Needs 3+ readings,
+// so it stays blank for the first few days after a destination is added.
+function trendBadge(d) {
+  if (d.vs_avg_pct === null || d.vs_avg_pct === undefined) return "";
+  const pct = d.vs_avg_pct;
+  const arrow = d.trend === "falling" ? "↓" : d.trend === "rising" ? "↑" : "→";
+  const cls = d.verdict === "cheap" ? "good" : d.verdict === "pricey" ? "bad" : "mid";
+  const sign = pct > 0 ? "+" : "";
+  const dir = d.trend ? `, ${d.trend}` : "";
+  const label = d.verdict === "cheap" ? "Below its usual price — good time to book"
+              : d.verdict === "pricey" ? "Above its usual price — worth waiting"
+              : "About its usual price";
+  return `<span class="trend ${cls}" title="${label}. 2-week average €${d.hist_avg}${dir}.">${arrow}${sign}${pct}%</span>`;
+}
+
+function peakBadge(d) {
+  if (!d.peak_label) return "";
+  return `<span class="peak" title="${d.peak_label} — expect crowds and hotel rates roughly ${d.peak_pct}% above normal">${d.peak_label}</span>`;
+}
+
+function carBadge(d) {
+  const a = d.car_advice || (d.needs_car ? "essential" : null);
+  if (!a) return "";
+  const note = a === "essential"
+    ? "Rental car essential — public transport won't get you to the beaches"
+    : "Rental car optional — buses or trains work, a car just opens up more";
+  return `<span class="car ${a}" title="${note}">🚗</span>`;
+}
+
+const ACCESS_ICON = { walk: "🚶", bus: "🚌", taxi: "🚕" };const ACCESS_LABEL = { walk: "Walk to beach", bus: "Bus to beach", taxi: "Taxi to beach" };
 
 function accessBadge(d) {
   if (!d.beach_access) return "";
@@ -486,7 +526,8 @@ function apply() {
     else if (wknd === "wknd1") { if (weekendDays(d.depart, d.return) < 1) return false; }
     else if (wknd) { if (workDaysOff(d.depart, d.return) > +wknd) return false; }
     if (car === "no" && d.needs_car) return false;
-    if (car === "yes" && !d.needs_car) return false;
+    if (car === "ok" && d.car_advice === "essential") return false;
+    if (car === "essential" && d.car_advice !== "essential") return false;
     return true;
   });
   render();
@@ -531,15 +572,15 @@ function renderTable(rows) {
   const cc = c => c.split(" ").slice(1).join(" ");
   document.getElementById("tbody").innerHTML = rows.map(d => `
     <tr class="${d.isDeal ? "deal" : ""}">
-      <td class="dest"><span class="flag">${flag(d.country)}</span>${d.name}${accessBadge(d)}${d.needs_car ? '<span class="car" title="Rental car recommended — beach spread far from airport">🚗</span>' : ''}<div class="sub">${cc(d.country)}</div></td>
-      <td class="total">€${d.total}${d.isDeal ? '<span class="flame">🔥</span>' : ''}</td>
+      <td class="dest"><span class="flag">${flag(d.country)}</span>${d.name}${accessBadge(d)}${carBadge(d)}<div class="sub">${cc(d.country)}</div></td>
+      <td class="total">€${d.total}${d.isDeal ? '<span class="flame">🔥</span>' : ''}${trendBadge(d)}</td>
       <td class="allin">${d.grand_total ? `€${d.grand_total}<div class="sub">+€${d.daily_spend}/day</div>` : "–"}</td>
       <td>€${d.flight}<div class="sub">${d.origin}</div></td>
       <td>~€${d.hotel_total}<div class="sub">€${d.hotel_night}/n</div></td>
       <td>${d.nights}</td>
       <td><b>${workDaysOff(d.depart, d.return)}</b></td>
       <td>${fmtDate(d.depart)}<div class="sub">→ ${fmtDate(d.return)}</div>
-        <div>${weekendBadge(d.depart, d.return)}</div></td>
+        <div>${weekendBadge(d.depart, d.return)}${peakBadge(d)}</div></td>
       <td class="temp ${tempClass(d.sea_temp)}">${d.sea_temp ?? "–"}°</td>
       <td class="ftime">${d.flight_hours ?? "–"}h ${timingBadges(d)}${timingLine(d) ? `<div class="sub">${timingLine(d)}</div>` : ""}</td>
       <td class="links">
@@ -556,15 +597,15 @@ function renderCards(rows) {
   const cc = c => c.split(" ").slice(1).join(" ");
   document.getElementById("view-cards").innerHTML = rows.map(d => `
     <div class="card ${d.isDeal ? "deal" : ""}">
-      <h3>${flag(d.country)} ${d.name}${accessBadge(d)}${d.needs_car ? ' <span class="car" title="Rental car recommended">🚗</span>' : ''}</h3>
+      <h3>${flag(d.country)} ${d.name}${accessBadge(d)}${carBadge(d)}</h3>
       <div class="country">${cc(d.country)} · ${d.origin}</div>
-      <div class="big">€${d.total} <small>flight + hotel / person</small></div>
+      <div class="big">€${d.total} <small>flight + hotel / person</small> ${trendBadge(d)}</div>
       ${d.grand_total ? `<div class="allin-line">All-in <b>€${d.grand_total}</b> <small>incl. €${d.daily_spend}/day food &amp; local</small></div>` : ""}
       <div class="grid2">
         <div>Flight <b>€${d.flight}</b></div>
         <div>Hotel <b>~€${d.hotel_total}</b></div>
         <div>Spend <b>${d.spend_total ? `~€${d.spend_total}` : "–"}</b></div>
-        <div>Dates <b>${fmtDate(d.depart)} – ${fmtDate(d.return)}</b></div>
+        <div>Dates <b>${fmtDate(d.depart)} – ${fmtDate(d.return)}</b>${d.peak_label ? `<br>${peakBadge(d)}` : ""}</div>
         <div>Nights <b>${d.nights}</b><br>${weekendBadge(d.depart, d.return)}<br><span class="wknd">${workDaysOff(d.depart, d.return)} work days off</span></div>
         <div>Sea <b class="temp ${tempClass(d.sea_temp)}">${d.sea_temp ?? "–"}°C</b></div>
         <div>Flight time <b>${d.flight_hours ?? "–"}h</b>${timingBadges(d)}${timingLine(d) ? `<br><span class="wknd" style="background:#f0f2f5;color:#5c6b70">${timingLine(d)}</span>` : ""}</div>

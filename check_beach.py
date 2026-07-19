@@ -172,29 +172,54 @@ BEACH_DESTINATIONS = {
 # Destinations whose high season is winter sun (Nov-Mar) instead of summer
 WINTER_SUN = {"TFS", "LPA", "FUE", "ACE", "HRG", "SSH", "RMF", "AGA", "DXB"}
 
-# Destinations where a rental car is genuinely needed to enjoy the trip:
-# beaches spread far from airport, no walkable options, or coast requiring
-# a car to explore properly (Sardinia, Puglia, Algarve, Albanian Riviera, etc).
-# Empty for destinations with walkable/transit access (Zadar, Split, Malta,
-# Barcelona, Rimini, Venice, Nice, Lisbon/Cascais).
-CAR_NEEDED = {
-    # Spain — spread coastal beaches
-    "PMI", "IBZ", "AGP", "TFS", "LPA", "FUE", "MAH", "GRO", "ACE",
-    # Greece — spread island beaches / peninsula exploration
-    "SKG", "HER", "CHQ", "RHO", "KGS", "CFU", "ZTH", "EFL", "PVK", "KLX",
-    "KVA", "VOL", "SMI", "AOK",
-    # Croatia — Istria coast exploration
-    "PUY",
-    # Montenegro / Albania — coast is 1h+ from airport
-    "TGD", "TIA",
-    # Italy — Sardinia + spread Southern coasts
-    "CAG", "OLB", "BRI", "BDS", "SUF", "AHO", "TPS",
-    # Portugal — Algarve coast spread
-    "FAO",
-    # France — Calanques access
-    "MRS",
-    # North Africa / Red Sea — resort transfers only
-    "HRG", "SSH", "AGA", "NBE", "DJE", "RMF",
+# Whether a rental car is genuinely required, or merely convenient.
+#   essential = public transport won't realistically get you to the beaches
+#   optional  = buses, trains or ferries work fine; a car just opens up more
+# Destinations absent from this dict need no car at all.
+CAR_ADVICE = {
+    # --- car is the only realistic option ---
+    "AOK": "essential",  # Karpathos, barely any buses
+    "BDS": "essential",  # Salento beaches are scattered and poorly served
+    "EFL": "essential",  # Kefalonia, sparse and infrequent buses
+    "FUE": "essential",  # Fuerteventura, best beaches are remote
+    "MAH": "essential",  # Menorca, the good coves have no bus
+    "OLB": "essential",  # Costa Smeralda beaches are spread out
+    "PVK": "essential",  # Lefkada west coast beaches are unserved
+    "RMF": "essential",  # Marsa Alam, resort transfers or nothing
+    "SMI": "essential",  # Samos, limited bus network
+    "VOL": "essential",  # Pelion villages and beaches need wheels
+
+    # --- car helps, but you can manage without ---
+    "ACE": "optional",   # Lanzarote, inter-resort buses
+    "AGA": "optional",   # Agadir, cheap taxis
+    "AGP": "optional",   # Cercanías train along the Costa del Sol
+    "AHO": "optional",   # Alghero, buses to Lido and Fertilia
+    "BRI": "optional",   # Ferrovie del Sud Est to Polignano and Monopoli
+    "CAG": "optional",   # Cagliari, good city buses to Poetto
+    "CFU": "optional",   # Corfu green buses to the main beaches
+    "CHQ": "optional",   # KTEL buses reach Elafonissi and Balos in summer
+    "DJE": "optional",   # Djerba, resort plus taxis
+    "FAO": "optional",   # Algarve train, Faro to Lagos
+    "GRO": "optional",   # Costa Brava coach network
+    "HER": "optional",   # KTEL buses along the north coast
+    "HRG": "optional",   # Hurghada, resort plus taxis
+    "IBZ": "optional",   # Ibiza summer buses and the discobus
+    "KGS": "optional",   # Kos buses to the main beaches
+    "KLX": "optional",   # Kalamata town is walkable
+    "KVA": "optional",   # Ferry to Thassos, island buses
+    "LPA": "optional",   # Gran Canaria Global buses
+    "MRS": "optional",   # Marseille transit, boats to the Calanques
+    "NBE": "optional",   # Hammamet, taxis and louages
+    "PMI": "optional",   # Mallorca buses plus the Sóller and Inca trains
+    "PUY": "optional",   # Pula local buses to the beaches
+    "RHO": "optional",   # Rhodes east and west coast buses
+    "SKG": "optional",   # KTEL buses into Halkidiki
+    "SSH": "optional",   # Sharm, resort plus taxis
+    "TFS": "optional",   # Tenerife TITSA network is excellent
+    "TGD": "optional",   # Cheap buses down to Bar and Budva
+    "TIA": "optional",   # Furgon minibuses to Himarë and Sarandë
+    "TPS": "optional",   # Seasonal buses to San Vito Lo Capo
+    "ZTH": "optional",   # Zakynthos buses to the main resorts
 }
 
 # Static per-destination metadata for the dashboard: approx flight time from
@@ -307,6 +332,79 @@ def is_high_season(dest, d):
 def estimate_hotel_nightly(dest, depart):
     _, _, _, low, high, _ = _dest_row(dest)
     return high if is_high_season(dest, depart) else low
+
+
+# --- peak periods ----------------------------------------------------------
+# The low/high season split is too blunt on its own: 1 August and Ferragosto
+# weekend are both "high season" but nowhere near the same price. These
+# multipliers sit on top of the seasonal rate, and also drive the crowd flag.
+
+def _gregorian_easter(year):
+    """Anonymous Gregorian algorithm. Western Easter Sunday."""
+    a, b, c = year % 19, year // 100, year % 100
+    d, e = b // 4, b % 4
+    f, g = (b + 8) // 25, 0
+    g = (b - f + 1) // 3
+    h = (19 * a + b - d - g + 15) % 30
+    i, k = c // 4, c % 4
+    lp = (32 + 2 * e + 2 * i - h - k) % 7
+    m = (a + 11 * h + 22 * lp) // 451
+    month = (h + lp - 7 * m + 114) // 31
+    day = ((h + lp - 7 * m + 114) % 31) + 1
+    return date(year, month, day)
+
+
+def _orthodox_easter(year):
+    """Julian computus shifted to the Gregorian calendar."""
+    a, b, c = year % 4, year % 7, year % 19
+    d = (19 * c + 15) % 30
+    e = (2 * a + 4 * b - d + 34) % 7
+    month = (d + e + 114) // 31
+    day = ((d + e + 114) % 31) + 1
+    julian = date(year, month, day)
+    return julian + timedelta(days=13)  # valid 1900-2099
+
+
+ORTHODOX_COUNTRIES = {"Greece", "Cyprus"}
+
+
+def peak_multiplier(dest, d):
+    """Uplift on the seasonal nightly rate. Returns (multiplier, label|None)."""
+    country = BEACH_DESTINATIONS[dest][1].split()[-1]
+
+    # Ferragosto: Italy effectively closes and the coast fills up.
+    if d.month == 8 and 10 <= d.day <= 20:
+        if country == "Italy":
+            return 1.45, "Ferragosto"
+        return 1.20, "mid-August peak"
+
+    # New Year
+    if (d.month == 12 and d.day >= 27) or (d.month == 1 and d.day <= 2):
+        return 1.35, "New Year"
+
+    # Easter week, Orthodox where relevant
+    easter = (_orthodox_easter(d.year) if country in ORTHODOX_COUNTRIES
+              else _gregorian_easter(d.year))
+    if -3 <= (d - easter).days <= 3:
+        return 1.30, "Easter week"
+
+    # Broad peak summer fortnights either side of Ferragosto
+    if (d.month == 7 and d.day >= 25) or (d.month == 8 and d.day <= 25):
+        return 1.15, None
+
+    return 1.0, None
+
+
+def weekend_uplift(depart, nights):
+    """Hotels charge more for Friday and Saturday nights. Scale by how much
+    of the stay lands on them, up to +8%."""
+    if nights <= 0:
+        return 1.0
+    weekend_nights = sum(
+        1 for i in range(nights)
+        if (depart + timedelta(days=i)).weekday() in (4, 5)
+    )
+    return 1.0 + 0.08 * (weekend_nights / nights)
 
 
 # --- daily on-the-ground spend --------------------------------------------
@@ -527,7 +625,29 @@ def _access_line(d):
     if not d.get("beach_note"):
         return ""
     icon = ACCESS_ICONS.get(d.get("beach_access"), "\U0001F695")
-    return f"   {icon} {d['beach_note']}"
+    line = f"   {icon} {d['beach_note']}"
+    advice = d.get("car_advice")
+    if advice == "essential":
+        line += "  \U0001F697 rental car essential"
+    elif advice == "optional":
+        line += "  \U0001F697 car optional, transport works"
+    return line
+
+
+def _trend_line(d):
+    """Where today's price sits against this destination's own history."""
+    bits = []
+    pct = d.get("vs_avg_pct")
+    if pct is not None:
+        arrow = {"falling": "\u2193", "rising": "\u2191"}.get(d.get("trend"), "\u2192")
+        sign = "+" if pct > 0 else ""
+        note = {"cheap": "good time to book",
+                "pricey": "worth waiting",
+                "typical": "about normal"}.get(d.get("verdict"), "")
+        bits.append(f"{arrow} {sign}{pct}% vs 2-week avg €{d['hist_avg']} ({note})")
+    if d.get("peak_label"):
+        bits.append(f"\u26A0\ufe0f {d['peak_label']} — crowded, hotels ~{d['peak_pct']}% up")
+    return ("   \U0001F4C8 " + "  \u00b7  ".join(bits)) if bits else ""
 
 
 def _dest_row(dest):
@@ -588,6 +708,42 @@ def rolling_average(history, dest):
     cutoff = (date.today() - timedelta(days=ROLLING_WINDOW)).isoformat()
     vals = [e["total"] for e in entries if e["date"] >= cutoff]
     return (sum(vals) / len(vals)) if len(vals) >= 3 else None
+
+
+def price_trend(history, dest, today_total):
+    """Compare today's best total against this destination's recent history.
+
+    Returns dict with the rolling average, the gap to it, and a direction
+    based on the most recent readings versus the ones before them.
+    """
+    out = {"hist_avg": None, "vs_avg_pct": None, "trend": None, "verdict": None}
+    entries = sorted(history.get(dest, []), key=lambda e: e["date"])
+    cutoff = (date.today() - timedelta(days=ROLLING_WINDOW)).isoformat()
+    window = [e for e in entries if e["date"] >= cutoff]
+    if len(window) < 3:
+        return out
+
+    vals = [e["total"] for e in window]
+    avg = sum(vals) / len(vals)
+    out["hist_avg"] = round(avg)
+    out["vs_avg_pct"] = round((today_total - avg) / avg * 100)
+
+    # direction: mean of the last third against the mean of the rest
+    split = max(1, len(vals) // 3)
+    recent, earlier = vals[-split:], vals[:-split]
+    if earlier:
+        r, e = sum(recent) / len(recent), sum(earlier) / len(earlier)
+        change = (r - e) / e * 100
+        out["trend"] = "falling" if change <= -5 else "rising" if change >= 5 else "flat"
+
+    pct = out["vs_avg_pct"]
+    if pct <= -15:
+        out["verdict"] = "cheap"
+    elif pct >= 10:
+        out["verdict"] = "pricey"
+    else:
+        out["verdict"] = "typical"
+    return out
 
 
 def record_history(history, dest, best_total):
@@ -701,7 +857,10 @@ def main():
     for dest, (name, country, city, low, high, target) in BEACH_DESTINATIONS.items():
         for label, depart, nights in trips:
             ret = depart + timedelta(days=nights)
-            nightly = estimate_hotel_nightly(dest, depart)
+            base_nightly = estimate_hotel_nightly(dest, depart)
+            peak_mult, peak_label = peak_multiplier(dest, depart)
+            wknd_mult = weekend_uplift(depart, nights)
+            nightly = base_nightly * peak_mult * wknd_mult
             hotel_cost = (nightly * nights) / HOTEL_SPLIT
 
             for origin in ORIGINS:
@@ -723,6 +882,8 @@ def main():
                     "flight": round(flight["price"]),
                     "hotel_night": round(nightly),
                     "hotel_total": round(hotel_cost),
+                    "peak_label": peak_label,
+                    "peak_pct": round((peak_mult - 1) * 100),
                     "total": round(total),
                     "daily_spend": daily,
                     "spend_total": round(spend_total),
@@ -733,7 +894,8 @@ def main():
                     "target": target,
                     "url": skyscanner_direct_url(origin, dest, depart, ret),
                     "area": BEACH_DESTINATIONS[dest][2],
-                    "needs_car": dest in CAR_NEEDED,
+                    "needs_car": dest in CAR_ADVICE,
+                    "car_advice": CAR_ADVICE.get(dest),
                     "booking_cheap": booking_url(dest, depart, ret, "price"),
                     "booking_top": booking_url(dest, depart, ret, "bayesian_review_score"),
                     "airbnb": airbnb_url(dest, depart, ret),
@@ -749,6 +911,8 @@ def main():
     alerts = []
     for dest, deal in best_by_dest.items():
         target = BEACH_DESTINATIONS[dest][5]
+        # computed before record_history so today's reading isn't in its own average
+        deal.update(price_trend(history, dest, deal["total"]))
         avg = rolling_average(history, dest)
         reasons = []
         if deal["total"] <= target:
@@ -796,6 +960,7 @@ def main():
             f"{work_days_off(d['depart'], d['return'])} days off work",
             _timing_line(d),
             _access_line(d),
+            _trend_line(d),
             f"   <a href=\"{d['url']}\">Book flight</a> · Stay in {d['area']}: "
             f"<a href=\"{d['booking_cheap']}\">Cheapest</a> · "
             f"<a href=\"{d['booking_top']}\">Best rated</a> · "
