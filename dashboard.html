@@ -304,6 +304,16 @@
       </select>
     </div>
     <div class="field">
+      <label>Price movement</label>
+      <select id="f-trend">
+        <option value="">Any</option>
+        <option value="drop">↓ Dropped &amp; below usual</option>
+        <option value="falling">↓ Falling</option>
+        <option value="cheap">Below its usual price</option>
+        <option value="deal">🔥 Beats target</option>
+      </select>
+    </div>
+    <div class="field">
       <label>Flight times</label>
       <select id="f-timing">
         <option value="">Any</option>
@@ -645,7 +655,7 @@ function buildFilterOptions() {
 }
 
 function initControls() {
-  const ids = ["f-origin","f-country","f-nights","f-month","f-weekend","f-from","f-to","f-budget","f-airfare","f-temp","f-fly","f-wknd","f-car","f-timing"];
+  const ids = ["f-origin","f-country","f-nights","f-month","f-weekend","f-from","f-to","f-budget","f-airfare","f-temp","f-fly","f-wknd","f-car","f-timing","f-trend"];
   ids.forEach(id => {
     const el = document.getElementById(id);
     el.addEventListener("input", apply);
@@ -680,6 +690,7 @@ function resetFilters() {
   document.getElementById("f-wknd").value = "";
   document.getElementById("f-car").value = "";
   document.getElementById("f-timing").value = "";
+  document.getElementById("f-trend").value = "";
   apply();
 }
 
@@ -708,6 +719,7 @@ function apply() {
   const wknd = document.getElementById("f-wknd").value;
   const car = document.getElementById("f-car").value;
   const timing = document.getElementById("f-timing").value;
+  const trend = document.getElementById("f-trend").value;
 
   state.filtered = state.deals.filter(d => {
     if (origin && d.origin !== origin) return false;
@@ -732,6 +744,12 @@ function apply() {
     if (timing === "good" && (tf.includes("late_arrival") || tf.includes("early_return"))) return false;
     if (timing === "noLate" && tf.includes("late_arrival")) return false;
     if (timing === "noEarly" && tf.includes("early_return")) return false;
+    // Trend needs at least three readings of history, so rows with no
+    // reading yet are excluded rather than silently treated as flat.
+    if (trend === "falling" && d.trend !== "falling") return false;
+    if (trend === "cheap" && d.verdict !== "cheap") return false;
+    if (trend === "drop" && !(d.trend === "falling" && d.verdict === "cheap")) return false;
+    if (trend === "deal" && !d.isDeal) return false;
     return true;
   });
   render();
