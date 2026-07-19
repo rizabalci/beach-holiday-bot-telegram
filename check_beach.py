@@ -848,6 +848,7 @@ def main():
     history = load_history()
     all_deals = []
     best_by_dest = {}
+    no_direct = []
 
     trips = list(candidate_trips())
     total_calls = len(BEACH_DESTINATIONS) * len(trips) * len(ORIGINS)
@@ -855,6 +856,7 @@ def main():
           f"x {len(ORIGINS)} origins (~{total_calls} flight calls)")
 
     for dest, (name, country, city, low, high, target) in BEACH_DESTINATIONS.items():
+        found_any = False
         for label, depart, nights in trips:
             ret = depart + timedelta(days=nights)
             base_nightly = estimate_hotel_nightly(dest, depart)
@@ -868,6 +870,7 @@ def main():
                 time.sleep(PACE_SECONDS)
                 if not flight:
                     continue
+                found_any = True
                 total = flight["price"] + hotel_cost
                 daily = estimate_daily_spend(dest)
                 spend_total = daily * nights
@@ -907,6 +910,13 @@ def main():
                 if dest not in best_by_dest or total < best_by_dest[dest]["total"]:
                     best_by_dest[dest] = deal
 
+        if not found_any:
+            no_direct.append(name)
+
+    if no_direct:
+        print(f"No direct flight in this window for {len(no_direct)}: "
+              f"{', '.join(sorted(no_direct))}")
+
     # ---- alert selection ----
     alerts = []
     for dest, deal in best_by_dest.items():
@@ -927,7 +937,7 @@ def main():
         record_history(history, dest, deal["total"])
 
     save_history(history)
-    write_site_data(all_deals, alerts)
+    write_site_data(all_deals, alerts, no_direct)
 
     if not alerts and not ALWAYS_DIGEST:
         print("No deals beat targets today. No message sent.")
@@ -1002,13 +1012,14 @@ def work_days_off(dep_iso, ret_iso):
     return n
 
 
-def write_site_data(all_deals, alerts):
+def write_site_data(all_deals, alerts, no_direct=None):
     """deals.json for an optional GitHub Pages dashboard, same pattern as worldwide bot."""
     alert_keys = {(d["dest"], d["depart"], d["origin"], d["nights"]) for d in alerts}
     payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "origins": ORIGINS,
         "deal_count": len(all_deals),
+        "no_direct": sorted(no_direct or []),
         "deals": sorted(all_deals, key=lambda d: d["total"])[:200],
         "alerts": [
             d for d in all_deals if (d["dest"], d["depart"], d["origin"], d["nights"]) in alert_keys

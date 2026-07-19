@@ -156,6 +156,7 @@
   .trend.good { background:#e3f6ea; color:#137a45; }
   .trend.bad  { background:#fdecea; color:#b23c22; }
   .trend.mid  { background:#f0f2f5; color:#6b7684; }
+  .nodirect { color:#8a9499; cursor:help; border-bottom:1px dotted #c3ccd0; }
   .peak { display:inline-block; margin-top:4px; margin-left:4px; font-size:10.5px;
           font-weight:700; padding:2px 7px; border-radius:20px; cursor:help;
           background:#fdecea; color:#b23c22; white-space:nowrap; }
@@ -264,10 +265,19 @@
         <option value="essential">🚗 Car essential</option>
       </select>
     </div>
+    <div class="field">
+      <label>Flight times</label>
+      <select id="f-timing">
+        <option value="">Any</option>
+        <option value="good">Skip day-wasters</option>
+        <option value="noLate">🌙 No late arrivals</option>
+        <option value="noEarly">🌅 No early returns</option>
+      </select>
+    </div>
   </div>
 
   <div class="toolbar">
-    <div class="count"><b id="count">0</b> <span id="countword">options</span> · <span id="dealcount">0</span> beat target</div>
+    <div class="count"><b id="count">0</b> <span id="countword">options</span> · <span id="dealcount">0</span> beat target<span id="nodirect"></span></div>
     <div style="display:flex; gap:10px;">
       <button class="reset" id="reset">Reset filters</button>
       <div class="toggle">
@@ -442,6 +452,12 @@ async function load() {
   const when = raw.generated_at ? new Date(raw.generated_at).toLocaleString("en-GB", {dateStyle:"medium", timeStyle:"short"}) : "unknown";
   document.getElementById("updated").innerHTML = "Last updated <b>" + when + "</b> · " + state.deals.length + " destination options";
 
+  const nd = raw.no_direct || [];
+  const ndEl = document.getElementById("nodirect");
+  if (nd.length) {
+    ndEl.innerHTML = ` · <span class="nodirect" title="${nd.join(", ")}">${nd.length} skipped, no direct flight</span>`;
+  }
+
   buildFilterOptions();
   initControls();
   apply();
@@ -460,7 +476,7 @@ function buildFilterOptions() {
 }
 
 function initControls() {
-  const ids = ["f-origin","f-country","f-nights","f-from","f-to","f-budget","f-temp","f-fly","f-wknd","f-car"];
+  const ids = ["f-origin","f-country","f-nights","f-from","f-to","f-budget","f-temp","f-fly","f-wknd","f-car","f-timing"];
   ids.forEach(id => {
     const el = document.getElementById(id);
     el.addEventListener("input", apply);
@@ -491,6 +507,7 @@ function resetFilters() {
   document.getElementById("f-fly").value = 6;
   document.getElementById("f-wknd").value = "";
   document.getElementById("f-car").value = "";
+  document.getElementById("f-timing").value = "";
   apply();
 }
 
@@ -512,6 +529,7 @@ function apply() {
   const fly = +document.getElementById("f-fly").value;
   const wknd = document.getElementById("f-wknd").value;
   const car = document.getElementById("f-car").value;
+  const timing = document.getElementById("f-timing").value;
 
   state.filtered = state.deals.filter(d => {
     if (origin && d.origin !== origin) return false;
@@ -528,6 +546,10 @@ function apply() {
     if (car === "no" && d.needs_car) return false;
     if (car === "ok" && d.car_advice === "essential") return false;
     if (car === "essential" && d.car_advice !== "essential") return false;
+    const tf = d.timing_flags || [];
+    if (timing === "good" && (tf.includes("late_arrival") || tf.includes("early_return"))) return false;
+    if (timing === "noLate" && tf.includes("late_arrival")) return false;
+    if (timing === "noEarly" && tf.includes("early_return")) return false;
     return true;
   });
   render();
