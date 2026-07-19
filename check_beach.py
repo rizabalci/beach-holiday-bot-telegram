@@ -407,52 +407,118 @@ def weekend_uplift(depart, nights):
     return 1.0 + 0.08 * (weekend_nights / nights)
 
 
-# --- daily on-the-ground spend --------------------------------------------
-# Per person, per day, in EUR. Covers food, drinks, local transport and small
-# activities at a mid-range pace: a proper restaurant dinner, a casual lunch,
-# coffee, a couple of drinks, buses plus the odd taxi, one paid activity or
-# beach lounger. Not backpacking, not fine dining. Excludes car hire.
-DAILY_SPEND_BY_COUNTRY = {
-    "Albania": 35,
-    "Egypt": 35,
-    "Tunisia": 35,
-    "Bulgaria": 38,
-    "Morocco": 40,
-    "Montenegro": 45,
-    "Croatia": 55,
-    "Greece": 55,
-    "Malta": 55,
-    "Portugal": 55,
-    "Cyprus": 58,
-    "Spain": 60,
-    "Italy": 65,
-    "France": 75,
-    "Israel": 80,
-    "UAE": 80,
-}
+def trip_target(dest, depart, nights):
+    """What counts as a good total for this destination and trip length.
 
-# Destinations that sit well above or below their country baseline.
-DAILY_SPEND_OVERRIDE = {
-    # pricier than the country norm
+    The stored target was hand-set against a two-night high-season trip, so
+    decompose it into a flight budget plus a nightly budget and re-scale.
+    Without this a five-night trip is judged against the same number as a
+    two-night one and can essentially never qualify.
+
+    Deliberately uses the base seasonal rate rather than the peak-adjusted
+    one, so a Ferragosto trip has to be genuinely cheap to earn a flame, not
+    merely cheap for Ferragosto.
+    """
+    _, _, _, low, high, stored = _dest_row(dest)
+    flight_budget = stored - 2 * high          # calibrated at 2 nights, solo
+    nightly_budget = estimate_hotel_nightly(dest, depart)
+    return flight_budget + (nightly_budget * nights) / HOTEL_SPLIT
+
+
+# --- daily on-the-ground spend --------------------------------------------
+# Per person, per day, in EUR, set individually for every destination rather
+# than by country, because Dubrovnik is not Rijeka and Mykonos is not Kavala.
+# Covers food, drinks, local transport and small activities at a mid-range
+# pace: a proper restaurant dinner, a casual lunch, coffee, a couple of
+# drinks, buses plus the odd taxi, one paid activity or beach lounger.
+# Not backpacking, not fine dining. Car hire is excluded.
+DAILY_SPEND = {
+    # --- Albania, Bulgaria, Montenegro: cheapest in the set ---
+    "TIA": 35,  # Tirana / Albanian Riviera
+    "VAR": 38,  # Varna
+    "BOJ": 40,  # Burgas / Sunny Beach, resort mark-up
+    "TGD": 42,  # Podgorica, inland prices
+    "TIV": 50,  # Tivat / Kotor Bay, yacht-crowd premium
+
+    # --- North Africa, Red Sea ---
+    "AGA": 40,  # Agadir
+    "NBE": 35,  # Hammamet
+    "DJE": 38,  # Djerba
+    "HRG": 35,  # Hurghada
+    "SSH": 40,  # Sharm El Sheikh
+    "RMF": 50,  # Marsa Alam, captive resort pricing
+
+    # --- Croatia ---
+    "RJK": 48,  # Rijeka / Kvarner, workaday city
+    "PUY": 52,  # Pula / Istria
+    "ZAD": 55,  # Zadar
+    "SPU": 60,  # Split, busier and dearer
+    "DBV": 75,  # Dubrovnik, the most expensive town on the coast
+
+    # --- Greece: mainland and cheaper islands first ---
+    "KVA": 42,  # Kavala / Thassos
+    "VOL": 45,  # Volos / Pelion
+    "KLX": 45,  # Kalamata / Peloponnese
+    "SKG": 48,  # Thessaloniki, good value city
+    "AOK": 48,  # Karpathos, quiet
+    "SMI": 48,  # Samos
+    "PVK": 50,  # Preveza / Lefkada
+    "EFL": 55,  # Kefalonia
+    "ATH": 55,  # Athens / Riviera
+    "HER": 55,  # Heraklion
+    "CHQ": 58,  # Chania, prettier old town, dearer
+    "KGS": 55,  # Kos
+    "ZTH": 55,  # Zakynthos
+    "JSI": 60,  # Skiathos
+    "CFU": 60,  # Corfu
+    "RHO": 58,  # Rhodes
+    "JTR": 95,  # Santorini
     "JMK": 110,  # Mykonos
-    "JTR": 95,   # Santorini
-    "NCE": 90,   # Nice / French Riviera
-    "IBZ": 90,   # Ibiza
-    "TLV": 90,   # Tel Aviv
-    "DXB": 85,   # Dubai
-    "VCE": 85,   # Venice / Lido
-    "PMI": 70,   # Palma de Mallorca
-    "DBV": 70,   # Dubrovnik
-    # cheaper than the country norm
-    "BRI": 55,   # Bari / Puglia
-    "BDS": 55,   # Brindisi / Salento
-    "SUF": 55,   # Lamezia / Tropea
-    "PMO": 50,   # Palermo, Sicily
-    "CTA": 50,   # Catania, Sicily
-    "TPS": 50,   # Trapani
-    "KLX": 45,   # Kalamata / Peloponnese
-    "VOL": 45,   # Volos / Pelion
-    "KVA": 45,   # Kavala / Thassos
+
+    # --- Cyprus, Malta ---
+    "LCA": 55,  # Larnaca
+    "PFO": 58,  # Paphos
+    "MLA": 55,  # Malta
+
+    # --- Italy: south is markedly cheaper than the north ---
+    "PMO": 50,  # Palermo
+    "CTA": 50,  # Catania
+    "TPS": 50,  # Trapani / San Vito
+    "SUF": 52,  # Lamezia / Tropea
+    "BRI": 55,  # Bari / Puglia
+    "BDS": 55,  # Brindisi / Salento
+    "CAG": 58,  # Cagliari
+    "AHO": 62,  # Alghero
+    "NAP": 60,  # Naples / Sorrento
+    "RMI": 62,  # Rimini, Adriatic resort strip
+    "OLB": 85,  # Olbia / Costa Smeralda
+    "GOA": 70,  # Genoa / Liguria
+    "VCE": 85,  # Venice / Lido
+
+    # --- Spain: Canaries and mainland cheaper than the Balearics ---
+    "TFS": 55,  # Tenerife
+    "LPA": 55,  # Gran Canaria
+    "FUE": 55,  # Fuerteventura
+    "ACE": 58,  # Lanzarote
+    "AGP": 55,  # Malaga / Costa del Sol
+    "ALC": 55,  # Alicante / Costa Blanca
+    "VLC": 55,  # Valencia
+    "GRO": 60,  # Girona / Costa Brava
+    "BCN": 65,  # Barcelona
+    "MAH": 68,  # Menorca
+    "PMI": 70,  # Palma de Mallorca
+    "IBZ": 90,  # Ibiza
+
+    # --- Portugal ---
+    "OPO": 48,  # Porto / Matosinhos
+    "FAO": 52,  # Faro / Algarve
+    "LIS": 58,  # Lisbon / Cascais
+
+    # --- France, Israel, UAE ---
+    "MRS": 70,  # Marseille
+    "NCE": 90,  # Nice / French Riviera
+    "TLV": 90,  # Tel Aviv
+    "DXB": 85,  # Dubai
 }
 
 DAILY_SPEND_DEFAULT = 55
@@ -460,10 +526,7 @@ DAILY_SPEND_DEFAULT = 55
 
 def estimate_daily_spend(dest):
     """Per-person daily spend in EUR, before flights and accommodation."""
-    if dest in DAILY_SPEND_OVERRIDE:
-        return DAILY_SPEND_OVERRIDE[dest]
-    country = BEACH_DESTINATIONS[dest][1].split()[-1]
-    return DAILY_SPEND_BY_COUNTRY.get(country, DAILY_SPEND_DEFAULT)
+    return DAILY_SPEND.get(dest, DAILY_SPEND_DEFAULT)
 
 
 # --- flight timing quality -------------------------------------------------
@@ -894,7 +957,8 @@ def main():
                     "beach_access": access_mode,
                     "beach_note": access_note,
                     **timing,
-                    "target": target,
+                    "target": round(trip_target(dest, depart, nights)),
+                    "target_base": target,
                     "url": skyscanner_direct_url(origin, dest, depart, ret),
                     "area": BEACH_DESTINATIONS[dest][2],
                     "needs_car": dest in CAR_ADVICE,
@@ -920,7 +984,7 @@ def main():
     # ---- alert selection ----
     alerts = []
     for dest, deal in best_by_dest.items():
-        target = BEACH_DESTINATIONS[dest][5]
+        target = deal["target"]
         # computed before record_history so today's reading isn't in its own average
         deal.update(price_trend(history, dest, deal["total"]))
         avg = rolling_average(history, dest)
@@ -985,7 +1049,7 @@ def main():
         # single intentional "" separator at the end of each block
         lines += [ln for ln in block[:-1] if ln] + [""]
 
-    lines.append("<i>Totals = live direct-flight fare + seasonal hotel estimate, per person. All-in adds food, drinks and local transport. 🔥 = beats target. ⚠️ marks schedules that waste a bookend day. 🚶🚌🚕 = how you reach the beach. Always verify before booking.</i>")
+    lines.append("<i>Totals = live direct-flight fare + seasonal hotel estimate, per person. All-in adds food, drinks and local transport. 🔥 = beats this destination's target for that trip length. ⚠️ marks schedules that waste a bookend day. 🚶🚌🚕 = how you reach the beach. Always verify before booking.</i>")
 
     if SILENT_REFRESH:
         print(f"Silent refresh: wrote deals.json ({len(board)} destinations), no Telegram sent.")
