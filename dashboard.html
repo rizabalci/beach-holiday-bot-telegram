@@ -271,6 +271,10 @@
       <input type="range" id="f-budget" min="100" max="800" step="10">
     </div>
     <div class="field">
+      <label>Max flight <span class="rangeval" id="v-airfare"></span></label>
+      <input type="range" id="f-airfare" min="0" max="600" step="10">
+    </div>
+    <div class="field">
       <label>Min sea temp <span class="rangeval" id="v-temp"></span></label>
       <input type="range" id="f-temp" min="18" max="33" step="1" value="18">
     </div>
@@ -635,10 +639,13 @@ function buildFilterOptions() {
   const maxT = Math.max(...state.deals.map(d => d.total));
   const b = document.getElementById("f-budget");
   b.max = Math.ceil(maxT / 10) * 10; b.value = b.max;
+  const maxF = Math.max(...state.deals.map(d => d.flight));
+  const a = document.getElementById("f-airfare");
+  a.max = Math.ceil(maxF / 10) * 10; a.value = a.max;
 }
 
 function initControls() {
-  const ids = ["f-origin","f-country","f-nights","f-month","f-weekend","f-from","f-to","f-budget","f-temp","f-fly","f-wknd","f-car","f-timing"];
+  const ids = ["f-origin","f-country","f-nights","f-month","f-weekend","f-from","f-to","f-budget","f-airfare","f-temp","f-fly","f-wknd","f-car","f-timing"];
   ids.forEach(id => {
     const el = document.getElementById(id);
     el.addEventListener("input", apply);
@@ -667,6 +674,7 @@ function resetFilters() {
   document.getElementById("f-from").value = "";
   document.getElementById("f-to").value = "";
   const b = document.getElementById("f-budget"); b.value = b.max;
+  const a = document.getElementById("f-airfare"); a.value = a.max;
   document.getElementById("f-temp").value = 18;
   document.getElementById("f-fly").value = 6;
   document.getElementById("f-wknd").value = "";
@@ -677,6 +685,9 @@ function resetFilters() {
 
 function syncRangeLabels() {
   document.getElementById("v-budget").textContent = "€" + document.getElementById("f-budget").value;
+  const af = document.getElementById("f-airfare");
+  document.getElementById("v-airfare").textContent =
+    (+af.value >= +af.max) ? "any" : "≤€" + af.value;
   document.getElementById("v-temp").textContent = document.getElementById("f-temp").value + "°C";
   document.getElementById("v-fly").textContent = "≤" + document.getElementById("f-fly").value + "h";
 }
@@ -691,6 +702,7 @@ function apply() {
   const from = document.getElementById("f-from").value;
   const to = document.getElementById("f-to").value;
   const budget = +document.getElementById("f-budget").value;
+  const airfare = +document.getElementById("f-airfare").value;
   const temp = +document.getElementById("f-temp").value;
   const fly = +document.getElementById("f-fly").value;
   const wknd = document.getElementById("f-wknd").value;
@@ -706,6 +718,7 @@ function apply() {
     if (from && d.depart < from) return false;
     if (to && d.return > to) return false;
     if (d.total > budget) return false;
+    if (d.flight > airfare) return false;
     if ((d.sea_temp ?? 0) < temp) return false;
     if ((d.flight_hours ?? 99) > fly) return false;
     if (wknd === "wknd2") { if (weekendDays(d.depart, d.return) < 2) return false; }
