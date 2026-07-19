@@ -238,6 +238,14 @@
       </select>
     </div>
     <div class="field">
+      <label>Month</label>
+      <select id="f-month"><option value="">Any month</option></select>
+    </div>
+    <div class="field">
+      <label>Weekend</label>
+      <select id="f-weekend"><option value="">Any weekend</option></select>
+    </div>
+    <div class="field">
       <label>Depart after</label>
       <input type="date" id="f-from">
     </div>
@@ -548,13 +556,33 @@ function buildFilterOptions() {
   origins.forEach(o => os.add(new Option(o, o)));
   const cs = document.getElementById("f-country");
   countries.forEach(c => cs.add(new Option(c, c)));
+  // Months actually present in the scan window, chronological.
+  const months = [...new Set(state.deals.map(d => d.depart.slice(0, 7)))].sort();
+  // Each scanned weekend, ordered by date rather than by label text.
+  const wkFirst = new Map();
+  state.deals.forEach(d => {
+    if (!d.weekend) return;
+    const cur = wkFirst.get(d.weekend);
+    if (!cur || d.depart < cur) wkFirst.set(d.weekend, d.depart);
+  });
+  const ws = document.getElementById("f-weekend");
+  [...wkFirst.entries()]
+    .sort((a, b) => a[1] < b[1] ? -1 : 1)
+    .forEach(([label]) => ws.add(new Option(label, label)));
+
+  const ms = document.getElementById("f-month");
+  months.forEach(m => {
+    const label = new Date(m + "-01T00:00:00")
+      .toLocaleDateString("en-GB", { month: "long", year: "numeric" });
+    ms.add(new Option(label, m));
+  });
   const maxT = Math.max(...state.deals.map(d => d.total));
   const b = document.getElementById("f-budget");
   b.max = Math.ceil(maxT / 10) * 10; b.value = b.max;
 }
 
 function initControls() {
-  const ids = ["f-origin","f-country","f-nights","f-from","f-to","f-budget","f-temp","f-fly","f-wknd","f-car","f-timing"];
+  const ids = ["f-origin","f-country","f-nights","f-month","f-weekend","f-from","f-to","f-budget","f-temp","f-fly","f-wknd","f-car","f-timing"];
   ids.forEach(id => {
     const el = document.getElementById(id);
     el.addEventListener("input", apply);
@@ -578,6 +606,8 @@ function resetFilters() {
   document.getElementById("f-origin").value = "";
   document.getElementById("f-country").value = "";
   document.getElementById("f-nights").value = "";
+  document.getElementById("f-month").value = "";
+  document.getElementById("f-weekend").value = "";
   document.getElementById("f-from").value = "";
   document.getElementById("f-to").value = "";
   const b = document.getElementById("f-budget"); b.value = b.max;
@@ -600,6 +630,8 @@ function apply() {
   const origin = document.getElementById("f-origin").value;
   const country = document.getElementById("f-country").value;
   const nights = document.getElementById("f-nights").value;
+  const month = document.getElementById("f-month").value;
+  const weekend = document.getElementById("f-weekend").value;
   const from = document.getElementById("f-from").value;
   const to = document.getElementById("f-to").value;
   const budget = +document.getElementById("f-budget").value;
@@ -613,6 +645,8 @@ function apply() {
     if (origin && d.origin !== origin) return false;
     if (country && d.country !== country) return false;
     if (nights && d.nights !== +nights) return false;
+    if (month && !d.depart.startsWith(month)) return false;
+    if (weekend && d.weekend !== weekend) return false;
     if (from && d.depart < from) return false;
     if (to && d.return > to) return false;
     if (d.total > budget) return false;
