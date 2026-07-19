@@ -156,6 +156,18 @@
   .trend.good { background:#e3f6ea; color:#137a45; }
   .trend.bad  { background:#fdecea; color:#b23c22; }
   .trend.mid  { background:#f0f2f5; color:#6b7684; }
+  .explain { position:absolute; z-index:99; max-width:280px; padding:9px 12px;
+             background:#123; color:#fff; font-size:12.5px; line-height:1.5;
+             border-radius:6px; box-shadow:0 6px 22px rgba(0,0,0,.28); }
+  .legend-btn { background:none; border:none; padding:0; font:inherit; font-size:inherit;
+                color:var(--deep); cursor:pointer; text-decoration:underline;
+                text-underline-offset:2px; }
+  .legend { margin:12px 0 4px; padding:14px 16px; background:#fff;
+            border:1px solid var(--line); border-radius:8px; }
+  .legend-row { display:grid; grid-template-columns:96px 1fr; gap:12px;
+                padding:5px 0; font-size:12.5px; color:#5c6b70; align-items:baseline; }
+  .legend-key { font-weight:700; color:var(--deep); white-space:nowrap; }
+  @media (max-width:600px) { .legend-row { grid-template-columns:72px 1fr; } }
   .nodirect { color:#8a9499; cursor:help; border-bottom:1px dotted #c3ccd0; }
   .peak { display:inline-block; margin-top:4px; margin-left:4px; font-size:10.5px;
           font-weight:700; padding:2px 7px; border-radius:20px; cursor:help;
@@ -277,7 +289,8 @@
   </div>
 
   <div class="toolbar">
-    <div class="count"><b id="count">0</b> <span id="countword">options</span> · <span id="dealcount">0</span> beat target<span id="nodirect"></span></div>
+    <div class="count"><b id="count">0</b> <span id="countword">options</span> · <span id="dealcount">0</span> beat target<span id="nodirect"></span> · <button id="legendBtn" class="legend-btn" onclick="toggleLegend()">What do the icons mean?</button></div>
+    <div id="legend" class="legend" style="display:none"></div>
     <div style="display:flex; gap:10px;">
       <button class="reset" id="reset">Reset filters</button>
       <div class="toggle">
@@ -326,6 +339,71 @@ const state = { deals: [], filtered: [], sortKey: "total", sortDir: 1, view: "ta
 
 // Price versus this destination's own recent history. Needs 3+ readings,
 // so it stays blank for the first few days after a destination is added.
+// Tapping a badge explains it. Desktop gets a native tooltip from the title
+// attribute, but touch devices never fire hover, so the same text has to be
+// reachable by tap or half the interface is undocumented on a phone.
+let explainBox = null;
+
+function closeExplain() {
+  if (explainBox) { explainBox.remove(); explainBox = null; }
+}
+
+document.addEventListener("click", e => {
+  const badge = e.target.closest("[title]");
+  if (!badge || !badge.getAttribute("title") || badge.closest("a")) {
+    closeExplain();
+    return;
+  }
+  e.preventDefault();
+  e.stopPropagation();
+  const text = badge.getAttribute("title");
+  const wasOpen = explainBox && explainBox.dataset.src === text;
+  closeExplain();
+  if (wasOpen) return;               // second tap closes it
+
+  const box = document.createElement("div");
+  box.className = "explain";
+  box.dataset.src = text;
+  box.textContent = text;
+  document.body.appendChild(box);
+
+  const r = badge.getBoundingClientRect();
+  const maxLeft = document.documentElement.clientWidth - box.offsetWidth - 10;
+  box.style.top  = (window.scrollY + r.bottom + 8) + "px";
+  box.style.left = Math.max(10, Math.min(window.scrollX + r.left, window.scrollX + maxLeft)) + "px";
+  explainBox = box;
+});
+
+window.addEventListener("scroll", closeExplain, { passive: true });
+
+const LEGEND = [
+  ["🔥", "Beats this destination's target for that trip length"],
+  ["↓ -18%", "Price against this destination's own two-week average. Green is below, red above"],
+  ["Ferragosto", "A peak period. Expect crowds and higher hotel rates"],
+  ["🌙", "Lands at 21:00 or later, so the first evening is gone"],
+  ["🌅", "Flies home before 09:00, so the last morning is gone"],
+  ["⏰", "Leaves before 06:00, meaning a pre-dawn start from home"],
+  ["🚶", "Beach is within about fifteen minutes on foot"],
+  ["🚌", "Bus or tram to the beach, roughly 15 to 45 minutes"],
+  ["🚕", "No useful public transport, a short drive to the beach"],
+  ["🚗", "Red means a rental car is essential. Faded means it is optional and public transport works"],
+  ["FRI", "Day of the week you fly"],
+  ["Sat + Sun", "Whether the trip covers both weekend days"],
+];
+
+function toggleLegend() {
+  const el = document.getElementById("legend");
+  const open = el.style.display === "block";
+  if (!el.dataset.built) {
+    el.innerHTML = LEGEND.map(([k, v]) =>
+      `<div class="legend-row"><span class="legend-key">${k}</span><span>${v}</span></div>`).join("");
+    el.dataset.built = "1";
+  }
+  el.style.display = open ? "none" : "block";
+  document.getElementById("legendBtn").textContent = open ? "What do the icons mean?" : "Hide key";
+}
+
+
 function trendBadge(d) {
   if (d.vs_avg_pct === null || d.vs_avg_pct === undefined) return "";
   const pct = d.vs_avg_pct;
@@ -389,7 +467,7 @@ function timingLine(d) {
 function fmtDate(iso) {  const d = new Date(iso + "T00:00:00");
   const weekday = d.toLocaleDateString("en-GB", { weekday: "short" });
   const rest = d.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
-  return `<span class="wday">${weekday}</span> ${rest}`;
+  return `<span class="wday" title="Day of the week you fly">${weekday}</span> ${rest}`;
 }
 // True if the stay covers any Sat or Sun (depart..return inclusive)
 function coversWeekend(depIso, retIso) {
@@ -412,9 +490,9 @@ function weekendDays(depIso, retIso) {
 }
 function weekendBadge(depIso, retIso) {
   const w = weekendDays(depIso, retIso);
-  if (w >= 2) return '<span class="wk full">Sat + Sun</span>';
-  if (w === 1) return '<span class="wk part">1 weekend day</span>';
-  return '<span class="wk none">weekdays only</span>';
+  if (w >= 2) return '<span class="wk full" title="The trip covers both Saturday and Sunday">Sat + Sun</span>';
+  if (w === 1) return '<span class="wk part" title="Only one of the two weekend days is covered">1 weekend day</span>';
+  return '<span class="wk none" title="No weekend days — the whole trip uses annual leave">weekdays only</span>';
 }
 // Work days (Mon-Fri) you'd need to book off, depart..return inclusive
 function workDaysOff(depIso, retIso) {
@@ -595,7 +673,7 @@ function renderTable(rows) {
   document.getElementById("tbody").innerHTML = rows.map(d => `
     <tr class="${d.isDeal ? "deal" : ""}">
       <td class="dest"><span class="flag">${flag(d.country)}</span>${d.name}${accessBadge(d)}${carBadge(d)}<div class="sub">${cc(d.country)}</div></td>
-      <td class="total">€${d.total}${d.isDeal ? '<span class="flame">🔥</span>' : ''}${trendBadge(d)}</td>
+      <td class="total">€${d.total}${d.isDeal ? `<span class="flame" title="${(d.reasons || ['beats target']).join(' · ')}">🔥</span>` : ''}${trendBadge(d)}</td>
       <td class="allin">${d.grand_total ? `€${d.grand_total}<div class="sub">+€${d.daily_spend}/day</div>` : "–"}</td>
       <td>€${d.flight}<div class="sub">${d.origin}</div></td>
       <td>~€${d.hotel_total}<div class="sub">€${d.hotel_night}/n</div></td>
