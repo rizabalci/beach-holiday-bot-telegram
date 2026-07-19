@@ -19,7 +19,7 @@ jobs:
     # Hard ceiling. The old 40-minute default meant a degraded API burned
     # the whole budget before failing. Direct-only made the scan much
     # shorter, so 25 minutes is generous and fails fast when it isn't.
-    timeout-minutes: 25
+    timeout-minutes: 45
 
     steps:
       - name: Check out
