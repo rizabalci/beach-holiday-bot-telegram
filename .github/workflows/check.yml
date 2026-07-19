@@ -16,10 +16,9 @@ permissions:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    # Hard ceiling. The old 40-minute default meant a degraded API burned
-    # the whole budget before failing. Direct-only made the scan much
-    # shorter, so 25 minutes is generous and fails fast when it isn't.
-    timeout-minutes: 45
+    # Hard ceiling. A full tiered scan runs about 50 minutes, so this leaves
+    # headroom for a slow API day without letting a stuck run burn hours.
+    timeout-minutes: 70
 
     steps:
       - name: Check out

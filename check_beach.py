@@ -38,7 +38,16 @@ TG_CHAT_ID = (os.environ.get("TG_CHAT_ID") or "")
 ORIGINS = [o.strip().upper() for o in (os.environ.get("ORIGINS") or "VIE,BTS").split(",") if o.strip()]
 
 # Scan the next N weekends (a "weekend" = one Thursday departure + one Friday departure)
-SCAN_WEEKENDS = int((os.environ.get("SCAN_WEEKENDS") or "6"))
+SCAN_WEEKENDS = int((os.environ.get("SCAN_WEEKENDS") or "26"))
+
+# Scanning every departure day and trip length six months out costs a fortune
+# in API calls for very little: you don't need Thursday-vs-Saturday detail on
+# a weekend in January. The first NEAR_WEEKENDS get the full grid, everything
+# beyond gets Friday departures at two or three nights, which is enough to
+# spot whether a destination is cheap that far ahead.
+NEAR_WEEKENDS = int((os.environ.get("NEAR_WEEKENDS") or "6"))
+FAR_TRIP_NIGHTS = [int(n) for n in (os.environ.get("FAR_TRIP_NIGHTS") or "2,3").split(",")]
+FAR_DEPART_DAYS = [int(x) for x in (os.environ.get("FAR_DEPART_DAYS") or "4").split(",")]
 
 # Trip lengths in nights to test for each departure day
 TRIP_NIGHTS = [int(n) for n in (os.environ.get("TRIP_NIGHTS") or "2,3,4,5").split(",")]
@@ -929,13 +938,18 @@ def candidate_trips():
         if d.weekday() == 3:  # Thursday anchors each weekend
             thursdays.append(d)
         d += timedelta(days=1)
-    for thu in thursdays:
-        label = f"{thu.strftime('%d %b')} weekend"
-        for offset in sorted(DEPART_DAYS):
+    for i, thu in enumerate(thursdays):
+        # Include the year once we scan past December, so labels stay unique.
+        fmt = "%d %b" if thu.year == today.year else "%d %b %Y"
+        label = f"{thu.strftime(fmt)} weekend"
+        near = i < NEAR_WEEKENDS
+        days = sorted(DEPART_DAYS if near else FAR_DEPART_DAYS)
+        lengths = TRIP_NIGHTS if near else FAR_TRIP_NIGHTS
+        for offset in days:
             dep = thu + timedelta(days=offset - 3)  # 3=Thu, 4=Fri, 5=Sat
             if dep < today + timedelta(days=2):
                 continue
-            for nights in TRIP_NIGHTS:
+            for nights in lengths:
                 yield label, dep, nights
 
 
@@ -951,8 +965,11 @@ def main():
 
     trips = list(candidate_trips())
     total_calls = len(BEACH_DESTINATIONS) * len(trips) * len(ORIGINS)
-    print(f"Scanning {len(BEACH_DESTINATIONS)} beach destinations x {len(trips)} trip windows "
-          f"x {len(ORIGINS)} origins (~{total_calls} flight calls)")
+    span = f"{trips[0][1]:%b %Y} to {trips[-1][1]:%b %Y}" if trips else "nothing"
+    print(f"Scanning {len(BEACH_DESTINATIONS)} destinations x {len(trips)} trip windows "
+          f"x {len(ORIGINS)} origins (~{total_calls} flight calls), covering {span}")
+    print(f"  full detail for the first {NEAR_WEEKENDS} weekends, "
+          f"reduced grid for the remaining {max(0, SCAN_WEEKENDS - NEAR_WEEKENDS)}")
 
     for dest, (name, country, city, low, high, target) in BEACH_DESTINATIONS.items():
         found_any = False
