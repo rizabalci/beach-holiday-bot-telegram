@@ -261,7 +261,14 @@ def fetch_flight_rt(origin, dest, depart, ret):
         return None
     price = t.get("price")
     link = t.get("link")
-    return {"price": float(price), "link": link} if price else None
+    if not price:
+        return None
+    return {
+        "price": float(price),
+        "link": link,
+        "departure_at": t.get("departure_at"),
+        "return_at": t.get("return_at"),
+    }
 
 
 def aviasales_search_url(origin, dest, depart, ret):
@@ -302,6 +309,227 @@ def estimate_hotel_nightly(dest, depart):
     return high if is_high_season(dest, depart) else low
 
 
+# --- daily on-the-ground spend --------------------------------------------
+# Per person, per day, in EUR. Covers food, drinks, local transport and small
+# activities at a mid-range pace: a proper restaurant dinner, a casual lunch,
+# coffee, a couple of drinks, buses plus the odd taxi, one paid activity or
+# beach lounger. Not backpacking, not fine dining. Excludes car hire.
+DAILY_SPEND_BY_COUNTRY = {
+    "Albania": 35,
+    "Egypt": 35,
+    "Tunisia": 35,
+    "Bulgaria": 38,
+    "Morocco": 40,
+    "Montenegro": 45,
+    "Croatia": 55,
+    "Greece": 55,
+    "Malta": 55,
+    "Portugal": 55,
+    "Cyprus": 58,
+    "Spain": 60,
+    "Italy": 65,
+    "France": 75,
+    "Israel": 80,
+    "UAE": 80,
+}
+
+# Destinations that sit well above or below their country baseline.
+DAILY_SPEND_OVERRIDE = {
+    # pricier than the country norm
+    "JMK": 110,  # Mykonos
+    "JTR": 95,   # Santorini
+    "NCE": 90,   # Nice / French Riviera
+    "IBZ": 90,   # Ibiza
+    "TLV": 90,   # Tel Aviv
+    "DXB": 85,   # Dubai
+    "VCE": 85,   # Venice / Lido
+    "PMI": 70,   # Palma de Mallorca
+    "DBV": 70,   # Dubrovnik
+    # cheaper than the country norm
+    "BRI": 55,   # Bari / Puglia
+    "BDS": 55,   # Brindisi / Salento
+    "SUF": 55,   # Lamezia / Tropea
+    "PMO": 50,   # Palermo, Sicily
+    "CTA": 50,   # Catania, Sicily
+    "TPS": 50,   # Trapani
+    "KLX": 45,   # Kalamata / Peloponnese
+    "VOL": 45,   # Volos / Pelion
+    "KVA": 45,   # Kavala / Thassos
+}
+
+DAILY_SPEND_DEFAULT = 55
+
+
+def estimate_daily_spend(dest):
+    """Per-person daily spend in EUR, before flights and accommodation."""
+    if dest in DAILY_SPEND_OVERRIDE:
+        return DAILY_SPEND_OVERRIDE[dest]
+    country = BEACH_DESTINATIONS[dest][1].split()[-1]
+    return DAILY_SPEND_BY_COUNTRY.get(country, DAILY_SPEND_DEFAULT)
+
+
+# --- flight timing quality -------------------------------------------------
+# A cheap fare that lands at 23:40 and flies home at 06:30 costs you both
+# bookend days. Times come from the cached fare, so treat them as indicative
+# of that route's usual schedule rather than a guarantee.
+
+LATE_ARRIVAL_HOUR = 21      # landing at or after this = evening gone
+EARLY_RETURN_HOUR = 9       # flying home before this = last morning gone
+RED_EYE_DEPART_HOUR = 6     # leaving before this = 3am start from home
+
+
+def _parse_iso_hhmm(stamp):
+    """'2026-08-01T05:45:00+02:00' -> (5, 45). None if unparseable."""
+    if not stamp or "T" not in stamp:
+        return None
+    try:
+        clock = stamp.split("T", 1)[1][:5]
+        h, m = clock.split(":")
+        return int(h), int(m)
+    except (ValueError, IndexError):
+        return None
+
+
+def analyse_timing(flight, flight_hours):
+    """Return dict of readable times plus flags for day-wasting schedules."""
+    out = {
+        "dep_time": None, "arr_time": None,
+        "ret_dep_time": None, "timing_flags": [],
+    }
+    dep = _parse_iso_hhmm(flight.get("departure_at"))
+    ret = _parse_iso_hhmm(flight.get("return_at"))
+    if dep:
+        out["dep_time"] = f"{dep[0]:02d}:{dep[1]:02d}"
+        if flight_hours:
+            total_min = dep[0] * 60 + dep[1] + int(round(flight_hours * 60))
+            ah, am = (total_min // 60) % 24, total_min % 60
+            out["arr_time"] = f"{ah:02d}:{am:02d}"
+            if ah >= LATE_ARRIVAL_HOUR or ah < 4:
+                out["timing_flags"].append("late_arrival")
+        if dep[0] < RED_EYE_DEPART_HOUR:
+            out["timing_flags"].append("red_eye")
+    if ret:
+        out["ret_dep_time"] = f"{ret[0]:02d}:{ret[1]:02d}"
+        if ret[0] < EARLY_RETURN_HOUR:
+            out["timing_flags"].append("early_return")
+    return out
+
+
+# --- getting to the beach --------------------------------------------------
+# How you reach the sand from the recommended base once you've checked in.
+# Independent of needs_car, which is about the trip overall.
+#   walk = roughly 15 minutes on foot or less
+#   bus  = regular public transport, about 15-45 minutes
+#   taxi = no useful transit, short drive required
+BEACH_ACCESS = {
+    "AGA": ("walk", "Beach promenade runs along the town"),
+    "AHO": ("walk", "Lido di Alghero ~15 min from the old town"),
+    "ALC": ("walk", "Postiguet beach below the castle"),
+    "ATH": ("bus", "Tram to Glyfada / Vouliagmeni, ~45 min"),
+    "BCN": ("walk", "Barceloneta from the Gothic quarter"),
+    "BRI": ("bus", "Pane e Pomodoro ~25 min; real Puglia beaches need a car"),
+    "BDS": ("taxi", "Nearest good sand is a short drive"),
+    "BOJ": ("walk", "Sunny Beach hotels sit on the sand"),
+    "CAG": ("bus", "Poetto beach, bus PF/PQ ~15 min"),
+    "CTA": ("bus", "Playa di Catania, bus D ~20 min"),
+    "CHQ": ("walk", "Nea Chora ~10 min; Balos and Elafonissi need a car"),
+    "CFU": ("bus", "Buses to Glyfada and Paleokastritsa"),
+    "DJE": ("walk", "Resort strip is beachfront"),
+    "DXB": ("taxi", "JBR or Kite Beach, short ride"),
+    "DBV": ("walk", "Banje beach 5 min from Ploče Gate"),
+    "FAO": ("bus", "Ferry or bus to the island beaches"),
+    "FUE": ("walk", "Resorts sit directly on the sand"),
+    "GOA": ("bus", "Boccadasse by bus; Cinque Terre by train"),
+    "GRO": ("taxi", "Costa Brava coast is a drive from Girona"),
+    "LPA": ("walk", "Las Canteras runs through Las Palmas"),
+    "NBE": ("walk", "Hammamet resorts are beachfront"),
+    "HER": ("bus", "Amoudara beach, ~20 min by bus"),
+    "HRG": ("walk", "Resorts sit on the Red Sea shore"),
+    "IBZ": ("bus", "Buses to Talamanca and Ses Salines"),
+    "KLX": ("walk", "Town beach by the marina"),
+    "AOK": ("taxi", "Pigadia beach is walkable, the rest a drive"),
+    "KVA": ("bus", "Kalamitsa ~15 min; Thassos by ferry"),
+    "EFL": ("taxi", "Argostoli beaches are a short drive"),
+    "KGS": ("walk", "Kos town beach from the centre"),
+    "SUF": ("walk", "Tropea beach sits below the old town"),
+    "ACE": ("walk", "Puerto del Carmen is beachfront"),
+    "LCA": ("walk", "Finikoudes on the seafront promenade"),
+    "LIS": ("bus", "Cascais train from Cais do Sodré, ~40 min"),
+    "AGP": ("walk", "La Malagueta ~15 min from the centre"),
+    "MLA": ("bus", "Buses from Sliema to the northern bays"),
+    "RMF": ("walk", "Resorts are beachfront"),
+    "MRS": ("bus", "Prado beaches by bus; Calanques by boat or hike"),
+    "MAH": ("taxi", "The good coves are a drive"),
+    "JMK": ("bus", "Buses to Paradise, Elia and Platis Gialos"),
+    "NAP": ("bus", "Circumvesuviana to Sorrento; beach clubs below town"),
+    "NCE": ("walk", "Promenade des Anglais from anywhere central"),
+    "OLB": ("taxi", "Pittulongu and Golfo Aranci are a short drive"),
+    "PMO": ("bus", "Bus 806 to Mondello, ~30 min, €1.40"),
+    "PMI": ("bus", "Cala Major and Illetas by bus"),
+    "PFO": ("walk", "Harbour beaches; Coral Bay by bus"),
+    "TGD": ("taxi", "The coast is over an hour away"),
+    "OPO": ("bus", "Metro to Matosinhos, ~25 min"),
+    "PVK": ("taxi", "Lefkada beaches need a drive"),
+    "PUY": ("walk", "Hawaii and Stoja beaches ~20 min"),
+    "RHO": ("walk", "Elli beach in Rhodes Town"),
+    "RJK": ("bus", "Buses along the coast to Opatija and Lovran"),
+    "RMI": ("walk", "Sand starts at the end of the street"),
+    "SMI": ("taxi", "Beaches are a drive from Vathy"),
+    "JTR": ("bus", "Buses to Perissa and Kamari"),
+    "SSH": ("walk", "Resorts are beachfront"),
+    "JSI": ("bus", "Bus to Koukounaries, ~30 min"),
+    "SPU": ("walk", "Bačvice ~10 min from the Riva"),
+    "TLV": ("walk", "Beach runs the length of the city"),
+    "TFS": ("walk", "Los Cristianos and Las Américas are beachfront"),
+    "SKG": ("taxi", "Halkidiki peninsulas are a drive from the city"),
+    "TIA": ("taxi", "Durrës ~40 min; the Riviera is 3-4 hours"),
+    "TIV": ("walk", "Bay beaches walkable; Plavi Horizonti a short drive"),
+    "TPS": ("taxi", "San Vito Lo Capo is a drive from Trapani"),
+    "VLC": ("bus", "Malvarrosa by tram or bus, ~20 min"),
+    "VAR": ("walk", "City beach below the sea garden"),
+    "VCE": ("bus", "Vaporetto to the Lido, ~15 min"),
+    "VOL": ("taxi", "Pelion beaches need a drive"),
+    "ZAD": ("walk", "Kolovare ~10 min from the old town"),
+    "ZTH": ("bus", "Buses to Laganas and Tsilivi"),
+}
+
+
+def beach_access(dest):
+    return BEACH_ACCESS.get(dest, ("taxi", "Check local transport on arrival"))
+
+
+TIMING_WARNINGS = {
+    "late_arrival": "lands late, first evening gone",
+    "early_return": "early flight home, last morning gone",
+    "red_eye": "pre-dawn start from home",
+}
+ACCESS_ICONS = {"walk": "\U0001F6B6", "bus": "\U0001F68C", "taxi": "\U0001F695"}
+
+
+def _timing_line(d):
+    """Departure/arrival clock times plus any day-wasting warnings."""
+    if not d.get("dep_time"):
+        return ""
+    parts = f"   \u23F1 {d['dep_time']}"
+    if d.get("arr_time"):
+        parts += f"\u2192{d['arr_time']}"
+    if d.get("ret_dep_time"):
+        parts += f" \u00b7 back {d['ret_dep_time']}"
+    flags = d.get("timing_flags") or []
+    if flags:
+        parts += "  \u26A0\ufe0f " + " \u00b7 ".join(
+            TIMING_WARNINGS[f] for f in flags if f in TIMING_WARNINGS
+        )
+    return parts
+
+
+def _access_line(d):
+    if not d.get("beach_note"):
+        return ""
+    icon = ACCESS_ICONS.get(d.get("beach_access"), "\U0001F695")
+    return f"   {icon} {d['beach_note']}"
+
+
 def _dest_row(dest):
     name, country, city, low, high, target = BEACH_DESTINATIONS[dest]
     return name, country, city, low, high, target
@@ -323,6 +551,17 @@ def airbnb_url(dest, checkin, checkout):
         f"https://www.airbnb.com/s/{city}/homes"
         f"?checkin={checkin.isoformat()}&checkout={checkout.isoformat()}"
         f"&adults={HOTEL_SPLIT}"
+    )
+
+
+def google_hotels_url(dest, checkin, checkout):
+    """Google Hotels aggregates Booking, Expedia and the hotel's own site,
+    and flags when booking direct is cheaper than the platforms."""
+    city = urllib.parse.quote(BEACH_DESTINATIONS[dest][2])
+    return (
+        f"https://www.google.com/travel/search?q={city}"
+        f"&checkin={checkin.isoformat()}&checkout={checkout.isoformat()}"
+        f"&hl=en&gl=at&curr={CURRENCY}"
     )
 
 
@@ -471,6 +710,11 @@ def main():
                 if not flight:
                     continue
                 total = flight["price"] + hotel_cost
+                daily = estimate_daily_spend(dest)
+                spend_total = daily * nights
+                fhours = DEST_META.get(dest, (None, None))[0]
+                timing = analyse_timing(flight, fhours)
+                access_mode, access_note = beach_access(dest)
                 deal = {
                     "dest": dest, "name": name, "country": country,
                     "origin": origin, "depart": depart.isoformat(),
@@ -480,6 +724,12 @@ def main():
                     "hotel_night": round(nightly),
                     "hotel_total": round(hotel_cost),
                     "total": round(total),
+                    "daily_spend": daily,
+                    "spend_total": round(spend_total),
+                    "grand_total": round(total + spend_total),
+                    "beach_access": access_mode,
+                    "beach_note": access_note,
+                    **timing,
                     "target": target,
                     "url": skyscanner_direct_url(origin, dest, depart, ret),
                     "area": BEACH_DESTINATIONS[dest][2],
@@ -487,6 +737,7 @@ def main():
                     "booking_cheap": booking_url(dest, depart, ret, "price"),
                     "booking_top": booking_url(dest, depart, ret, "bayesian_review_score"),
                     "airbnb": airbnb_url(dest, depart, ret),
+                    "google_hotels": google_hotels_url(dest, depart, ret),
                     "flight_hours": DEST_META.get(dest, (None, None))[0],
                     "sea_temp": DEST_META.get(dest, (None, None))[1],
                 }
@@ -539,19 +790,27 @@ def main():
             f"<b>{d['country'].split(' ', 1)[0]} {d['name']}</b> — <b>€{d['total']}</b>{star}",
             f"   ✈️ €{d['flight']} RT {d['origin']}  🏨 ~€{d['hotel_total']} est. "
             f"({d['nights']}n × €{d['hotel_night']})",
+            f"   💶 +€{d.get('spend_total', 0)} food & local (€{d.get('daily_spend', 0)}/day) "
+            f"→ <b>all-in ~€{d.get('grand_total', d['total'])}</b>",
             f"   \U0001F4C5 {fmt_day(d['depart'])} → {fmt_day(d['return'])} · "
             f"{work_days_off(d['depart'], d['return'])} days off work",
+            _timing_line(d),
+            _access_line(d),
             f"   <a href=\"{d['url']}\">Book flight</a> · Stay in {d['area']}: "
             f"<a href=\"{d['booking_cheap']}\">Cheapest</a> · "
             f"<a href=\"{d['booking_top']}\">Best rated</a> · "
-            f"<a href=\"{d['airbnb']}\">Airbnb</a>",
+            f"<a href=\"{d['airbnb']}\">Airbnb</a>"
+            + (f" · <a href=\"{d['google_hotels']}\">Compare</a>" if d.get("google_hotels") else ""),
             "",
         ]
 
     for d in board:
-        lines += deal_block(d, flame=d["dest"] in alert_dests)
+        block = deal_block(d, flame=d["dest"] in alert_dests)
+        # helpers return "" when there's no data; drop those but keep the
+        # single intentional "" separator at the end of each block
+        lines += [ln for ln in block[:-1] if ln] + [""]
 
-    lines.append("<i>Totals = live flight + seasonal hotel estimate (budget 3-star, per person). 🔥 = beats target. Stay links open live Booking.com and Airbnb for the exact dates in a beach-walkable area — no car needed. Always verify before booking.</i>")
+    lines.append("<i>Totals = live direct-flight fare + seasonal hotel estimate, per person. All-in adds food, drinks and local transport. 🔥 = beats target. ⚠️ marks schedules that waste a bookend day. 🚶🚌🚕 = how you reach the beach. Always verify before booking.</i>")
 
     if SILENT_REFRESH:
         print(f"Silent refresh: wrote deals.json ({len(board)} destinations), no Telegram sent.")

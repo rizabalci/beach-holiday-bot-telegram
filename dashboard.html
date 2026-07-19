@@ -129,9 +129,25 @@
           border-radius:20px; background:#e6f7ea; color:#1a7f4b; letter-spacing:.02em; }
   .wkday { display:inline-block; margin-top:4px; font-size:10.5px; font-weight:600; padding:2px 7px;
            border-radius:20px; background:#f3f1ea; color:#8a8574; }
-  .wday { display:inline-block; font-weight:700; color: #0b4d5f; background:#e6f0f2;
+  .wday { display:inline-block; font-weight:700; color: var(--deep); background:#e6f0f2;
           padding:1px 5px; border-radius:3px; font-size:11.5px; margin-right:3px;
           text-transform: uppercase; letter-spacing:.03em; }
+  .car { display:inline-block; margin-left:6px; font-size:14px; cursor:help;
+         opacity:0.85; vertical-align:middle; }
+  .car:hover { opacity:1; }
+  td.allin { font-weight:700; color:#5c6b70; white-space:nowrap; }
+  td.allin .sub { font-weight:400; }
+  .allin-line { font-size:13px; color:#5c6b70; margin:-6px 0 12px; }
+  .allin-line b { color: var(--deep); font-size:15px; }
+  .allin-line small { color:#8a9499; }
+  .access { display:inline-block; margin-left:6px; font-size:13px; cursor:help;
+            opacity:.9; vertical-align:middle; }
+  .access:hover { opacity:1; }
+  .tflag { display:inline-block; margin-left:4px; font-size:13px; cursor:help; }
+  td.ftime { white-space:nowrap; }
+  td.ftime .sub { font-variant-numeric: tabular-nums; letter-spacing:-.01em; }
+  .beachnote { margin-top:10px; padding:8px 10px; background:#f3f6f4;
+               border-radius:6px; font-size:12px; color:#5c6b70; line-height:1.45; }
 
   /* cards */
   .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
@@ -173,7 +189,7 @@
 <header class="hero">
   <div class="wrap">
     <h1>Beach deals from Vienna</h1>
-    <p>3–5 day trips · flight + hotel per person · sorted so the best value floats to the top.</p>
+    <p>3–5 day trips · per person · <b>Total</b> = flight + hotel, <b>All-in</b> adds food, drinks &amp; local transport.</p>
     <div class="updated" id="updated"></div>
   </div>
 </header>
@@ -255,6 +271,7 @@
         <tr>
           <th data-sort="name">Destination <span class="arrow"></span></th>
           <th data-sort="total" class="sorted">Total <span class="arrow">▲</span></th>
+          <th data-sort="grand_total">All-in <span class="arrow"></span></th>
           <th data-sort="flight">Flight <span class="arrow"></span></th>
           <th data-sort="hotel_total">Hotel <span class="arrow"></span></th>
           <th data-sort="nights">Nights <span class="arrow"></span></th>
@@ -285,8 +302,41 @@
 <script>
 const state = { deals: [], filtered: [], sortKey: "total", sortDir: 1, view: "table" };
 
-function fmtDate(iso) {
-  const d = new Date(iso + "T00:00:00");
+const ACCESS_ICON = { walk: "🚶", bus: "🚌", taxi: "🚕" };
+const ACCESS_LABEL = { walk: "Walk to beach", bus: "Bus to beach", taxi: "Taxi to beach" };
+
+function accessBadge(d) {
+  if (!d.beach_access) return "";
+  const icon = ACCESS_ICON[d.beach_access] || "🚕";
+  const label = ACCESS_LABEL[d.beach_access] || "Transport to beach";
+  const note = (d.beach_note || "").replace(/"/g, "&quot;");
+  return `<span class="access ${d.beach_access}" title="${label} — ${note}">${icon}</span>`;
+}
+
+// Schedules that eat a bookend day. Shown, never filtered out.
+const TIMING_TEXT = {
+  late_arrival: ["🌙", "Lands late — first evening is gone"],
+  early_return: ["🌅", "Early flight home — last morning is gone"],
+  red_eye: ["⏰", "Pre-dawn departure — very early start from home"],
+};
+
+function timingBadges(d) {
+  if (!d.timing_flags || !d.timing_flags.length) return "";
+  return d.timing_flags.map(f => {
+    const t = TIMING_TEXT[f];
+    if (!t) return "";
+    return `<span class="tflag" title="${t[1]}">${t[0]}</span>`;
+  }).join("");
+}
+
+function timingLine(d) {
+  if (!d.dep_time) return "";
+  const out = d.arr_time ? `${d.dep_time}→${d.arr_time}` : d.dep_time;
+  const back = d.ret_dep_time ? ` · back ${d.ret_dep_time}` : "";
+  return `${out}${back}`;
+}
+
+function fmtDate(iso) {  const d = new Date(iso + "T00:00:00");
   const weekday = d.toLocaleDateString("en-GB", { weekday: "short" });
   const rest = d.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
   return `<span class="wday">${weekday}</span> ${rest}`;
@@ -481,8 +531,9 @@ function renderTable(rows) {
   const cc = c => c.split(" ").slice(1).join(" ");
   document.getElementById("tbody").innerHTML = rows.map(d => `
     <tr class="${d.isDeal ? "deal" : ""}">
-      <td class="dest"><span class="flag">${flag(d.country)}</span>${d.name}${d.needs_car ? '<span class="car" title="Rental car recommended">🚗</span>' : ''}<div class="sub">${cc(d.country)}</div></td>
+      <td class="dest"><span class="flag">${flag(d.country)}</span>${d.name}${accessBadge(d)}${d.needs_car ? '<span class="car" title="Rental car recommended — beach spread far from airport">🚗</span>' : ''}<div class="sub">${cc(d.country)}</div></td>
       <td class="total">€${d.total}${d.isDeal ? '<span class="flame">🔥</span>' : ''}</td>
+      <td class="allin">${d.grand_total ? `€${d.grand_total}<div class="sub">+€${d.daily_spend}/day</div>` : "–"}</td>
       <td>€${d.flight}<div class="sub">${d.origin}</div></td>
       <td>~€${d.hotel_total}<div class="sub">€${d.hotel_night}/n</div></td>
       <td>${d.nights}</td>
@@ -490,11 +541,12 @@ function renderTable(rows) {
       <td>${fmtDate(d.depart)}<div class="sub">→ ${fmtDate(d.return)}</div>
         <div>${weekendBadge(d.depart, d.return)}</div></td>
       <td class="temp ${tempClass(d.sea_temp)}">${d.sea_temp ?? "–"}°</td>
-      <td>${d.flight_hours ?? "–"}h</td>
+      <td class="ftime">${d.flight_hours ?? "–"}h ${timingBadges(d)}${timingLine(d) ? `<div class="sub">${timingLine(d)}</div>` : ""}</td>
       <td class="links">
         <a class="fly" href="${d.url}" target="_blank" rel="noopener">Flight</a>
         <a href="${d.booking_cheap}" target="_blank" rel="noopener">Hotel</a>
         <a href="${d.airbnb}" target="_blank" rel="noopener">Airbnb</a>
+        ${d.google_hotels ? `<a href="${d.google_hotels}" target="_blank" rel="noopener" title="Compares Booking, Expedia and direct hotel rates">Compare</a>` : ""}
       </td>
     </tr>`).join("");
 }
@@ -504,21 +556,25 @@ function renderCards(rows) {
   const cc = c => c.split(" ").slice(1).join(" ");
   document.getElementById("view-cards").innerHTML = rows.map(d => `
     <div class="card ${d.isDeal ? "deal" : ""}">
-      <h3>${flag(d.country)} ${d.name}${d.needs_car ? ' <span class="car" title="Rental car recommended">🚗</span>' : ''}</h3>
+      <h3>${flag(d.country)} ${d.name}${accessBadge(d)}${d.needs_car ? ' <span class="car" title="Rental car recommended">🚗</span>' : ''}</h3>
       <div class="country">${cc(d.country)} · ${d.origin}</div>
-      <div class="big">€${d.total} <small>total / person</small></div>
+      <div class="big">€${d.total} <small>flight + hotel / person</small></div>
+      ${d.grand_total ? `<div class="allin-line">All-in <b>€${d.grand_total}</b> <small>incl. €${d.daily_spend}/day food &amp; local</small></div>` : ""}
       <div class="grid2">
         <div>Flight <b>€${d.flight}</b></div>
         <div>Hotel <b>~€${d.hotel_total}</b></div>
+        <div>Spend <b>${d.spend_total ? `~€${d.spend_total}` : "–"}</b></div>
         <div>Dates <b>${fmtDate(d.depart)} – ${fmtDate(d.return)}</b></div>
         <div>Nights <b>${d.nights}</b><br>${weekendBadge(d.depart, d.return)}<br><span class="wknd">${workDaysOff(d.depart, d.return)} work days off</span></div>
         <div>Sea <b class="temp ${tempClass(d.sea_temp)}">${d.sea_temp ?? "–"}°C</b></div>
-        <div>Flight time <b>${d.flight_hours ?? "–"}h</b></div>
+        <div>Flight time <b>${d.flight_hours ?? "–"}h</b>${timingBadges(d)}${timingLine(d) ? `<br><span class="wknd" style="background:#f0f2f5;color:#5c6b70">${timingLine(d)}</span>` : ""}</div>
       </div>
+      ${d.beach_note ? `<div class="beachnote">${ACCESS_ICON[d.beach_access] || "🚕"} ${d.beach_note}</div>` : ""}
       <div class="clinks">
         <a class="fly" href="${d.url}" target="_blank" rel="noopener">Book flight</a>
         <a href="${d.booking_cheap}" target="_blank" rel="noopener">Hotels</a>
         <a href="${d.airbnb}" target="_blank" rel="noopener">Airbnb</a>
+        ${d.google_hotels ? `<a href="${d.google_hotels}" target="_blank" rel="noopener" title="Compares Booking, Expedia and direct hotel rates">Compare</a>` : ""}
       </div>
     </div>`).join("");
 }
