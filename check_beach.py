@@ -659,6 +659,42 @@ def beach_access(dest):
     return BEACH_ACCESS.get(dest, ("taxi", "Check local transport on arrival"))
 
 
+# --- driving from Vienna ---------------------------------------------------
+# Only a handful of the catalogue is a sane drive. Distances are one-way road
+# distance, hours are typical door-to-door without heavy traffic, and tolls
+# are the return total including any vignettes you'd have to buy.
+DRIVE_MAX_HOURS = float(os.environ.get("DRIVE_MAX_HOURS") or "6")
+FUEL_EUR_PER_KM = float(os.environ.get("FUEL_EUR_PER_KM") or "0.12")   # ~7 L/100km
+PARKING_EUR_NIGHT = float(os.environ.get("PARKING_EUR_NIGHT") or "12")
+
+DRIVE_FROM_VIENNA = {
+    # dest: (km one way, hours one way, return tolls & vignettes in EUR)
+    "RJK": (490, 4.75, 38),   # AT vignette + SI vignette + Croatian tolls
+    "PUY": (560, 5.50, 38),   # same route, on past Rijeka into Istria
+    "VCE": (580, 5.75, 62),   # AT vignette + Italian autostrada both ways
+}
+
+
+def drive_option(dest, nights):
+    """Cost and time of driving there instead of flying, or None."""
+    row = DRIVE_FROM_VIENNA.get(dest)
+    if not row:
+        return None
+    km, hours, tolls = row
+    if hours > DRIVE_MAX_HOURS:
+        return None
+    fuel = km * 2 * FUEL_EUR_PER_KM
+    parking = nights * PARKING_EUR_NIGHT
+    return {
+        "drive_km": km,
+        "drive_hours": hours,
+        "drive_cost": round(fuel + tolls + parking),
+        "drive_fuel": round(fuel),
+        "drive_tolls": tolls,
+        "drive_parking": round(parking),
+    }
+
+
 TIMING_WARNINGS = {
     "late_arrival": "lands late, first evening gone",
     "early_return": "early flight home, last morning gone",
@@ -940,6 +976,7 @@ def main():
                 fhours = DEST_META.get(dest, (None, None))[0]
                 timing = analyse_timing(flight, fhours)
                 access_mode, access_note = beach_access(dest)
+                drive = drive_option(dest, nights) or {}
                 deal = {
                     "dest": dest, "name": name, "country": country,
                     "origin": origin, "depart": depart.isoformat(),
@@ -948,14 +985,17 @@ def main():
                     "flight": round(flight["price"]),
                     "hotel_night": round(nightly),
                     "hotel_total": round(hotel_cost),
+                    "hotel_base_night": round(base_nightly),
                     "peak_label": peak_label,
                     "peak_pct": round((peak_mult - 1) * 100),
+                    "weekend_pct": round((wknd_mult - 1) * 100),
                     "total": round(total),
                     "daily_spend": daily,
                     "spend_total": round(spend_total),
                     "grand_total": round(total + spend_total),
                     "beach_access": access_mode,
                     "beach_note": access_note,
+                    **drive,
                     **timing,
                     "target": round(trip_target(dest, depart, nights)),
                     "target_base": target,

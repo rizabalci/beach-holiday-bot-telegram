@@ -132,6 +132,8 @@
   .wday { display:inline-block; font-weight:700; color: var(--deep); background:#e6f0f2;
           padding:1px 5px; border-radius:3px; font-size:11.5px; margin-right:3px;
           text-transform: uppercase; letter-spacing:.03em; }
+  .drive { display:inline-block; margin-left:5px; font-size:13px; cursor:help;
+           vertical-align:middle; }
   .car { display:inline-block; margin-left:6px; font-size:13px; cursor:help;
          vertical-align:middle; padding:1px 4px; border-radius:4px; }
   .car.essential { opacity:1; background:#fdecea; box-shadow:inset 0 0 0 1px #f0c4bb; }
@@ -159,6 +161,17 @@
   .explain { position:absolute; z-index:99; max-width:280px; padding:9px 12px;
              background:#123; color:#fff; font-size:12.5px; line-height:1.5;
              border-radius:6px; box-shadow:0 6px 22px rgba(0,0,0,.28); }
+  .explain-wide { max-width:330px; padding:12px 14px; }
+  .bd-trigger { cursor:pointer; border-bottom:1px dotted rgba(0,0,0,.28); }
+  .bd-title { font-weight:700; margin-bottom:8px; padding-bottom:7px;
+              border-bottom:1px solid rgba(255,255,255,.18); }
+  .bd-row { display:flex; justify-content:space-between; gap:14px; padding:3px 0; }
+  .bd-row b { white-space:nowrap; }
+  .bd-sub { margin-top:5px; padding-top:6px; border-top:1px solid rgba(255,255,255,.18); }
+  .bd-total { margin-top:5px; padding-top:6px; font-size:14px;
+              border-top:1px solid rgba(255,255,255,.35); }
+  .bd-note { font-size:11px; opacity:.72; margin:2px 0 4px; line-height:1.45; }
+  .bd-excl { margin-top:9px; padding-top:8px; border-top:1px solid rgba(255,255,255,.18); }
   .legend-btn { background:none; border:none; padding:0; font:inherit; font-size:inherit;
                 color:var(--deep); cursor:pointer; text-decoration:underline;
                 text-underline-offset:2px; }
@@ -283,6 +296,7 @@
         <option value="no">🚶 No car needed</option>
         <option value="ok">🚶 No car, or optional</option>
         <option value="essential">🚗 Car essential</option>
+        <option value="drive">🚙 Drivable from Vienna</option>
       </select>
     </div>
     <div class="field">
@@ -357,22 +371,24 @@ function closeExplain() {
 }
 
 document.addEventListener("click", e => {
-  const badge = e.target.closest("[title]");
-  if (!badge || !badge.getAttribute("title") || badge.closest("a")) {
+  const badge = e.target.closest("[data-explain], [title]");
+  const rich = badge && badge.getAttribute("data-explain");
+  const plain = badge && badge.getAttribute("title");
+  if (!badge || (!rich && !plain) || badge.closest("a")) {
     closeExplain();
     return;
   }
   e.preventDefault();
   e.stopPropagation();
-  const text = badge.getAttribute("title");
+  const text = rich || plain;
   const wasOpen = explainBox && explainBox.dataset.src === text;
   closeExplain();
   if (wasOpen) return;               // second tap closes it
 
   const box = document.createElement("div");
-  box.className = "explain";
+  box.className = rich ? "explain explain-wide" : "explain";
   box.dataset.src = text;
-  box.textContent = text;
+  if (rich) box.innerHTML = text; else box.textContent = text;
   document.body.appendChild(box);
 
   const r = badge.getBoundingClientRect();
@@ -395,6 +411,7 @@ const LEGEND = [
   ["🚌", "Bus or tram to the beach, roughly 15 to 45 minutes"],
   ["🚕", "No useful public transport, a short drive to the beach"],
   ["🚗", "Red means a rental car is essential. Faded means it is optional and public transport works"],
+  ["🚙", "Within driving distance of Vienna. Tap it for the cost and time"],
   ["FRI", "Day of the week you fly"],
   ["Sat + Sun", "Whether the trip covers both weekend days"],
 ];
@@ -412,6 +429,37 @@ function toggleLegend() {
 }
 
 
+// Full cost breakdown, shown when the All-in figure is tapped. Every line is
+// a stored value rather than something recomputed here, so what you read is
+// exactly what went into the number.
+function allInBreakdown(d) {
+  const row = (label, val, cls) =>
+    `<div class="bd-row ${cls || ""}"><span>${label}</span><b>${val}</b></div>`;
+  let hotelDetail = `${d.nights} × €${d.hotel_night}`;
+  const mods = [];
+  if (d.hotel_base_night && d.hotel_base_night !== d.hotel_night) {
+    if (d.peak_pct) mods.push(`peak +${d.peak_pct}%`);
+    if (d.weekend_pct) mods.push(`weekend +${d.weekend_pct}%`);
+  }
+  let out = `<div class="bd-title">${d.name} · ${d.nights} nights</div>`;
+  out += row("Flight, return", "€" + d.flight);
+  out += row("Hotel " + hotelDetail, "€" + d.hotel_total);
+  if (mods.length) {
+    out += `<div class="bd-note">from €${d.hotel_base_night} base, ${mods.join(", ")}` +
+           (d.peak_label ? ` (${d.peak_label})` : "") + `</div>`;
+  }
+  if (d.drive_cost) {
+    out += `<div class="bd-note">Or drive from Vienna: about €${d.drive_cost} return ` +
+           `(fuel €${d.drive_fuel}, tolls €${d.drive_tolls}, parking €${d.drive_parking}), ` +
+           `${d.drive_hours}h each way</div>`;
+  }
+  out += row("Total", "€" + d.total, "bd-sub");
+  out += row(`Food, drinks &amp; local transport, ${d.nights} × €${d.daily_spend}`, "€" + d.spend_total);
+  out += row("All-in", "€" + d.grand_total, "bd-total");
+  out += `<div class="bd-note bd-excl">Excludes car hire, getting to the airport, checked bags and insurance. Only the flight is a live price; the rest are estimates.</div>`;
+  return out.replace(/"/g, "&quot;");
+}
+
 function trendBadge(d) {
   if (d.vs_avg_pct === null || d.vs_avg_pct === undefined) return "";
   const pct = d.vs_avg_pct;
@@ -428,6 +476,14 @@ function trendBadge(d) {
 function peakBadge(d) {
   if (!d.peak_label) return "";
   return `<span class="peak" title="${d.peak_label} — expect crowds and hotel rates roughly ${d.peak_pct}% above normal">${d.peak_label}</span>`;
+}
+
+function driveBadge(d) {
+  if (!d.drive_cost) return "";
+  const note = `Drivable from Vienna: ${d.drive_km} km, about ${d.drive_hours}h each way. ` +
+    `Roughly €${d.drive_cost} return including fuel, tolls and parking` +
+    (d.car_advice ? ", and you arrive with a car so no rental needed" : "") + ".";
+  return `<span class="drive" title="${note}">🚙</span>`;
 }
 
 function carBadge(d) {
@@ -658,6 +714,7 @@ function apply() {
     if (car === "no" && d.needs_car) return false;
     if (car === "ok" && d.car_advice === "essential") return false;
     if (car === "essential" && d.car_advice !== "essential") return false;
+    if (car === "drive" && !d.drive_cost) return false;
     const tf = d.timing_flags || [];
     if (timing === "good" && (tf.includes("late_arrival") || tf.includes("early_return"))) return false;
     if (timing === "noLate" && tf.includes("late_arrival")) return false;
@@ -706,9 +763,9 @@ function renderTable(rows) {
   const cc = c => c.split(" ").slice(1).join(" ");
   document.getElementById("tbody").innerHTML = rows.map(d => `
     <tr class="${d.isDeal ? "deal" : ""}">
-      <td class="dest"><span class="flag">${flag(d.country)}</span>${d.name}${accessBadge(d)}${carBadge(d)}<div class="sub">${cc(d.country)}</div></td>
+      <td class="dest"><span class="flag">${flag(d.country)}</span>${d.name}${accessBadge(d)}${carBadge(d)}${driveBadge(d)}<div class="sub">${cc(d.country)}</div></td>
       <td class="total">€${d.total}${d.isDeal ? `<span class="flame" title="${(d.reasons || ['beats target']).join(' · ')}">🔥</span>` : ''}${trendBadge(d)}</td>
-      <td class="allin">${d.grand_total ? `€${d.grand_total}<div class="sub">+€${d.daily_spend}/day</div>` : "–"}</td>
+      <td class="allin">${d.grand_total ? `<span class="bd-trigger" data-explain="${allInBreakdown(d)}">€${d.grand_total}<div class="sub">+€${d.daily_spend}/day</div></span>` : "–"}</td>
       <td>€${d.flight}<div class="sub">${d.origin}</div></td>
       <td>~€${d.hotel_total}<div class="sub">€${d.hotel_night}/n</div></td>
       <td>${d.nights}</td>
@@ -731,10 +788,10 @@ function renderCards(rows) {
   const cc = c => c.split(" ").slice(1).join(" ");
   document.getElementById("view-cards").innerHTML = rows.map(d => `
     <div class="card ${d.isDeal ? "deal" : ""}">
-      <h3>${flag(d.country)} ${d.name}${accessBadge(d)}${carBadge(d)}</h3>
+      <h3>${flag(d.country)} ${d.name}${accessBadge(d)}${carBadge(d)}${driveBadge(d)}</h3>
       <div class="country">${cc(d.country)} · ${d.origin}</div>
       <div class="big">€${d.total} <small>flight + hotel / person</small> ${trendBadge(d)}</div>
-      ${d.grand_total ? `<div class="allin-line">All-in <b>€${d.grand_total}</b> <small>incl. €${d.daily_spend}/day food &amp; local</small></div>` : ""}
+      ${d.grand_total ? `<div class="allin-line bd-trigger" data-explain="${allInBreakdown(d)}">All-in <b>€${d.grand_total}</b> <small>incl. €${d.daily_spend}/day food &amp; local</small></div>` : ""}
       <div class="grid2">
         <div>Flight <b>€${d.flight}</b></div>
         <div>Hotel <b>~€${d.hotel_total}</b></div>
