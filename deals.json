@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-07-20T11:52:30.569476+00:00",
+ "generated_at": "2026-07-20T12:26:22.832063+00:00",
  "origins": [
   "VIE",
   "BTS"
  ],
- "deal_count": 276,
+ "deal_count": 265,
  "deals": [
   {
    "dest": "TIA",
@@ -27,6 +27,15 @@
    "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-07-24&checkout=2026-07-26&adults=1",
    "flight_hours": 1.7,
    "sea_temp": 26,
+   "dep_time": "16:30",
+   "arr_time": "19:40",
+   "ret_dep_time": "10:20",
+   "timing_flags": [],
+   "airline": "AL",
+   "transfers": 1,
+   "daily_spend": 30,
+   "spend_total": 90,
+   "grand_total": 336,
    "reasons": [
     "under \u20ac250 global cap"
    ]
@@ -52,10 +61,21 @@
    "airbnb": "https://www.airbnb.com/s/Lido%20di%20Jesolo/homes?checkin=2026-07-24&checkout=2026-07-26&adults=1",
    "flight_hours": 1.1,
    "sea_temp": 26,
+   "dep_time": "13:30",
+   "arr_time": "14:45",
+   "ret_dep_time": "07:40",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 60,
+   "spend_total": 180,
+   "grand_total": 429,
    "reasons": [
     "below \u20ac260 target",
     "under \u20ac250 global cap",
-    "25%+ below 2-week avg (\u20ac357)"
+    "25%+ below 2-week avg (\u20ac342)"
    ]
   },
   {
@@ -78,7 +98,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-07-31&checkout=2026-08-02&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-07-31&checkout=2026-08-02&adults=1",
    "flight_hours": 1.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "06:30",
+   "arr_time": "08:05",
+   "ret_dep_time": "22:45",
+   "timing_flags": [],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 30,
+   "spend_total": 90,
+   "grand_total": 342
   },
   {
    "dest": "TIA",
@@ -100,7 +129,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-08-28&checkout=2026-08-30&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-08-28&checkout=2026-08-30&adults=1",
    "flight_hours": 1.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "06:30",
+   "arr_time": "08:05",
+   "ret_dep_time": "10:20",
+   "timing_flags": [],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 30,
+   "spend_total": 90,
+   "grand_total": 349
   },
   {
    "dest": "VCE",
@@ -122,29 +160,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Lido%20di%20Jesolo&checkin=2026-08-07&checkout=2026-08-09&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Lido%20di%20Jesolo/homes?checkin=2026-08-07&checkout=2026-08-09&adults=1",
    "flight_hours": 1.1,
-   "sea_temp": 26
-  },
-  {
-   "dest": "VCE",
-   "name": "Venice / Lido & Jesolo",
-   "country": "\ud83c\uddee\ud83c\uddf9 Italy",
-   "origin": "VIE",
-   "depart": "2026-07-31",
-   "return": "2026-08-02",
-   "nights": 2,
-   "weekend": "30 Jul weekend",
-   "flight": 82,
-   "hotel_night": 90,
-   "hotel_total": 180,
-   "total": 262,
-   "target": 260,
-   "url": "https://www.aviasales.com/search/VIE3107VCE02081?t=FR17854794001785483900000075VIEVCE17856564001785660900000075VCEVIE_8ca79683456d3df5a7e76507830ea5a9_7188&search_date=13072026&expected_price_uuid=019f5b5a-368e-8030-2b23-9c95769c26dc&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=k88v--04f-sWb4S8yk1QyA&expected_price_source=share&expected_price_currency=eur&expected_price=82",
-   "area": "Lido di Jesolo",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Lido%20di%20Jesolo&checkin=2026-07-31&checkout=2026-08-02&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Lido%20di%20Jesolo&checkin=2026-07-31&checkout=2026-08-02&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Lido%20di%20Jesolo/homes?checkin=2026-07-31&checkout=2026-08-02&adults=1",
-   "flight_hours": 1.1,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "13:30",
+   "arr_time": "14:45",
+   "ret_dep_time": "07:40",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 60,
+   "spend_total": 180,
+   "grand_total": 441
   },
   {
    "dest": "PMO",
@@ -166,7 +193,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-08-14&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Palermo/homes?checkin=2026-08-14&checkout=2026-08-16&adults=1",
    "flight_hours": 2.0,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "19:05",
+   "arr_time": "21:10",
+   "ret_dep_time": "07:10",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 135,
+   "grand_total": 398
   },
   {
    "dest": "TIA",
@@ -188,7 +226,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-07-31&checkout=2026-08-02&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-07-31&checkout=2026-08-02&adults=1",
    "flight_hours": 1.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "07:40",
+   "arr_time": "10:55",
+   "ret_dep_time": "13:15",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 30,
+   "spend_total": 90,
+   "grand_total": 358
   },
   {
    "dest": "BRI",
@@ -211,9 +258,15 @@
    "airbnb": "https://www.airbnb.com/s/Bari/homes?checkin=2026-08-01&checkout=2026-08-03&adults=1",
    "flight_hours": 1.5,
    "sea_temp": 26,
-   "reasons": [
-    "25%+ below 2-week avg (\u20ac395)"
-   ]
+   "dep_time": "14:50",
+   "arr_time": "16:25",
+   "ret_dep_time": "22:50",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 135,
+   "grand_total": 420
   },
   {
    "dest": "ATH",
@@ -235,7 +288,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Glyfada&checkin=2026-08-07&checkout=2026-08-09&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Glyfada/homes?checkin=2026-08-07&checkout=2026-08-09&adults=1",
    "flight_hours": 2.3,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "19:55",
+   "arr_time": "22:10",
+   "ret_dep_time": "12:20",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 135,
+   "grand_total": 425
   },
   {
    "dest": "TIA",
@@ -257,7 +321,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-07-31&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-07-31&checkout=2026-08-03&adults=1",
    "flight_hours": 1.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "11:00",
+   "arr_time": "12:40",
+   "ret_dep_time": "08:10",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 30,
+   "spend_total": 120,
+   "grand_total": 431
   },
   {
    "dest": "VAR",
@@ -279,7 +354,21 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Varna&checkin=2026-08-15&checkout=2026-08-17&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Varna/homes?checkin=2026-08-15&checkout=2026-08-17&adults=1",
    "flight_hours": 1.8,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "20:25",
+   "arr_time": "22:15",
+   "ret_dep_time": "19:25",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 30,
+   "spend_total": 90,
+   "grand_total": 402,
+   "reasons": [
+    "25%+ below 2-week avg (\u20ac442)"
+   ]
   },
   {
    "dest": "VAR",
@@ -301,7 +390,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Varna&checkin=2026-08-07&checkout=2026-08-09&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Varna/homes?checkin=2026-08-07&checkout=2026-08-09&adults=1",
    "flight_hours": 1.8,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "14:00",
+   "arr_time": "17:45",
+   "ret_dep_time": "18:35",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 1,
+   "daily_spend": 30,
+   "spend_total": 90,
+   "grand_total": 405
   },
   {
    "dest": "TIA",
@@ -323,7 +421,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-08-21&checkout=2026-08-23&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-08-21&checkout=2026-08-23&adults=1",
    "flight_hours": 1.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "06:30",
+   "arr_time": "08:05",
+   "ret_dep_time": "10:20",
+   "timing_flags": [],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 30,
+   "spend_total": 90,
+   "grand_total": 412
   },
   {
    "dest": "PMI",
@@ -345,7 +452,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-08-27&checkout=2026-08-29&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-08-27&checkout=2026-08-29&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "19:50",
+   "arr_time": "22:20",
+   "ret_dep_time": "09:30",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 165,
+   "grand_total": 489
   },
   {
    "dest": "NAP",
@@ -367,7 +485,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Sorrento&checkin=2026-08-28&checkout=2026-08-30&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Sorrento/homes?checkin=2026-08-28&checkout=2026-08-30&adults=1",
    "flight_hours": 1.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "06:30",
+   "arr_time": "09:05",
+   "ret_dep_time": "08:35",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 50,
+   "spend_total": 150,
+   "grand_total": 475
   },
   {
    "dest": "AHO",
@@ -389,7 +518,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Alghero&checkin=2026-08-14&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Alghero/homes?checkin=2026-08-14&checkout=2026-08-16&adults=1",
    "flight_hours": 1.8,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "16:10",
+   "arr_time": "18:10",
+   "ret_dep_time": "13:25",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 48,
+   "spend_total": 144,
+   "grand_total": 469
   },
   {
    "dest": "TIA",
@@ -411,7 +549,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-07-23&checkout=2026-07-26&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-07-23&checkout=2026-07-26&adults=1",
    "flight_hours": 1.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "14:25",
+   "arr_time": "17:25",
+   "ret_dep_time": "10:20",
+   "timing_flags": [],
+   "airline": "W6",
+   "transfers": 1,
+   "daily_spend": 30,
+   "spend_total": 120,
+   "grand_total": 446
   },
   {
    "dest": "ZAD",
@@ -433,7 +580,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Zadar&checkin=2026-08-28&checkout=2026-08-30&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Zadar/homes?checkin=2026-08-28&checkout=2026-08-30&adults=1",
    "flight_hours": 1.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "17:05",
+   "arr_time": "18:15",
+   "ret_dep_time": "17:45",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 135,
+   "grand_total": 463
   },
   {
    "dest": "ATH",
@@ -455,7 +611,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Glyfada&checkin=2026-08-01&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Glyfada/homes?checkin=2026-08-01&checkout=2026-08-03&adults=1",
    "flight_hours": 2.3,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "20:45",
+   "arr_time": "23:50",
+   "ret_dep_time": "09:20",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "JU",
+   "transfers": 1,
+   "daily_spend": 45,
+   "spend_total": 135,
+   "grand_total": 465
   },
   {
    "dest": "DBV",
@@ -477,7 +644,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Dubrovnik&checkin=2026-08-27&checkout=2026-08-29&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Dubrovnik/homes?checkin=2026-08-27&checkout=2026-08-29&adults=1",
    "flight_hours": 1.4,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "16:00",
+   "arr_time": "17:20",
+   "ret_dep_time": "08:55",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 60,
+   "spend_total": 180,
+   "grand_total": 511
   },
   {
    "dest": "BCN",
@@ -499,7 +677,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-21&checkout=2026-08-23&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-21&checkout=2026-08-23&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "09:00",
+   "arr_time": "11:30",
+   "ret_dep_time": "22:05",
+   "timing_flags": [],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 165,
+   "grand_total": 497
   },
   {
    "dest": "PMI",
@@ -521,7 +708,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-07-25&checkout=2026-07-27&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-07-25&checkout=2026-07-27&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "21:45",
+   "arr_time": "00:15",
+   "ret_dep_time": "20:05",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 165,
+   "grand_total": 498
   },
   {
    "dest": "ATH",
@@ -543,7 +741,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Glyfada&checkin=2026-08-14&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Glyfada/homes?checkin=2026-08-14&checkout=2026-08-16&adults=1",
    "flight_hours": 2.3,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "19:55",
+   "arr_time": "22:10",
+   "ret_dep_time": "23:45",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 135,
+   "grand_total": 473
   },
   {
    "dest": "PMO",
@@ -565,7 +774,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-08-22&checkout=2026-08-25&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Palermo/homes?checkin=2026-08-22&checkout=2026-08-25&adults=1",
    "flight_hours": 2.0,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "18:45",
+   "arr_time": "20:55",
+   "ret_dep_time": "21:40",
+   "timing_flags": [],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 180,
+   "grand_total": 518
   },
   {
    "dest": "ZAD",
@@ -587,7 +805,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Zadar&checkin=2026-08-29&checkout=2026-09-01&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Zadar/homes?checkin=2026-08-29&checkout=2026-09-01&adults=1",
    "flight_hours": 1.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "20:10",
+   "arr_time": "21:20",
+   "ret_dep_time": "20:50",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 180,
+   "grand_total": 519
   },
   {
    "dest": "PUY",
@@ -609,7 +836,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Pula&checkin=2026-08-08&checkout=2026-08-10&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Pula/homes?checkin=2026-08-08&checkout=2026-08-10&adults=1",
    "flight_hours": 1.0,
-   "sea_temp": 24
+   "sea_temp": 24,
+   "dep_time": "05:55",
+   "arr_time": "07:00",
+   "ret_dep_time": "09:40",
+   "timing_flags": [
+    "red_eye"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 135,
+   "grand_total": 475
   },
   {
    "dest": "SKG",
@@ -631,7 +869,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Thessaloniki&checkin=2026-08-29&checkout=2026-09-01&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Thessaloniki/homes?checkin=2026-08-29&checkout=2026-09-01&adults=1",
    "flight_hours": 1.8,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "17:00",
+   "arr_time": "18:45",
+   "ret_dep_time": "09:10",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 40,
+   "spend_total": 160,
+   "grand_total": 501
   },
   {
    "dest": "SKG",
@@ -653,7 +900,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Thessaloniki&checkin=2026-07-25&checkout=2026-07-27&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Thessaloniki/homes?checkin=2026-07-25&checkout=2026-07-27&adults=1",
    "flight_hours": 1.8,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "17:00",
+   "arr_time": "18:45",
+   "ret_dep_time": "09:20",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 40,
+   "spend_total": 120,
+   "grand_total": 462
   },
   {
    "dest": "BCN",
@@ -675,7 +931,19 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-01&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-01&checkout=2026-08-03&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "22:45",
+   "arr_time": "01:20",
+   "ret_dep_time": "08:00",
+   "timing_flags": [
+    "late_arrival",
+    "early_return"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 165,
+   "grand_total": 509
   },
   {
    "dest": "VAR",
@@ -697,7 +965,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Varna&checkin=2026-08-15&checkout=2026-08-18&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Varna/homes?checkin=2026-08-15&checkout=2026-08-18&adults=1",
    "flight_hours": 1.8,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "20:25",
+   "arr_time": "22:15",
+   "ret_dep_time": "23:35",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 30,
+   "spend_total": 120,
+   "grand_total": 468
   },
   {
    "dest": "BCN",
@@ -719,7 +998,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-07-25&checkout=2026-07-27&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-07-25&checkout=2026-07-27&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "22:45",
+   "arr_time": "01:20",
+   "ret_dep_time": "19:20",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 165,
+   "grand_total": 514
   },
   {
    "dest": "DBV",
@@ -741,7 +1031,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Dubrovnik&checkin=2026-08-21&checkout=2026-08-23&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Dubrovnik/homes?checkin=2026-08-21&checkout=2026-08-23&adults=1",
    "flight_hours": 1.4,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "16:40",
+   "arr_time": "17:55",
+   "ret_dep_time": "07:05",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "OS",
+   "transfers": 0,
+   "daily_spend": 60,
+   "spend_total": 180,
+   "grand_total": 531
   },
   {
    "dest": "TIA",
@@ -763,7 +1064,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-07-23&checkout=2026-07-26&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-07-23&checkout=2026-07-26&adults=1",
    "flight_hours": 1.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "19:00",
+   "arr_time": "21:35",
+   "ret_dep_time": "23:20",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 30,
+   "spend_total": 120,
+   "grand_total": 472
   },
   {
    "dest": "SKG",
@@ -785,29 +1095,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Thessaloniki&checkin=2026-08-14&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Thessaloniki/homes?checkin=2026-08-14&checkout=2026-08-16&adults=1",
    "flight_hours": 1.8,
-   "sea_temp": 26
-  },
-  {
-   "dest": "BRI",
-   "name": "Bari / Puglia",
-   "country": "\ud83c\uddee\ud83c\uddf9 Italy",
-   "origin": "VIE",
-   "depart": "2026-07-31",
-   "return": "2026-08-02",
-   "nights": 2,
-   "weekend": "30 Jul weekend",
-   "flight": 194,
-   "hotel_night": 80,
-   "hotel_total": 160,
-   "total": 354,
-   "target": 240,
-   "url": "https://www.aviasales.com/search/VIE3107BRI02081?t=LH17855259001785566700000680VIEFRABRI17856756001785710700000585BRIMUCVIE_119b0d1fad92767d6477ae07ee90032d_16884&search_date=13072026&expected_price_uuid=019f5b55-dd96-8030-69f3-940ddfd309c6&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=ifY4JtqoTqRwE3zjWlA6BA&expected_price_source=share&expected_price_currency=eur&expected_price=194",
-   "area": "Bari",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Bari&checkin=2026-07-31&checkout=2026-08-02&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Bari&checkin=2026-07-31&checkout=2026-08-02&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Bari/homes?checkin=2026-07-31&checkout=2026-08-02&adults=1",
-   "flight_hours": 1.5,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "06:50",
+   "arr_time": "10:30",
+   "ret_dep_time": "23:25",
+   "timing_flags": [],
+   "airline": "RR",
+   "transfers": 1,
+   "daily_spend": 40,
+   "spend_total": 120,
+   "grand_total": 474
   },
   {
    "dest": "TIA",
@@ -829,7 +1126,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
    "flight_hours": 1.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "14:25",
+   "arr_time": "17:20",
+   "ret_dep_time": "06:00",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "W6",
+   "transfers": 1,
+   "daily_spend": 30,
+   "spend_total": 150,
+   "grand_total": 506
   },
   {
    "dest": "TIA",
@@ -851,7 +1159,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-08-28&checkout=2026-09-01&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-08-28&checkout=2026-09-01&adults=1",
    "flight_hours": 1.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "17:55",
+   "arr_time": "22:10",
+   "ret_dep_time": "15:10",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 30,
+   "spend_total": 150,
+   "grand_total": 506
   },
   {
    "dest": "TIA",
@@ -873,7 +1192,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-08-27&checkout=2026-08-31&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-08-27&checkout=2026-08-31&adults=1",
    "flight_hours": 1.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "06:00",
+   "arr_time": "07:35",
+   "ret_dep_time": "17:35",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 30,
+   "spend_total": 150,
+   "grand_total": 508
   },
   {
    "dest": "PMO",
@@ -895,7 +1223,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-08-14&checkout=2026-08-17&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Palermo/homes?checkin=2026-08-14&checkout=2026-08-17&adults=1",
    "flight_hours": 2.0,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "19:05",
+   "arr_time": "21:10",
+   "ret_dep_time": "16:10",
+   "timing_flags": [],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 180,
+   "grand_total": 540
   },
   {
    "dest": "VCE",
@@ -917,7 +1254,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Lido%20di%20Jesolo&checkin=2026-08-20&checkout=2026-08-23&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Lido%20di%20Jesolo/homes?checkin=2026-08-20&checkout=2026-08-23&adults=1",
    "flight_hours": 1.1,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "12:25",
+   "arr_time": "13:40",
+   "ret_dep_time": "07:40",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 60,
+   "spend_total": 240,
+   "grand_total": 601
   },
   {
    "dest": "PMO",
@@ -939,7 +1287,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-08-01&checkout=2026-08-04&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Palermo/homes?checkin=2026-08-01&checkout=2026-08-04&adults=1",
    "flight_hours": 2.0,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "17:30",
+   "arr_time": "20:25",
+   "ret_dep_time": "19:35",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 1,
+   "daily_spend": 45,
+   "spend_total": 180,
+   "grand_total": 543
   },
   {
    "dest": "BCN",
@@ -961,7 +1318,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-08&checkout=2026-08-10&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-08&checkout=2026-08-10&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "22:45",
+   "arr_time": "01:20",
+   "ret_dep_time": "09:25",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 165,
+   "grand_total": 531
   },
   {
    "dest": "MLA",
@@ -983,7 +1351,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Malta&checkin=2026-08-27&checkout=2026-08-29&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Malta/homes?checkin=2026-08-27&checkout=2026-08-29&adults=1",
    "flight_hours": 2.0,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "16:50",
+   "arr_time": "19:10",
+   "ret_dep_time": "09:15",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 48,
+   "spend_total": 144,
+   "grand_total": 513
   },
   {
    "dest": "BCN",
@@ -1005,7 +1382,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-14&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-14&checkout=2026-08-16&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "09:00",
+   "arr_time": "11:30",
+   "ret_dep_time": "05:45",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 165,
+   "grand_total": 535
   },
   {
    "dest": "DBV",
@@ -1027,29 +1415,19 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Dubrovnik&checkin=2026-07-31&checkout=2026-08-02&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Dubrovnik/homes?checkin=2026-07-31&checkout=2026-08-02&adults=1",
    "flight_hours": 1.4,
-   "sea_temp": 25
-  },
-  {
-   "dest": "ZAD",
-   "name": "Zadar",
-   "country": "\ud83c\udded\ud83c\uddf7 Croatia",
-   "origin": "VIE",
-   "depart": "2026-07-31",
-   "return": "2026-08-02",
-   "nights": 2,
-   "weekend": "30 Jul weekend",
-   "flight": 202,
-   "hotel_night": 85,
-   "hotel_total": 170,
-   "total": 372,
-   "target": 240,
-   "url": "https://www.aviasales.com/search/VIE3107ZAD02081?t=FR17855175001785521700000070VIEZAD17856780001785681600000060ZADVIE_b90bfded05e0564e80b0b7812cb5e204_17619&search_date=13072026&expected_price_uuid=019f5b55-3f68-8030-6705-c4c9728426b1&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=N-uVFFAWQhYBF0QuAILf0w&expected_price_source=share&expected_price_currency=eur&expected_price=202",
-   "area": "Zadar",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Zadar&checkin=2026-07-31&checkout=2026-08-02&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Zadar&checkin=2026-07-31&checkout=2026-08-02&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Zadar/homes?checkin=2026-07-31&checkout=2026-08-02&adults=1",
-   "flight_hours": 1.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "21:35",
+   "arr_time": "22:50",
+   "ret_dep_time": "07:05",
+   "timing_flags": [
+    "late_arrival",
+    "early_return"
+   ],
+   "airline": "OS",
+   "transfers": 0,
+   "daily_spend": 60,
+   "spend_total": 180,
+   "grand_total": 551
   },
   {
    "dest": "ATH",
@@ -1071,7 +1449,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Glyfada&checkin=2026-07-24&checkout=2026-07-27&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Glyfada/homes?checkin=2026-07-24&checkout=2026-07-27&adults=1",
    "flight_hours": 2.3,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "19:55",
+   "arr_time": "22:10",
+   "ret_dep_time": "23:50",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 180,
+   "grand_total": 553
   },
   {
    "dest": "PMI",
@@ -1093,7 +1482,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-08-14&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-08-14&checkout=2026-08-16&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "08:15",
+   "arr_time": "11:25",
+   "ret_dep_time": "13:05",
+   "timing_flags": [],
+   "airline": "MW",
+   "transfers": 1,
+   "daily_spend": 55,
+   "spend_total": 165,
+   "grand_total": 542
   },
   {
    "dest": "BOJ",
@@ -1115,7 +1513,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Burgas&checkin=2026-08-28&checkout=2026-08-31&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Burgas/homes?checkin=2026-08-28&checkout=2026-08-31&adults=1",
    "flight_hours": 1.9,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "07:40",
+   "arr_time": "09:30",
+   "ret_dep_time": "16:30",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 30,
+   "spend_total": 120,
+   "grand_total": 497
   },
   {
    "dest": "BCN",
@@ -1137,7 +1544,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-07-30&checkout=2026-08-01&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-07-30&checkout=2026-08-01&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "16:30",
+   "arr_time": "18:55",
+   "ret_dep_time": "17:45",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 165,
+   "grand_total": 544
   },
   {
    "dest": "ZAD",
@@ -1159,7 +1575,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Zadar&checkin=2026-08-06&checkout=2026-08-08&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Zadar/homes?checkin=2026-08-06&checkout=2026-08-08&adults=1",
    "flight_hours": 1.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "16:35",
+   "arr_time": "17:50",
+   "ret_dep_time": "05:55",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 135,
+   "grand_total": 514
   },
   {
    "dest": "BCN",
@@ -1181,7 +1608,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-01&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-01&checkout=2026-08-03&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "17:30",
+   "arr_time": "19:50",
+   "ret_dep_time": "20:40",
+   "timing_flags": [],
+   "airline": "OS",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 165,
+   "grand_total": 545
   },
   {
    "dest": "TIA",
@@ -1203,7 +1639,19 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-08-21&checkout=2026-08-23&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-08-21&checkout=2026-08-23&adults=1",
    "flight_hours": 1.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "23:20",
+   "arr_time": "00:50",
+   "ret_dep_time": "06:00",
+   "timing_flags": [
+    "late_arrival",
+    "early_return"
+   ],
+   "airline": "OS",
+   "transfers": 0,
+   "daily_spend": 30,
+   "spend_total": 90,
+   "grand_total": 471
   },
   {
    "dest": "ATH",
@@ -1225,7 +1673,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Glyfada&checkin=2026-08-14&checkout=2026-08-17&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Glyfada/homes?checkin=2026-08-14&checkout=2026-08-17&adults=1",
    "flight_hours": 2.3,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "19:55",
+   "arr_time": "22:10",
+   "ret_dep_time": "23:50",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 180,
+   "grand_total": 562
   },
   {
    "dest": "SUF",
@@ -1247,7 +1706,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Tropea&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Tropea/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
    "flight_hours": 1.8,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "07:10",
+   "arr_time": "09:05",
+   "ret_dep_time": "22:35",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 42,
+   "spend_total": 210,
+   "grand_total": 595
   },
   {
    "dest": "PMI",
@@ -1269,7 +1737,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-07-24&checkout=2026-07-26&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-07-24&checkout=2026-07-26&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "06:30",
+   "arr_time": "09:00",
+   "ret_dep_time": "09:30",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 165,
+   "grand_total": 552
   },
   {
    "dest": "BCN",
@@ -1291,7 +1768,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-07-25&checkout=2026-07-27&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-07-25&checkout=2026-07-27&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "20:35",
+   "arr_time": "23:00",
+   "ret_dep_time": "19:10",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 165,
+   "grand_total": 554
   },
   {
    "dest": "ZAD",
@@ -1313,7 +1801,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Zadar&checkin=2026-07-24&checkout=2026-07-26&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Zadar/homes?checkin=2026-07-24&checkout=2026-07-26&adults=1",
    "flight_hours": 1.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "17:05",
+   "arr_time": "18:15",
+   "ret_dep_time": "17:45",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 135,
+   "grand_total": 528
   },
   {
    "dest": "TIV",
@@ -1336,8 +1833,19 @@
    "airbnb": "https://www.airbnb.com/s/Kotor/homes?checkin=2026-08-01&checkout=2026-08-03&adults=1",
    "flight_hours": 1.3,
    "sea_temp": 25,
+   "dep_time": "14:45",
+   "arr_time": "17:15",
+   "ret_dep_time": "07:50",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "JU",
+   "transfers": 1,
+   "daily_spend": 40,
+   "spend_total": 120,
+   "grand_total": 514,
    "reasons": [
-    "25%+ below 2-week avg (\u20ac663)"
+    "25%+ below 2-week avg (\u20ac596)"
    ]
   },
   {
@@ -1360,7 +1868,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Catania&checkin=2026-08-01&checkout=2026-08-04&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Catania/homes?checkin=2026-08-01&checkout=2026-08-04&adults=1",
    "flight_hours": 2.0,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "17:30",
+   "arr_time": "20:35",
+   "ret_dep_time": "23:05",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 1,
+   "daily_spend": 45,
+   "spend_total": 180,
+   "grand_total": 574
   },
   {
    "dest": "NCE",
@@ -1382,7 +1899,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-08-21&checkout=2026-08-23&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-08-21&checkout=2026-08-23&adults=1",
    "flight_hours": 1.5,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "06:30",
+   "arr_time": "09:05",
+   "ret_dep_time": "22:30",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 65,
+   "spend_total": 195,
+   "grand_total": 589
   },
   {
    "dest": "PMI",
@@ -1404,7 +1930,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-08-22&checkout=2026-08-25&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-08-22&checkout=2026-08-25&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "21:45",
+   "arr_time": "00:15",
+   "ret_dep_time": "16:30",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 220,
+   "grand_total": 616
   },
   {
    "dest": "TGD",
@@ -1426,29 +1963,49 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Budva&checkin=2026-08-14&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Budva/homes?checkin=2026-08-14&checkout=2026-08-16&adults=1",
    "flight_hours": 1.4,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "13:05",
+   "arr_time": "16:25",
+   "ret_dep_time": "11:15",
+   "timing_flags": [],
+   "airline": "RR",
+   "transfers": 1,
+   "daily_spend": 35,
+   "spend_total": 105,
+   "grand_total": 501
   },
   {
-   "dest": "BOJ",
-   "name": "Burgas / Sunny Beach",
-   "country": "\ud83c\udde7\ud83c\uddec Bulgaria",
-   "origin": "BTS",
-   "depart": "2026-07-24",
-   "return": "2026-07-26",
+   "dest": "NCE",
+   "name": "Nice / French Riviera",
+   "country": "\ud83c\uddeb\ud83c\uddf7 France",
+   "origin": "VIE",
+   "depart": "2026-07-31",
+   "return": "2026-08-02",
    "nights": 2,
-   "weekend": "23 Jul weekend",
-   "flight": 279,
-   "hotel_night": 60,
-   "hotel_total": 120,
-   "total": 399,
-   "target": 200,
-   "url": "https://www.aviasales.com/search/BTS2407BOJ26071?t=FR17848713001784881200000105BTSBOJ17850957001785162600001175BOJFCOCIABTS_c4fff29239cdcb41fa9ad38ac2dcce67_24961&search_date=19072026&expected_price_uuid=019f7beb-b80a-8030-25c6-08213bb3ef66&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Qvup59vvTg5YSEP5xKy_2w&expected_price_source=share&expected_price_currency=eur&expected_price=279",
-   "area": "Burgas",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Burgas&checkin=2026-07-24&checkout=2026-07-26&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Burgas&checkin=2026-07-24&checkout=2026-07-26&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Burgas/homes?checkin=2026-07-24&checkout=2026-07-26&adults=1",
-   "flight_hours": 1.9,
-   "sea_temp": 26
+   "weekend": "30 Jul weekend",
+   "flight": 180,
+   "hotel_night": 110,
+   "hotel_total": 220,
+   "total": 400,
+   "target": 300,
+   "url": "https://www.aviasales.com/search/VIE3107NCE02081?t=FR17854770001785518400000690VIEFCONCE17857098001785780600001180NCEVCEVIE_450d4ef81c746b1ac98fecfc371b99b0_15979&search_date=15072026&expected_price_uuid=019f6789-c720-8010-6f16-37f3f9601bef&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Z5YuN2HN5rcMDhygtd7zig&expected_price_source=share&expected_price_currency=eur&expected_price=180",
+   "area": "Nice",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-07-31&checkout=2026-08-02&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-07-31&checkout=2026-08-02&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-07-31&checkout=2026-08-02&adults=1",
+   "flight_hours": 1.5,
+   "sea_temp": 25,
+   "dep_time": "05:50",
+   "arr_time": "08:55",
+   "ret_dep_time": "22:30",
+   "timing_flags": [
+    "red_eye"
+   ],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 65,
+   "spend_total": 195,
+   "grand_total": 595
   },
   {
    "dest": "PMO",
@@ -1470,7 +2027,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-07-31&checkout=2026-08-04&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Palermo/homes?checkin=2026-07-31&checkout=2026-08-04&adults=1",
    "flight_hours": 2.0,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "19:05",
+   "arr_time": "21:10",
+   "ret_dep_time": "07:10",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 225,
+   "grand_total": 628
   },
   {
    "dest": "CHQ",
@@ -1492,7 +2060,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Chania&checkin=2026-08-29&checkout=2026-08-31&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Chania/homes?checkin=2026-08-29&checkout=2026-08-31&adults=1",
    "flight_hours": 2.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "07:15",
+   "arr_time": "13:10",
+   "ret_dep_time": "22:45",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 2,
+   "daily_spend": 40,
+   "spend_total": 120,
+   "grand_total": 525
   },
   {
    "dest": "ZAD",
@@ -1514,7 +2091,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Zadar&checkin=2026-08-06&checkout=2026-08-08&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Zadar/homes?checkin=2026-08-06&checkout=2026-08-08&adults=1",
    "flight_hours": 1.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "13:00",
+   "arr_time": "14:10",
+   "ret_dep_time": "21:45",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 135,
+   "grand_total": 540
   },
   {
    "dest": "AGA",
@@ -1536,7 +2122,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Agadir&checkin=2026-08-14&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Agadir/homes?checkin=2026-08-14&checkout=2026-08-16&adults=1",
    "flight_hours": 4.3,
-   "sea_temp": 22
+   "sea_temp": 22,
+   "dep_time": "17:55",
+   "arr_time": "23:30",
+   "ret_dep_time": "14:55",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 30,
+   "spend_total": 90,
+   "grand_total": 495
   },
   {
    "dest": "ALC",
@@ -1558,7 +2155,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-08-01&checkout=2026-08-04&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-08-01&checkout=2026-08-04&adults=1",
    "flight_hours": 2.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "16:00",
+   "arr_time": "19:35",
+   "ret_dep_time": "22:05",
+   "timing_flags": [],
+   "airline": "AL",
+   "transfers": 1,
+   "daily_spend": 45,
+   "spend_total": 180,
+   "grand_total": 586
   },
   {
    "dest": "CTA",
@@ -1580,7 +2186,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Catania&checkin=2026-07-24&checkout=2026-07-27&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Catania/homes?checkin=2026-07-24&checkout=2026-07-27&adults=1",
    "flight_hours": 2.0,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "09:35",
+   "arr_time": "11:35",
+   "ret_dep_time": "14:50",
+   "timing_flags": [],
+   "airline": "OS",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 180,
+   "grand_total": 586
   },
   {
    "dest": "TGD",
@@ -1602,7 +2217,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Budva&checkin=2026-08-14&checkout=2026-08-17&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Budva/homes?checkin=2026-08-14&checkout=2026-08-17&adults=1",
    "flight_hours": 1.4,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "09:00",
+   "arr_time": "13:55",
+   "ret_dep_time": "06:15",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "W6",
+   "transfers": 1,
+   "daily_spend": 35,
+   "spend_total": 140,
+   "grand_total": 547
   },
   {
    "dest": "NAP",
@@ -1624,7 +2250,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Sorrento&checkin=2026-08-01&checkout=2026-08-04&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Sorrento/homes?checkin=2026-08-01&checkout=2026-08-04&adults=1",
    "flight_hours": 1.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "05:45",
+   "arr_time": "07:25",
+   "ret_dep_time": "21:10",
+   "timing_flags": [
+    "red_eye"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 50,
+   "spend_total": 200,
+   "grand_total": 607
   },
   {
    "dest": "RHO",
@@ -1646,7 +2283,19 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Rhodes&checkin=2026-07-24&checkout=2026-07-26&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Rhodes/homes?checkin=2026-07-24&checkout=2026-07-26&adults=1",
    "flight_hours": 2.8,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "05:55",
+   "arr_time": "08:30",
+   "ret_dep_time": "06:00",
+   "timing_flags": [
+    "red_eye",
+    "early_return"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 42,
+   "spend_total": 126,
+   "grand_total": 535
   },
   {
    "dest": "NAP",
@@ -1668,7 +2317,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Sorrento&checkin=2026-08-20&checkout=2026-08-23&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Sorrento/homes?checkin=2026-08-20&checkout=2026-08-23&adults=1",
    "flight_hours": 1.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "07:25",
+   "arr_time": "09:00",
+   "ret_dep_time": "09:50",
+   "timing_flags": [],
+   "airline": "OS",
+   "transfers": 0,
+   "daily_spend": 50,
+   "spend_total": 200,
+   "grand_total": 613
   },
   {
    "dest": "PMI",
@@ -1690,7 +2348,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-08-01&checkout=2026-08-04&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-08-01&checkout=2026-08-04&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "21:45",
+   "arr_time": "00:15",
+   "ret_dep_time": "22:25",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 220,
+   "grand_total": 634
   },
   {
    "dest": "OLB",
@@ -1713,9 +2382,15 @@
    "airbnb": "https://www.airbnb.com/s/Olbia/homes?checkin=2026-08-14&checkout=2026-08-16&adults=1",
    "flight_hours": 1.6,
    "sea_temp": 26,
-   "reasons": [
-    "25%+ below 2-week avg (\u20ac552)"
-   ]
+   "dep_time": "12:25",
+   "arr_time": "14:15",
+   "ret_dep_time": "12:00",
+   "timing_flags": [],
+   "airline": "OS",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 165,
+   "grand_total": 579
   },
   {
    "dest": "BCN",
@@ -1737,7 +2412,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-07&checkout=2026-08-09&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-07&checkout=2026-08-09&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "16:05",
+   "arr_time": "18:30",
+   "ret_dep_time": "05:45",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 165,
+   "grand_total": 580
   },
   {
    "dest": "VAR",
@@ -1759,7 +2445,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Varna&checkin=2026-08-15&checkout=2026-08-19&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Varna/homes?checkin=2026-08-15&checkout=2026-08-19&adults=1",
    "flight_hours": 1.8,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "20:25",
+   "arr_time": "22:15",
+   "ret_dep_time": "19:25",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 30,
+   "spend_total": 150,
+   "grand_total": 566
   },
   {
    "dest": "NCE",
@@ -1781,7 +2478,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-08-22&checkout=2026-08-25&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-08-22&checkout=2026-08-25&adults=1",
    "flight_hours": 1.5,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "19:20",
+   "arr_time": "21:15",
+   "ret_dep_time": "21:50",
+   "timing_flags": [],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 65,
+   "spend_total": 260,
+   "grand_total": 679
   },
   {
    "dest": "CFU",
@@ -1803,7 +2509,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-08-22&checkout=2026-08-25&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-08-22&checkout=2026-08-25&adults=1",
    "flight_hours": 1.8,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "13:55",
+   "arr_time": "18:20",
+   "ret_dep_time": "06:00",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "W6",
+   "transfers": 2,
+   "daily_spend": 42,
+   "spend_total": 168,
+   "grand_total": 588
   },
   {
    "dest": "TIA",
@@ -1825,7 +2542,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Durres&checkin=2026-08-01&checkout=2026-08-06&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-08-01&checkout=2026-08-06&adults=1",
    "flight_hours": 1.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "10:35",
+   "arr_time": "13:50",
+   "ret_dep_time": "06:00",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "W6",
+   "transfers": 1,
+   "daily_spend": 30,
+   "spend_total": 180,
+   "grand_total": 603
   },
   {
    "dest": "PMO",
@@ -1847,7 +2575,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-08-20&checkout=2026-08-23&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Palermo/homes?checkin=2026-08-20&checkout=2026-08-23&adults=1",
    "flight_hours": 2.0,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "12:25",
+   "arr_time": "15:15",
+   "ret_dep_time": "21:40",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 45,
+   "spend_total": 180,
+   "grand_total": 605
   },
   {
    "dest": "BCN",
@@ -1869,7 +2606,19 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-07-24&checkout=2026-07-26&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-07-24&checkout=2026-07-26&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "05:45",
+   "arr_time": "12:00",
+   "ret_dep_time": "06:30",
+   "timing_flags": [
+    "red_eye",
+    "early_return"
+   ],
+   "airline": "LW",
+   "transfers": 2,
+   "daily_spend": 55,
+   "spend_total": 165,
+   "grand_total": 591
   },
   {
    "dest": "SUF",
@@ -1891,7 +2640,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Tropea&checkin=2026-08-27&checkout=2026-08-31&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Tropea/homes?checkin=2026-08-27&checkout=2026-08-31&adults=1",
    "flight_hours": 1.8,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "07:10",
+   "arr_time": "09:05",
+   "ret_dep_time": "22:50",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 42,
+   "spend_total": 210,
+   "grand_total": 636
   },
   {
    "dest": "AGP",
@@ -1913,7 +2671,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Malaga&checkin=2026-07-31&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Malaga/homes?checkin=2026-07-31&checkout=2026-08-03&adults=1",
    "flight_hours": 3.0,
-   "sea_temp": 22
+   "sea_temp": 22,
+   "dep_time": "20:15",
+   "arr_time": "23:40",
+   "ret_dep_time": "22:25",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 180,
+   "grand_total": 607
   },
   {
    "dest": "PMI",
@@ -1935,7 +2704,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-07-30&checkout=2026-08-02&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-07-30&checkout=2026-08-02&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "06:10",
+   "arr_time": "09:39",
+   "ret_dep_time": "13:05",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 1,
+   "daily_spend": 55,
+   "spend_total": 220,
+   "grand_total": 648
   },
   {
    "dest": "BCN",
@@ -1957,7 +2735,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-07-31&checkout=2026-08-02&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-07-31&checkout=2026-08-02&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "16:05",
+   "arr_time": "18:30",
+   "ret_dep_time": "11:45",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 165,
+   "grand_total": 594
   },
   {
    "dest": "CHQ",
@@ -1979,7 +2766,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Chania&checkin=2026-08-28&checkout=2026-08-30&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Chania/homes?checkin=2026-08-28&checkout=2026-08-30&adults=1",
    "flight_hours": 2.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "08:15",
+   "arr_time": "12:15",
+   "ret_dep_time": "23:59",
+   "timing_flags": [],
+   "airline": "MW",
+   "transfers": 1,
+   "daily_spend": 40,
+   "spend_total": 120,
+   "grand_total": 549
   },
   {
    "dest": "TGD",
@@ -2001,29 +2797,19 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Budva&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Budva/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
    "flight_hours": 1.4,
-   "sea_temp": 25
-  },
-  {
-   "dest": "VAR",
-   "name": "Varna",
-   "country": "\ud83c\udde7\ud83c\uddec Bulgaria",
-   "origin": "BTS",
-   "depart": "2026-08-14",
-   "return": "2026-08-18",
-   "nights": 4,
-   "weekend": "13 Aug weekend",
-   "flight": 172,
-   "hotel_night": 65,
-   "hotel_total": 260,
-   "total": 432,
-   "target": 200,
-   "url": "https://www.aviasales.com/search/BTS1408VAR18081?t=W617866980001786797300001595BTSBCNVAR17870961001787125800000555VARFCOCIABTS_137908580ad4b3cf90f55b122944fe47_15422&search_date=20072026&expected_price_uuid=019f7e88-aff2-8030-6b6d-cca5a3329b76&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=pDUy4dgo5_rcPW5FE7p3ag&expected_price_source=share&expected_price_currency=eur&expected_price=172",
-   "area": "Varna",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Varna&checkin=2026-08-14&checkout=2026-08-18&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Varna&checkin=2026-08-14&checkout=2026-08-18&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Varna/homes?checkin=2026-08-14&checkout=2026-08-18&adults=1",
-   "flight_hours": 1.8,
-   "sea_temp": 26
+   "sea_temp": 25,
+   "dep_time": "05:50",
+   "arr_time": "07:15",
+   "ret_dep_time": "07:50",
+   "timing_flags": [
+    "red_eye",
+    "early_return"
+   ],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 35,
+   "spend_total": 210,
+   "grand_total": 640
   },
   {
    "dest": "AGP",
@@ -2045,7 +2831,47 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Malaga&checkin=2026-08-20&checkout=2026-08-23&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Malaga/homes?checkin=2026-08-20&checkout=2026-08-23&adults=1",
    "flight_hours": 3.0,
-   "sea_temp": 22
+   "sea_temp": 22,
+   "dep_time": "06:10",
+   "arr_time": "10:45",
+   "ret_dep_time": "15:20",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 45,
+   "spend_total": 180,
+   "grand_total": 613
+  },
+  {
+   "dest": "VAR",
+   "name": "Varna",
+   "country": "\ud83c\udde7\ud83c\uddec Bulgaria",
+   "origin": "BTS",
+   "depart": "2026-08-14",
+   "return": "2026-08-18",
+   "nights": 4,
+   "weekend": "13 Aug weekend",
+   "flight": 173,
+   "hotel_night": 65,
+   "hotel_total": 260,
+   "total": 433,
+   "target": 200,
+   "url": "https://www.aviasales.com/search/BTS1408VAR18081?t=W617866980001786797300001595BTSBCNVAR17870961001787125800000555VARFCOCIABTS_137908580ad4b3cf90f55b122944fe47_15422&search_date=20072026&expected_price_uuid=019f7e88-aff2-8030-6b6d-cca5a3329b76&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=pDUy4dgo5_rcPW5FE7p3ag&expected_price_source=share&expected_price_currency=eur&expected_price=173",
+   "area": "Varna",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Varna&checkin=2026-08-14&checkout=2026-08-18&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Varna&checkin=2026-08-14&checkout=2026-08-18&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Varna/homes?checkin=2026-08-14&checkout=2026-08-18&adults=1",
+   "flight_hours": 1.8,
+   "sea_temp": 26,
+   "dep_time": "09:00",
+   "arr_time": "14:45",
+   "ret_dep_time": "23:35",
+   "timing_flags": [],
+   "airline": "W6",
+   "transfers": 1,
+   "daily_spend": 30,
+   "spend_total": 150,
+   "grand_total": 583
   },
   {
    "dest": "SUF",
@@ -2067,7 +2893,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Tropea&checkin=2026-07-24&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Tropea/homes?checkin=2026-07-24&checkout=2026-07-28&adults=1",
    "flight_hours": 1.8,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "14:55",
+   "arr_time": "16:50",
+   "ret_dep_time": "06:05",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 42,
+   "spend_total": 210,
+   "grand_total": 644
   },
   {
    "dest": "NCE",
@@ -2089,7 +2926,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-08-14&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-08-14&checkout=2026-08-16&adults=1",
    "flight_hours": 1.5,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "09:40",
+   "arr_time": "12:35",
+   "ret_dep_time": "16:25",
+   "timing_flags": [],
+   "airline": "W6",
+   "transfers": 1,
+   "daily_spend": 65,
+   "spend_total": 195,
+   "grand_total": 634
   },
   {
    "dest": "PMI",
@@ -2111,7 +2957,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-07-23&checkout=2026-07-26&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-07-23&checkout=2026-07-26&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "19:50",
+   "arr_time": "22:20",
+   "ret_dep_time": "17:45",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 220,
+   "grand_total": 661
   },
   {
    "dest": "TGD",
@@ -2133,7 +2990,19 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Budva&checkin=2026-08-13&checkout=2026-08-18&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Budva/homes?checkin=2026-08-13&checkout=2026-08-18&adults=1",
    "flight_hours": 1.4,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "05:50",
+   "arr_time": "07:15",
+   "ret_dep_time": "07:50",
+   "timing_flags": [
+    "red_eye",
+    "early_return"
+   ],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 35,
+   "spend_total": 210,
+   "grand_total": 652
   },
   {
    "dest": "BRI",
@@ -2155,7 +3024,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Bari&checkin=2026-08-27&checkout=2026-08-31&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Bari/homes?checkin=2026-08-27&checkout=2026-08-31&adults=1",
    "flight_hours": 1.5,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "06:40",
+   "arr_time": "09:35",
+   "ret_dep_time": "20:05",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 45,
+   "spend_total": 225,
+   "grand_total": 667
   },
   {
    "dest": "BRI",
@@ -2177,7 +3055,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Bari&checkin=2026-08-08&checkout=2026-08-12&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Bari/homes?checkin=2026-08-08&checkout=2026-08-12&adults=1",
    "flight_hours": 1.5,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "17:55",
+   "arr_time": "20:55",
+   "ret_dep_time": "23:40",
+   "timing_flags": [],
+   "airline": "RR",
+   "transfers": 1,
+   "daily_spend": 45,
+   "spend_total": 225,
+   "grand_total": 668
   },
   {
    "dest": "PUY",
@@ -2199,7 +3086,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Pula&checkin=2026-08-22&checkout=2026-08-26&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Pula/homes?checkin=2026-08-22&checkout=2026-08-26&adults=1",
    "flight_hours": 1.0,
-   "sea_temp": 24
+   "sea_temp": 24,
+   "dep_time": "05:55",
+   "arr_time": "07:00",
+   "ret_dep_time": "09:15",
+   "timing_flags": [
+    "red_eye"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 225,
+   "grand_total": 669
   },
   {
    "dest": "MRS",
@@ -2221,7 +3119,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Marseille&checkin=2026-08-01&checkout=2026-08-04&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Marseille/homes?checkin=2026-08-01&checkout=2026-08-04&adults=1",
    "flight_hours": 1.6,
-   "sea_temp": 24
+   "sea_temp": 24,
+   "dep_time": "05:45",
+   "arr_time": "10:30",
+   "ret_dep_time": "20:50",
+   "timing_flags": [
+    "red_eye"
+   ],
+   "airline": "LW",
+   "transfers": 2,
+   "daily_spend": 55,
+   "spend_total": 220,
+   "grand_total": 665
   },
   {
    "dest": "IBZ",
@@ -2243,7 +3152,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Ibiza&checkin=2026-08-14&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Ibiza/homes?checkin=2026-08-14&checkout=2026-08-16&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "10:50",
+   "arr_time": "13:30",
+   "ret_dep_time": "00:30",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 75,
+   "spend_total": 225,
+   "grand_total": 671
   },
   {
    "dest": "BCN",
@@ -2265,7 +3185,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-01&checkout=2026-08-04&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-01&checkout=2026-08-04&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "20:35",
+   "arr_time": "23:00",
+   "ret_dep_time": "22:00",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 220,
+   "grand_total": 666
   },
   {
    "dest": "TGD",
@@ -2287,7 +3218,19 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Budva&checkin=2026-08-29&checkout=2026-09-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Budva/homes?checkin=2026-08-29&checkout=2026-09-03&adults=1",
    "flight_hours": 1.4,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "05:50",
+   "arr_time": "07:15",
+   "ret_dep_time": "07:50",
+   "timing_flags": [
+    "red_eye",
+    "early_return"
+   ],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 35,
+   "spend_total": 210,
+   "grand_total": 656
   },
   {
    "dest": "BCN",
@@ -2309,7 +3252,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-06&checkout=2026-08-09&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-06&checkout=2026-08-09&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "17:45",
+   "arr_time": "20:20",
+   "ret_dep_time": "22:05",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 220,
+   "grand_total": 667
   },
   {
    "dest": "TGD",
@@ -2331,7 +3283,19 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Budva&checkin=2026-07-24&checkout=2026-07-26&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Budva/homes?checkin=2026-07-24&checkout=2026-07-26&adults=1",
    "flight_hours": 1.4,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "22:20",
+   "arr_time": "23:45",
+   "ret_dep_time": "07:00",
+   "timing_flags": [
+    "late_arrival",
+    "early_return"
+   ],
+   "airline": "OS",
+   "transfers": 0,
+   "daily_spend": 35,
+   "spend_total": 105,
+   "grand_total": 553
   },
   {
    "dest": "BCN",
@@ -2353,7 +3317,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-21&checkout=2026-08-24&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-21&checkout=2026-08-24&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "09:00",
+   "arr_time": "11:30",
+   "ret_dep_time": "21:40",
+   "timing_flags": [],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 220,
+   "grand_total": 670
   },
   {
    "dest": "PMO",
@@ -2375,7 +3348,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-08-27&checkout=2026-08-31&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Palermo/homes?checkin=2026-08-27&checkout=2026-08-31&adults=1",
    "flight_hours": 2.0,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "06:40",
+   "arr_time": "09:55",
+   "ret_dep_time": "21:45",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 45,
+   "spend_total": 225,
+   "grand_total": 675
   },
   {
    "dest": "LIS",
@@ -2397,7 +3379,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Cascais&checkin=2026-07-31&checkout=2026-08-02&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Cascais/homes?checkin=2026-07-31&checkout=2026-08-02&adults=1",
    "flight_hours": 3.5,
-   "sea_temp": 20
+   "sea_temp": 20,
+   "dep_time": "11:25",
+   "arr_time": "15:10",
+   "ret_dep_time": "18:40",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 135,
+   "grand_total": 588
   },
   {
    "dest": "NCE",
@@ -2419,7 +3410,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-07-25&checkout=2026-07-27&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-07-25&checkout=2026-07-27&adults=1",
    "flight_hours": 1.5,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "18:55",
+   "arr_time": "20:40",
+   "ret_dep_time": "09:45",
+   "timing_flags": [],
+   "airline": "BT",
+   "transfers": 0,
+   "daily_spend": 65,
+   "spend_total": 195,
+   "grand_total": 648
   },
   {
    "dest": "PMI",
@@ -2441,7 +3441,19 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-08-27&checkout=2026-08-30&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-08-27&checkout=2026-08-30&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "19:50",
+   "arr_time": "22:20",
+   "ret_dep_time": "06:45",
+   "timing_flags": [
+    "late_arrival",
+    "early_return"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 220,
+   "grand_total": 674
   },
   {
    "dest": "NAP",
@@ -2463,7 +3475,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Sorrento&checkin=2026-07-24&checkout=2026-07-27&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Sorrento/homes?checkin=2026-07-24&checkout=2026-07-27&adults=1",
    "flight_hours": 1.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "16:30",
+   "arr_time": "18:20",
+   "ret_dep_time": "19:25",
+   "timing_flags": [],
+   "airline": "MW",
+   "transfers": 0,
+   "daily_spend": 50,
+   "spend_total": 200,
+   "grand_total": 655
   },
   {
    "dest": "NCE",
@@ -2485,7 +3506,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-07-24&checkout=2026-07-26&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-07-24&checkout=2026-07-26&adults=1",
    "flight_hours": 1.5,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "12:10",
+   "arr_time": "15:30",
+   "ret_dep_time": "22:30",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 65,
+   "spend_total": 195,
+   "grand_total": 650
   },
   {
    "dest": "BCN",
@@ -2507,7 +3537,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-29&checkout=2026-09-01&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-29&checkout=2026-09-01&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "14:30",
+   "arr_time": "17:35",
+   "ret_dep_time": "18:45",
+   "timing_flags": [],
+   "airline": "EC",
+   "transfers": 1,
+   "daily_spend": 55,
+   "spend_total": 220,
+   "grand_total": 676
   },
   {
    "dest": "BCN",
@@ -2529,7 +3568,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-14&checkout=2026-08-17&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-14&checkout=2026-08-17&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "09:00",
+   "arr_time": "11:30",
+   "ret_dep_time": "21:45",
+   "timing_flags": [],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 220,
+   "grand_total": 677
   },
   {
    "dest": "CTA",
@@ -2551,7 +3599,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Catania&checkin=2026-08-27&checkout=2026-08-31&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Catania/homes?checkin=2026-08-27&checkout=2026-08-31&adults=1",
    "flight_hours": 2.0,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "06:40",
+   "arr_time": "10:05",
+   "ret_dep_time": "23:50",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 45,
+   "spend_total": 225,
+   "grand_total": 683
   },
   {
    "dest": "ATH",
@@ -2573,7 +3630,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Glyfada&checkin=2026-08-14&checkout=2026-08-18&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Glyfada/homes?checkin=2026-08-14&checkout=2026-08-18&adults=1",
    "flight_hours": 2.3,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "19:55",
+   "arr_time": "22:10",
+   "ret_dep_time": "17:35",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 225,
+   "grand_total": 684
   },
   {
    "dest": "DBV",
@@ -2595,7 +3663,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Dubrovnik&checkin=2026-08-22&checkout=2026-08-25&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Dubrovnik/homes?checkin=2026-08-22&checkout=2026-08-25&adults=1",
    "flight_hours": 1.4,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "06:45",
+   "arr_time": "08:10",
+   "ret_dep_time": "20:30",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 60,
+   "spend_total": 240,
+   "grand_total": 701
   },
   {
    "dest": "ALC",
@@ -2617,29 +3694,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-08-21&checkout=2026-08-25&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-08-21&checkout=2026-08-25&adults=1",
    "flight_hours": 2.7,
-   "sea_temp": 26
-  },
-  {
-   "dest": "NCE",
-   "name": "Nice / French Riviera",
-   "country": "\ud83c\uddeb\ud83c\uddf7 France",
-   "origin": "VIE",
-   "depart": "2026-07-31",
-   "return": "2026-08-02",
-   "nights": 2,
-   "weekend": "30 Jul weekend",
-   "flight": 244,
-   "hotel_night": 110,
-   "hotel_total": 220,
-   "total": 464,
-   "target": 300,
-   "url": "https://www.aviasales.com/search/VIE3107NCE02081?t=OS17854821001785488400000105VIENCE17856639001785669900000100NCEVIE_ec250d7bec55432ea0dc2ae4c1b153e5_21274&search_date=13072026&expected_price_uuid=019f5b4d-13e8-8030-2961-295debb91c51&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=nbeJO5Br7KpCEfhmLuS-Qw&expected_price_source=share&expected_price_currency=eur&expected_price=244",
-   "area": "Nice",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-07-31&checkout=2026-08-02&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-07-31&checkout=2026-08-02&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-07-31&checkout=2026-08-02&adults=1",
-   "flight_hours": 1.5,
-   "sea_temp": 25
+   "sea_temp": 26,
+   "dep_time": "05:40",
+   "arr_time": "08:50",
+   "ret_dep_time": "18:15",
+   "timing_flags": [
+    "red_eye"
+   ],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 225,
+   "grand_total": 689
   },
   {
    "dest": "TGD",
@@ -2661,7 +3727,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Budva&checkin=2026-07-24&checkout=2026-07-27&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Budva/homes?checkin=2026-07-24&checkout=2026-07-27&adults=1",
    "flight_hours": 1.4,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "22:20",
+   "arr_time": "23:45",
+   "ret_dep_time": "12:05",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "OS",
+   "transfers": 0,
+   "daily_spend": 35,
+   "spend_total": 140,
+   "grand_total": 606
   },
   {
    "dest": "NCE",
@@ -2683,7 +3760,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-08-28&checkout=2026-08-31&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-08-28&checkout=2026-08-31&adults=1",
    "flight_hours": 1.5,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "09:40",
+   "arr_time": "12:35",
+   "ret_dep_time": "17:55",
+   "timing_flags": [],
+   "airline": "W6",
+   "transfers": 1,
+   "daily_spend": 65,
+   "spend_total": 260,
+   "grand_total": 728
   },
   {
    "dest": "CFU",
@@ -2705,29 +3791,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1",
    "flight_hours": 1.8,
-   "sea_temp": 27
-  },
-  {
-   "dest": "CTA",
-   "name": "Catania, Sicily",
-   "country": "\ud83c\uddee\ud83c\uddf9 Italy",
-   "origin": "VIE",
-   "depart": "2026-07-25",
-   "return": "2026-07-29",
-   "nights": 4,
-   "weekend": "23 Jul weekend",
-   "flight": 151,
-   "hotel_night": 80,
-   "hotel_total": 320,
-   "total": 471,
-   "target": 250,
-   "url": "https://www.aviasales.com/search/VIE2507CTA29071?t=FR17849985001785006000000125VIECTA17853660001785406500000675CTAFCOVIE_7e9dcf23f563b6c9eafcd5dd689935cd_13517&search_date=17072026&expected_price_uuid=019f6f09-2c0e-8030-a226-84b36d716d70&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=xx0vyVWW0kikWKRuPXpUbg&expected_price_source=share&expected_price_currency=eur&expected_price=151",
-   "area": "Catania",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Catania&checkin=2026-07-25&checkout=2026-07-29&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Catania&checkin=2026-07-25&checkout=2026-07-29&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Catania/homes?checkin=2026-07-25&checkout=2026-07-29&adults=1",
-   "flight_hours": 2.0,
-   "sea_temp": 26
+   "sea_temp": 27,
+   "dep_time": "19:00",
+   "arr_time": "22:35",
+   "ret_dep_time": "23:40",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "MW",
+   "transfers": 1,
+   "daily_spend": 42,
+   "spend_total": 168,
+   "grand_total": 639
   },
   {
    "dest": "VAR",
@@ -2749,7 +3824,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Varna&checkin=2026-08-08&checkout=2026-08-12&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Varna/homes?checkin=2026-08-08&checkout=2026-08-12&adults=1",
    "flight_hours": 1.8,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "10:00",
+   "arr_time": "14:05",
+   "ret_dep_time": "19:25",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 30,
+   "spend_total": 150,
+   "grand_total": 621
   },
   {
    "dest": "MLA",
@@ -2771,7 +3855,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Malta&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Malta/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1",
    "flight_hours": 2.0,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "06:10",
+   "arr_time": "09:35",
+   "ret_dep_time": "12:05",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 48,
+   "spend_total": 192,
+   "grand_total": 667
   },
   {
    "dest": "RHO",
@@ -2793,7 +3886,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Rhodes&checkin=2026-08-21&checkout=2026-08-24&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Rhodes/homes?checkin=2026-08-21&checkout=2026-08-24&adults=1",
    "flight_hours": 2.8,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "07:40",
+   "arr_time": "11:55",
+   "ret_dep_time": "19:55",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 42,
+   "spend_total": 168,
+   "grand_total": 644
   },
   {
    "dest": "NCE",
@@ -2815,7 +3917,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-08-27&checkout=2026-08-30&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-08-27&checkout=2026-08-30&adults=1",
    "flight_hours": 1.5,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "06:00",
+   "arr_time": "07:55",
+   "ret_dep_time": "22:30",
+   "timing_flags": [],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 65,
+   "spend_total": 260,
+   "grand_total": 736
   },
   {
    "dest": "ZAD",
@@ -2837,7 +3948,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Zadar&checkin=2026-08-07&checkout=2026-08-09&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Zadar/homes?checkin=2026-08-07&checkout=2026-08-09&adults=1",
    "flight_hours": 1.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "17:05",
+   "arr_time": "18:15",
+   "ret_dep_time": "09:55",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 135,
+   "grand_total": 612
   },
   {
    "dest": "AGP",
@@ -2859,7 +3979,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Malaga&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Malaga/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1",
    "flight_hours": 3.0,
-   "sea_temp": 22
+   "sea_temp": 22,
+   "dep_time": "06:40",
+   "arr_time": "12:30",
+   "ret_dep_time": "09:25",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 2,
+   "daily_spend": 45,
+   "spend_total": 180,
+   "grand_total": 660
   },
   {
    "dest": "NAP",
@@ -2881,7 +4010,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Sorrento&checkin=2026-07-25&checkout=2026-07-29&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Sorrento/homes?checkin=2026-07-25&checkout=2026-07-29&adults=1",
    "flight_hours": 1.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "16:45",
+   "arr_time": "18:35",
+   "ret_dep_time": "17:15",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 50,
+   "spend_total": 250,
+   "grand_total": 732
   },
   {
    "dest": "BCN",
@@ -2903,29 +4041,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-07&checkout=2026-08-10&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-07&checkout=2026-08-10&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 25
-  },
-  {
-   "dest": "BCN",
-   "name": "Barcelona",
-   "country": "\ud83c\uddea\ud83c\uddf8 Spain",
-   "origin": "VIE",
-   "depart": "2026-08-21",
-   "return": "2026-08-24",
-   "nights": 3,
-   "weekend": "20 Aug weekend",
-   "flight": 169,
-   "hotel_night": 105,
-   "hotel_total": 315,
-   "total": 484,
-   "target": 280,
-   "url": "https://www.aviasales.com/search/VIE2108BCN24081?t=VY17872938001787358900001085VIEVCEBCN17876118001787679300001125BCNVCEVIE_b3c14390e36015486a3c3e1ca9e5edfb_15153&search_date=20072026&expected_price_uuid=019f7e8a-9539-8030-a83b-afa5511a6c28&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Anullw49QrjmMINPblFvYQ&expected_price_source=share&expected_price_currency=eur&expected_price=169",
-   "area": "Barcelona",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-21&checkout=2026-08-24&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-21&checkout=2026-08-24&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-21&checkout=2026-08-24&adults=1",
-   "flight_hours": 2.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "06:30",
+   "arr_time": "09:45",
+   "ret_dep_time": "19:55",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 55,
+   "spend_total": 220,
+   "grand_total": 704
   },
   {
    "dest": "PUY",
@@ -2947,7 +4072,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Pula&checkin=2026-08-29&checkout=2026-09-02&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Pula/homes?checkin=2026-08-29&checkout=2026-09-02&adults=1",
    "flight_hours": 1.0,
-   "sea_temp": 24
+   "sea_temp": 24,
+   "dep_time": "05:55",
+   "arr_time": "07:00",
+   "ret_dep_time": "09:20",
+   "timing_flags": [
+    "red_eye"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 225,
+   "grand_total": 709
   },
   {
    "dest": "LIS",
@@ -2969,7 +4105,47 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Cascais&checkin=2026-08-01&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Cascais/homes?checkin=2026-08-01&checkout=2026-08-03&adults=1",
    "flight_hours": 3.5,
-   "sea_temp": 20
+   "sea_temp": 20,
+   "dep_time": "18:05",
+   "arr_time": "21:50",
+   "ret_dep_time": "21:00",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 135,
+   "grand_total": 619
+  },
+  {
+   "dest": "BCN",
+   "name": "Barcelona",
+   "country": "\ud83c\uddea\ud83c\uddf8 Spain",
+   "origin": "VIE",
+   "depart": "2026-08-21",
+   "return": "2026-08-24",
+   "nights": 3,
+   "weekend": "20 Aug weekend",
+   "flight": 170,
+   "hotel_night": 105,
+   "hotel_total": 315,
+   "total": 485,
+   "target": 280,
+   "url": "https://www.aviasales.com/search/VIE2108BCN24081?t=VY17872938001787358900001085VIEVCEBCN17876118001787679300001125BCNVCEVIE_b3c14390e36015486a3c3e1ca9e5edfb_15153&search_date=20072026&expected_price_uuid=019f7e8a-9539-8030-a83b-afa5511a6c28&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Anullw49QrjmMINPblFvYQ&expected_price_source=share&expected_price_currency=eur&expected_price=170",
+   "area": "Barcelona",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-21&checkout=2026-08-24&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-21&checkout=2026-08-24&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-21&checkout=2026-08-24&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 25,
+   "dep_time": "06:30",
+   "arr_time": "09:45",
+   "ret_dep_time": "22:50",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 55,
+   "spend_total": 220,
+   "grand_total": 705
   },
   {
    "dest": "PUY",
@@ -2991,7 +4167,19 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Pula&checkin=2026-08-15&checkout=2026-08-19&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Pula/homes?checkin=2026-08-15&checkout=2026-08-19&adults=1",
    "flight_hours": 1.0,
-   "sea_temp": 24
+   "sea_temp": 24,
+   "dep_time": "05:55",
+   "arr_time": "07:00",
+   "ret_dep_time": "08:40",
+   "timing_flags": [
+    "red_eye",
+    "early_return"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 225,
+   "grand_total": 710
   },
   {
    "dest": "DXB",
@@ -3014,8 +4202,20 @@
    "airbnb": "https://www.airbnb.com/s/Dubai/homes?checkin=2026-08-15&checkout=2026-08-17&adults=1",
    "flight_hours": 6.0,
    "sea_temp": 33,
+   "dep_time": "20:05",
+   "arr_time": "02:45",
+   "ret_dep_time": "07:20",
+   "timing_flags": [
+    "late_arrival",
+    "early_return"
+   ],
+   "airline": "PC",
+   "transfers": 1,
+   "daily_spend": 65,
+   "spend_total": 195,
+   "grand_total": 681,
    "reasons": [
-    "25%+ below 2-week avg (\u20ac716)"
+    "25%+ below 2-week avg (\u20ac683)"
    ]
   },
   {
@@ -3038,7 +4238,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-08-20&checkout=2026-08-23&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-08-20&checkout=2026-08-23&adults=1",
    "flight_hours": 1.5,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "06:10",
+   "arr_time": "09:10",
+   "ret_dep_time": "22:30",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 65,
+   "spend_total": 260,
+   "grand_total": 748
   },
   {
    "dest": "ACE",
@@ -3060,7 +4269,51 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Lanzarote&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Lanzarote/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
    "flight_hours": 5.0,
-   "sea_temp": 23
+   "sea_temp": 23,
+   "dep_time": "19:00",
+   "arr_time": "02:55",
+   "ret_dep_time": "20:35",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "FR",
+   "transfers": 2,
+   "daily_spend": 45,
+   "spend_total": 270,
+   "grand_total": 760
+  },
+  {
+   "dest": "CTA",
+   "name": "Catania, Sicily",
+   "country": "\ud83c\uddee\ud83c\uddf9 Italy",
+   "origin": "VIE",
+   "depart": "2026-07-25",
+   "return": "2026-07-29",
+   "nights": 4,
+   "weekend": "23 Jul weekend",
+   "flight": 172,
+   "hotel_night": 80,
+   "hotel_total": 320,
+   "total": 492,
+   "target": 250,
+   "url": "https://www.aviasales.com/search/VIE2507CTA29071?t=FR17849985001785006000000125VIECTA17853057001785336600000515CTAMXPLINVIE_5f4ee59fa40764a6467c3b23f9851f0a_15455&search_date=20072026&expected_price_uuid=019f7f58-0919-8040-6555-b506ef346f82&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=WjFpfvdaldiE4KReBgHYSQ&expected_price_source=share&expected_price_currency=eur&expected_price=172",
+   "area": "Catania",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Catania&checkin=2026-07-25&checkout=2026-07-29&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Catania&checkin=2026-07-25&checkout=2026-07-29&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Catania/homes?checkin=2026-07-25&checkout=2026-07-29&adults=1",
+   "flight_hours": 2.0,
+   "sea_temp": 26,
+   "dep_time": "16:55",
+   "arr_time": "19:00",
+   "ret_dep_time": "06:15",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 225,
+   "grand_total": 717
   },
   {
    "dest": "SUF",
@@ -3082,29 +4335,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Tropea&checkin=2026-07-24&checkout=2026-07-27&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Tropea/homes?checkin=2026-07-24&checkout=2026-07-27&adults=1",
    "flight_hours": 1.8,
-   "sea_temp": 27
-  },
-  {
-   "dest": "TPS",
-   "name": "Trapani / San Vito Lo Capo",
-   "country": "\ud83c\uddee\ud83c\uddf9 Italy",
-   "origin": "VIE",
-   "depart": "2026-07-30",
-   "return": "2026-08-03",
-   "nights": 4,
-   "weekend": "30 Jul weekend",
-   "flight": 172,
-   "hotel_night": 80,
-   "hotel_total": 320,
-   "total": 492,
-   "target": 250,
-   "url": "https://www.aviasales.com/search/VIE3007TPS03081?t=FR17854059001785518400001875VIEBLQMLATPS17857989001785834300000590TPSBGYVIE_a5b3196af17fb2709ce59f16405f61bd_15002&search_date=13072026&expected_price_uuid=019f5b6a-9d1f-8030-e688-cf956f16ec0f&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=UutTsoSciDIX_JYfNvvYog&expected_price_source=share&expected_price_currency=eur&expected_price=172",
-   "area": "San Vito Lo Capo",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=San%20Vito%20Lo%20Capo&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=San%20Vito%20Lo%20Capo&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/San%20Vito%20Lo%20Capo/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
-   "flight_hours": 2.0,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "14:55",
+   "arr_time": "16:50",
+   "ret_dep_time": "19:15",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 42,
+   "spend_total": 168,
+   "grand_total": 660
   },
   {
    "dest": "EFL",
@@ -3126,7 +4366,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Kefalonia&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Kefalonia/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "06:10",
+   "arr_time": "09:45",
+   "ret_dep_time": "08:55",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 45,
+   "spend_total": 225,
+   "grand_total": 726
   },
   {
    "dest": "VLC",
@@ -3148,29 +4399,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Valencia&checkin=2026-07-25&checkout=2026-07-29&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Valencia/homes?checkin=2026-07-25&checkout=2026-07-29&adults=1",
    "flight_hours": 2.5,
-   "sea_temp": 26
-  },
-  {
-   "dest": "CFU",
-   "name": "Corfu",
-   "country": "\ud83c\uddec\ud83c\uddf7 Greece",
-   "origin": "BTS",
-   "depart": "2026-07-30",
-   "return": "2026-08-03",
-   "nights": 4,
-   "weekend": "30 Jul weekend",
-   "flight": 164,
-   "hotel_night": 85,
-   "hotel_total": 340,
-   "total": 504,
-   "target": 270,
-   "url": "https://www.aviasales.com/search/BTS3007CFU03081?t=W417854380001785458100000275BTSMXPCFU17857158001785784200001200CFUMXPBTS_2ee6731d78b5ebf7d9cdd7a11a118164_14314&search_date=13072026&expected_price_uuid=019f5b64-2c8a-8030-ee35-81b4b8b07b2f&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=r12VARQBM0mtg5xTt7Lcog&expected_price_source=share&expected_price_currency=eur&expected_price=164",
-   "area": "Corfu",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
-   "flight_hours": 1.8,
-   "sea_temp": 27
+   "sea_temp": 26,
+   "dep_time": "13:15",
+   "arr_time": "17:30",
+   "ret_dep_time": "09:15",
+   "timing_flags": [],
+   "airline": "RR",
+   "transfers": 1,
+   "daily_spend": 45,
+   "spend_total": 225,
+   "grand_total": 729
   },
   {
    "dest": "DBV",
@@ -3192,29 +4430,19 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Dubrovnik&checkin=2026-07-23&checkout=2026-07-26&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Dubrovnik/homes?checkin=2026-07-23&checkout=2026-07-26&adults=1",
    "flight_hours": 1.4,
-   "sea_temp": 25
-  },
-  {
-   "dest": "CFU",
-   "name": "Corfu",
-   "country": "\ud83c\uddec\ud83c\uddf7 Greece",
-   "origin": "VIE",
-   "depart": "2026-07-30",
-   "return": "2026-08-03",
-   "nights": 4,
-   "weekend": "30 Jul weekend",
-   "flight": 165,
-   "hotel_night": 85,
-   "hotel_total": 340,
-   "total": 505,
-   "target": 270,
-   "url": "https://www.aviasales.com/search/VIE3007CFU03081?t=W417853936001785458100001015VIEBGYMXPCFU17857158001785768600000940CFUMXPLINVIE_5be6c9f8c19942dd500e0779409df226_14422&search_date=13072026&expected_price_uuid=019f5b63-d761-8030-e4ce-1b205c4908a9&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=UknCGvy4REV0li3HPeXVeA&expected_price_source=share&expected_price_currency=eur&expected_price=165",
-   "area": "Corfu",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
-   "flight_hours": 1.8,
-   "sea_temp": 27
+   "sea_temp": 25,
+   "dep_time": "21:35",
+   "arr_time": "22:50",
+   "ret_dep_time": "07:05",
+   "timing_flags": [
+    "late_arrival",
+    "early_return"
+   ],
+   "airline": "OS",
+   "transfers": 0,
+   "daily_spend": 60,
+   "spend_total": 240,
+   "grand_total": 744
   },
   {
    "dest": "BCN",
@@ -3236,29 +4464,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-21&checkout=2026-08-25&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-21&checkout=2026-08-25&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 25
-  },
-  {
-   "dest": "TPS",
-   "name": "Trapani / San Vito Lo Capo",
-   "country": "\ud83c\uddee\ud83c\uddf9 Italy",
-   "origin": "BTS",
-   "depart": "2026-07-30",
-   "return": "2026-08-03",
-   "nights": 4,
-   "weekend": "30 Jul weekend",
-   "flight": 187,
-   "hotel_night": 80,
-   "hotel_total": 320,
-   "total": 507,
-   "target": 250,
-   "url": "https://www.aviasales.com/search/BTS3007TPS03081?t=W617854086001785456300000795BTSFCOTPS17857989001785844200000755TPSBGYMXPBTS_70ff8be14fce4cd122607f6a5a2c4d04_16304&search_date=13072026&expected_price_uuid=019f5b6a-e88c-8030-eb90-b61c58c4d254&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=CD_jnMhIIPtJ-VthqX4K6w&expected_price_source=share&expected_price_currency=eur&expected_price=187",
-   "area": "San Vito Lo Capo",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=San%20Vito%20Lo%20Capo&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=San%20Vito%20Lo%20Capo&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/San%20Vito%20Lo%20Capo/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
-   "flight_hours": 2.0,
-   "sea_temp": 27
+   "sea_temp": 25,
+   "dep_time": "09:00",
+   "arr_time": "11:30",
+   "ret_dep_time": "12:25",
+   "timing_flags": [],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 275,
+   "grand_total": 782
   },
   {
    "dest": "CAG",
@@ -3280,7 +4495,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Cagliari&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Cagliari/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
    "flight_hours": 1.9,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "06:10",
+   "arr_time": "09:00",
+   "ret_dep_time": "23:30",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 1,
+   "daily_spend": 48,
+   "spend_total": 240,
+   "grand_total": 749
   },
   {
    "dest": "MLA",
@@ -3302,7 +4526,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Malta&checkin=2026-08-08&checkout=2026-08-12&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Malta/homes?checkin=2026-08-08&checkout=2026-08-12&adults=1",
    "flight_hours": 2.0,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "15:10",
+   "arr_time": "19:30",
+   "ret_dep_time": "14:20",
+   "timing_flags": [],
+   "airline": "RR",
+   "transfers": 1,
+   "daily_spend": 48,
+   "spend_total": 240,
+   "grand_total": 749
   },
   {
    "dest": "BCN",
@@ -3324,7 +4557,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-07-31&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-07-31&checkout=2026-08-03&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "15:00",
+   "arr_time": "17:20",
+   "ret_dep_time": "20:40",
+   "timing_flags": [],
+   "airline": "OS",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 220,
+   "grand_total": 732
   },
   {
    "dest": "BOJ",
@@ -3346,7 +4588,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Burgas&checkin=2026-08-01&checkout=2026-08-04&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Burgas/homes?checkin=2026-08-01&checkout=2026-08-04&adults=1",
    "flight_hours": 1.9,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "06:30",
+   "arr_time": "09:55",
+   "ret_dep_time": "22:35",
+   "timing_flags": [],
+   "airline": "LO",
+   "transfers": 1,
+   "daily_spend": 30,
+   "spend_total": 120,
+   "grand_total": 632
   },
   {
    "dest": "NCE",
@@ -3368,7 +4619,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-08-06&checkout=2026-08-09&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-08-06&checkout=2026-08-09&adults=1",
    "flight_hours": 1.5,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "06:00",
+   "arr_time": "07:55",
+   "ret_dep_time": "08:50",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 65,
+   "spend_total": 260,
+   "grand_total": 772
   },
   {
    "dest": "BCN",
@@ -3390,7 +4652,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-07-30&checkout=2026-08-02&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-07-30&checkout=2026-08-02&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "16:30",
+   "arr_time": "18:55",
+   "ret_dep_time": "11:45",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 220,
+   "grand_total": 733
   },
   {
    "dest": "NAP",
@@ -3412,7 +4683,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Sorrento&checkin=2026-08-27&checkout=2026-08-31&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Sorrento/homes?checkin=2026-08-27&checkout=2026-08-31&adults=1",
    "flight_hours": 1.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "07:25",
+   "arr_time": "09:00",
+   "ret_dep_time": "09:50",
+   "timing_flags": [],
+   "airline": "OS",
+   "transfers": 0,
+   "daily_spend": 50,
+   "spend_total": 250,
+   "grand_total": 763
   },
   {
    "dest": "NCE",
@@ -3434,7 +4714,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-07-25&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-07-25&checkout=2026-07-28&adults=1",
    "flight_hours": 1.5,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "18:55",
+   "arr_time": "20:40",
+   "ret_dep_time": "21:25",
+   "timing_flags": [],
+   "airline": "BT",
+   "transfers": 0,
+   "daily_spend": 65,
+   "spend_total": 260,
+   "grand_total": 773
   },
   {
    "dest": "RHO",
@@ -3456,7 +4745,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Rhodes&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Rhodes/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
    "flight_hours": 2.8,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "07:10",
+   "arr_time": "12:20",
+   "ret_dep_time": "12:25",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 2,
+   "daily_spend": 42,
+   "spend_total": 210,
+   "grand_total": 724
   },
   {
    "dest": "BOJ",
@@ -3478,7 +4776,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Burgas&checkin=2026-08-08&checkout=2026-08-12&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Burgas/homes?checkin=2026-08-08&checkout=2026-08-12&adults=1",
    "flight_hours": 1.9,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "07:15",
+   "arr_time": "10:50",
+   "ret_dep_time": "09:50",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 30,
+   "spend_total": 150,
+   "grand_total": 665
   },
   {
    "dest": "CFU",
@@ -3500,7 +4807,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-08-07&checkout=2026-08-11&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-08-07&checkout=2026-08-11&adults=1",
    "flight_hours": 1.8,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "10:45",
+   "arr_time": "12:35",
+   "ret_dep_time": "09:35",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 42,
+   "spend_total": 210,
+   "grand_total": 729
   },
   {
    "dest": "FUE",
@@ -3522,7 +4838,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Fuerteventura&checkin=2026-07-23&checkout=2026-07-27&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Fuerteventura/homes?checkin=2026-07-23&checkout=2026-07-27&adults=1",
    "flight_hours": 5.1,
-   "sea_temp": 23
+   "sea_temp": 23,
+   "dep_time": "19:10",
+   "arr_time": "03:25",
+   "ret_dep_time": "21:50",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "MW",
+   "transfers": 2,
+   "daily_spend": 45,
+   "spend_total": 225,
+   "grand_total": 746
   },
   {
    "dest": "PMO",
@@ -3544,7 +4871,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-08-14&checkout=2026-08-19&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Palermo/homes?checkin=2026-08-14&checkout=2026-08-19&adults=1",
    "flight_hours": 2.0,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "19:20",
+   "arr_time": "22:15",
+   "ret_dep_time": "17:40",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "AL",
+   "transfers": 1,
+   "daily_spend": 45,
+   "spend_total": 270,
+   "grand_total": 791
   },
   {
    "dest": "AGP",
@@ -3566,7 +4904,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Malaga&checkin=2026-08-08&checkout=2026-08-12&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Malaga/homes?checkin=2026-08-08&checkout=2026-08-12&adults=1",
    "flight_hours": 3.0,
-   "sea_temp": 22
+   "sea_temp": 22,
+   "dep_time": "07:15",
+   "arr_time": "12:35",
+   "ret_dep_time": "22:40",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 1,
+   "daily_spend": 45,
+   "spend_total": 225,
+   "grand_total": 748
   },
   {
    "dest": "MLA",
@@ -3588,7 +4935,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Malta&checkin=2026-08-07&checkout=2026-08-11&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Malta/homes?checkin=2026-08-07&checkout=2026-08-11&adults=1",
    "flight_hours": 2.0,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "11:00",
+   "arr_time": "14:00",
+   "ret_dep_time": "14:20",
+   "timing_flags": [],
+   "airline": "W6",
+   "transfers": 1,
+   "daily_spend": 48,
+   "spend_total": 240,
+   "grand_total": 763
   },
   {
    "dest": "VLC",
@@ -3610,7 +4966,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Valencia&checkin=2026-08-28&checkout=2026-09-02&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Valencia/homes?checkin=2026-08-28&checkout=2026-09-02&adults=1",
    "flight_hours": 2.5,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "17:30",
+   "arr_time": "21:00",
+   "ret_dep_time": "09:20",
+   "timing_flags": [],
+   "airline": "AL",
+   "transfers": 1,
+   "daily_spend": 45,
+   "spend_total": 270,
+   "grand_total": 795
   },
   {
    "dest": "ALC",
@@ -3632,7 +4997,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-08-07&checkout=2026-08-12&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-08-07&checkout=2026-08-12&adults=1",
    "flight_hours": 2.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "05:40",
+   "arr_time": "08:50",
+   "ret_dep_time": "13:50",
+   "timing_flags": [
+    "red_eye"
+   ],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 270,
+   "grand_total": 796
   },
   {
    "dest": "CFU",
@@ -3654,7 +5030,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-08-01&checkout=2026-08-05&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-08-01&checkout=2026-08-05&adults=1",
    "flight_hours": 1.8,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "13:55",
+   "arr_time": "18:20",
+   "ret_dep_time": "09:20",
+   "timing_flags": [],
+   "airline": "W6",
+   "transfers": 2,
+   "daily_spend": 42,
+   "spend_total": 210,
+   "grand_total": 737
   },
   {
    "dest": "CFU",
@@ -3676,7 +5061,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-08-13&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-08-13&checkout=2026-08-16&adults=1",
    "flight_hours": 1.8,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "15:25",
+   "arr_time": "18:55",
+   "ret_dep_time": "00:45",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "EC",
+   "transfers": 1,
+   "daily_spend": 42,
+   "spend_total": 168,
+   "grand_total": 695
   },
   {
    "dest": "MLA",
@@ -3698,7 +5094,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Malta&checkin=2026-07-25&checkout=2026-07-29&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Malta/homes?checkin=2026-07-25&checkout=2026-07-29&adults=1",
    "flight_hours": 2.0,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "15:10",
+   "arr_time": "19:30",
+   "ret_dep_time": "06:15",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "RR",
+   "transfers": 1,
+   "daily_spend": 48,
+   "spend_total": 240,
+   "grand_total": 768
   },
   {
    "dest": "BCN",
@@ -3720,7 +5127,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-29&checkout=2026-09-02&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-29&checkout=2026-09-02&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "22:45",
+   "arr_time": "01:20",
+   "ret_dep_time": "11:35",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 275,
+   "grand_total": 804
   },
   {
    "dest": "HER",
@@ -3742,7 +5160,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Heraklion&checkin=2026-08-27&checkout=2026-08-31&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Heraklion/homes?checkin=2026-08-27&checkout=2026-08-31&adults=1",
    "flight_hours": 2.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "19:50",
+   "arr_time": "23:35",
+   "ret_dep_time": "23:30",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 40,
+   "spend_total": 200,
+   "grand_total": 729
   },
   {
    "dest": "ATH",
@@ -3764,7 +5193,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Glyfada&checkin=2026-08-01&checkout=2026-08-05&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Glyfada/homes?checkin=2026-08-01&checkout=2026-08-05&adults=1",
    "flight_hours": 2.3,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "13:55",
+   "arr_time": "18:35",
+   "ret_dep_time": "23:50",
+   "timing_flags": [],
+   "airline": "W6",
+   "transfers": 2,
+   "daily_spend": 45,
+   "spend_total": 225,
+   "grand_total": 755
   },
   {
    "dest": "PMI",
@@ -3786,7 +5224,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Palma%20de%20Mallorca&checkin=2026-07-23&checkout=2026-07-27&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-07-23&checkout=2026-07-27&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "19:50",
+   "arr_time": "22:20",
+   "ret_dep_time": "14:10",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 275,
+   "grand_total": 807
   },
   {
    "dest": "RHO",
@@ -3808,7 +5257,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Rhodes&checkin=2026-07-23&checkout=2026-07-27&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Rhodes/homes?checkin=2026-07-23&checkout=2026-07-27&adults=1",
    "flight_hours": 2.8,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "07:10",
+   "arr_time": "12:15",
+   "ret_dep_time": "15:00",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 2,
+   "daily_spend": 42,
+   "spend_total": 210,
+   "grand_total": 742
   },
   {
    "dest": "BRI",
@@ -3830,7 +5288,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Bari&checkin=2026-07-24&checkout=2026-07-29&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Bari/homes?checkin=2026-07-24&checkout=2026-07-29&adults=1",
    "flight_hours": 1.5,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "13:20",
+   "arr_time": "16:30",
+   "ret_dep_time": "23:40",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 45,
+   "spend_total": 270,
+   "grand_total": 804
   },
   {
    "dest": "ALC",
@@ -3852,7 +5319,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-07-24&checkout=2026-07-29&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-07-24&checkout=2026-07-29&adults=1",
    "flight_hours": 2.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "05:40",
+   "arr_time": "08:50",
+   "ret_dep_time": "09:35",
+   "timing_flags": [
+    "red_eye"
+   ],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 270,
+   "grand_total": 805
   },
   {
    "dest": "BCN",
@@ -3874,7 +5352,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-07&checkout=2026-08-11&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-07&checkout=2026-08-11&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "07:00",
+   "arr_time": "09:35",
+   "ret_dep_time": "21:20",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 275,
+   "grand_total": 810
   },
   {
    "dest": "MLA",
@@ -3896,7 +5383,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Malta&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Malta/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
    "flight_hours": 2.0,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "10:35",
+   "arr_time": "15:05",
+   "ret_dep_time": "14:20",
+   "timing_flags": [],
+   "airline": "W6",
+   "transfers": 2,
+   "daily_spend": 48,
+   "spend_total": 240,
+   "grand_total": 775
   },
   {
    "dest": "CHQ",
@@ -3918,7 +5414,19 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Chania&checkin=2026-07-23&checkout=2026-07-26&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Chania/homes?checkin=2026-07-23&checkout=2026-07-26&adults=1",
    "flight_hours": 2.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "18:05",
+   "arr_time": "22:05",
+   "ret_dep_time": "07:20",
+   "timing_flags": [
+    "late_arrival",
+    "early_return"
+   ],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 40,
+   "spend_total": 160,
+   "grand_total": 697
   },
   {
    "dest": "FUE",
@@ -3940,7 +5448,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Fuerteventura&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Fuerteventura/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
    "flight_hours": 5.1,
-   "sea_temp": 23
+   "sea_temp": 23,
+   "dep_time": "19:10",
+   "arr_time": "03:25",
+   "ret_dep_time": "11:05",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "FR",
+   "transfers": 2,
+   "daily_spend": 45,
+   "spend_total": 270,
+   "grand_total": 810
   },
   {
    "dest": "HER",
@@ -3962,7 +5481,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Heraklion&checkin=2026-07-31&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Heraklion/homes?checkin=2026-07-31&checkout=2026-08-03&adults=1",
    "flight_hours": 2.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "11:05",
+   "arr_time": "15:39",
+   "ret_dep_time": "23:20",
+   "timing_flags": [],
+   "airline": "DE",
+   "transfers": 1,
+   "daily_spend": 40,
+   "spend_total": 160,
+   "grand_total": 700
   },
   {
    "dest": "TFS",
@@ -3984,7 +5512,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Tenerife&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Tenerife/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
    "flight_hours": 5.0,
-   "sea_temp": 23
+   "sea_temp": 23,
+   "dep_time": "19:50",
+   "arr_time": "05:25",
+   "ret_dep_time": "05:45",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "FR",
+   "transfers": 2,
+   "daily_spend": 45,
+   "spend_total": 270,
+   "grand_total": 815
   },
   {
    "dest": "DBV",
@@ -4006,7 +5545,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Dubrovnik&checkin=2026-08-27&checkout=2026-08-31&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Dubrovnik/homes?checkin=2026-08-27&checkout=2026-08-31&adults=1",
    "flight_hours": 1.4,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "16:00",
+   "arr_time": "17:20",
+   "ret_dep_time": "08:40",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 60,
+   "spend_total": 300,
+   "grand_total": 846
   },
   {
    "dest": "SKG",
@@ -4028,7 +5578,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Thessaloniki&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Thessaloniki/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
    "flight_hours": 1.8,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "10:50",
+   "arr_time": "15:25",
+   "ret_dep_time": "20:40",
+   "timing_flags": [],
+   "airline": "W6",
+   "transfers": 2,
+   "daily_spend": 40,
+   "spend_total": 240,
+   "grand_total": 787
   },
   {
    "dest": "ZTH",
@@ -4050,7 +5609,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Zakynthos&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Zakynthos/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "10:50",
+   "arr_time": "14:20",
+   "ret_dep_time": "10:30",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 42,
+   "spend_total": 210,
+   "grand_total": 757
   },
   {
    "dest": "LIS",
@@ -4072,7 +5640,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Cascais&checkin=2026-07-24&checkout=2026-07-26&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Cascais/homes?checkin=2026-07-24&checkout=2026-07-26&adults=1",
    "flight_hours": 3.5,
-   "sea_temp": 20
+   "sea_temp": 20,
+   "dep_time": "20:00",
+   "arr_time": "00:50",
+   "ret_dep_time": "19:45",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "KL",
+   "transfers": 1,
+   "daily_spend": 45,
+   "spend_total": 135,
+   "grand_total": 684
   },
   {
    "dest": "LIS",
@@ -4094,7 +5673,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Cascais&checkin=2026-08-07&checkout=2026-08-09&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Cascais/homes?checkin=2026-08-07&checkout=2026-08-09&adults=1",
    "flight_hours": 3.5,
-   "sea_temp": 20
+   "sea_temp": 20,
+   "dep_time": "20:00",
+   "arr_time": "00:55",
+   "ret_dep_time": "19:45",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "KL",
+   "transfers": 1,
+   "daily_spend": 45,
+   "spend_total": 135,
+   "grand_total": 684
   },
   {
    "dest": "MLA",
@@ -4116,7 +5706,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Malta&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Malta/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
    "flight_hours": 2.0,
-   "sea_temp": 27
+   "sea_temp": 27,
+   "dep_time": "10:05",
+   "arr_time": "13:15",
+   "ret_dep_time": "07:05",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "FR",
+   "transfers": 1,
+   "daily_spend": 48,
+   "spend_total": 240,
+   "grand_total": 791
   },
   {
    "dest": "NCE",
@@ -4138,7 +5739,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-08-06&checkout=2026-08-09&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-08-06&checkout=2026-08-09&adults=1",
    "flight_hours": 1.5,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "11:35",
+   "arr_time": "15:25",
+   "ret_dep_time": "19:40",
+   "timing_flags": [],
+   "airline": "VY",
+   "transfers": 1,
+   "daily_spend": 65,
+   "spend_total": 260,
+   "grand_total": 812
   },
   {
    "dest": "OPO",
@@ -4160,7 +5770,19 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Matosinhos&checkin=2026-07-24&checkout=2026-07-26&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Matosinhos/homes?checkin=2026-07-24&checkout=2026-07-26&adults=1",
    "flight_hours": 3.5,
-   "sea_temp": 19
+   "sea_temp": 19,
+   "dep_time": "20:00",
+   "arr_time": "00:35",
+   "ret_dep_time": "05:00",
+   "timing_flags": [
+    "late_arrival",
+    "early_return"
+   ],
+   "airline": "KL",
+   "transfers": 1,
+   "daily_spend": 40,
+   "spend_total": 120,
+   "grand_total": 674
   },
   {
    "dest": "OPO",
@@ -4182,7 +5804,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Matosinhos&checkin=2026-08-22&checkout=2026-08-26&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Matosinhos/homes?checkin=2026-08-22&checkout=2026-08-26&adults=1",
    "flight_hours": 3.5,
-   "sea_temp": 19
+   "sea_temp": 19,
+   "dep_time": "06:30",
+   "arr_time": "10:45",
+   "ret_dep_time": "10:10",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 1,
+   "daily_spend": 40,
+   "spend_total": 200,
+   "grand_total": 754
   },
   {
    "dest": "BCN",
@@ -4204,7 +5835,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "17:45",
+   "arr_time": "20:20",
+   "ret_dep_time": "08:00",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 275,
+   "grand_total": 830
   },
   {
    "dest": "AHO",
@@ -4226,7 +5868,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Alghero&checkin=2026-08-07&checkout=2026-08-12&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Alghero/homes?checkin=2026-08-07&checkout=2026-08-12&adults=1",
    "flight_hours": 1.8,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "06:50",
+   "arr_time": "10:55",
+   "ret_dep_time": "22:30",
+   "timing_flags": [],
+   "airline": "RR",
+   "transfers": 1,
+   "daily_spend": 48,
+   "spend_total": 288,
+   "grand_total": 843
   },
   {
    "dest": "ALC",
@@ -4248,7 +5899,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-07-24&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-07-24&checkout=2026-07-28&adults=1",
    "flight_hours": 2.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "05:45",
+   "arr_time": "11:10",
+   "ret_dep_time": "18:15",
+   "timing_flags": [
+    "red_eye"
+   ],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 45,
+   "spend_total": 225,
+   "grand_total": 781
   },
   {
    "dest": "BCN",
@@ -4270,7 +5932,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-27&checkout=2026-08-31&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-27&checkout=2026-08-31&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "06:40",
+   "arr_time": "09:45",
+   "ret_dep_time": "20:50",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 55,
+   "spend_total": 275,
+   "grand_total": 831
   },
   {
    "dest": "AHO",
@@ -4292,7 +5963,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Alghero&checkin=2026-08-07&checkout=2026-08-12&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Alghero/homes?checkin=2026-08-07&checkout=2026-08-12&adults=1",
    "flight_hours": 1.8,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "13:30",
+   "arr_time": "16:10",
+   "ret_dep_time": "12:55",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 48,
+   "spend_total": 288,
+   "grand_total": 844
   },
   {
    "dest": "NCE",
@@ -4314,7 +5994,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-07-31&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-07-31&checkout=2026-08-03&adults=1",
    "flight_hours": 1.5,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "07:15",
+   "arr_time": "09:00",
+   "ret_dep_time": "09:45",
+   "timing_flags": [],
+   "airline": "OS",
+   "transfers": 0,
+   "daily_spend": 65,
+   "spend_total": 260,
+   "grand_total": 817
   },
   {
    "dest": "NCE",
@@ -4336,7 +6025,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-07-30&checkout=2026-08-02&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-07-30&checkout=2026-08-02&adults=1",
    "flight_hours": 1.5,
-   "sea_temp": 25
+   "sea_temp": 25,
+   "dep_time": "18:55",
+   "arr_time": "20:40",
+   "ret_dep_time": "21:25",
+   "timing_flags": [],
+   "airline": "OS",
+   "transfers": 0,
+   "daily_spend": 65,
+   "spend_total": 260,
+   "grand_total": 818
   },
   {
    "dest": "HER",
@@ -4358,7 +6056,18 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Heraklion&checkin=2026-08-27&checkout=2026-09-01&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Heraklion/homes?checkin=2026-08-27&checkout=2026-09-01&adults=1",
    "flight_hours": 2.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "06:40",
+   "arr_time": "10:50",
+   "ret_dep_time": "07:50",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "FR",
+   "transfers": 1,
+   "daily_spend": 40,
+   "spend_total": 240,
+   "grand_total": 799
   },
   {
    "dest": "IBZ",
@@ -4380,7 +6089,19 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Ibiza&checkin=2026-08-07&checkout=2026-08-10&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Ibiza/homes?checkin=2026-08-07&checkout=2026-08-10&adults=1",
    "flight_hours": 2.2,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "21:05",
+   "arr_time": "01:55",
+   "ret_dep_time": "08:35",
+   "timing_flags": [
+    "late_arrival",
+    "early_return"
+   ],
+   "airline": "FR",
+   "transfers": 1,
+   "daily_spend": 75,
+   "spend_total": 300,
+   "grand_total": 860
   },
   {
    "dest": "CHQ",
@@ -4402,7 +6123,16 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Chania&checkin=2026-07-23&checkout=2026-07-27&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Chania/homes?checkin=2026-07-23&checkout=2026-07-27&adults=1",
    "flight_hours": 2.7,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "15:55",
+   "arr_time": "19:55",
+   "ret_dep_time": "16:15",
+   "timing_flags": [],
+   "airline": "MW",
+   "transfers": 1,
+   "daily_spend": 40,
+   "spend_total": 200,
+   "grand_total": 762
   },
   {
    "dest": "CTA",
@@ -4424,7 +6154,270 @@
    "booking_top": "https://www.booking.com/searchresults.html?ss=Catania&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
    "airbnb": "https://www.airbnb.com/s/Catania/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
    "flight_hours": 2.0,
-   "sea_temp": 26
+   "sea_temp": 26,
+   "dep_time": "10:50",
+   "arr_time": "12:55",
+   "ret_dep_time": "22:25",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 270,
+   "grand_total": 833
+  },
+  {
+   "dest": "BCN",
+   "name": "Barcelona",
+   "country": "\ud83c\uddea\ud83c\uddf8 Spain",
+   "origin": "VIE",
+   "depart": "2026-08-20",
+   "return": "2026-08-24",
+   "nights": 4,
+   "weekend": "20 Aug weekend",
+   "flight": 144,
+   "hotel_night": 105,
+   "hotel_total": 420,
+   "total": 564,
+   "target": 280,
+   "url": "https://www.aviasales.com/search/VIE2008BCN24081?t=W417872080001787254200000770VIEBGYMXPBCN17876118001787679300001125BCNVCEVIE_6c490bb7b6880fff1bf1caa8400c495f_12879&search_date=20072026&expected_price_uuid=019f7e89-c213-8030-6b12-a560b88c7b90&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=C8K9u-N2ufpzay7_P8aYxg&expected_price_source=share&expected_price_currency=eur&expected_price=144",
+   "area": "Barcelona",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-20&checkout=2026-08-24&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-08-20&checkout=2026-08-24&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-08-20&checkout=2026-08-24&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 25,
+   "dep_time": "06:40",
+   "arr_time": "09:45",
+   "ret_dep_time": "22:50",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 55,
+   "spend_total": 275,
+   "grand_total": 839
+  },
+  {
+   "dest": "KGS",
+   "name": "Kos",
+   "country": "\ud83c\uddec\ud83c\uddf7 Greece",
+   "origin": "VIE",
+   "depart": "2026-07-23",
+   "return": "2026-07-28",
+   "nights": 5,
+   "weekend": "23 Jul weekend",
+   "flight": 164,
+   "hotel_night": 80,
+   "hotel_total": 400,
+   "total": 564,
+   "target": 270,
+   "url": "https://www.aviasales.com/search/VIE2307KGS28071?t=FR17848086001784820900000145VIEKGS17852502001785315600001150KGSBGYVIE_3055836c943ce6976b5abb609b0a0655_14316&search_date=13072026&expected_price_uuid=019f5d53-6d76-8030-ac40-2dca5af10c24&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=xQf09ANkW1HFJ3W6KpxbqA&expected_price_source=share&expected_price_currency=eur&expected_price=164",
+   "area": "Kos",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Kos&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Kos&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Kos/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
+   "flight_hours": 2.7,
+   "sea_temp": 27,
+   "dep_time": "12:10",
+   "arr_time": "14:35",
+   "ret_dep_time": "14:50",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 42,
+   "spend_total": 252,
+   "grand_total": 816
+  },
+  {
+   "dest": "SKG",
+   "name": "Thessaloniki / Halkidiki",
+   "country": "\ud83c\uddec\ud83c\uddf7 Greece",
+   "origin": "VIE",
+   "depart": "2026-07-23",
+   "return": "2026-07-28",
+   "nights": 5,
+   "weekend": "23 Jul weekend",
+   "flight": 217,
+   "hotel_night": 70,
+   "hotel_total": 350,
+   "total": 567,
+   "target": 230,
+   "url": "https://www.aviasales.com/search/VIE2307SKG28071?t=FR17847906001784908200001900VIESUFBUDSKG17852298001785233100000115SKGVIE_2b8e4660df7af02c6fa1e265eb1b637e_19431&search_date=18072026&expected_price_uuid=019f76ed-ceff-8030-a663-bc5010f4c399&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=_h_KmkqXHJfY3LD7QO5jdQ&expected_price_source=share&expected_price_currency=eur&expected_price=217",
+   "area": "Thessaloniki",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Thessaloniki&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Thessaloniki&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Thessaloniki/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
+   "flight_hours": 1.8,
+   "sea_temp": 26,
+   "dep_time": "07:10",
+   "arr_time": "12:35",
+   "ret_dep_time": "09:10",
+   "timing_flags": [],
+   "airline": "LW",
+   "transfers": 2,
+   "daily_spend": 40,
+   "spend_total": 240,
+   "grand_total": 807
+  },
+  {
+   "dest": "ALC",
+   "name": "Alicante / Costa Blanca",
+   "country": "\ud83c\uddea\ud83c\uddf8 Spain",
+   "origin": "BTS",
+   "depart": "2026-08-15",
+   "return": "2026-08-20",
+   "nights": 5,
+   "weekend": "13 Aug weekend",
+   "flight": 168,
+   "hotel_night": 80,
+   "hotel_total": 400,
+   "total": 568,
+   "target": 240,
+   "url": "https://www.aviasales.com/search/BTS1508ALC20081?t=FR17868066001786885800001320BTSWMIALC17872251001787261400000605ALCEDIBTS_df0c932eabf322ecd7fd9be530d3cf1d_14985&search_date=16072026&expected_price_uuid=019f6ca2-c588-8040-a98f-19c6114fc870&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=4hs5-acCUQ5hxmKeharUrQ&expected_price_source=share&expected_price_currency=eur&expected_price=168",
+   "area": "Alicante",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-08-15&checkout=2026-08-20&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-08-15&checkout=2026-08-20&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-08-15&checkout=2026-08-20&adults=1",
+   "flight_hours": 2.7,
+   "sea_temp": 26,
+   "dep_time": "15:10",
+   "arr_time": "20:15",
+   "ret_dep_time": "11:25",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 1,
+   "daily_spend": 45,
+   "spend_total": 270,
+   "grand_total": 838
+  },
+  {
+   "dest": "CFU",
+   "name": "Corfu",
+   "country": "\ud83c\uddec\ud83c\uddf7 Greece",
+   "origin": "BTS",
+   "depart": "2026-07-23",
+   "return": "2026-07-28",
+   "nights": 5,
+   "weekend": "23 Jul weekend",
+   "flight": 145,
+   "hotel_night": 85,
+   "hotel_total": 425,
+   "total": 570,
+   "target": 270,
+   "url": "https://www.aviasales.com/search/BTS2307CFU28071?t=W617848038001784830500000385BTSFCOCFU17851968001785281100001465CFUFCOBTS_23cb04fa06bd16bf09697ec2558c7327_12834&search_date=14072026&expected_price_uuid=019f6199-3b0c-8010-637f-56166cd5b6fd&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=HwaIvl7jsoRqlHP0XLZj1A&expected_price_source=share&expected_price_currency=eur&expected_price=145",
+   "area": "Corfu",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
+   "flight_hours": 1.8,
+   "sea_temp": 27,
+   "dep_time": "10:50",
+   "arr_time": "14:10",
+   "ret_dep_time": "00:00",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "W6",
+   "transfers": 1,
+   "daily_spend": 42,
+   "spend_total": 252,
+   "grand_total": 822
+  },
+  {
+   "dest": "SPU",
+   "name": "Split",
+   "country": "\ud83c\udded\ud83c\uddf7 Croatia",
+   "origin": "VIE",
+   "depart": "2026-08-01",
+   "return": "2026-08-05",
+   "nights": 4,
+   "weekend": "30 Jul weekend",
+   "flight": 191,
+   "hotel_night": 95,
+   "hotel_total": 380,
+   "total": 571,
+   "target": 260,
+   "url": "https://www.aviasales.com/search/VIE0108SPU05081?t=U217856090001785660300000855VIEBGYLINSPU17859201001785973800000895SPULINBGYVIE_95df0d6fb37a56e9d43576ae49451609_16737&search_date=14072026&expected_price_uuid=019f5e99-9bed-8030-acd2-f40db6642d85&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Ng7_H4Dj4-_w3TS7jSmV4Q&expected_price_source=share&expected_price_currency=eur&expected_price=191",
+   "area": "Split",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Split&checkin=2026-08-01&checkout=2026-08-05&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Split&checkin=2026-08-01&checkout=2026-08-05&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Split/homes?checkin=2026-08-01&checkout=2026-08-05&adults=1",
+   "flight_hours": 1.2,
+   "sea_temp": 25,
+   "dep_time": "18:30",
+   "arr_time": "21:40",
+   "ret_dep_time": "08:55",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 50,
+   "spend_total": 250,
+   "grand_total": 821
+  },
+  {
+   "dest": "PMO",
+   "name": "Palermo, Sicily",
+   "country": "\ud83c\uddee\ud83c\uddf9 Italy",
+   "origin": "VIE",
+   "depart": "2026-07-23",
+   "return": "2026-07-28",
+   "nights": 5,
+   "weekend": "23 Jul weekend",
+   "flight": 171,
+   "hotel_night": 80,
+   "hotel_total": 400,
+   "total": 571,
+   "target": 250,
+   "url": "https://www.aviasales.com/search/VIE2307PMO28071?t=FR17847906001784841300000845VIESUFSOFPMO17852451001785252300000120PMOVIE_e72f084867aa06599c755d85e822e3cc_15280&search_date=19072026&expected_price_uuid=019f7cb7-63e3-8040-6f80-f1906ffd53a0&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=gufj_vh7mbX7wzmmQ_9I0g&expected_price_source=share&expected_price_currency=eur&expected_price=171",
+   "area": "Palermo",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Palermo&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Palermo/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
+   "flight_hours": 2.0,
+   "sea_temp": 27,
+   "dep_time": "07:10",
+   "arr_time": "12:35",
+   "ret_dep_time": "13:25",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 2,
+   "daily_spend": 45,
+   "spend_total": 270,
+   "grand_total": 841
+  },
+  {
+   "dest": "CFU",
+   "name": "Corfu",
+   "country": "\ud83c\uddec\ud83c\uddf7 Greece",
+   "origin": "VIE",
+   "depart": "2026-07-24",
+   "return": "2026-07-29",
+   "nights": 5,
+   "weekend": "23 Jul weekend",
+   "flight": 148,
+   "hotel_night": 85,
+   "hotel_total": 425,
+   "total": 573,
+   "target": 270,
+   "url": "https://www.aviasales.com/search/VIE2407CFU29071?t=FR17848899001784900100000110VIECFU17852832001785315600000600CFUBGYVIE_3b15902cd5d1d3b25105b1b8790092ac_12987&search_date=14072026&expected_price_uuid=019f6026-ad2f-8030-6a79-5d75e2e655e6&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=URrNc6ZTar5WRPilHNQ_AA&expected_price_source=share&expected_price_currency=eur&expected_price=148",
+   "area": "Corfu",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-07-24&checkout=2026-07-29&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-07-24&checkout=2026-07-29&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-07-24&checkout=2026-07-29&adults=1",
+   "flight_hours": 1.8,
+   "sea_temp": 27,
+   "dep_time": "10:45",
+   "arr_time": "12:35",
+   "ret_dep_time": "00:00",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 42,
+   "spend_total": 252,
+   "grand_total": 825
   }
  ],
  "alerts": [
@@ -4449,8 +6442,19 @@
    "airbnb": "https://www.airbnb.com/s/Kotor/homes?checkin=2026-08-01&checkout=2026-08-03&adults=1",
    "flight_hours": 1.3,
    "sea_temp": 25,
+   "dep_time": "14:45",
+   "arr_time": "17:15",
+   "ret_dep_time": "07:50",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "JU",
+   "transfers": 1,
+   "daily_spend": 40,
+   "spend_total": 120,
+   "grand_total": 514,
    "reasons": [
-    "25%+ below 2-week avg (\u20ac663)"
+    "25%+ below 2-week avg (\u20ac596)"
    ]
   },
   {
@@ -4474,58 +6478,53 @@
    "airbnb": "https://www.airbnb.com/s/Durres/homes?checkin=2026-07-24&checkout=2026-07-26&adults=1",
    "flight_hours": 1.7,
    "sea_temp": 26,
+   "dep_time": "16:30",
+   "arr_time": "19:40",
+   "ret_dep_time": "10:20",
+   "timing_flags": [],
+   "airline": "AL",
+   "transfers": 1,
+   "daily_spend": 30,
+   "spend_total": 90,
+   "grand_total": 336,
    "reasons": [
     "under \u20ac250 global cap"
    ]
   },
   {
-   "dest": "OLB",
-   "name": "Olbia, Sardinia",
-   "country": "\ud83c\uddee\ud83c\uddf9 Italy",
-   "origin": "VIE",
-   "depart": "2026-08-14",
-   "return": "2026-08-16",
+   "dest": "VAR",
+   "name": "Varna",
+   "country": "\ud83c\udde7\ud83c\uddec Bulgaria",
+   "origin": "BTS",
+   "depart": "2026-08-15",
+   "return": "2026-08-17",
    "nights": 2,
    "weekend": "13 Aug weekend",
-   "flight": 194,
-   "hotel_night": 110,
-   "hotel_total": 220,
-   "total": 414,
-   "target": 300,
-   "url": "https://www.aviasales.com/search/VIE1408OLB16081?t=OS17867103001786716900000110VIEOLB17868816001786898100000275OLBMUCVIE_32cb29e4e1cb0ae00311cdda5ed772ca_17196&search_date=14072026&expected_price_uuid=019f61a8-bf26-8030-62c0-22de2ffbca8e&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Tcs6bAkNjYjOfmOGbsOczw&expected_price_source=share&expected_price_currency=eur&expected_price=194",
-   "area": "Olbia",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Olbia&checkin=2026-08-14&checkout=2026-08-16&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Olbia&checkin=2026-08-14&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Olbia/homes?checkin=2026-08-14&checkout=2026-08-16&adults=1",
-   "flight_hours": 1.6,
+   "flight": 182,
+   "hotel_night": 65,
+   "hotel_total": 130,
+   "total": 312,
+   "target": 200,
+   "url": "https://www.aviasales.com/search/BTS1508VAR17081?t=FR17868255001786835700000110BTSVAR17869947001787079600001475VARATHBTS_7e23a535bf27337a14ddd957310f8da9_16295&search_date=18072026&expected_price_uuid=019f775f-138e-8030-21a3-2b98110a5c58&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=x9Of-Laluv4yjptEKpY_2w&expected_price_source=share&expected_price_currency=eur&expected_price=182",
+   "area": "Varna",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Varna&checkin=2026-08-15&checkout=2026-08-17&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Varna&checkin=2026-08-15&checkout=2026-08-17&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Varna/homes?checkin=2026-08-15&checkout=2026-08-17&adults=1",
+   "flight_hours": 1.8,
    "sea_temp": 26,
+   "dep_time": "20:25",
+   "arr_time": "22:15",
+   "ret_dep_time": "19:25",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 30,
+   "spend_total": 90,
+   "grand_total": 402,
    "reasons": [
-    "25%+ below 2-week avg (\u20ac552)"
-   ]
-  },
-  {
-   "dest": "BRI",
-   "name": "Bari / Puglia",
-   "country": "\ud83c\uddee\ud83c\uddf9 Italy",
-   "origin": "VIE",
-   "depart": "2026-08-01",
-   "return": "2026-08-03",
-   "nights": 2,
-   "weekend": "30 Jul weekend",
-   "flight": 125,
-   "hotel_night": 80,
-   "hotel_total": 160,
-   "total": 285,
-   "target": 240,
-   "url": "https://www.aviasales.com/search/VIE0108BRI03081?t=FR17855958001785601500000095VIEBRI17857974001785834300000615BRIBGYVIE_41acbd425b22fb6d5ad1598f82f82ed1_11199&search_date=16072026&expected_price_uuid=019f6d03-3062-8030-2e42-ad2c85195051&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=3qJcu3fQt1eO08FvqZmFww&expected_price_source=share&expected_price_currency=eur&expected_price=125",
-   "area": "Bari",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Bari&checkin=2026-08-01&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Bari&checkin=2026-08-01&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Bari/homes?checkin=2026-08-01&checkout=2026-08-03&adults=1",
-   "flight_hours": 1.5,
-   "sea_temp": 26,
-   "reasons": [
-    "25%+ below 2-week avg (\u20ac395)"
+    "25%+ below 2-week avg (\u20ac442)"
    ]
   },
   {
@@ -4549,8 +6548,20 @@
    "airbnb": "https://www.airbnb.com/s/Dubai/homes?checkin=2026-08-15&checkout=2026-08-17&adults=1",
    "flight_hours": 6.0,
    "sea_temp": 33,
+   "dep_time": "20:05",
+   "arr_time": "02:45",
+   "ret_dep_time": "07:20",
+   "timing_flags": [
+    "late_arrival",
+    "early_return"
+   ],
+   "airline": "PC",
+   "transfers": 1,
+   "daily_spend": 65,
+   "spend_total": 195,
+   "grand_total": 681,
    "reasons": [
-    "25%+ below 2-week avg (\u20ac716)"
+    "25%+ below 2-week avg (\u20ac683)"
    ]
   },
   {
@@ -4574,10 +6585,21 @@
    "airbnb": "https://www.airbnb.com/s/Lido%20di%20Jesolo/homes?checkin=2026-07-24&checkout=2026-07-26&adults=1",
    "flight_hours": 1.1,
    "sea_temp": 26,
+   "dep_time": "13:30",
+   "arr_time": "14:45",
+   "ret_dep_time": "07:40",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 60,
+   "spend_total": 180,
+   "grand_total": 429,
    "reasons": [
     "below \u20ac260 target",
     "under \u20ac250 global cap",
-    "25%+ below 2-week avg (\u20ac357)"
+    "25%+ below 2-week avg (\u20ac342)"
    ]
   }
  ]
