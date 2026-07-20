@@ -1,0 +1,28 @@
+{
+  "_readme": [
+    "Real nightly rates you have actually seen, in EUR, per person basis matching HOTEL_SPLIT.",
+    "These override the built-in estimates in check_beach.py, and rows using them are marked",
+    "as verified in the dashboard instead of showing a tilde.",
+    "",
+    "Use it when you look a destination up on Booking and see what a decent mid-range room",
+    "really costs. Two forms are accepted:",
+    "",
+    "  \"PMO\": 95                          one figure, used all year",
+    "  \"ZAD\": { \"low\": 55, \"high\": 85 }    off-season and high-season split",
+    "",
+    "The seasonal split works the same way as the estimates: high season is June to September,",
+    "or November to March for the winter-sun destinations. Peak and weekend multipliers still",
+    "apply on top, so enter a normal rate rather than a Ferragosto one.",
+    "",
+    "Anything not listed here falls back to the estimate. Delete an entry to go back to the",
+    "estimate. Keys are the airport codes used in BEACH_DESTINATIONS.",
+    "",
+    "Checked date is only for your own reference, nothing reads it."
+  ],
+
+  "rates": {
+  },
+
+  "checked": {
+  }
+}

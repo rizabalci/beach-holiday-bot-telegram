@@ -328,8 +328,9 @@ def skyscanner_direct_url(origin, dest, depart, ret):
 # Oct 2025, so v1 uses a seasonal estimate model: per-destination nightly
 # rates (budget 3-star, solo) with a low/high season split, plus a
 # Booking.com deep link with the exact dates so live prices are one tap away.
-# To go live later, replace estimate_hotel_nightly() with a real provider
-# (LiteAPI / Amadeus) — the rest of the pipeline is agnostic.
+# Amadeus closed its free self-service tier in July 2026 and nothing else
+# offers live rates at sensible volume for free, so these are estimates.
+# Real figures you have checked go in hotel_rates.json and take precedence.
 
 
 def is_high_season(dest, d):
@@ -338,9 +339,51 @@ def is_high_season(dest, d):
     return d.month in (6, 7, 8, 9)
 
 
+def _load_verified_rates():
+    """Real nightly rates you've checked yourself, from hotel_rates.json.
+
+    There is no free hotel-price API worth using since Amadeus closed its
+    self-service tier, so the only accurate source available is you looking
+    at Booking and writing the number down. Anything in here beats the
+    built-in estimate and gets marked as verified in the dashboard.
+    """
+    path = os.environ.get("HOTEL_RATES_FILE") or "hotel_rates.json"
+    if not os.path.exists(path):
+        return {}
+    try:
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
+    except (json.JSONDecodeError, OSError) as exc:
+        print(f"hotel_rates.json unreadable, using estimates only: {exc}", file=sys.stderr)
+        return {}
+    rates = data.get("rates") or {}
+    clean = {}
+    for dest, val in rates.items():
+        if isinstance(val, (int, float)):
+            clean[dest] = {"low": float(val), "high": float(val)}
+        elif isinstance(val, dict) and ("low" in val or "high" in val):
+            lo = float(val.get("low", val.get("high")))
+            hi = float(val.get("high", val.get("low")))
+            clean[dest] = {"low": lo, "high": hi}
+        else:
+            print(f"hotel_rates.json: ignoring malformed entry for {dest}", file=sys.stderr)
+    return clean
+
+
+VERIFIED_RATES = _load_verified_rates()
+
+
 def estimate_hotel_nightly(dest, depart):
+    """Nightly rate before peak and weekend multipliers.
+
+    Returns (rate, verified) so callers can tell a checked figure from a guess.
+    """
+    high_season = is_high_season(dest, depart)
+    if dest in VERIFIED_RATES:
+        row = VERIFIED_RATES[dest]
+        return row["high"] if high_season else row["low"], True
     _, _, _, low, high, _ = _dest_row(dest)
-    return high if is_high_season(dest, depart) else low
+    return (high if high_season else low), False
 
 
 # --- peak periods ----------------------------------------------------------
@@ -430,7 +473,7 @@ def trip_target(dest, depart, nights):
     """
     _, _, _, low, high, stored = _dest_row(dest)
     flight_budget = stored - 2 * high          # calibrated at 2 nights, solo
-    nightly_budget = estimate_hotel_nightly(dest, depart)
+    nightly_budget, _ = estimate_hotel_nightly(dest, depart)
     return flight_budget + (nightly_budget * nights) / HOTEL_SPLIT
 
 
@@ -666,6 +709,98 @@ BEACH_ACCESS = {
 
 def beach_access(dest):
     return BEACH_ACCESS.get(dest, ("taxi", "Check local transport on arrival"))
+
+
+# --- where to search for a bed -------------------------------------------
+# Neighbourhoods and towns worth typing into Booking or Airbnb, chosen for
+# being on or near the sand rather than for being the administrative centre.
+# First entry is the safest default. Curated rather than derived: reverse
+# geocoding returns things like "VII Circoscrizione" for Mondello, which is
+# correct and useless.
+BEACH_AREAS = {
+    # Spain
+    "PMI": ["Playa de Palma", "Can Pastilla", "Illetas", "Portixol"],
+    "IBZ": ["Playa d'en Bossa", "Talamanca", "Santa Eulalia", "Cala Llonga"],
+    "AGP": ["La Malagueta", "Pedregalejo", "Torremolinos", "Benalmadena"],
+    "ALC": ["Playa del Postiguet", "Playa de San Juan", "Cabo de las Huertas"],
+    "VLC": ["Playa de la Malvarrosa", "Las Arenas", "El Cabanyal", "Patacona"],
+    "BCN": ["Barceloneta", "Vila Olimpica", "Poblenou", "Bogatell"],
+    "TFS": ["Los Cristianos", "Playa de las Americas", "Costa Adeje", "El Medano"],
+    "LPA": ["Las Canteras", "Playa del Ingles", "Maspalomas", "Meloneras"],
+    "FUE": ["Corralejo", "Costa Calma", "Morro Jable", "Caleta de Fuste"],
+    "MAH": ["Cala en Bosch", "Son Bou", "Cala Galdana", "Arenal d'en Castell"],
+    "GRO": ["Lloret de Mar", "Tossa de Mar", "Calella de Palafrugell", "Platja d'Aro"],
+    "ACE": ["Puerto del Carmen", "Costa Teguise", "Playa Blanca", "Famara"],
+
+    # Greece
+    "ATH": ["Glyfada", "Vouliagmeni", "Voula", "Alimos"],
+    "SKG": ["Nikiti", "Kallithea Halkidiki", "Hanioti", "Sarti"],
+    "HER": ["Amoudara", "Hersonissos", "Agia Pelagia", "Malia"],
+    "CHQ": ["Nea Chora", "Agia Marina", "Platanias", "Stalos"],
+    "RHO": ["Elli Beach", "Ixia", "Faliraki", "Lindos"],
+    "KGS": ["Kos Town", "Tigaki", "Kardamena", "Mastichari"],
+    "JTR": ["Kamari", "Perissa", "Perivolos", "Oia"],
+    "JMK": ["Ornos", "Platis Gialos", "Agios Ioannis", "Psarou"],
+    "CFU": ["Kassiopi", "Dassia", "Sidari", "Paleokastritsa"],
+    "ZTH": ["Tsilivi", "Alykes", "Kalamaki", "Argassi"],
+    "EFL": ["Lassi", "Skala Kefalonia", "Lourdas", "Fiskardo"],
+    "PVK": ["Nidri", "Vasiliki", "Agios Nikitas", "Parga"],
+    "JSI": ["Koukounaries", "Troulos", "Vasilias", "Skiathos Town"],
+    "KLX": ["Kalamata Beach", "Stoupa", "Kardamyli", "Pylos"],
+    "KVA": ["Golden Beach Thassos", "Limenaria", "Skala Potamia", "Nea Peramos"],
+    "VOL": ["Agios Ioannis Pelion", "Afissos", "Platanias Pelion", "Horto"],
+    "SMI": ["Kokkari", "Pythagorio", "Votsalakia", "Vathy"],
+    "AOK": ["Pigadia", "Amoopi", "Lefkos", "Arkasa"],
+
+    # Croatia, Montenegro, Albania
+    "SPU": ["Bacvice", "Znjan", "Trstenik", "Meje"],
+    "DBV": ["Lapad", "Babin Kuk", "Ploce", "Boninovo"],
+    "ZAD": ["Borik", "Kolovare", "Puntamika", "Diklo"],
+    "PUY": ["Verudela", "Stoja", "Medulin", "Premantura"],
+    "RJK": ["Opatija", "Lovran", "Icici", "Moscenicka Draga"],
+    "TIV": ["Przno", "Becici", "Petrovac", "Jaz"],
+    "TGD": ["Budva", "Becici", "Sveti Stefan", "Bar"],
+    "TIA": ["Durres Plazh", "Golem", "Ksamil", "Himare"],
+
+    # Italy
+    "NAP": ["Sorrento", "Sant'Agnello", "Massa Lubrense", "Positano"],
+    "PMO": ["Mondello", "Addaura", "Sferracavallo", "Isola delle Femmine"],
+    "CTA": ["Playa Catania", "Aci Trezza", "Aci Castello", "Ognina"],
+    "CAG": ["Poetto", "Quartu Sant'Elena", "Villasimius", "Chia"],
+    "OLB": ["Pittulongu", "Golfo Aranci", "Porto Rotondo", "Baja Sardinia"],
+    "BRI": ["Polignano a Mare", "Monopoli", "Torre a Mare", "Savelletri"],
+    "BDS": ["Torre Canne", "Ostuni Marina", "Torre Guaceto", "Otranto"],
+    "SUF": ["Tropea", "Capo Vaticano", "Parghelia", "Zambrone"],
+    "AHO": ["Lido di Alghero", "Fertilia", "Maria Pia", "Bombarde"],
+    "TPS": ["San Vito Lo Capo", "Scopello", "Castellammare del Golfo", "Marausa"],
+    "RMI": ["Marina Centro", "Rivazzurra", "Riccione", "Bellaria"],
+    "GOA": ["Camogli", "Santa Margherita Ligure", "Sestri Levante", "Boccadasse"],
+    "VCE": ["Lido di Jesolo", "Lido di Venezia", "Caorle", "Bibione"],
+
+    # Portugal, France, Malta, Cyprus
+    "FAO": ["Praia de Faro", "Vilamoura", "Albufeira", "Lagos"],
+    "LIS": ["Cascais", "Estoril", "Carcavelos", "Costa da Caparica"],
+    "OPO": ["Matosinhos", "Foz do Douro", "Leca da Palmeira", "Espinho"],
+    "NCE": ["Promenade des Anglais", "Port de Nice", "Villefranche-sur-Mer", "Juan-les-Pins"],
+    "MRS": ["Prado", "Pointe Rouge", "Malmousque", "Cassis"],
+    "MLA": ["Sliema", "St Julian's", "Mellieha Bay", "Golden Bay"],
+    "LCA": ["Finikoudes", "Mackenzie Beach", "Pyla", "Protaras"],
+    "PFO": ["Coral Bay", "Kato Paphos", "Pegeia", "Latchi"],
+
+    # Bulgaria
+    "VAR": ["Golden Sands", "Sveti Konstantin", "Varna Beach", "Kranevo"],
+    "BOJ": ["Sunny Beach", "Nessebar", "Sozopol", "Pomorie"],
+
+    # North Africa, Red Sea, Middle East
+    "HRG": ["Sahl Hasheesh", "Makadi Bay", "El Gouna", "Hurghada Marina"],
+    "SSH": ["Naama Bay", "Sharks Bay", "Nabq Bay", "Ras Um Sid"],
+    "RMF": ["Port Ghalib", "Marsa Alam Coast", "El Quseir", "Abu Dabbab"],
+    "AGA": ["Agadir Beach", "Founty", "Taghazout", "Tamraght"],
+    "NBE": ["Yasmine Hammamet", "Hammamet Nord", "Nabeul", "Sousse"],
+    "DJE": ["Zone Touristique Djerba", "Sidi Mahrez", "Aghir", "Midoun"],
+    "TLV": ["Gordon Beach", "Frishman", "Neve Tzedek", "Jaffa Port"],
+    "DXB": ["JBR", "Dubai Marina", "Jumeirah Beach Residence", "Palm Jumeirah"],
+}
 
 
 # --- driving from Vienna ---------------------------------------------------
@@ -975,7 +1110,7 @@ def main():
         found_any = False
         for label, depart, nights in trips:
             ret = depart + timedelta(days=nights)
-            base_nightly = estimate_hotel_nightly(dest, depart)
+            base_nightly, rate_verified = estimate_hotel_nightly(dest, depart)
             peak_mult, peak_label = peak_multiplier(dest, depart)
             wknd_mult = weekend_uplift(depart, nights)
             nightly = base_nightly * peak_mult * wknd_mult
@@ -1003,6 +1138,7 @@ def main():
                     "hotel_night": round(nightly),
                     "hotel_total": round(hotel_cost),
                     "hotel_base_night": round(base_nightly),
+                    "rate_verified": rate_verified,
                     "peak_label": peak_label,
                     "peak_pct": round((peak_mult - 1) * 100),
                     "weekend_pct": round((wknd_mult - 1) * 100),
@@ -1012,6 +1148,7 @@ def main():
                     "grand_total": round(total + spend_total),
                     "beach_access": access_mode,
                     "beach_note": access_note,
+                    "areas": BEACH_AREAS.get(dest, []),
                     **drive,
                     **timing,
                     "target": round(trip_target(dest, depart, nights)),

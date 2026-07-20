@@ -171,7 +171,10 @@
   .bd-total { margin-top:5px; padding-top:6px; font-size:14px;
               border-top:1px solid rgba(255,255,255,.35); }
   .bd-note { font-size:11px; opacity:.72; margin:2px 0 4px; line-height:1.45; }
+  .bd-areas { margin-top:9px; padding-top:8px; border-top:1px solid rgba(255,255,255,.18); }
+  .bd-areas a { color:#8ecfe0; text-decoration:underline; text-underline-offset:2px; }
   .bd-excl { margin-top:9px; padding-top:8px; border-top:1px solid rgba(255,255,255,.18); }
+  .verified { color:#137a45; font-weight:700; margin-left:3px; font-size:12px; cursor:help; }
   .legend-btn { background:none; border:none; padding:0; font:inherit; font-size:inherit;
                 color:var(--deep); cursor:pointer; text-decoration:underline;
                 text-underline-offset:2px; }
@@ -371,7 +374,8 @@
 </div>
 
 <script>
-const state = { deals: [], filtered: [], sortKey: "total", sortDir: 1, view: "table" };
+const state = {
+  hotels: {}, deals: [], filtered: [], sortKey: "total", sortDir: 1, view: "table" };
 
 // Price versus this destination's own recent history. Needs 3+ readings,
 // so it stays blank for the first few days after a destination is added.
@@ -425,6 +429,7 @@ const LEGEND = [
   ["🚌", "Bus or tram to the beach, roughly 15 to 45 minutes"],
   ["🚕", "No useful public transport, a short drive to the beach"],
   ["🚗", "Red means a rental car is essential. Faded means it is optional and public transport works"],
+  ["✓", "Nightly rate was checked on Booking rather than estimated"],
   ["🚙", "Within driving distance of Vienna. Tap it for the cost and time"],
   ["FRI", "Day of the week you fly"],
   ["Sat + Sun", "Whether the trip covers both weekend days"],
@@ -458,6 +463,9 @@ function allInBreakdown(d) {
   let out = `<div class="bd-title">${d.name} · ${d.nights} nights</div>`;
   out += row("Flight, return", "€" + d.flight);
   out += row("Hotel " + hotelDetail, "€" + d.hotel_total);
+  out += `<div class="bd-note">${d.rate_verified
+    ? "Nightly rate checked on Booking rather than estimated."
+    : "Nightly rate is a seasonal estimate. Check it and it can be pinned."}</div>`;
   if (mods.length) {
     out += `<div class="bd-note">from €${d.hotel_base_night} base, ${mods.join(", ")}` +
            (d.peak_label ? ` (${d.peak_label})` : "") + `</div>`;
@@ -470,7 +478,50 @@ function allInBreakdown(d) {
   out += row("Total", "€" + d.total, "bd-sub");
   out += row(`Food, drinks &amp; local transport, ${d.nights} × €${d.daily_spend}`, "€" + d.spend_total);
   out += row("All-in", "€" + d.grand_total, "bd-total");
-  out += `<div class="bd-note bd-excl">Excludes car hire, getting to the airport, checked bags and insurance. Only the flight is a live price; the rest are estimates.</div>`;
+  out += `<div class="bd-note bd-excl">Excludes car hire, getting to the airport, checked bags and insurance. Only the flight is a live price. Hotel and daily spend are estimates unless marked ✓.</div>`;
+  return out.replace(/"/g, "&quot;");
+}
+
+// Hotels closest to the water, from the weekly OpenStreetMap job. Distances
+// are measured, but OSM carries no ratings or prices, so this is a shortlist
+// to check rather than a recommendation.
+// Areas worth searching on Booking or Airbnb, each as a ready-made link with
+// the dates already filled in. First one is the safest default.
+// A tick means the nightly rate came from hotel_rates.json, so someone
+// actually looked it up. Everything else is a seasonal estimate.
+function verifiedMark(d) {
+  if (!d.rate_verified) return "";
+  return `<span class="verified" title="Nightly rate checked on Booking, not estimated">✓</span>`;
+}
+
+function areasBlock(d) {
+  if (!d.areas || !d.areas.length) return "";
+  const links = d.areas.map(a => {
+    const q = encodeURIComponent(`${a}, ${cc(d.country)}`);
+    const url = `https://www.booking.com/searchresults.html?ss=${q}` +
+                `&checkin=${d.depart}&checkout=${d.return}&group_adults=1`;
+    return `<a href="${url}" target="_blank" rel="noopener">${a}</a>`;
+  }).join(" · ");
+  return `<div class="bd-note bd-areas"><b>Search these areas:</b> ${links}</div>`;
+}
+
+function hotelsPopover(d) {
+  const entry = state.hotels[d.dest];
+  const list = entry && entry.hotels;
+  if (!list || !list.length) {
+    // No hotel data for this destination yet, but the search areas are
+    // curated and always available, so still show something useful.
+    const areas = areasBlock(d);
+    return areas ? (`<div class="bd-title">Where to stay · ${d.name}</div>` + areas)
+                     .replace(/"/g, "&quot;") : "";
+  }
+  let out = `<div class="bd-title">Closest to the water · ${d.area || d.name}</div>`;
+  list.forEach(x => {
+    const stars = x.stars ? ` ${"★".repeat(Math.min(5, +x.stars) || 0)}` : "";
+    out += `<div class="bd-row"><span>${x.name}${stars}</span><b>${x.beach_m} m</b></div>`;
+  });
+  out += areasBlock(d);
+  out += `<div class="bd-note bd-excl">Distance to the nearest mapped beach or coastline, from OpenStreetMap. No ratings or prices, so check each on Booking before deciding.</div>`;
   return out.replace(/"/g, "&quot;");
 }
 
@@ -589,6 +640,12 @@ async function load() {
   try {
     const res = await fetch("deals.json", { cache: "no-store" });
     raw = await res.json();
+    // Optional companion file from the weekly hotel job. Absent on a fresh
+    // clone, so never let a failure here break the board.
+    try {
+      const hres = await fetch("hotels.json", { cache: "no-store" });
+      if (hres.ok) state.hotels = (await hres.json()).destinations || {};
+    } catch (_) { /* no hotel data yet */ }
   } catch (e) {
     document.getElementById("updated").textContent = "Could not load deals.json — run the scanner first.";
     return;
@@ -798,7 +855,9 @@ function renderTable(rows) {
       <td class="total">€${d.total}${d.isDeal ? `<span class="flame" title="${(d.reasons || ['beats target']).join(' · ')}">🔥</span>` : ''}${trendBadge(d)}</td>
       <td class="allin">${d.grand_total ? `<span class="bd-trigger" data-explain="${allInBreakdown(d)}">€${d.grand_total}<div class="sub">+€${d.daily_spend}/day</div></span>` : "–"}</td>
       <td>€${d.flight}<div class="sub">${d.origin}</div></td>
-      <td>~€${d.hotel_total}<div class="sub">€${d.hotel_night}/n</div></td>
+      <td>${(((state.hotels[d.dest] || {}).hotels || []).length || (d.areas || []).length)
+            ? `<span class="bd-trigger" data-explain="${hotelsPopover(d)}">${d.rate_verified ? "" : "~"}€${d.hotel_total}${verifiedMark(d)}<div class="sub">€${d.hotel_night}/n · where to stay</div></span>`
+            : `${d.rate_verified ? "" : "~"}€${d.hotel_total}${verifiedMark(d)}<div class="sub">€${d.hotel_night}/n</div>`}</td>
       <td>${d.nights}</td>
       <td><b>${workDaysOff(d.depart, d.return)}</b></td>
       <td>${fmtDate(d.depart)}<div class="sub">→ ${fmtDate(d.return)}</div>
