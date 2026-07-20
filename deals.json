@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-07-20T11:04:29.167223+00:00",
+ "generated_at": "2026-07-20T11:22:58.964749+00:00",
  "origins": [
   "VIE",
   "BTS"
  ],
- "deal_count": 35,
+ "deal_count": 37,
  "deals": [
   {
    "dest": "PMI",
@@ -27,6 +27,31 @@
    "airbnb": "https://www.airbnb.com/s/Palma%20de%20Mallorca/homes?checkin=2026-08-27&checkout=2026-08-29&adults=1",
    "flight_hours": 2.2,
    "sea_temp": 26
+  },
+  {
+   "dest": "AHO",
+   "name": "Alghero, Sardinia",
+   "country": "\ud83c\uddee\ud83c\uddf9 Italy",
+   "origin": "BTS",
+   "depart": "2026-08-14",
+   "return": "2026-08-16",
+   "nights": 2,
+   "weekend": "13 Aug weekend",
+   "flight": 155,
+   "hotel_night": 85,
+   "hotel_total": 170,
+   "total": 325,
+   "target": 280,
+   "url": "https://www.aviasales.com/search/BTS1408AHO16081?t=FR17867238001786731000000120BTSAHO17868867001786952400001095AHOPSABTS_c75bbc1447f5273c6b0c691d6b3cdf35_13750&search_date=14072026&expected_price_uuid=019f618f-3535-8030-64c4-4799775a0e1a&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=fTcZ29aeIHruEG6bYC_Wwg&expected_price_source=share&expected_price_currency=eur&expected_price=155",
+   "area": "Alghero",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Alghero&checkin=2026-08-14&checkout=2026-08-16&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Alghero&checkin=2026-08-14&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Alghero/homes?checkin=2026-08-14&checkout=2026-08-16&adults=1",
+   "flight_hours": 1.8,
+   "sea_temp": 25,
+   "reasons": [
+    "25%+ below 2-week avg (\u20ac448)"
+   ]
   },
   {
    "dest": "PMI",
@@ -337,26 +362,26 @@
    "sea_temp": 22
   },
   {
-   "dest": "VLC",
-   "name": "Valencia",
-   "country": "\ud83c\uddea\ud83c\uddf8 Spain",
+   "dest": "EFL",
+   "name": "Kefalonia",
+   "country": "\ud83c\uddec\ud83c\uddf7 Greece",
    "origin": "VIE",
-   "depart": "2026-07-25",
-   "return": "2026-07-29",
+   "depart": "2026-07-30",
+   "return": "2026-08-03",
    "nights": 4,
-   "weekend": "23 Jul weekend",
-   "flight": 184,
-   "hotel_night": 80,
-   "hotel_total": 320,
-   "total": 504,
-   "target": 240,
-   "url": "https://www.aviasales.com/search/VIE2507VLC29071?t=W617849853001785057000001195VIEKRKVLC17853165001785369000000875VLCMXPBGYVIE_3dfb3ca7b2df5e17b8cfe395b8b96507_16472&search_date=18072026&expected_price_uuid=019f7496-3024-8030-a84c-69d16ff3525e&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=D727pXntqQDA44sGWIfv0A&expected_price_source=share&expected_price_currency=eur&expected_price=184",
-   "area": "Valencia",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Valencia&checkin=2026-07-25&checkout=2026-07-29&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Valencia&checkin=2026-07-25&checkout=2026-07-29&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Valencia/homes?checkin=2026-07-25&checkout=2026-07-29&adults=1",
-   "flight_hours": 2.5,
-   "sea_temp": 26
+   "weekend": "30 Jul weekend",
+   "flight": 141,
+   "hotel_night": 90,
+   "hotel_total": 360,
+   "total": 501,
+   "target": 290,
+   "url": "https://www.aviasales.com/search/VIE3007EFL03081?t=W417853918001785488400001550VIEFCOEFL17857473001785837900001570EFLFCOVIE_b3612a9e831e7decef0cf9047f8cce57_12311&search_date=13072026&expected_price_uuid=019f5b6e-f09d-8030-e787-444d696910a6&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Rqr7UWgD16U9sr1V7EoSBQ&expected_price_source=share&expected_price_currency=eur&expected_price=141",
+   "area": "Kefalonia",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Kefalonia&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Kefalonia&checkin=2026-07-30&checkout=2026-08-03&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Kefalonia/homes?checkin=2026-07-30&checkout=2026-08-03&adults=1",
+   "flight_hours": 2.2,
+   "sea_temp": 27
   },
   {
    "dest": "AGP",
@@ -601,6 +626,28 @@
    "sea_temp": 26
   },
   {
+   "dest": "JSI",
+   "name": "Skiathos",
+   "country": "\ud83c\uddec\ud83c\uddf7 Greece",
+   "origin": "VIE",
+   "depart": "2026-07-23",
+   "return": "2026-07-28",
+   "nights": 5,
+   "weekend": "23 Jul weekend",
+   "flight": 134,
+   "hotel_night": 95,
+   "hotel_total": 475,
+   "total": 609,
+   "target": 300,
+   "url": "https://www.aviasales.com/search/VIE2307JSI28071?t=U217847888001784832300000665VIEBGYJSI17852352001785315600001400JSIMXPBGYVIE_fbe02746f556458261677ab7116528d7_11701&search_date=13072026&expected_price_uuid=019f5d2f-3760-8030-ec31-982b5729b74c&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=HKDq4I77TnxDuwcaco4-HQ&expected_price_source=share&expected_price_currency=eur&expected_price=134",
+   "area": "Skiathos",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Skiathos&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Skiathos&checkin=2026-07-23&checkout=2026-07-28&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Skiathos/homes?checkin=2026-07-23&checkout=2026-07-28&adults=1",
+   "flight_hours": 2.1,
+   "sea_temp": 26
+  },
+  {
    "dest": "IBZ",
    "name": "Ibiza",
    "country": "\ud83c\uddea\ud83c\uddf8 Spain",
@@ -777,5 +824,31 @@
    "sea_temp": 26
   }
  ],
- "alerts": []
+ "alerts": [
+  {
+   "dest": "AHO",
+   "name": "Alghero, Sardinia",
+   "country": "\ud83c\uddee\ud83c\uddf9 Italy",
+   "origin": "BTS",
+   "depart": "2026-08-14",
+   "return": "2026-08-16",
+   "nights": 2,
+   "weekend": "13 Aug weekend",
+   "flight": 155,
+   "hotel_night": 85,
+   "hotel_total": 170,
+   "total": 325,
+   "target": 280,
+   "url": "https://www.aviasales.com/search/BTS1408AHO16081?t=FR17867238001786731000000120BTSAHO17868867001786952400001095AHOPSABTS_c75bbc1447f5273c6b0c691d6b3cdf35_13750&search_date=14072026&expected_price_uuid=019f618f-3535-8030-64c4-4799775a0e1a&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=fTcZ29aeIHruEG6bYC_Wwg&expected_price_source=share&expected_price_currency=eur&expected_price=155",
+   "area": "Alghero",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Alghero&checkin=2026-08-14&checkout=2026-08-16&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Alghero&checkin=2026-08-14&checkout=2026-08-16&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Alghero/homes?checkin=2026-08-14&checkout=2026-08-16&adults=1",
+   "flight_hours": 1.8,
+   "sea_temp": 25,
+   "reasons": [
+    "25%+ below 2-week avg (\u20ac448)"
+   ]
+  }
+ ]
 }
