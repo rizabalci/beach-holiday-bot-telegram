@@ -676,6 +676,45 @@ async function load() {
     isDeal: alertKeys.has(d.dest + "|" + d.depart + "|" + d.origin + "|" + d.nights)
   }));
 
+  // Month overview: cheapest fare per destination per month (12-month horizon).
+  // These are lightweight rows — no nights/timing — used when you pick a month
+  // beyond the detailed scan window. Marked overview:true so the table can style
+  // them and so filters that need detailed fields skip them gracefully.
+  const detailMonths = new Set(state.deals.map(d => d.depart.slice(0, 7)));
+  const destMeta = {};
+  state.deals.forEach(d => { if (!destMeta[d.dest]) destMeta[d.dest] = d; });
+  state.monthRows = [];
+  const months = raw.months || {};
+  for (const dest of Object.keys(months)) {
+    for (const row of months[dest]) {
+      if (detailMonths.has(row.month)) continue; // detailed data already covers it
+      const meta = destMeta[dest] || {};
+      state.monthRows.push({
+        overview: true,
+        dest: row.dest,
+        name: meta.name, country: meta.country,
+        area: meta.area,
+        origin: row.origin,
+        depart: (row.depart || row.month + "-15"),
+        return: "",
+        month: row.month,
+        nights: null,
+        flight: row.flight,
+        hotel_total: row.hotel_est,
+        hotel_night: meta.hotel_night,
+        total: row.total_est,
+        grand_total: row.total_est,
+        sea_temp: meta.sea_temp,
+        flight_hours: meta.flight_hours,
+        airline: row.airline,
+        url: row.url,
+        booking_cheap: meta.booking_cheap,
+        airbnb: meta.airbnb,
+        isDeal: false,
+      });
+    }
+  }
+
   const when = raw.generated_at ? new Date(raw.generated_at).toLocaleString("en-GB", {dateStyle:"medium", timeStyle:"short"}) : "unknown";
   document.getElementById("updated").innerHTML = "Last updated <b>" + when + "</b> · " + state.deals.length + " destination options";
 
@@ -698,7 +737,11 @@ function buildFilterOptions() {
   const cs = document.getElementById("f-country");
   countries.forEach(c => cs.add(new Option(c, c)));
   // Months actually present in the scan window, chronological.
-  const months = [...new Set(state.deals.map(d => d.depart.slice(0, 7)))].sort();
+  const overviewMonths = (state.monthRows || []).map(r => r.month);
+  const months = [...new Set([
+    ...state.deals.map(d => d.depart.slice(0, 7)),
+    ...overviewMonths,
+  ])].sort();
   // Each scanned weekend, ordered by date rather than by label text.
   const wkFirst = new Map();
   state.deals.forEach(d => {
@@ -792,12 +835,17 @@ function apply() {
   const timing = document.getElementById("f-timing").value;
   const trend = document.getElementById("f-trend").value;
 
-  state.filtered = state.deals.filter(d => {
+  // If a month beyond the detailed window is selected, search the overview rows.
+  const detailHasMonth = month && state.deals.some(d => d.depart.startsWith(month));
+  const source = (month && !detailHasMonth)
+    ? (state.monthRows || [])
+    : state.deals;
+  state.filtered = source.filter(d => {
     if (origin && d.origin !== origin) return false;
     if (country && d.country !== country) return false;
-    if (nights && d.nights !== +nights) return false;
+    if (!d.overview && nights && d.nights !== +nights) return false;
     if (month && !d.depart.startsWith(month)) return false;
-    if (weekend && d.weekend !== weekend) return false;
+    if (!d.overview && weekend && d.weekend !== weekend) return false;
     if (from && d.depart < from) return false;
     if (to && d.return > to) return false;
     if (d.total > budget) return false;
