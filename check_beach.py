@@ -22,10 +22,12 @@ Logic per run:
 
 import json
 import os
+import random
 import sys
 import time
 import urllib.parse
 import urllib.error
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import urllib.request
 from datetime import date, datetime, timedelta, timezone
 
@@ -38,16 +40,7 @@ TG_CHAT_ID = (os.environ.get("TG_CHAT_ID") or "")
 ORIGINS = [o.strip().upper() for o in (os.environ.get("ORIGINS") or "VIE,BTS").split(",") if o.strip()]
 
 # Scan the next N weekends (a "weekend" = one Thursday departure + one Friday departure)
-SCAN_WEEKENDS = int((os.environ.get("SCAN_WEEKENDS") or "26"))
-
-# Scanning every departure day and trip length six months out costs a fortune
-# in API calls for very little: you don't need Thursday-vs-Saturday detail on
-# a weekend in January. The first NEAR_WEEKENDS get the full grid, everything
-# beyond gets Friday departures at two or three nights, which is enough to
-# spot whether a destination is cheap that far ahead.
-NEAR_WEEKENDS = int((os.environ.get("NEAR_WEEKENDS") or "6"))
-FAR_TRIP_NIGHTS = [int(n) for n in (os.environ.get("FAR_TRIP_NIGHTS") or "2,3").split(",")]
-FAR_DEPART_DAYS = [int(x) for x in (os.environ.get("FAR_DEPART_DAYS") or "4").split(",")]
+SCAN_WEEKENDS = int((os.environ.get("SCAN_WEEKENDS") or "4"))
 
 # Trip lengths in nights to test for each departure day
 TRIP_NIGHTS = [int(n) for n in (os.environ.get("TRIP_NIGHTS") or "2,3,4,5").split(",")]
@@ -72,7 +65,12 @@ OVERVIEW_N = int((os.environ.get("OVERVIEW_N") or "73"))
 
 # Send a digest of the cheapest totals even when nothing beats a target
 ALWAYS_DIGEST = (os.environ.get("ALWAYS_DIGEST") or "true").lower() in ("1", "true", "yes")
-PACE_SECONDS = float((os.environ.get("PACE_SECONDS") or "0.2"))
+PACE_SECONDS = float((os.environ.get("PACE_SECONDS") or "0.0"))
+
+# Parallel flight lookups. The scan is latency-bound (~1s per API call), so
+# fetching sequentially would take hours. 12 workers keeps us well inside the
+# Actions timeout without hammering the API.
+MAX_WORKERS = int((os.environ.get("MAX_WORKERS") or "8"))
 DRY_RUN = (os.environ.get("DRY_RUN") or "").lower() in ("1", "true", "yes")
 SILENT_REFRESH = (os.environ.get("SILENT_REFRESH") or "").lower() in ("1", "true", "yes")
 
@@ -81,6 +79,11 @@ DASHBOARD_URL = os.environ.get("DASHBOARD_URL") or "https://rizabalci.github.io/
 
 HISTORY_FILE = "price_history.json"
 SITE_DATA_FILE = "deals.json"
+
+# Month overview: cheapest fare per destination for each of the next N months.
+# Uses the API's month query (one call returns a whole month), so this whole
+# pass is only ~ (destinations x months x origins) calls — cheap.
+MONTHS_AHEAD = int((os.environ.get("MONTHS_AHEAD") or "12"))
 
 CURRENCY = "eur"
 
@@ -178,58 +181,38 @@ BEACH_DESTINATIONS = {
     "AOK": ("Karpathos", "\U0001F1EC\U0001F1F7 Greece", "Karpathos", 45, 80, 300),
 }
 
+
+# Daily on-the-ground budget (EUR/day, per person): food, drinks, local
+# transport. Moderate style — lunch, dinner, a few drinks, buses or the odd
+# taxi. Tune per destination as real trips calibrate it.
+DAILY_SPEND = {
+    # Iberia + islands
+    "PMI": 55, "IBZ": 75, "AGP": 45, "ALC": 45, "VLC": 45, "BCN": 55, "MAH": 55,
+    "GRO": 45, "TFS": 45, "LPA": 45, "FUE": 45, "ACE": 45,
+    "FAO": 45, "LIS": 45, "OPO": 40,
+    # Greece
+    "ATH": 45, "SKG": 40, "HER": 40, "CHQ": 40, "RHO": 42, "KGS": 42,
+    "JTR": 65, "JMK": 75, "CFU": 42, "ZTH": 42, "EFL": 45, "PVK": 42,
+    "JSI": 45, "KLX": 40, "KVA": 35, "VOL": 38, "SMI": 40, "AOK": 40,
+    # Adriatic
+    "SPU": 50, "DBV": 60, "ZAD": 45, "PUY": 45, "RJK": 45,
+    "TIV": 40, "TGD": 35, "TIA": 30,
+    # Italy + Malta
+    "NAP": 50, "PMO": 45, "CTA": 45, "CAG": 48, "OLB": 55, "BRI": 45,
+    "BDS": 45, "TPS": 45, "RMI": 48, "GOA": 52, "VCE": 60, "AHO": 48, "SUF": 42,
+    "MLA": 48,
+    # France
+    "NCE": 65, "MRS": 55,
+    # Cyprus + Black Sea
+    "LCA": 45, "PFO": 45, "VAR": 30, "BOJ": 30,
+    # North Africa + Red Sea + Gulf
+    "HRG": 30, "SSH": 30, "RMF": 30, "AGA": 30, "NBE": 28, "DJE": 28,
+    "TLV": 70, "DXB": 65,
+}
+DEFAULT_DAILY_SPEND = int((os.environ.get("DEFAULT_DAILY_SPEND") or "45"))
+
 # Destinations whose high season is winter sun (Nov-Mar) instead of summer
 WINTER_SUN = {"TFS", "LPA", "FUE", "ACE", "HRG", "SSH", "RMF", "AGA", "DXB"}
-
-# Whether a rental car is genuinely required, or merely convenient.
-#   essential = public transport won't realistically get you to the beaches
-#   optional  = buses, trains or ferries work fine; a car just opens up more
-# Destinations absent from this dict need no car at all.
-CAR_ADVICE = {
-    # --- car is the only realistic option ---
-    "AOK": "essential",  # Karpathos, barely any buses
-    "BDS": "essential",  # Salento beaches are scattered and poorly served
-    "EFL": "essential",  # Kefalonia, sparse and infrequent buses
-    "FUE": "essential",  # Fuerteventura, best beaches are remote
-    "MAH": "essential",  # Menorca, the good coves have no bus
-    "OLB": "essential",  # Costa Smeralda beaches are spread out
-    "PVK": "essential",  # Lefkada west coast beaches are unserved
-    "RMF": "essential",  # Marsa Alam, resort transfers or nothing
-    "SMI": "essential",  # Samos, limited bus network
-    "VOL": "essential",  # Pelion villages and beaches need wheels
-
-    # --- car helps, but you can manage without ---
-    "ACE": "optional",   # Lanzarote, inter-resort buses
-    "AGA": "optional",   # Agadir, cheap taxis
-    "AGP": "optional",   # Cercanías train along the Costa del Sol
-    "AHO": "optional",   # Alghero, buses to Lido and Fertilia
-    "BRI": "optional",   # Ferrovie del Sud Est to Polignano and Monopoli
-    "CAG": "optional",   # Cagliari, good city buses to Poetto
-    "CFU": "optional",   # Corfu green buses to the main beaches
-    "CHQ": "optional",   # KTEL buses reach Elafonissi and Balos in summer
-    "DJE": "optional",   # Djerba, resort plus taxis
-    "FAO": "optional",   # Algarve train, Faro to Lagos
-    "GRO": "optional",   # Costa Brava coach network
-    "HER": "optional",   # KTEL buses along the north coast
-    "HRG": "optional",   # Hurghada, resort plus taxis
-    "IBZ": "optional",   # Ibiza summer buses and the discobus
-    "KGS": "optional",   # Kos buses to the main beaches
-    "KLX": "optional",   # Kalamata town is walkable
-    "KVA": "optional",   # Ferry to Thassos, island buses
-    "LPA": "optional",   # Gran Canaria Global buses
-    "MRS": "optional",   # Marseille transit, boats to the Calanques
-    "NBE": "optional",   # Hammamet, taxis and louages
-    "PMI": "optional",   # Mallorca buses plus the Sóller and Inca trains
-    "PUY": "optional",   # Pula local buses to the beaches
-    "RHO": "optional",   # Rhodes east and west coast buses
-    "SKG": "optional",   # KTEL buses into Halkidiki
-    "SSH": "optional",   # Sharm, resort plus taxis
-    "TFS": "optional",   # Tenerife TITSA network is excellent
-    "TGD": "optional",   # Cheap buses down to Bar and Budva
-    "TIA": "optional",   # Furgon minibuses to Himarë and Sarandë
-    "TPS": "optional",   # Seasonal buses to San Vito Lo Capo
-    "ZTH": "optional",   # Zakynthos buses to the main resorts
-}
 
 # Static per-destination metadata for the dashboard: approx flight time from
 # VIE (hours) and typical August sea temperature (°C). Used only for filtering
@@ -258,28 +241,49 @@ DEST_META = {
 # ------------------------------------------------------------ http utils ----
 
 
-def http_get_json(url, timeout=25):
-    req = urllib.request.Request(url, headers={"User-Agent": "beach-holiday-bot/1.0"})
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            return json.loads(resp.read().decode("utf-8"))
-    except Exception as exc:  # noqa: BLE001 — log and continue, one bad call must not kill the run
-        print(f"  ! request failed: {exc} :: {url[:120]}")
-        return None
+# Failure bookkeeping so a silent API problem can never masquerade as
+# "no deals today" again. Counted across threads; GIL makes += safe enough here.
+STATS = {"ok": 0, "empty": 0, "rate_limited": 0, "http_error": 0, "network": 0}
+_first_errors = []
+
+
+def http_get_json(url, timeout=25, attempts=4):
+    """GET with retry + backoff. Returns parsed JSON, or None only after retries."""
+    for attempt in range(attempts):
+        req = urllib.request.Request(url, headers={"User-Agent": "beach-holiday-bot/1.0"})
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                STATS["ok"] += 1
+                return json.loads(resp.read().decode("utf-8"))
+        except urllib.error.HTTPError as exc:
+            if exc.code in (429, 503):          # throttled — back off and retry
+                STATS["rate_limited"] += 1
+                time.sleep(2 * (attempt + 1) + random.random())
+                continue
+            STATS["http_error"] += 1
+            if len(_first_errors) < 5:
+                _first_errors.append(f"HTTP {exc.code} :: {url[:100]}")
+            return None                          # 4xx that retrying won't fix
+        except Exception as exc:                 # timeouts, resets, DNS
+            STATS["network"] += 1
+            if len(_first_errors) < 5:
+                _first_errors.append(f"{type(exc).__name__}: {exc} :: {url[:100]}")
+            time.sleep(1 + attempt)
+    return None
 
 
 # ------------------------------------------------------------- flights ------
 
 
 def fetch_flight_rt(origin, dest, depart, ret):
-    """Cheapest cached DIRECT round-trip price (EUR) or None. No layovers."""
+    """Cheapest cached round-trip price (EUR) or None."""
     params = {
         "origin": origin,
         "destination": dest,
         "departure_at": depart.isoformat(),
         "return_at": ret.isoformat(),
         "one_way": "false",
-        "direct": "true",
+        "direct": "false",
         "sorting": "price",
         "limit": 1,
         "currency": CURRENCY,
@@ -290,9 +294,6 @@ def fetch_flight_rt(origin, dest, depart, ret):
     if not data or not data.get("data"):
         return None
     t = data["data"][0]
-    # Belt-and-suspenders: reject anything with transfers even if API misreports
-    if t.get("transfers", 0) > 0 or t.get("return_transfers", 0) > 0:
-        return None
     price = t.get("price")
     link = t.get("link")
     if not price:
@@ -300,27 +301,140 @@ def fetch_flight_rt(origin, dest, depart, ret):
     return {
         "price": float(price),
         "link": link,
+        # v3 returns full ISO timestamps and leg durations in minutes
         "departure_at": t.get("departure_at"),
         "return_at": t.get("return_at"),
+        "duration_to": t.get("duration_to"),
+        "duration_back": t.get("duration_back"),
+        "airline": t.get("airline"),
+        "transfers": t.get("transfers"),
     }
 
 
+
+def _clock(iso_ts):
+    """'2026-08-27T21:20:00+02:00' -> '21:20', or None."""
+    if not iso_ts or "T" not in iso_ts:
+        return None
+    return iso_ts.split("T", 1)[1][:5]
+
+
+def _timing(flight):
+    """Derive HH:MM strings and day-waster flags from the API timestamps."""
+    dep = _clock(flight.get("departure_at"))
+    ret_dep = _clock(flight.get("return_at"))
+    arr = None
+    dur_to = flight.get("duration_to")
+    if dep and isinstance(dur_to, (int, float)) and dur_to > 0:
+        h, m = int(dep[:2]), int(dep[3:5])
+        total = h * 60 + m + int(dur_to)
+        arr = f"{(total // 60) % 24:02d}:{total % 60:02d}"
+
+    flags = []
+    if arr:
+        arr_h = int(arr[:2])
+        if arr_h >= 22 or arr_h < 4:
+            flags.append("late_arrival")
+    if dep:
+        dep_h = int(dep[:2])
+        if dep_h < 6:
+            flags.append("red_eye")
+    if ret_dep:
+        rh = int(ret_dep[:2])
+        if rh < 9:
+            flags.append("early_return")
+    return dep, arr, ret_dep, flags
+
+
+def fetch_month_cheapest(origin, dest, year_month):
+    """Cheapest round-trip fare anywhere in a given YYYY-MM. One API call."""
+    params = {
+        "origin": origin,
+        "destination": dest,
+        "departure_at": year_month,      # e.g. 2026-11 -> whole month
+        "one_way": "false",
+        "direct": "false",
+        "sorting": "price",
+        "limit": 1,
+        "currency": CURRENCY,
+        "token": TP_TOKEN,
+    }
+    url = "https://api.travelpayouts.com/aviasales/v3/prices_for_dates?" + urllib.parse.urlencode(params)
+    data = http_get_json(url)
+    if not data or not data.get("data"):
+        return None
+    t = data["data"][0]
+    price = t.get("price")
+    if not price:
+        return None
+    return {
+        "price": float(price),
+        "depart": t.get("departure_at", "")[:10] or None,
+        "airline": t.get("airline"),
+        "link": ("https://www.aviasales.com" + t["link"]) if t.get("link") else None,
+    }
+
+
+def scan_months():
+    """Return {dest: [ {month, price, depart, origin, airline, hotel_est, total} ]}."""
+    from calendar import monthrange
+    today = date.today()
+    months = []
+    y, m = today.year, today.month
+    for _ in range(MONTHS_AHEAD):
+        months.append(f"{y:04d}-{m:02d}")
+        m += 1
+        if m > 12:
+            m = 1
+            y += 1
+
+    jobs = []
+    for dest in BEACH_DESTINATIONS:
+        for ym in months:
+            for origin in ORIGINS:
+                jobs.append((dest, ym, origin))
+
+    def run(job):
+        dest, ym, origin = job
+        r = fetch_month_cheapest(origin, dest, ym)
+        if not r:
+            return None
+        yy, mm = int(ym[:4]), int(ym[5:7])
+        # estimate a typical 4-night stay that month for a rough all-in
+        sample_day = date(yy, mm, 15)
+        nightly = estimate_hotel_nightly(dest, sample_day)
+        hotel = nightly * 4 / HOTEL_SPLIT
+        return {
+            "dest": dest, "month": ym, "origin": origin,
+            "flight": round(r["price"]),
+            "depart": r["depart"],
+            "airline": r.get("airline"),
+            "hotel_est": round(hotel),
+            "total_est": round(r["price"] + hotel),
+            "url": r.get("link") or aviasales_search_url(
+                origin, dest, sample_day, sample_day + timedelta(days=4)),
+        }
+
+    by_dest = {}
+    print(f"Month overview: {len(BEACH_DESTINATIONS)} destinations x {len(months)} months "
+          f"x {len(ORIGINS)} origins = {len(jobs)} calls")
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
+        for row in pool.map(run, jobs):
+            if not row:
+                continue
+            best = by_dest.setdefault(row["dest"], {})
+            key = row["month"]
+            if key not in best or row["total_est"] < best[key]["total_est"]:
+                best[key] = row
+    # flatten to sorted lists
+    return {d: sorted(v.values(), key=lambda x: x["month"]) for d, v in by_dest.items()}
+
+
 def aviasales_search_url(origin, dest, depart, ret):
-    """Deprecated — kept for backwards compat but returns Skyscanner direct-only."""
-    return skyscanner_direct_url(origin, dest, depart, ret)
-
-
-def skyscanner_direct_url(origin, dest, depart, ret):
-    """Skyscanner search URL pre-filtered to direct flights only.
-    Format: /transport/flights/{from}/{to}/{yymmdd}/{yymmdd}/?adults=1&preferdirects=true
-    """
-    d1 = depart.strftime("%y%m%d")
-    d2 = ret.strftime("%y%m%d")
-    return (
-        f"https://www.skyscanner.net/transport/flights/"
-        f"{origin.lower()}/{dest.lower()}/{d1}/{d2}/"
-        f"?adults=1&preferdirects=true"
-    )
+    """Human-facing fallback search link."""
+    d1 = depart.strftime("%d%m")
+    d2 = ret.strftime("%d%m")
+    return f"https://www.aviasales.com/search/{origin}{d1}{dest}{d2}1"
 
 
 # -------------------------------------------------------------- hotels ------
@@ -328,9 +442,8 @@ def skyscanner_direct_url(origin, dest, depart, ret):
 # Oct 2025, so v1 uses a seasonal estimate model: per-destination nightly
 # rates (budget 3-star, solo) with a low/high season split, plus a
 # Booking.com deep link with the exact dates so live prices are one tap away.
-# Amadeus closed its free self-service tier in July 2026 and nothing else
-# offers live rates at sensible volume for free, so these are estimates.
-# Real figures you have checked go in hotel_rates.json and take precedence.
+# To go live later, replace estimate_hotel_nightly() with a real provider
+# (LiteAPI / Amadeus) — the rest of the pipeline is agnostic.
 
 
 def is_high_season(dest, d):
@@ -339,593 +452,9 @@ def is_high_season(dest, d):
     return d.month in (6, 7, 8, 9)
 
 
-def _load_verified_rates():
-    """Real nightly rates you've checked yourself, from hotel_rates.json.
-
-    There is no free hotel-price API worth using since Amadeus closed its
-    self-service tier, so the only accurate source available is you looking
-    at Booking and writing the number down. Anything in here beats the
-    built-in estimate and gets marked as verified in the dashboard.
-    """
-    path = os.environ.get("HOTEL_RATES_FILE") or "hotel_rates.json"
-    if not os.path.exists(path):
-        return {}
-    try:
-        with open(path, encoding="utf-8") as f:
-            data = json.load(f)
-    except (json.JSONDecodeError, OSError) as exc:
-        print(f"hotel_rates.json unreadable, using estimates only: {exc}", file=sys.stderr)
-        return {}
-    rates = data.get("rates") or {}
-    clean = {}
-    for dest, val in rates.items():
-        if isinstance(val, (int, float)):
-            clean[dest] = {"low": float(val), "high": float(val)}
-        elif isinstance(val, dict) and ("low" in val or "high" in val):
-            lo = float(val.get("low", val.get("high")))
-            hi = float(val.get("high", val.get("low")))
-            clean[dest] = {"low": lo, "high": hi}
-        else:
-            print(f"hotel_rates.json: ignoring malformed entry for {dest}", file=sys.stderr)
-    return clean
-
-
-VERIFIED_RATES = _load_verified_rates()
-
-
 def estimate_hotel_nightly(dest, depart):
-    """Nightly rate before peak and weekend multipliers.
-
-    Returns (rate, verified) so callers can tell a checked figure from a guess.
-    """
-    high_season = is_high_season(dest, depart)
-    if dest in VERIFIED_RATES:
-        row = VERIFIED_RATES[dest]
-        return row["high"] if high_season else row["low"], True
     _, _, _, low, high, _ = _dest_row(dest)
-    return (high if high_season else low), False
-
-
-# --- peak periods ----------------------------------------------------------
-# The low/high season split is too blunt on its own: 1 August and Ferragosto
-# weekend are both "high season" but nowhere near the same price. These
-# multipliers sit on top of the seasonal rate, and also drive the crowd flag.
-
-def _gregorian_easter(year):
-    """Anonymous Gregorian algorithm. Western Easter Sunday."""
-    a, b, c = year % 19, year // 100, year % 100
-    d, e = b // 4, b % 4
-    f, g = (b + 8) // 25, 0
-    g = (b - f + 1) // 3
-    h = (19 * a + b - d - g + 15) % 30
-    i, k = c // 4, c % 4
-    lp = (32 + 2 * e + 2 * i - h - k) % 7
-    m = (a + 11 * h + 22 * lp) // 451
-    month = (h + lp - 7 * m + 114) // 31
-    day = ((h + lp - 7 * m + 114) % 31) + 1
-    return date(year, month, day)
-
-
-def _orthodox_easter(year):
-    """Julian computus shifted to the Gregorian calendar."""
-    a, b, c = year % 4, year % 7, year % 19
-    d = (19 * c + 15) % 30
-    e = (2 * a + 4 * b - d + 34) % 7
-    month = (d + e + 114) // 31
-    day = ((d + e + 114) % 31) + 1
-    julian = date(year, month, day)
-    return julian + timedelta(days=13)  # valid 1900-2099
-
-
-ORTHODOX_COUNTRIES = {"Greece", "Cyprus"}
-
-
-def peak_multiplier(dest, d):
-    """Uplift on the seasonal nightly rate. Returns (multiplier, label|None)."""
-    country = BEACH_DESTINATIONS[dest][1].split()[-1]
-
-    # Ferragosto: Italy effectively closes and the coast fills up.
-    if d.month == 8 and 10 <= d.day <= 20:
-        if country == "Italy":
-            return 1.45, "Ferragosto"
-        return 1.20, "mid-August peak"
-
-    # New Year
-    if (d.month == 12 and d.day >= 27) or (d.month == 1 and d.day <= 2):
-        return 1.35, "New Year"
-
-    # Easter week, Orthodox where relevant
-    easter = (_orthodox_easter(d.year) if country in ORTHODOX_COUNTRIES
-              else _gregorian_easter(d.year))
-    if -3 <= (d - easter).days <= 3:
-        return 1.30, "Easter week"
-
-    # Broad peak summer fortnights either side of Ferragosto
-    if (d.month == 7 and d.day >= 25) or (d.month == 8 and d.day <= 25):
-        return 1.15, None
-
-    return 1.0, None
-
-
-def weekend_uplift(depart, nights):
-    """Hotels charge more for Friday and Saturday nights. Scale by how much
-    of the stay lands on them, up to +8%."""
-    if nights <= 0:
-        return 1.0
-    weekend_nights = sum(
-        1 for i in range(nights)
-        if (depart + timedelta(days=i)).weekday() in (4, 5)
-    )
-    return 1.0 + 0.08 * (weekend_nights / nights)
-
-
-def trip_target(dest, depart, nights):
-    """What counts as a good total for this destination and trip length.
-
-    The stored target was hand-set against a two-night high-season trip, so
-    decompose it into a flight budget plus a nightly budget and re-scale.
-    Without this a five-night trip is judged against the same number as a
-    two-night one and can essentially never qualify.
-
-    Deliberately uses the base seasonal rate rather than the peak-adjusted
-    one, so a Ferragosto trip has to be genuinely cheap to earn a flame, not
-    merely cheap for Ferragosto.
-    """
-    _, _, _, low, high, stored = _dest_row(dest)
-    flight_budget = stored - 2 * high          # calibrated at 2 nights, solo
-    nightly_budget, _ = estimate_hotel_nightly(dest, depart)
-    return flight_budget + (nightly_budget * nights) / HOTEL_SPLIT
-
-
-# --- daily on-the-ground spend --------------------------------------------
-# Per person, per day, in EUR, set individually for every destination rather
-# than by country, because Dubrovnik is not Rijeka and Mykonos is not Kavala.
-# Covers food, drinks, local transport and small activities at a mid-range
-# pace: a proper restaurant dinner, a casual lunch, coffee, a couple of
-# drinks, buses plus the odd taxi, one paid activity or beach lounger.
-# Not backpacking, not fine dining. Car hire is excluded.
-DAILY_SPEND = {
-    # --- Albania, Bulgaria, Montenegro: cheapest in the set ---
-    "TIA": 35,  # Tirana / Albanian Riviera
-    "VAR": 38,  # Varna
-    "BOJ": 40,  # Burgas / Sunny Beach, resort mark-up
-    "TGD": 42,  # Podgorica, inland prices
-    "TIV": 50,  # Tivat / Kotor Bay, yacht-crowd premium
-
-    # --- North Africa, Red Sea ---
-    "AGA": 40,  # Agadir
-    "NBE": 35,  # Hammamet
-    "DJE": 38,  # Djerba
-    "HRG": 35,  # Hurghada
-    "SSH": 40,  # Sharm El Sheikh
-    "RMF": 50,  # Marsa Alam, captive resort pricing
-
-    # --- Croatia ---
-    "RJK": 48,  # Rijeka / Kvarner, workaday city
-    "PUY": 52,  # Pula / Istria
-    "ZAD": 55,  # Zadar
-    "SPU": 60,  # Split, busier and dearer
-    "DBV": 75,  # Dubrovnik, the most expensive town on the coast
-
-    # --- Greece: mainland and cheaper islands first ---
-    "KVA": 42,  # Kavala / Thassos
-    "VOL": 45,  # Volos / Pelion
-    "KLX": 45,  # Kalamata / Peloponnese
-    "SKG": 48,  # Thessaloniki, good value city
-    "AOK": 48,  # Karpathos, quiet
-    "SMI": 48,  # Samos
-    "PVK": 50,  # Preveza / Lefkada
-    "EFL": 55,  # Kefalonia
-    "ATH": 55,  # Athens / Riviera
-    "HER": 55,  # Heraklion
-    "CHQ": 58,  # Chania, prettier old town, dearer
-    "KGS": 55,  # Kos
-    "ZTH": 55,  # Zakynthos
-    "JSI": 60,  # Skiathos
-    "CFU": 60,  # Corfu
-    "RHO": 58,  # Rhodes
-    "JTR": 95,  # Santorini
-    "JMK": 110,  # Mykonos
-
-    # --- Cyprus, Malta ---
-    "LCA": 55,  # Larnaca
-    "PFO": 58,  # Paphos
-    "MLA": 55,  # Malta
-
-    # --- Italy: south is markedly cheaper than the north ---
-    "PMO": 50,  # Palermo
-    "CTA": 50,  # Catania
-    "TPS": 50,  # Trapani / San Vito
-    "SUF": 52,  # Lamezia / Tropea
-    "BRI": 55,  # Bari / Puglia
-    "BDS": 55,  # Brindisi / Salento
-    "CAG": 58,  # Cagliari
-    "AHO": 62,  # Alghero
-    "NAP": 60,  # Naples / Sorrento
-    "RMI": 62,  # Rimini, Adriatic resort strip
-    "OLB": 85,  # Olbia / Costa Smeralda
-    "GOA": 70,  # Genoa / Liguria
-    "VCE": 85,  # Venice / Lido
-
-    # --- Spain: Canaries and mainland cheaper than the Balearics ---
-    "TFS": 55,  # Tenerife
-    "LPA": 55,  # Gran Canaria
-    "FUE": 55,  # Fuerteventura
-    "ACE": 58,  # Lanzarote
-    "AGP": 55,  # Malaga / Costa del Sol
-    "ALC": 55,  # Alicante / Costa Blanca
-    "VLC": 55,  # Valencia
-    "GRO": 60,  # Girona / Costa Brava
-    "BCN": 65,  # Barcelona
-    "MAH": 68,  # Menorca
-    "PMI": 70,  # Palma de Mallorca
-    "IBZ": 90,  # Ibiza
-
-    # --- Portugal ---
-    "OPO": 48,  # Porto / Matosinhos
-    "FAO": 52,  # Faro / Algarve
-    "LIS": 58,  # Lisbon / Cascais
-
-    # --- France, Israel, UAE ---
-    "MRS": 70,  # Marseille
-    "NCE": 90,  # Nice / French Riviera
-    "TLV": 90,  # Tel Aviv
-    "DXB": 85,  # Dubai
-}
-
-DAILY_SPEND_DEFAULT = 55
-
-
-def estimate_daily_spend(dest):
-    """Per-person daily spend in EUR, before flights and accommodation."""
-    return DAILY_SPEND.get(dest, DAILY_SPEND_DEFAULT)
-
-
-# --- flight timing quality -------------------------------------------------
-# A cheap fare that lands at 23:40 and flies home at 06:30 costs you both
-# bookend days. Times come from the cached fare, so treat them as indicative
-# of that route's usual schedule rather than a guarantee.
-
-LATE_ARRIVAL_HOUR = 21      # landing at or after this = evening gone
-EARLY_RETURN_HOUR = 9       # flying home before this = last morning gone
-RED_EYE_DEPART_HOUR = 6     # leaving before this = 3am start from home
-
-# --- getting to the airport from home -------------------------------------
-# Door to terminal from Walfischgasse 10, 1010. Public transport, not taxi,
-# because at 04:00 the taxi is faster but you'd still set the alarm for the
-# train in case it doesn't show.
-HOME_LABEL = os.environ.get("HOME_LABEL") or "Walfischgasse 10, 1010"
-ORIGIN_TRANSFER = {
-    # minutes door to terminal, and how
-    "VIE": (40, "walk to Karlsplatz, U4 to Wien Mitte, CAT to the airport"),
-    "BTS": (105, "U1 to Hauptbahnhof, coach to Bratislava airport"),
-}
-# Budget carriers close boarding 30 minutes out and security queues are
-# unpredictable at 05:00, so this is deliberately not optimistic.
-AIRPORT_BUFFER_MIN = int(os.environ.get("AIRPORT_BUFFER_MIN") or "90")
-BRUTAL_DEPARTURE_HOUR = 4   # leaving home before this earns a warning
-
-
-def _parse_iso_hhmm(stamp):
-    """'2026-08-01T05:45:00+02:00' -> (5, 45). None if unparseable."""
-    if not stamp or "T" not in stamp:
-        return None
-    try:
-        clock = stamp.split("T", 1)[1][:5]
-        h, m = clock.split(":")
-        return int(h), int(m)
-    except (ValueError, IndexError):
-        return None
-
-
-def analyse_timing(flight, flight_hours, origin=None):
-    """Return dict of readable times plus flags for day-wasting schedules."""
-    out = {
-        "dep_time": None, "arr_time": None,
-        "ret_dep_time": None, "timing_flags": [],
-        "leave_home": None, "leave_prev_day": False,
-        "transfer_min": None, "transfer_how": None,
-    }
-    dep = _parse_iso_hhmm(flight.get("departure_at"))
-    ret = _parse_iso_hhmm(flight.get("return_at"))
-    if dep:
-        out["dep_time"] = f"{dep[0]:02d}:{dep[1]:02d}"
-        if flight_hours:
-            total_min = dep[0] * 60 + dep[1] + int(round(flight_hours * 60))
-            ah, am = (total_min // 60) % 24, total_min % 60
-            out["arr_time"] = f"{ah:02d}:{am:02d}"
-            if ah >= LATE_ARRIVAL_HOUR or ah < 4:
-                out["timing_flags"].append("late_arrival")
-        if dep[0] < RED_EYE_DEPART_HOUR:
-            out["timing_flags"].append("red_eye")
-
-        # When you actually have to walk out of the door.
-        transfer = ORIGIN_TRANSFER.get(origin)
-        if transfer:
-            mins, how = transfer
-            out["transfer_min"], out["transfer_how"] = mins, how
-            leave = dep[0] * 60 + dep[1] - mins - AIRPORT_BUFFER_MIN
-            out["leave_prev_day"] = leave < 0
-            leave %= 24 * 60
-            lh, lm = leave // 60, leave % 60
-            out["leave_home"] = f"{lh:02d}:{lm:02d}"
-            if out["leave_prev_day"] or lh < BRUTAL_DEPARTURE_HOUR:
-                out["timing_flags"].append("brutal_start")
-    if ret:
-        out["ret_dep_time"] = f"{ret[0]:02d}:{ret[1]:02d}"
-        if ret[0] < EARLY_RETURN_HOUR:
-            out["timing_flags"].append("early_return")
-    return out
-
-
-# --- getting to the beach --------------------------------------------------
-# How you reach the sand from the recommended base once you've checked in.
-# Independent of needs_car, which is about the trip overall.
-#   walk = roughly 15 minutes on foot or less
-#   bus  = regular public transport, about 15-45 minutes
-#   taxi = no useful transit, short drive required
-BEACH_ACCESS = {
-    "AGA": ("walk", "Beach promenade runs along the town"),
-    "AHO": ("walk", "Lido di Alghero ~15 min from the old town"),
-    "ALC": ("walk", "Postiguet beach below the castle"),
-    "ATH": ("bus", "Tram to Glyfada / Vouliagmeni, ~45 min"),
-    "BCN": ("walk", "Barceloneta from the Gothic quarter"),
-    "BRI": ("bus", "Pane e Pomodoro ~25 min; real Puglia beaches need a car"),
-    "BDS": ("taxi", "Nearest good sand is a short drive"),
-    "BOJ": ("walk", "Sunny Beach hotels sit on the sand"),
-    "CAG": ("bus", "Poetto beach, bus PF/PQ ~15 min"),
-    "CTA": ("bus", "Playa di Catania, bus D ~20 min"),
-    "CHQ": ("walk", "Nea Chora ~10 min; Balos and Elafonissi need a car"),
-    "CFU": ("bus", "Buses to Glyfada and Paleokastritsa"),
-    "DJE": ("walk", "Resort strip is beachfront"),
-    "DXB": ("taxi", "JBR or Kite Beach, short ride"),
-    "DBV": ("walk", "Banje beach 5 min from Ploče Gate"),
-    "FAO": ("bus", "Ferry or bus to the island beaches"),
-    "FUE": ("walk", "Resorts sit directly on the sand"),
-    "GOA": ("bus", "Boccadasse by bus; Cinque Terre by train"),
-    "GRO": ("taxi", "Costa Brava coast is a drive from Girona"),
-    "LPA": ("walk", "Las Canteras runs through Las Palmas"),
-    "NBE": ("walk", "Hammamet resorts are beachfront"),
-    "HER": ("bus", "Amoudara beach, ~20 min by bus"),
-    "HRG": ("walk", "Resorts sit on the Red Sea shore"),
-    "IBZ": ("bus", "Buses to Talamanca and Ses Salines"),
-    "KLX": ("walk", "Town beach by the marina"),
-    "AOK": ("taxi", "Pigadia beach is walkable, the rest a drive"),
-    "KVA": ("bus", "Kalamitsa ~15 min; Thassos by ferry"),
-    "EFL": ("taxi", "Argostoli beaches are a short drive"),
-    "KGS": ("walk", "Kos town beach from the centre"),
-    "SUF": ("walk", "Tropea beach sits below the old town"),
-    "ACE": ("walk", "Puerto del Carmen is beachfront"),
-    "LCA": ("walk", "Finikoudes on the seafront promenade"),
-    "LIS": ("bus", "Cascais train from Cais do Sodré, ~40 min"),
-    "AGP": ("walk", "La Malagueta ~15 min from the centre"),
-    "MLA": ("bus", "Buses from Sliema to the northern bays"),
-    "RMF": ("walk", "Resorts are beachfront"),
-    "MRS": ("bus", "Prado beaches by bus; Calanques by boat or hike"),
-    "MAH": ("taxi", "The good coves are a drive"),
-    "JMK": ("bus", "Buses to Paradise, Elia and Platis Gialos"),
-    "NAP": ("bus", "Circumvesuviana to Sorrento; beach clubs below town"),
-    "NCE": ("walk", "Promenade des Anglais from anywhere central"),
-    "OLB": ("taxi", "Pittulongu and Golfo Aranci are a short drive"),
-    "PMO": ("bus", "Bus 806 to Mondello, ~30 min, €1.40"),
-    "PMI": ("bus", "Cala Major and Illetas by bus"),
-    "PFO": ("walk", "Harbour beaches; Coral Bay by bus"),
-    "TGD": ("taxi", "The coast is over an hour away"),
-    "OPO": ("bus", "Metro to Matosinhos, ~25 min"),
-    "PVK": ("taxi", "Lefkada beaches need a drive"),
-    "PUY": ("walk", "Hawaii and Stoja beaches ~20 min"),
-    "RHO": ("walk", "Elli beach in Rhodes Town"),
-    "RJK": ("bus", "Buses along the coast to Opatija and Lovran"),
-    "RMI": ("walk", "Sand starts at the end of the street"),
-    "SMI": ("taxi", "Beaches are a drive from Vathy"),
-    "JTR": ("bus", "Buses to Perissa and Kamari"),
-    "SSH": ("walk", "Resorts are beachfront"),
-    "JSI": ("bus", "Bus to Koukounaries, ~30 min"),
-    "SPU": ("walk", "Bačvice ~10 min from the Riva"),
-    "TLV": ("walk", "Beach runs the length of the city"),
-    "TFS": ("walk", "Los Cristianos and Las Américas are beachfront"),
-    "SKG": ("taxi", "Halkidiki peninsulas are a drive from the city"),
-    "TIA": ("taxi", "Durrës ~40 min; the Riviera is 3-4 hours"),
-    "TIV": ("walk", "Bay beaches walkable; Plavi Horizonti a short drive"),
-    "TPS": ("taxi", "San Vito Lo Capo is a drive from Trapani"),
-    "VLC": ("bus", "Malvarrosa by tram or bus, ~20 min"),
-    "VAR": ("walk", "City beach below the sea garden"),
-    "VCE": ("bus", "Vaporetto to the Lido, ~15 min"),
-    "VOL": ("taxi", "Pelion beaches need a drive"),
-    "ZAD": ("walk", "Kolovare ~10 min from the old town"),
-    "ZTH": ("bus", "Buses to Laganas and Tsilivi"),
-}
-
-
-def beach_access(dest):
-    return BEACH_ACCESS.get(dest, ("taxi", "Check local transport on arrival"))
-
-
-# --- where to search for a bed -------------------------------------------
-# Neighbourhoods and towns worth typing into Booking or Airbnb, chosen for
-# being on or near the sand rather than for being the administrative centre.
-# First entry is the safest default. Curated rather than derived: reverse
-# geocoding returns things like "VII Circoscrizione" for Mondello, which is
-# correct and useless.
-BEACH_AREAS = {
-    # Spain
-    "PMI": ["Playa de Palma", "Can Pastilla", "Illetas", "Portixol"],
-    "IBZ": ["Playa d'en Bossa", "Talamanca", "Santa Eulalia", "Cala Llonga"],
-    "AGP": ["La Malagueta", "Pedregalejo", "Torremolinos", "Benalmadena"],
-    "ALC": ["Playa del Postiguet", "Playa de San Juan", "Cabo de las Huertas"],
-    "VLC": ["Playa de la Malvarrosa", "Las Arenas", "El Cabanyal", "Patacona"],
-    "BCN": ["Barceloneta", "Vila Olimpica", "Poblenou", "Bogatell"],
-    "TFS": ["Los Cristianos", "Playa de las Americas", "Costa Adeje", "El Medano"],
-    "LPA": ["Las Canteras", "Playa del Ingles", "Maspalomas", "Meloneras"],
-    "FUE": ["Corralejo", "Costa Calma", "Morro Jable", "Caleta de Fuste"],
-    "MAH": ["Cala en Bosch", "Son Bou", "Cala Galdana", "Arenal d'en Castell"],
-    "GRO": ["Lloret de Mar", "Tossa de Mar", "Calella de Palafrugell", "Platja d'Aro"],
-    "ACE": ["Puerto del Carmen", "Costa Teguise", "Playa Blanca", "Famara"],
-
-    # Greece
-    "ATH": ["Glyfada", "Vouliagmeni", "Voula", "Alimos"],
-    "SKG": ["Nikiti", "Kallithea Halkidiki", "Hanioti", "Sarti"],
-    "HER": ["Amoudara", "Hersonissos", "Agia Pelagia", "Malia"],
-    "CHQ": ["Nea Chora", "Agia Marina", "Platanias", "Stalos"],
-    "RHO": ["Elli Beach", "Ixia", "Faliraki", "Lindos"],
-    "KGS": ["Kos Town", "Tigaki", "Kardamena", "Mastichari"],
-    "JTR": ["Kamari", "Perissa", "Perivolos", "Oia"],
-    "JMK": ["Ornos", "Platis Gialos", "Agios Ioannis", "Psarou"],
-    "CFU": ["Kassiopi", "Dassia", "Sidari", "Paleokastritsa"],
-    "ZTH": ["Tsilivi", "Alykes", "Kalamaki", "Argassi"],
-    "EFL": ["Lassi", "Skala Kefalonia", "Lourdas", "Fiskardo"],
-    "PVK": ["Nidri", "Vasiliki", "Agios Nikitas", "Parga"],
-    "JSI": ["Koukounaries", "Troulos", "Vasilias", "Skiathos Town"],
-    "KLX": ["Kalamata Beach", "Stoupa", "Kardamyli", "Pylos"],
-    "KVA": ["Golden Beach Thassos", "Limenaria", "Skala Potamia", "Nea Peramos"],
-    "VOL": ["Agios Ioannis Pelion", "Afissos", "Platanias Pelion", "Horto"],
-    "SMI": ["Kokkari", "Pythagorio", "Votsalakia", "Vathy"],
-    "AOK": ["Pigadia", "Amoopi", "Lefkos", "Arkasa"],
-
-    # Croatia, Montenegro, Albania
-    "SPU": ["Bacvice", "Znjan", "Trstenik", "Meje"],
-    "DBV": ["Lapad", "Babin Kuk", "Ploce", "Boninovo"],
-    "ZAD": ["Borik", "Kolovare", "Puntamika", "Diklo"],
-    "PUY": ["Verudela", "Stoja", "Medulin", "Premantura"],
-    "RJK": ["Opatija", "Lovran", "Icici", "Moscenicka Draga"],
-    "TIV": ["Przno", "Becici", "Petrovac", "Jaz"],
-    "TGD": ["Budva", "Becici", "Sveti Stefan", "Bar"],
-    "TIA": ["Durres Plazh", "Golem", "Ksamil", "Himare"],
-
-    # Italy
-    "NAP": ["Sorrento", "Sant'Agnello", "Massa Lubrense", "Positano"],
-    "PMO": ["Mondello", "Addaura", "Sferracavallo", "Isola delle Femmine"],
-    "CTA": ["Playa Catania", "Aci Trezza", "Aci Castello", "Ognina"],
-    "CAG": ["Poetto", "Quartu Sant'Elena", "Villasimius", "Chia"],
-    "OLB": ["Pittulongu", "Golfo Aranci", "Porto Rotondo", "Baja Sardinia"],
-    "BRI": ["Polignano a Mare", "Monopoli", "Torre a Mare", "Savelletri"],
-    "BDS": ["Torre Canne", "Ostuni Marina", "Torre Guaceto", "Otranto"],
-    "SUF": ["Tropea", "Capo Vaticano", "Parghelia", "Zambrone"],
-    "AHO": ["Lido di Alghero", "Fertilia", "Maria Pia", "Bombarde"],
-    "TPS": ["San Vito Lo Capo", "Scopello", "Castellammare del Golfo", "Marausa"],
-    "RMI": ["Marina Centro", "Rivazzurra", "Riccione", "Bellaria"],
-    "GOA": ["Camogli", "Santa Margherita Ligure", "Sestri Levante", "Boccadasse"],
-    "VCE": ["Lido di Jesolo", "Lido di Venezia", "Caorle", "Bibione"],
-
-    # Portugal, France, Malta, Cyprus
-    "FAO": ["Praia de Faro", "Vilamoura", "Albufeira", "Lagos"],
-    "LIS": ["Cascais", "Estoril", "Carcavelos", "Costa da Caparica"],
-    "OPO": ["Matosinhos", "Foz do Douro", "Leca da Palmeira", "Espinho"],
-    "NCE": ["Promenade des Anglais", "Port de Nice", "Villefranche-sur-Mer", "Juan-les-Pins"],
-    "MRS": ["Prado", "Pointe Rouge", "Malmousque", "Cassis"],
-    "MLA": ["Sliema", "St Julian's", "Mellieha Bay", "Golden Bay"],
-    "LCA": ["Finikoudes", "Mackenzie Beach", "Pyla", "Protaras"],
-    "PFO": ["Coral Bay", "Kato Paphos", "Pegeia", "Latchi"],
-
-    # Bulgaria
-    "VAR": ["Golden Sands", "Sveti Konstantin", "Varna Beach", "Kranevo"],
-    "BOJ": ["Sunny Beach", "Nessebar", "Sozopol", "Pomorie"],
-
-    # North Africa, Red Sea, Middle East
-    "HRG": ["Sahl Hasheesh", "Makadi Bay", "El Gouna", "Hurghada Marina"],
-    "SSH": ["Naama Bay", "Sharks Bay", "Nabq Bay", "Ras Um Sid"],
-    "RMF": ["Port Ghalib", "Marsa Alam Coast", "El Quseir", "Abu Dabbab"],
-    "AGA": ["Agadir Beach", "Founty", "Taghazout", "Tamraght"],
-    "NBE": ["Yasmine Hammamet", "Hammamet Nord", "Nabeul", "Sousse"],
-    "DJE": ["Zone Touristique Djerba", "Sidi Mahrez", "Aghir", "Midoun"],
-    "TLV": ["Gordon Beach", "Frishman", "Neve Tzedek", "Jaffa Port"],
-    "DXB": ["JBR", "Dubai Marina", "Jumeirah Beach Residence", "Palm Jumeirah"],
-}
-
-
-# --- driving from Vienna ---------------------------------------------------
-# Only a handful of the catalogue is a sane drive. Distances are one-way road
-# distance, hours are typical door-to-door without heavy traffic, and tolls
-# are the return total including any vignettes you'd have to buy.
-DRIVE_MAX_HOURS = float(os.environ.get("DRIVE_MAX_HOURS") or "6")
-FUEL_EUR_PER_KM = float(os.environ.get("FUEL_EUR_PER_KM") or "0.12")   # ~7 L/100km
-PARKING_EUR_NIGHT = float(os.environ.get("PARKING_EUR_NIGHT") or "12")
-
-DRIVE_FROM_VIENNA = {
-    # dest: (km one way, hours one way, return tolls & vignettes in EUR)
-    "RJK": (490, 4.75, 38),   # AT vignette + SI vignette + Croatian tolls
-    "PUY": (560, 5.50, 38),   # same route, on past Rijeka into Istria
-    "VCE": (580, 5.75, 62),   # AT vignette + Italian autostrada both ways
-}
-
-
-def drive_option(dest, nights):
-    """Cost and time of driving there instead of flying, or None."""
-    row = DRIVE_FROM_VIENNA.get(dest)
-    if not row:
-        return None
-    km, hours, tolls = row
-    if hours > DRIVE_MAX_HOURS:
-        return None
-    fuel = km * 2 * FUEL_EUR_PER_KM
-    parking = nights * PARKING_EUR_NIGHT
-    return {
-        "drive_km": km,
-        "drive_hours": hours,
-        "drive_cost": round(fuel + tolls + parking),
-        "drive_fuel": round(fuel),
-        "drive_tolls": tolls,
-        "drive_parking": round(parking),
-    }
-
-
-TIMING_WARNINGS = {
-    "late_arrival": "lands late, first evening gone",
-    "early_return": "early flight home, last morning gone",
-    "red_eye": "pre-dawn start from home",
-    "brutal_start": "you'd leave home in the middle of the night",
-}
-ACCESS_ICONS = {"walk": "\U0001F6B6", "bus": "\U0001F68C", "taxi": "\U0001F695"}
-
-
-def _timing_line(d):
-    """Departure/arrival clock times plus any day-wasting warnings."""
-    if not d.get("dep_time"):
-        return ""
-    parts = "   \u23F1 "
-    if d.get("leave_home"):
-        parts += (f"leave {HOME_LABEL.split(',')[0]} {d['leave_home']}"
-                  + (" the night before" if d.get("leave_prev_day") else "") + " \u2192 ")
-    parts += f"{d['dep_time']}"
-    if d.get("arr_time"):
-        parts += f"\u2192{d['arr_time']}"
-    if d.get("ret_dep_time"):
-        parts += f" \u00b7 back {d['ret_dep_time']}"
-    flags = d.get("timing_flags") or []
-    if flags:
-        parts += "  \u26A0\ufe0f " + " \u00b7 ".join(
-            TIMING_WARNINGS[f] for f in flags if f in TIMING_WARNINGS
-        )
-    return parts
-
-
-def _access_line(d):
-    if not d.get("beach_note"):
-        return ""
-    icon = ACCESS_ICONS.get(d.get("beach_access"), "\U0001F695")
-    line = f"   {icon} {d['beach_note']}"
-    advice = d.get("car_advice")
-    if advice == "essential":
-        line += "  \U0001F697 rental car essential"
-    elif advice == "optional":
-        line += "  \U0001F697 car optional, transport works"
-    return line
-
-
-def _trend_line(d):
-    """Where today's price sits against this destination's own history."""
-    bits = []
-    pct = d.get("vs_avg_pct")
-    if pct is not None:
-        arrow = {"falling": "\u2193", "rising": "\u2191"}.get(d.get("trend"), "\u2192")
-        sign = "+" if pct > 0 else ""
-        note = {"cheap": "good time to book",
-                "pricey": "worth waiting",
-                "typical": "about normal"}.get(d.get("verdict"), "")
-        bits.append(f"{arrow} {sign}{pct}% vs 2-week avg €{d['hist_avg']} ({note})")
-    if d.get("peak_label"):
-        bits.append(f"\u26A0\ufe0f {d['peak_label']} — crowded, hotels ~{d['peak_pct']}% up")
-    return ("   \U0001F4C8 " + "  \u00b7  ".join(bits)) if bits else ""
+    return high if is_high_season(dest, depart) else low
 
 
 def _dest_row(dest):
@@ -952,17 +481,6 @@ def airbnb_url(dest, checkin, checkout):
     )
 
 
-def google_hotels_url(dest, checkin, checkout):
-    """Google Hotels aggregates Booking, Expedia and the hotel's own site,
-    and flags when booking direct is cheaper than the platforms."""
-    city = urllib.parse.quote(BEACH_DESTINATIONS[dest][2])
-    return (
-        f"https://www.google.com/travel/search?q={city}"
-        f"&checkin={checkin.isoformat()}&checkout={checkout.isoformat()}"
-        f"&hl=en&gl=at&curr={CURRENCY}"
-    )
-
-
 # ------------------------------------------------------------- history ------
 
 
@@ -986,42 +504,6 @@ def rolling_average(history, dest):
     cutoff = (date.today() - timedelta(days=ROLLING_WINDOW)).isoformat()
     vals = [e["total"] for e in entries if e["date"] >= cutoff]
     return (sum(vals) / len(vals)) if len(vals) >= 3 else None
-
-
-def price_trend(history, dest, today_total):
-    """Compare today's best total against this destination's recent history.
-
-    Returns dict with the rolling average, the gap to it, and a direction
-    based on the most recent readings versus the ones before them.
-    """
-    out = {"hist_avg": None, "vs_avg_pct": None, "trend": None, "verdict": None}
-    entries = sorted(history.get(dest, []), key=lambda e: e["date"])
-    cutoff = (date.today() - timedelta(days=ROLLING_WINDOW)).isoformat()
-    window = [e for e in entries if e["date"] >= cutoff]
-    if len(window) < 3:
-        return out
-
-    vals = [e["total"] for e in window]
-    avg = sum(vals) / len(vals)
-    out["hist_avg"] = round(avg)
-    out["vs_avg_pct"] = round((today_total - avg) / avg * 100)
-
-    # direction: mean of the last third against the mean of the rest
-    split = max(1, len(vals) // 3)
-    recent, earlier = vals[-split:], vals[:-split]
-    if earlier:
-        r, e = sum(recent) / len(recent), sum(earlier) / len(earlier)
-        change = (r - e) / e * 100
-        out["trend"] = "falling" if change <= -5 else "rising" if change >= 5 else "flat"
-
-    pct = out["vs_avg_pct"]
-    if pct <= -15:
-        out["verdict"] = "cheap"
-    elif pct >= 10:
-        out["verdict"] = "pricey"
-    else:
-        out["verdict"] = "typical"
-    return out
 
 
 def record_history(history, dest, best_total):
@@ -1108,18 +590,13 @@ def candidate_trips():
         if d.weekday() == 3:  # Thursday anchors each weekend
             thursdays.append(d)
         d += timedelta(days=1)
-    for i, thu in enumerate(thursdays):
-        # Include the year once we scan past December, so labels stay unique.
-        fmt = "%d %b" if thu.year == today.year else "%d %b %Y"
-        label = f"{thu.strftime(fmt)} weekend"
-        near = i < NEAR_WEEKENDS
-        days = sorted(DEPART_DAYS if near else FAR_DEPART_DAYS)
-        lengths = TRIP_NIGHTS if near else FAR_TRIP_NIGHTS
-        for offset in days:
+    for thu in thursdays:
+        label = f"{thu.strftime('%d %b')} weekend"
+        for offset in sorted(DEPART_DAYS):
             dep = thu + timedelta(days=offset - 3)  # 3=Thu, 4=Fri, 5=Sat
             if dep < today + timedelta(days=2):
                 continue
-            for nights in lengths:
+            for nights in TRIP_NIGHTS:
                 yield label, dep, nights
 
 
@@ -1131,91 +608,98 @@ def main():
     history = load_history()
     all_deals = []
     best_by_dest = {}
-    no_direct = []
 
     trips = list(candidate_trips())
     total_calls = len(BEACH_DESTINATIONS) * len(trips) * len(ORIGINS)
-    span = f"{trips[0][1]:%b %Y} to {trips[-1][1]:%b %Y}" if trips else "nothing"
-    print(f"Scanning {len(BEACH_DESTINATIONS)} destinations x {len(trips)} trip windows "
-          f"x {len(ORIGINS)} origins (~{total_calls} flight calls), covering {span}")
-    print(f"  full detail for the first {NEAR_WEEKENDS} weekends, "
-          f"reduced grid for the remaining {max(0, SCAN_WEEKENDS - NEAR_WEEKENDS)}")
+    print(f"Scanning {len(BEACH_DESTINATIONS)} beach destinations x {len(trips)} trip windows "
+          f"x {len(ORIGINS)} origins (~{total_calls} flight calls)")
 
+    # Build the full job list first, then fetch flights in parallel.
+    jobs = []
     for dest, (name, country, city, low, high, target) in BEACH_DESTINATIONS.items():
-        found_any = False
         for label, depart, nights in trips:
             ret = depart + timedelta(days=nights)
-            base_nightly, rate_verified = estimate_hotel_nightly(dest, depart)
-            peak_mult, peak_label = peak_multiplier(dest, depart)
-            wknd_mult = weekend_uplift(depart, nights)
-            nightly = base_nightly * peak_mult * wknd_mult
+            nightly = estimate_hotel_nightly(dest, depart)
             hotel_cost = (nightly * nights) / HOTEL_SPLIT
-
             for origin in ORIGINS:
-                flight = fetch_flight_rt(origin, dest, depart, ret)
-                time.sleep(PACE_SECONDS)
-                if not flight:
-                    continue
-                found_any = True
-                total = flight["price"] + hotel_cost
-                daily = estimate_daily_spend(dest)
-                spend_total = daily * nights
-                fhours = DEST_META.get(dest, (None, None))[0]
-                timing = analyse_timing(flight, fhours, origin)
-                access_mode, access_note = beach_access(dest)
-                drive = drive_option(dest, nights) or {}
-                deal = {
-                    "dest": dest, "name": name, "country": country,
-                    "origin": origin, "depart": depart.isoformat(),
-                    "return": ret.isoformat(), "nights": nights,
-                    "weekend": label,
-                    "flight": round(flight["price"]),
-                    "hotel_night": round(nightly),
-                    "hotel_total": round(hotel_cost),
-                    "hotel_base_night": round(base_nightly),
-                    "rate_verified": rate_verified,
-                    "peak_label": peak_label,
-                    "peak_pct": round((peak_mult - 1) * 100),
-                    "weekend_pct": round((wknd_mult - 1) * 100),
-                    "total": round(total),
-                    "daily_spend": daily,
-                    "spend_total": round(spend_total),
-                    "grand_total": round(total + spend_total),
-                    "beach_access": access_mode,
-                    "beach_note": access_note,
-                    "areas": BEACH_AREAS.get(dest, []),
-                    **drive,
-                    **timing,
-                    "target": round(trip_target(dest, depart, nights)),
-                    "target_base": target,
-                    "url": skyscanner_direct_url(origin, dest, depart, ret),
-                    "area": BEACH_DESTINATIONS[dest][2],
-                    "needs_car": dest in CAR_ADVICE,
-                    "car_advice": CAR_ADVICE.get(dest),
-                    "booking_cheap": booking_url(dest, depart, ret, "price"),
-                    "booking_top": booking_url(dest, depart, ret, "bayesian_review_score"),
-                    "airbnb": airbnb_url(dest, depart, ret),
-                    "google_hotels": google_hotels_url(dest, depart, ret),
-                    "flight_hours": DEST_META.get(dest, (None, None))[0],
-                    "sea_temp": DEST_META.get(dest, (None, None))[1],
-                }
-                all_deals.append(deal)
-                if dest not in best_by_dest or total < best_by_dest[dest]["total"]:
-                    best_by_dest[dest] = deal
+                jobs.append((dest, name, country, target, label, depart, ret,
+                             nights, nightly, hotel_cost, origin))
 
-        if not found_any:
-            no_direct.append(name)
+    def run_job(job):
+        (dest, name, country, target, label, depart, ret,
+         nights, nightly, hotel_cost, origin) = job
+        flight = fetch_flight_rt(origin, dest, depart, ret)
+        if PACE_SECONDS:
+            time.sleep(PACE_SECONDS)
+        if not flight:
+            return None
+        total = flight["price"] + hotel_cost
+        dep_time, arr_time, ret_dep_time, timing_flags = _timing(flight)
+        daily = DAILY_SPEND.get(dest, DEFAULT_DAILY_SPEND)
+        # Spend covers every day on the ground: nights + 1 (arrival & departure days)
+        spend_total = round(daily * (nights + 1) / 1)
+        return {
+            "dest": dest, "name": name, "country": country,
+            "origin": origin, "depart": depart.isoformat(),
+            "return": ret.isoformat(), "nights": nights,
+            "weekend": label,
+            "flight": round(flight["price"]),
+            "hotel_night": round(nightly),
+            "hotel_total": round(hotel_cost),
+            "total": round(total),
+            "target": target,
+            "url": ("https://www.aviasales.com" + flight["link"])
+            if flight.get("link") else aviasales_search_url(origin, dest, depart, ret),
+            "area": BEACH_DESTINATIONS[dest][2],
+            "booking_cheap": booking_url(dest, depart, ret, "price"),
+            "booking_top": booking_url(dest, depart, ret, "bayesian_review_score"),
+            "airbnb": airbnb_url(dest, depart, ret),
+            "flight_hours": DEST_META.get(dest, (None, None))[0],
+            "sea_temp": DEST_META.get(dest, (None, None))[1],
+            "dep_time": dep_time,
+            "arr_time": arr_time,
+            "ret_dep_time": ret_dep_time,
+            "timing_flags": timing_flags,
+            "airline": flight.get("airline"),
+            "transfers": flight.get("transfers"),
+            "daily_spend": daily,
+            "spend_total": spend_total,
+            "grand_total": round(total + spend_total),
+        }
 
-    if no_direct:
-        print(f"No direct flight in this window for {len(no_direct)}: "
-              f"{', '.join(sorted(no_direct))}")
+    done = 0
+    start_ts = time.time()
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
+        for deal in pool.map(run_job, jobs):
+            done += 1
+            if done % 500 == 0:
+                rate = done / max(time.time() - start_ts, 1)
+                print(f"  {done}/{len(jobs)} calls ({rate:.0f}/s)")
+            if not deal:
+                continue
+            all_deals.append(deal)
+            d = deal["dest"]
+            if d not in best_by_dest or deal["total"] < best_by_dest[d]["total"]:
+                best_by_dest[d] = deal
+    elapsed = time.time() - start_ts
+    print(f"  scan finished in {elapsed:.0f}s")
+    print(f"  api: {STATS['ok']} ok · {STATS['rate_limited']} rate-limited(retried) · "
+          f"{STATS['http_error']} http-error · {STATS['network']} network-error")
+    for e in _first_errors:
+        print(f"    first errors: {e}")
+
+    coverage = len(best_by_dest) / max(len(BEACH_DESTINATIONS), 1)
+    print(f"  coverage: {len(best_by_dest)}/{len(BEACH_DESTINATIONS)} destinations "
+          f"({coverage:.0%})")
+    if coverage < 0.5:
+        print("  ! Fewer than half the destinations returned data — the API is likely "
+              "throttling. Not overwriting deals.json or sending a digest.")
+        sys.exit(1)
 
     # ---- alert selection ----
     alerts = []
     for dest, deal in best_by_dest.items():
-        target = deal["target"]
-        # computed before record_history so today's reading isn't in its own average
-        deal.update(price_trend(history, dest, deal["total"]))
+        target = BEACH_DESTINATIONS[dest][5]
         avg = rolling_average(history, dest)
         reasons = []
         if deal["total"] <= target:
@@ -1230,7 +714,13 @@ def main():
         record_history(history, dest, deal["total"])
 
     save_history(history)
-    write_site_data(all_deals, alerts, no_direct)
+    months = {}
+    try:
+        months = scan_months()
+        print(f"  month overview: {len(months)} destinations covered")
+    except Exception as exc:
+        print(f"  ! month overview failed: {exc}")
+    write_site_data(all_deals, alerts, months)
 
     if not alerts and not ALWAYS_DIGEST:
         print("No deals beat targets today. No message sent.")
@@ -1257,28 +747,19 @@ def main():
             f"<b>{d['country'].split(' ', 1)[0]} {d['name']}</b> — <b>€{d['total']}</b>{star}",
             f"   ✈️ €{d['flight']} RT {d['origin']}  🏨 ~€{d['hotel_total']} est. "
             f"({d['nights']}n × €{d['hotel_night']})",
-            f"   💶 +€{d.get('spend_total', 0)} food & local (€{d.get('daily_spend', 0)}/day) "
-            f"→ <b>all-in ~€{d.get('grand_total', d['total'])}</b>",
             f"   \U0001F4C5 {fmt_day(d['depart'])} → {fmt_day(d['return'])} · "
             f"{work_days_off(d['depart'], d['return'])} days off work",
-            _timing_line(d),
-            _access_line(d),
-            _trend_line(d),
             f"   <a href=\"{d['url']}\">Book flight</a> · Stay in {d['area']}: "
             f"<a href=\"{d['booking_cheap']}\">Cheapest</a> · "
             f"<a href=\"{d['booking_top']}\">Best rated</a> · "
-            f"<a href=\"{d['airbnb']}\">Airbnb</a>"
-            + (f" · <a href=\"{d['google_hotels']}\">Compare</a>" if d.get("google_hotels") else ""),
+            f"<a href=\"{d['airbnb']}\">Airbnb</a>",
             "",
         ]
 
     for d in board:
-        block = deal_block(d, flame=d["dest"] in alert_dests)
-        # helpers return "" when there's no data; drop those but keep the
-        # single intentional "" separator at the end of each block
-        lines += [ln for ln in block[:-1] if ln] + [""]
+        lines += deal_block(d, flame=d["dest"] in alert_dests)
 
-    lines.append("<i>Totals = live direct-flight fare + seasonal hotel estimate, per person. All-in adds food, drinks and local transport. 🔥 = beats this destination's target for that trip length. ⚠️ marks schedules that waste a bookend day. 🚶🚌🚕 = how you reach the beach. Always verify before booking.</i>")
+    lines.append("<i>Totals = live flight + seasonal hotel estimate (budget 3-star, per person). 🔥 = beats target. Stay links open live Booking.com and Airbnb for the exact dates in a beach-walkable area — no car needed. Always verify before booking.</i>")
 
     if SILENT_REFRESH:
         print(f"Silent refresh: wrote deals.json ({len(board)} destinations), no Telegram sent.")
@@ -1305,18 +786,18 @@ def work_days_off(dep_iso, ret_iso):
     return n
 
 
-def write_site_data(all_deals, alerts, no_direct=None):
+def write_site_data(all_deals, alerts, months=None):
     """deals.json for an optional GitHub Pages dashboard, same pattern as worldwide bot."""
     alert_keys = {(d["dest"], d["depart"], d["origin"], d["nights"]) for d in alerts}
     payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "origins": ORIGINS,
         "deal_count": len(all_deals),
-        "no_direct": sorted(no_direct or []),
         "deals": sorted(all_deals, key=lambda d: d["total"])[:200],
         "alerts": [
             d for d in all_deals if (d["dest"], d["depart"], d["origin"], d["nights"]) in alert_keys
         ],
+        "months": months or {},
     }
     with open(SITE_DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=1)
