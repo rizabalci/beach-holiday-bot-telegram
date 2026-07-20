@@ -22,6 +22,7 @@ Logic per run:
 
 import json
 import os
+import random
 import sys
 import time
 import urllib.parse
@@ -69,7 +70,7 @@ PACE_SECONDS = float((os.environ.get("PACE_SECONDS") or "0.0"))
 # Parallel flight lookups. The scan is latency-bound (~1s per API call), so
 # fetching sequentially would take hours. 12 workers keeps us well inside the
 # Actions timeout without hammering the API.
-MAX_WORKERS = int((os.environ.get("MAX_WORKERS") or "12"))
+MAX_WORKERS = int((os.environ.get("MAX_WORKERS") or "5"))
 DRY_RUN = (os.environ.get("DRY_RUN") or "").lower() in ("1", "true", "yes")
 SILENT_REFRESH = (os.environ.get("SILENT_REFRESH") or "").lower() in ("1", "true", "yes")
 
@@ -205,14 +206,35 @@ DEST_META = {
 # ------------------------------------------------------------ http utils ----
 
 
-def http_get_json(url, timeout=25):
-    req = urllib.request.Request(url, headers={"User-Agent": "beach-holiday-bot/1.0"})
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            return json.loads(resp.read().decode("utf-8"))
-    except Exception as exc:  # noqa: BLE001 — log and continue, one bad call must not kill the run
-        print(f"  ! request failed: {exc} :: {url[:120]}")
-        return None
+# Failure bookkeeping so a silent API problem can never masquerade as
+# "no deals today" again. Counted across threads; GIL makes += safe enough here.
+STATS = {"ok": 0, "empty": 0, "rate_limited": 0, "http_error": 0, "network": 0}
+_first_errors = []
+
+
+def http_get_json(url, timeout=25, attempts=4):
+    """GET with retry + backoff. Returns parsed JSON, or None only after retries."""
+    for attempt in range(attempts):
+        req = urllib.request.Request(url, headers={"User-Agent": "beach-holiday-bot/1.0"})
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                STATS["ok"] += 1
+                return json.loads(resp.read().decode("utf-8"))
+        except urllib.error.HTTPError as exc:
+            if exc.code in (429, 503):          # throttled — back off and retry
+                STATS["rate_limited"] += 1
+                time.sleep(2 * (attempt + 1) + random.random())
+                continue
+            STATS["http_error"] += 1
+            if len(_first_errors) < 5:
+                _first_errors.append(f"HTTP {exc.code} :: {url[:100]}")
+            return None                          # 4xx that retrying won't fix
+        except Exception as exc:                 # timeouts, resets, DNS
+            STATS["network"] += 1
+            if len(_first_errors) < 5:
+                _first_errors.append(f"{type(exc).__name__}: {exc} :: {url[:100]}")
+            time.sleep(1 + attempt)
+    return None
 
 
 # ------------------------------------------------------------- flights ------
@@ -480,7 +502,20 @@ def main():
             d = deal["dest"]
             if d not in best_by_dest or deal["total"] < best_by_dest[d]["total"]:
                 best_by_dest[d] = deal
-    print(f"  scan finished in {time.time() - start_ts:.0f}s")
+    elapsed = time.time() - start_ts
+    print(f"  scan finished in {elapsed:.0f}s")
+    print(f"  api: {STATS['ok']} ok · {STATS['rate_limited']} rate-limited(retried) · "
+          f"{STATS['http_error']} http-error · {STATS['network']} network-error")
+    for e in _first_errors:
+        print(f"    first errors: {e}")
+
+    coverage = len(best_by_dest) / max(len(BEACH_DESTINATIONS), 1)
+    print(f"  coverage: {len(best_by_dest)}/{len(BEACH_DESTINATIONS)} destinations "
+          f"({coverage:.0%})")
+    if coverage < 0.5:
+        print("  ! Fewer than half the destinations returned data — the API is likely "
+              "throttling. Not overwriting deals.json or sending a digest.")
+        sys.exit(1)
 
     # ---- alert selection ----
     alerts = []
