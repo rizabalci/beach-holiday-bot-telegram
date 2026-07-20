@@ -176,6 +176,36 @@ BEACH_DESTINATIONS = {
     "AOK": ("Karpathos", "\U0001F1EC\U0001F1F7 Greece", "Karpathos", 45, 80, 300),
 }
 
+
+# Daily on-the-ground budget (EUR/day, per person): food, drinks, local
+# transport. Moderate style — lunch, dinner, a few drinks, buses or the odd
+# taxi. Tune per destination as real trips calibrate it.
+DAILY_SPEND = {
+    # Iberia + islands
+    "PMI": 55, "IBZ": 75, "AGP": 45, "ALC": 45, "VLC": 45, "BCN": 55, "MAH": 55,
+    "GRO": 45, "TFS": 45, "LPA": 45, "FUE": 45, "ACE": 45,
+    "FAO": 45, "LIS": 45, "OPO": 40,
+    # Greece
+    "ATH": 45, "SKG": 40, "HER": 40, "CHQ": 40, "RHO": 42, "KGS": 42,
+    "JTR": 65, "JMK": 75, "CFU": 42, "ZTH": 42, "EFL": 45, "PVK": 42,
+    "JSI": 45, "KLX": 40, "KVA": 35, "VOL": 38, "SMI": 40, "AOK": 40,
+    # Adriatic
+    "SPU": 50, "DBV": 60, "ZAD": 45, "PUY": 45, "RJK": 45,
+    "TIV": 40, "TGD": 35, "TIA": 30,
+    # Italy + Malta
+    "NAP": 50, "PMO": 45, "CTA": 45, "CAG": 48, "OLB": 55, "BRI": 45,
+    "BDS": 45, "TPS": 45, "RMI": 48, "GOA": 52, "VCE": 60, "AHO": 48, "SUF": 42,
+    "MLA": 48,
+    # France
+    "NCE": 65, "MRS": 55,
+    # Cyprus + Black Sea
+    "LCA": 45, "PFO": 45, "VAR": 30, "BOJ": 30,
+    # North Africa + Red Sea + Gulf
+    "HRG": 30, "SSH": 30, "RMF": 30, "AGA": 30, "NBE": 28, "DJE": 28,
+    "TLV": 70, "DXB": 65,
+}
+DEFAULT_DAILY_SPEND = int((os.environ.get("DEFAULT_DAILY_SPEND") or "45"))
+
 # Destinations whose high season is winter sun (Nov-Mar) instead of summer
 WINTER_SUN = {"TFS", "LPA", "FUE", "ACE", "HRG", "SSH", "RMF", "AGA", "DXB"}
 
@@ -261,7 +291,54 @@ def fetch_flight_rt(origin, dest, depart, ret):
     t = data["data"][0]
     price = t.get("price")
     link = t.get("link")
-    return {"price": float(price), "link": link} if price else None
+    if not price:
+        return None
+    return {
+        "price": float(price),
+        "link": link,
+        # v3 returns full ISO timestamps and leg durations in minutes
+        "departure_at": t.get("departure_at"),
+        "return_at": t.get("return_at"),
+        "duration_to": t.get("duration_to"),
+        "duration_back": t.get("duration_back"),
+        "airline": t.get("airline"),
+        "transfers": t.get("transfers"),
+    }
+
+
+
+def _clock(iso_ts):
+    """'2026-08-27T21:20:00+02:00' -> '21:20', or None."""
+    if not iso_ts or "T" not in iso_ts:
+        return None
+    return iso_ts.split("T", 1)[1][:5]
+
+
+def _timing(flight):
+    """Derive HH:MM strings and day-waster flags from the API timestamps."""
+    dep = _clock(flight.get("departure_at"))
+    ret_dep = _clock(flight.get("return_at"))
+    arr = None
+    dur_to = flight.get("duration_to")
+    if dep and isinstance(dur_to, (int, float)) and dur_to > 0:
+        h, m = int(dep[:2]), int(dep[3:5])
+        total = h * 60 + m + int(dur_to)
+        arr = f"{(total // 60) % 24:02d}:{total % 60:02d}"
+
+    flags = []
+    if arr:
+        arr_h = int(arr[:2])
+        if arr_h >= 22 or arr_h < 4:
+            flags.append("late_arrival")
+    if dep:
+        dep_h = int(dep[:2])
+        if dep_h < 6:
+            flags.append("red_eye")
+    if ret_dep:
+        rh = int(ret_dep[:2])
+        if rh < 9:
+            flags.append("early_return")
+    return dep, arr, ret_dep, flags
 
 
 def aviasales_search_url(origin, dest, depart, ret):
@@ -468,6 +545,10 @@ def main():
         if not flight:
             return None
         total = flight["price"] + hotel_cost
+        dep_time, arr_time, ret_dep_time, timing_flags = _timing(flight)
+        daily = DAILY_SPEND.get(dest, DEFAULT_DAILY_SPEND)
+        # Spend covers every day on the ground: nights + 1 (arrival & departure days)
+        spend_total = round(daily * (nights + 1) / 1)
         return {
             "dest": dest, "name": name, "country": country,
             "origin": origin, "depart": depart.isoformat(),
@@ -486,6 +567,15 @@ def main():
             "airbnb": airbnb_url(dest, depart, ret),
             "flight_hours": DEST_META.get(dest, (None, None))[0],
             "sea_temp": DEST_META.get(dest, (None, None))[1],
+            "dep_time": dep_time,
+            "arr_time": arr_time,
+            "ret_dep_time": ret_dep_time,
+            "timing_flags": timing_flags,
+            "airline": flight.get("airline"),
+            "transfers": flight.get("transfers"),
+            "daily_spend": daily,
+            "spend_total": spend_total,
+            "grand_total": round(total + spend_total),
         }
 
     done = 0
