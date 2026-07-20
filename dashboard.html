@@ -174,6 +174,7 @@
   .bd-areas { margin-top:9px; padding-top:8px; border-top:1px solid rgba(255,255,255,.18); }
   .bd-areas a { color:#8ecfe0; text-decoration:underline; text-underline-offset:2px; }
   .bd-excl { margin-top:9px; padding-top:8px; border-top:1px solid rgba(255,255,255,.18); }
+  .leavehome { color:#8a6100; cursor:help; white-space:nowrap; }
   .verified { color:#137a45; font-weight:700; margin-left:3px; font-size:12px; cursor:help; }
   .legend-btn { background:none; border:none; padding:0; font:inherit; font-size:inherit;
                 color:var(--deep); cursor:pointer; text-decoration:underline;
@@ -425,6 +426,8 @@ const LEGEND = [
   ["🌙", "Lands at 21:00 or later, so the first evening is gone"],
   ["🌅", "Flies home before 09:00, so the last morning is gone"],
   ["⏰", "Leaves before 06:00, meaning a pre-dawn start from home"],
+  ["🚪", "When to leave home to make the flight, including the trip to the airport"],
+  ["🥱", "You'd have to leave home in the middle of the night"],
   ["🚶", "Beach is within about fifteen minutes on foot"],
   ["🚌", "Bus or tram to the beach, roughly 15 to 45 minutes"],
   ["🚕", "No useful public transport, a short drive to the beach"],
@@ -575,6 +578,7 @@ const TIMING_TEXT = {
   late_arrival: ["🌙", "Lands late — first evening is gone"],
   early_return: ["🌅", "Early flight home — last morning is gone"],
   red_eye: ["⏰", "Pre-dawn departure — very early start from home"],
+  brutal_start: ["🥱", "You'd have to leave home in the middle of the night"],
 };
 
 function timingBadges(d) {
@@ -591,6 +595,16 @@ function timingLine(d) {
   const out = d.arr_time ? `${d.dep_time}→${d.arr_time}` : d.dep_time;
   const back = d.ret_dep_time ? ` · back ${d.ret_dep_time}` : "";
   return `${out}${back}`;
+}
+
+// When you'd actually have to walk out of the door, given the trip to the
+// airport and a realistic buffer for a budget carrier.
+function leaveHome(d) {
+  if (!d.leave_home) return "";
+  const night = d.leave_prev_day ? " (night before)" : "";
+  const tip = `Leave home by ${d.leave_home}${night} for a ${d.dep_time} departure. ` +
+              `Allows ${d.transfer_min} min to ${d.origin} (${d.transfer_how}) plus time at the airport.`;
+  return `<div class="sub leavehome" title="${tip}">🚪 leave ${d.leave_home}${night}</div>`;
 }
 
 function fmtDate(iso) {  const d = new Date(iso + "T00:00:00");
@@ -863,7 +877,7 @@ function renderTable(rows) {
       <td>${fmtDate(d.depart)}<div class="sub">→ ${fmtDate(d.return)}</div>
         <div>${weekendBadge(d.depart, d.return)}${peakBadge(d)}</div></td>
       <td class="temp ${tempClass(d.sea_temp)}">${d.sea_temp ?? "–"}°</td>
-      <td class="ftime">${d.flight_hours ?? "–"}h ${timingBadges(d)}${timingLine(d) ? `<div class="sub">${timingLine(d)}</div>` : ""}</td>
+      <td class="ftime">${d.flight_hours ?? "–"}h ${timingBadges(d)}${timingLine(d) ? `<div class="sub">${timingLine(d)}</div>` : ""}${leaveHome(d)}</td>
       <td class="links">
         <a class="fly" href="${d.url}" target="_blank" rel="noopener">Flight</a>
         <a href="${d.booking_cheap}" target="_blank" rel="noopener">Hotel</a>
@@ -889,7 +903,7 @@ function renderCards(rows) {
         <div>Dates <b>${fmtDate(d.depart)} – ${fmtDate(d.return)}</b>${d.peak_label ? `<br>${peakBadge(d)}` : ""}</div>
         <div>Nights <b>${d.nights}</b><br>${weekendBadge(d.depart, d.return)}<br><span class="wknd">${workDaysOff(d.depart, d.return)} work days off</span></div>
         <div>Sea <b class="temp ${tempClass(d.sea_temp)}">${d.sea_temp ?? "–"}°C</b></div>
-        <div>Flight time <b>${d.flight_hours ?? "–"}h</b>${timingBadges(d)}${timingLine(d) ? `<br><span class="wknd" style="background:#f0f2f5;color:#5c6b70">${timingLine(d)}</span>` : ""}</div>
+        <div>Flight time <b>${d.flight_hours ?? "–"}h</b>${timingBadges(d)}${timingLine(d) ? `<br><span class="wknd" style="background:#f0f2f5;color:#5c6b70">${timingLine(d)}</span>` : ""}${leaveHome(d)}</div>
       </div>
       ${d.beach_note ? `<div class="beachnote">${ACCESS_ICON[d.beach_access] || "🚕"} ${d.beach_note}</div>` : ""}
       <div class="clinks">
