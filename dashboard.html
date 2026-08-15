@@ -648,6 +648,18 @@ function workDaysOff(depIso, retIso) {
   return n;
 }
 function tempClass(t) { return t >= 28 ? "hot" : t >= 25 ? "warm" : ""; }
+function waUrl(d) {
+  const plain = iso => fmtDate(iso).replace(/<[^>]+>/g, "");
+  const dates = d.return ? `${plain(d.depart)} \u2192 ${plain(d.return)}` : `${d.month || plain(d.depart)}`;
+  const lines = [
+    `\uD83C\uDFD6 ${d.name} \u2014 \u20ac${d.total}${d.grand_total ? ` (\u20ac${d.grand_total} all-in)` : ""}`,
+    `\u2708\uFE0F \u20ac${d.flight} RT from ${d.origin}` + (d.nights ? ` \u00b7 ${d.nights} nights` : ""),
+    `\uD83D\uDCC5 ${dates}`,
+  ];
+  if (d.sea_temp) lines.push(`\uD83C\uDF0A Sea ${d.sea_temp}\u00b0C`);
+  if (d.url) lines.push(d.url);
+  return "https://wa.me/?text=" + encodeURIComponent(lines.join("\n"));
+}
 
 async function load() {
   let raw;
@@ -930,6 +942,7 @@ function renderTable(rows) {
         <a class="fly" href="${d.url}" target="_blank" rel="noopener">Flight</a>
         <a href="${d.booking_cheap}" target="_blank" rel="noopener">Hotel</a>
         <a href="${d.airbnb}" target="_blank" rel="noopener">Airbnb</a>
+        <a class="wa" href="${waUrl(d)}" target="_blank" rel="noopener">📲 Share</a>
         ${d.google_hotels ? `<a href="${d.google_hotels}" target="_blank" rel="noopener" title="Compares Booking, Expedia and direct hotel rates">Compare</a>` : ""}
       </td>
     </tr>`).join("");
@@ -958,6 +971,7 @@ function renderCards(rows) {
         <a class="fly" href="${d.url}" target="_blank" rel="noopener">Book flight</a>
         <a href="${d.booking_cheap}" target="_blank" rel="noopener">Hotels</a>
         <a href="${d.airbnb}" target="_blank" rel="noopener">Airbnb</a>
+        <a class="wa" href="${waUrl(d)}" target="_blank" rel="noopener">📲 Share</a>
         ${d.google_hotels ? `<a href="${d.google_hotels}" target="_blank" rel="noopener" title="Compares Booking, Expedia and direct hotel rates">Compare</a>` : ""}
       </div>
     </div>`).join("");
