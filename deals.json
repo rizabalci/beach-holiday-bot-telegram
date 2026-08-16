@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-08-15T19:59:27.475129+00:00",
+ "generated_at": "2026-08-16T06:58:40.328397+00:00",
  "origins": [
   "VIE",
   "BTS"
  ],
- "deal_count": 172,
+ "deal_count": 175,
  "deals": [
   {
    "dest": "TIA",
@@ -875,6 +875,39 @@
    "grand_total": 519
   },
   {
+   "dest": "ALC",
+   "name": "Alicante / Costa Blanca",
+   "country": "\ud83c\uddea\ud83c\uddf8 Spain",
+   "origin": "VIE",
+   "depart": "2026-08-29",
+   "return": "2026-08-31",
+   "nights": 2,
+   "weekend": "27 Aug weekend",
+   "flight": 225,
+   "hotel_night": 80,
+   "hotel_total": 160,
+   "total": 385,
+   "target": 240,
+   "url": "https://www.aviasales.com/search/VIE2908ALC31081?t=FR17880183001788050100000530VIEMRSALC17881551001788300000002415ALCTRFKRKVIE_8f9c4623320c9b8f2635379c068e1c72_21908&search_date=16082026&expected_price_uuid=01a0094e-d11e-8040-ae78-cfe7dc9d2b5e&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=5FCfmVp5GIAcmqgj7BDWtw&expected_price_source=share&expected_price_currency=eur&expected_price=225",
+   "area": "Alicante",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-08-29&checkout=2026-08-31&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-08-29&checkout=2026-08-31&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-08-29&checkout=2026-08-31&adults=1",
+   "flight_hours": 2.7,
+   "sea_temp": 26,
+   "dep_time": "15:45",
+   "arr_time": "19:20",
+   "ret_dep_time": "05:45",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "MW",
+   "transfers": 1,
+   "daily_spend": 45,
+   "spend_total": 135,
+   "grand_total": 520
+  },
+  {
    "dest": "ZAD",
    "name": "Zadar",
    "country": "\ud83c\udded\ud83c\uddf7 Croatia",
@@ -906,40 +939,6 @@
    "daily_spend": 45,
    "spend_total": 180,
    "grand_total": 565
-  },
-  {
-   "dest": "ALC",
-   "name": "Alicante / Costa Blanca",
-   "country": "\ud83c\uddea\ud83c\uddf8 Spain",
-   "origin": "VIE",
-   "depart": "2026-08-29",
-   "return": "2026-08-31",
-   "nights": 2,
-   "weekend": "27 Aug weekend",
-   "flight": 227,
-   "hotel_night": 80,
-   "hotel_total": 160,
-   "total": 387,
-   "target": 240,
-   "url": "https://www.aviasales.com/search/VIE2908ALC31081?t=FR17879823001788020100000630VIEBGYMXPALC17881551001788300000002415ALCTRFKRKVIE_dc0793365df9b317987d22c2c9f9efed_22112&search_date=14082026&expected_price_uuid=01a00192-c41d-8040-6bd9-05c8fea9eb6e&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=zMA9aF6lnVAxYtcuO9r6ZA&expected_price_source=share&expected_price_currency=eur&expected_price=227",
-   "area": "Alicante",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-08-29&checkout=2026-08-31&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-08-29&checkout=2026-08-31&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-08-29&checkout=2026-08-31&adults=1",
-   "flight_hours": 2.7,
-   "sea_temp": 26,
-   "dep_time": "05:45",
-   "arr_time": "09:25",
-   "ret_dep_time": "05:45",
-   "timing_flags": [
-    "red_eye",
-    "early_return"
-   ],
-   "airline": "LW",
-   "transfers": 1,
-   "daily_spend": 45,
-   "spend_total": 135,
-   "grand_total": 522
   },
   {
    "dest": "ZAD",
@@ -1385,37 +1384,6 @@
    "daily_spend": 45,
    "spend_total": 180,
    "grand_total": 607
-  },
-  {
-   "dest": "MRS",
-   "name": "Marseille / Calanques",
-   "country": "\ud83c\uddeb\ud83c\uddf7 France",
-   "origin": "VIE",
-   "depart": "2026-08-28",
-   "return": "2026-08-30",
-   "nights": 2,
-   "weekend": "27 Aug weekend",
-   "flight": 248,
-   "hotel_night": 90,
-   "hotel_total": 180,
-   "total": 428,
-   "target": 280,
-   "url": "https://www.aviasales.com/search/VIE2808MRS30081?t=JU17879160001787923200000120VIEMRS17881179001788293400002925MRSBCNBEGVIE_5a7e7ecc59fc1b008e15a9e74d536c6d_23607&search_date=11082026&expected_price_uuid=019ff210-fb69-8030-ee42-d536f7a61168&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=UzgKKwXXNpGLfR9Wm8SKlw&expected_price_source=share&expected_price_currency=eur&expected_price=248",
-   "area": "Marseille",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Marseille&checkin=2026-08-28&checkout=2026-08-30&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Marseille&checkin=2026-08-28&checkout=2026-08-30&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Marseille/homes?checkin=2026-08-28&checkout=2026-08-30&adults=1",
-   "flight_hours": 1.6,
-   "sea_temp": 24,
-   "dep_time": "11:20",
-   "arr_time": "13:20",
-   "ret_dep_time": "19:25",
-   "timing_flags": [],
-   "airline": "FR",
-   "transfers": 0,
-   "daily_spend": 55,
-   "spend_total": 165,
-   "grand_total": 593
   },
   {
    "dest": "PMI",
@@ -1876,6 +1844,39 @@
    "grand_total": 633
   },
   {
+   "dest": "SKG",
+   "name": "Thessaloniki / Halkidiki",
+   "country": "\ud83c\uddec\ud83c\uddf7 Greece",
+   "origin": "VIE",
+   "depart": "2026-08-20",
+   "return": "2026-08-23",
+   "nights": 3,
+   "weekend": "20 Aug weekend",
+   "flight": 243,
+   "hotel_night": 70,
+   "hotel_total": 210,
+   "total": 453,
+   "target": 230,
+   "url": "https://www.aviasales.com/search/VIE2008SKG23081?t=A317872587001787325900001060VIEBEGSKG17875275001787568000000735SKGATHVIE_2136ff2404a7f3fb25324f0519ae7120_23699&search_date=15082026&expected_price_uuid=01a007bf-53f0-8030-e14d-b8f65b5e7029&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Sk25ze7ZuTP2jxYrKtvTKA&expected_price_source=share&expected_price_currency=eur&expected_price=243",
+   "area": "Thessaloniki",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Thessaloniki&checkin=2026-08-20&checkout=2026-08-23&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Thessaloniki&checkin=2026-08-20&checkout=2026-08-23&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Thessaloniki/homes?checkin=2026-08-20&checkout=2026-08-23&adults=1",
+   "flight_hours": 1.8,
+   "sea_temp": 26,
+   "dep_time": "20:45",
+   "arr_time": "23:30",
+   "ret_dep_time": "23:25",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "JU",
+   "transfers": 1,
+   "daily_spend": 40,
+   "spend_total": 160,
+   "grand_total": 613
+  },
+  {
    "dest": "BCN",
    "name": "Barcelona",
    "country": "\ud83c\uddea\ud83c\uddf8 Spain",
@@ -1905,6 +1906,39 @@
    "daily_spend": 55,
    "spend_total": 220,
    "grand_total": 675
+  },
+  {
+   "dest": "TGD",
+   "name": "Podgorica (coast 1h)",
+   "country": "\ud83c\uddf2\ud83c\uddea Montenegro",
+   "origin": "BTS",
+   "depart": "2026-08-20",
+   "return": "2026-08-23",
+   "nights": 3,
+   "weekend": "20 Aug weekend",
+   "flight": 246,
+   "hotel_night": 70,
+   "hotel_total": 210,
+   "total": 456,
+   "target": 230,
+   "url": "https://www.aviasales.com/search/BTS2008TGD23081?t=W617872050001787210100000085BTSTGD17874915001787589300001630TGDGDNBTS_2a093b95214167a6c0b039819e9e1e1b_23860&search_date=16082026&expected_price_uuid=01a008d7-2a37-8050-e3bd-f81f41f3b8b9&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=oda4crRYkfiUZ_dqZqvG9w&expected_price_source=share&expected_price_currency=eur&expected_price=246",
+   "area": "Budva",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Budva&checkin=2026-08-20&checkout=2026-08-23&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Budva&checkin=2026-08-20&checkout=2026-08-23&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Budva/homes?checkin=2026-08-20&checkout=2026-08-23&adults=1",
+   "flight_hours": 1.4,
+   "sea_temp": 25,
+   "dep_time": "05:50",
+   "arr_time": "07:15",
+   "ret_dep_time": "13:25",
+   "timing_flags": [
+    "red_eye"
+   ],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 35,
+   "spend_total": 140,
+   "grand_total": 596
   },
   {
    "dest": "VLC",
@@ -2133,37 +2167,6 @@
    "grand_total": 684
   },
   {
-   "dest": "MRS",
-   "name": "Marseille / Calanques",
-   "country": "\ud83c\uddeb\ud83c\uddf7 France",
-   "origin": "VIE",
-   "depart": "2026-08-21",
-   "return": "2026-08-24",
-   "nights": 3,
-   "weekend": "20 Aug weekend",
-   "flight": 194,
-   "hotel_night": 90,
-   "hotel_total": 270,
-   "total": 464,
-   "target": 280,
-   "url": "https://www.aviasales.com/search/VIE2108MRS24081?t=FR17873112001787318400000120VIEMRS17875944001787601300000115MRSVIE_7570c99b271b8696d37b39c1808b4ae0_18450&search_date=08082026&expected_price_uuid=019fe33c-e8b5-8030-69f2-ebf3cc1f5689&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Qn16S4iEIcQgFGzZfdYdZA&expected_price_source=share&expected_price_currency=eur&expected_price=194",
-   "area": "Marseille",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Marseille&checkin=2026-08-21&checkout=2026-08-24&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Marseille&checkin=2026-08-21&checkout=2026-08-24&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Marseille/homes?checkin=2026-08-21&checkout=2026-08-24&adults=1",
-   "flight_hours": 1.6,
-   "sea_temp": 24,
-   "dep_time": "11:20",
-   "arr_time": "13:20",
-   "ret_dep_time": "18:00",
-   "timing_flags": [],
-   "airline": "FR",
-   "transfers": 0,
-   "daily_spend": 55,
-   "spend_total": 220,
-   "grand_total": 684
-  },
-  {
    "dest": "OPO",
    "name": "Porto / Matosinhos",
    "country": "\ud83c\uddf5\ud83c\uddf9 Portugal",
@@ -2264,6 +2267,37 @@
    "grand_total": 648
   },
   {
+   "dest": "ALC",
+   "name": "Alicante / Costa Blanca",
+   "country": "\ud83c\uddea\ud83c\uddf8 Spain",
+   "origin": "BTS",
+   "depart": "2026-09-05",
+   "return": "2026-09-09",
+   "nights": 4,
+   "weekend": "03 Sep weekend",
+   "flight": 148,
+   "hotel_night": 80,
+   "hotel_total": 320,
+   "total": 468,
+   "target": 240,
+   "url": "https://www.aviasales.com/search/BTS0509ALC09091?t=W617886303001788641700000190BTSALC17889813001789025700000740ALCFCOCIABTS_a260902e681864851808cb95e7d8b58a_14386&search_date=16082026&expected_price_uuid=01a008a6-6953-8030-e29a-90f122b914f7&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=5xlHOENInW6OXSgwSCUoUQ&expected_price_source=share&expected_price_currency=eur&expected_price=148",
+   "area": "Alicante",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-09-05&checkout=2026-09-09&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-09-05&checkout=2026-09-09&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-09-05&checkout=2026-09-09&adults=1",
+   "flight_hours": 2.7,
+   "sea_temp": 26,
+   "dep_time": "17:45",
+   "arr_time": "20:55",
+   "ret_dep_time": "19:15",
+   "timing_flags": [],
+   "airline": "W6",
+   "transfers": 0,
+   "daily_spend": 45,
+   "spend_total": 225,
+   "grand_total": 693
+  },
+  {
    "dest": "ATH",
    "name": "Athens / Riviera",
    "country": "\ud83c\uddec\ud83c\uddf7 Greece",
@@ -2326,6 +2360,37 @@
    "daily_spend": 45,
    "spend_total": 180,
    "grand_total": 649
+  },
+  {
+   "dest": "MRS",
+   "name": "Marseille / Calanques",
+   "country": "\ud83c\uddeb\ud83c\uddf7 France",
+   "origin": "VIE",
+   "depart": "2026-08-28",
+   "return": "2026-08-30",
+   "nights": 2,
+   "weekend": "27 Aug weekend",
+   "flight": 289,
+   "hotel_night": 90,
+   "hotel_total": 180,
+   "total": 469,
+   "target": 280,
+   "url": "https://www.aviasales.com/search/VIE2808MRS30081?t=FR17879160001787923200000120VIEMRS17881206001788127200000110MRSVIE_b06a94ca4ca44e23f318f2e1e6957004_28154&search_date=15082026&expected_price_uuid=01a00751-fa3f-8030-6958-18a9e154edbc&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=johkPLPAYDRxdVutfhwgnw&expected_price_source=share&expected_price_currency=eur&expected_price=289",
+   "area": "Marseille",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Marseille&checkin=2026-08-28&checkout=2026-08-30&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Marseille&checkin=2026-08-28&checkout=2026-08-30&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Marseille/homes?checkin=2026-08-28&checkout=2026-08-30&adults=1",
+   "flight_hours": 1.6,
+   "sea_temp": 24,
+   "dep_time": "11:20",
+   "arr_time": "13:20",
+   "ret_dep_time": "20:10",
+   "timing_flags": [],
+   "airline": "FR",
+   "transfers": 0,
+   "daily_spend": 55,
+   "spend_total": 165,
+   "grand_total": 634
   },
   {
    "dest": "BCN",
@@ -2746,37 +2811,6 @@
    "daily_spend": 45,
    "spend_total": 225,
    "grand_total": 711
-  },
-  {
-   "dest": "ALC",
-   "name": "Alicante / Costa Blanca",
-   "country": "\ud83c\uddea\ud83c\uddf8 Spain",
-   "origin": "BTS",
-   "depart": "2026-09-05",
-   "return": "2026-09-09",
-   "nights": 4,
-   "weekend": "03 Sep weekend",
-   "flight": 167,
-   "hotel_night": 80,
-   "hotel_total": 320,
-   "total": 487,
-   "target": 240,
-   "url": "https://www.aviasales.com/search/BTS0509ALC09091?t=W617886303001788641700000190BTSALC17889813001789025700000740ALCFCOCIABTS_a260902e681864851808cb95e7d8b58a_16266&search_date=15082026&expected_price_uuid=01a0037b-ed39-8030-e27a-ad971283aecb&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=5xlHOENInW6OXSgwSCUoUQ&expected_price_source=share&expected_price_currency=eur&expected_price=167",
-   "area": "Alicante",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-09-05&checkout=2026-09-09&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Alicante&checkin=2026-09-05&checkout=2026-09-09&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Alicante/homes?checkin=2026-09-05&checkout=2026-09-09&adults=1",
-   "flight_hours": 2.7,
-   "sea_temp": 26,
-   "dep_time": "17:45",
-   "arr_time": "20:55",
-   "ret_dep_time": "19:15",
-   "timing_flags": [],
-   "airline": "W6",
-   "transfers": 0,
-   "daily_spend": 45,
-   "spend_total": 225,
-   "grand_total": 712
   },
   {
    "dest": "OPO",
@@ -3641,6 +3675,39 @@
    "grand_total": 824
   },
   {
+   "dest": "SKG",
+   "name": "Thessaloniki / Halkidiki",
+   "country": "\ud83c\uddec\ud83c\uddf7 Greece",
+   "origin": "VIE",
+   "depart": "2026-08-20",
+   "return": "2026-08-24",
+   "nights": 4,
+   "weekend": "20 Aug weekend",
+   "flight": 269,
+   "hotel_night": 70,
+   "hotel_total": 280,
+   "total": 549,
+   "target": 230,
+   "url": "https://www.aviasales.com/search/VIE2008SKG24081?t=GQ17872554001787306700000795VIEKRKSKG17876133001787662800000885SKGATHVIE_3d6bcca4ba3bee674ee0d2304f43837d_26228&search_date=15082026&expected_price_uuid=01a007c1-1c49-8030-ad3a-0787c3568a05&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=YrKuj0A-pB7sP0mfzMxHzg&expected_price_source=share&expected_price_currency=eur&expected_price=269",
+   "area": "Thessaloniki",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Thessaloniki&checkin=2026-08-20&checkout=2026-08-24&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Thessaloniki&checkin=2026-08-20&checkout=2026-08-24&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Thessaloniki/homes?checkin=2026-08-20&checkout=2026-08-24&adults=1",
+   "flight_hours": 1.8,
+   "sea_temp": 26,
+   "dep_time": "19:50",
+   "arr_time": "22:50",
+   "ret_dep_time": "23:15",
+   "timing_flags": [
+    "late_arrival"
+   ],
+   "airline": "LW",
+   "transfers": 1,
+   "daily_spend": 40,
+   "spend_total": 200,
+   "grand_total": 749
+  },
+  {
    "dest": "ZTH",
    "name": "Zakynthos",
    "country": "\ud83c\uddec\ud83c\uddf7 Greece",
@@ -3897,6 +3964,37 @@
    "daily_spend": 30,
    "spend_total": 180,
    "grand_total": 738
+  },
+  {
+   "dest": "SKG",
+   "name": "Thessaloniki / Halkidiki",
+   "country": "\ud83c\uddec\ud83c\uddf7 Greece",
+   "origin": "BTS",
+   "depart": "2026-08-20",
+   "return": "2026-08-24",
+   "nights": 4,
+   "weekend": "20 Aug weekend",
+   "flight": 280,
+   "hotel_night": 70,
+   "hotel_total": 280,
+   "total": 560,
+   "target": 230,
+   "url": "https://www.aviasales.com/search/BTS2008SKG24081?t=FR17872230001787318100001525BTSFCOZAGSKG17876133001787684400001245SKGATHBTS_2e738ee95efae4da542375926d5a4daa_27226&search_date=15082026&expected_price_uuid=01a007d6-7631-8030-61a1-379ca12833ff&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=8fDcknrrbvB1X8psInJ03Q&expected_price_source=share&expected_price_currency=eur&expected_price=280",
+   "area": "Thessaloniki",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Thessaloniki&checkin=2026-08-20&checkout=2026-08-24&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Thessaloniki&checkin=2026-08-20&checkout=2026-08-24&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Thessaloniki/homes?checkin=2026-08-20&checkout=2026-08-24&adults=1",
+   "flight_hours": 1.8,
+   "sea_temp": 26,
+   "dep_time": "10:50",
+   "arr_time": "15:25",
+   "ret_dep_time": "23:15",
+   "timing_flags": [],
+   "airline": "W6",
+   "transfers": 2,
+   "daily_spend": 40,
+   "spend_total": 200,
+   "grand_total": 760
   },
   {
    "dest": "LIS",
@@ -4482,6 +4580,39 @@
    "grand_total": 877
   },
   {
+   "dest": "CFU",
+   "name": "Corfu",
+   "country": "\ud83c\uddec\ud83c\uddf7 Greece",
+   "origin": "BTS",
+   "depart": "2026-08-20",
+   "return": "2026-08-24",
+   "nights": 4,
+   "weekend": "20 Aug weekend",
+   "flight": 263,
+   "hotel_night": 85,
+   "hotel_total": 340,
+   "total": 603,
+   "target": 270,
+   "url": "https://www.aviasales.com/search/BTS2008CFU24081?t=BY17872206001787357400002220BTSWAWNAPCFU17875332001787668200002310CFUBHXFCOBTS_783a03c6c40668f6ca99004a1c6b371b_25594&search_date=15082026&expected_price_uuid=01a007d7-7735-8030-ef31-60e41793cb9e&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=BYmCHnK9ffVgmLdACTE77A&expected_price_source=share&expected_price_currency=eur&expected_price=263",
+   "area": "Corfu",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-08-20&checkout=2026-08-24&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Corfu&checkin=2026-08-20&checkout=2026-08-24&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Corfu/homes?checkin=2026-08-20&checkout=2026-08-24&adults=1",
+   "flight_hours": 1.8,
+   "sea_temp": 27,
+   "dep_time": "10:10",
+   "arr_time": "15:10",
+   "ret_dep_time": "01:00",
+   "timing_flags": [
+    "early_return"
+   ],
+   "airline": "W6",
+   "transfers": 2,
+   "daily_spend": 42,
+   "spend_total": 210,
+   "grand_total": 813
+  },
+  {
    "dest": "HER",
    "name": "Heraklion, Crete",
    "country": "\ud83c\uddec\ud83c\uddf7 Greece",
@@ -4999,39 +5130,6 @@
    "grand_total": 917
   },
   {
-   "dest": "BCN",
-   "name": "Barcelona",
-   "country": "\ud83c\uddea\ud83c\uddf8 Spain",
-   "origin": "VIE",
-   "depart": "2026-09-05",
-   "return": "2026-09-10",
-   "nights": 5,
-   "weekend": "03 Sep weekend",
-   "flight": 124,
-   "hotel_night": 105,
-   "hotel_total": 525,
-   "total": 649,
-   "target": 280,
-   "url": "https://www.aviasales.com/search/VIE0509BCN10091?t=FR17886330001788680400000790VIEBGYBCN17890194001789053600000570BCNVCEVIE_d4834e4f19d1eae0e91013b79b7a45da_11760&search_date=08082026&expected_price_uuid=019fe389-5d32-8030-6aba-7217933e8128&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=TtDKwFqxn1waFB7kDB9tCA&expected_price_source=share&expected_price_currency=eur&expected_price=124",
-   "area": "Barcelona",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-09-05&checkout=2026-09-10&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Barcelona&checkin=2026-09-05&checkout=2026-09-10&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Barcelona/homes?checkin=2026-09-05&checkout=2026-09-10&adults=1",
-   "flight_hours": 2.2,
-   "sea_temp": 25,
-   "dep_time": "18:30",
-   "arr_time": "21:35",
-   "ret_dep_time": "05:50",
-   "timing_flags": [
-    "early_return"
-   ],
-   "airline": "LW",
-   "transfers": 1,
-   "daily_spend": 55,
-   "spend_total": 330,
-   "grand_total": 979
-  },
-  {
    "dest": "OLB",
    "name": "Olbia, Sardinia",
    "country": "\ud83c\uddee\ud83c\uddf9 Italy",
@@ -5224,39 +5322,6 @@
    "grand_total": 945
   },
   {
-   "dest": "LIS",
-   "name": "Lisbon / Cascais",
-   "country": "\ud83c\uddf5\ud83c\uddf9 Portugal",
-   "origin": "VIE",
-   "depart": "2026-09-05",
-   "return": "2026-09-10",
-   "nights": 5,
-   "weekend": "03 Sep weekend",
-   "flight": 197,
-   "hotel_night": 100,
-   "hotel_total": 500,
-   "total": 697,
-   "target": 290,
-   "url": "https://www.aviasales.com/search/VIE0509LIS10091?t=U217886330001788697200001130VIEBGYLUXLIS17890716001789163400001470LISVLCMXPVIE_24d2bf7739a46e93475841abe9be42fd_18765&search_date=08082026&expected_price_uuid=019fe389-2f5d-8030-6c67-a247ac46c88d&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=3iajFEY7FYrbuFU3PyM6gQ&expected_price_source=share&expected_price_currency=eur&expected_price=197",
-   "area": "Cascais",
-   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Cascais&checkin=2026-09-05&checkout=2026-09-10&group_adults=1&no_rooms=1&order=price",
-   "booking_top": "https://www.booking.com/searchresults.html?ss=Cascais&checkin=2026-09-05&checkout=2026-09-10&group_adults=1&no_rooms=1&order=bayesian_review_score",
-   "airbnb": "https://www.airbnb.com/s/Cascais/homes?checkin=2026-09-05&checkout=2026-09-10&adults=1",
-   "flight_hours": 3.5,
-   "sea_temp": 20,
-   "dep_time": "18:30",
-   "arr_time": "00:10",
-   "ret_dep_time": "20:20",
-   "timing_flags": [
-    "late_arrival"
-   ],
-   "airline": "LW",
-   "transfers": 2,
-   "daily_spend": 45,
-   "spend_total": 270,
-   "grand_total": 967
-  },
-  {
    "dest": "BCN",
    "name": "Barcelona",
    "country": "\ud83c\uddea\ud83c\uddf8 Spain",
@@ -5321,6 +5386,37 @@
    "daily_spend": 70,
    "spend_total": 280,
    "grand_total": 1029
+  },
+  {
+   "dest": "NCE",
+   "name": "Nice / French Riviera",
+   "country": "\ud83c\uddeb\ud83c\uddf7 France",
+   "origin": "VIE",
+   "depart": "2026-08-20",
+   "return": "2026-08-25",
+   "nights": 5,
+   "weekend": "20 Aug weekend",
+   "flight": 202,
+   "hotel_night": 110,
+   "hotel_total": 550,
+   "total": 752,
+   "target": 300,
+   "url": "https://www.aviasales.com/search/VIE2008NCE25081?t=OS17872101001787216400000105VIENCE17876511001787657100000100NCEVIE_76bed7980486024ad54d5c1ea1adc91e_19661&search_date=15082026&expected_price_uuid=01a0076c-0f89-8030-a558-a9618f5805f4&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=SXM7lQlGDKfqyynEVEowDg&expected_price_source=share&expected_price_currency=eur&expected_price=202",
+   "area": "Nice",
+   "booking_cheap": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-08-20&checkout=2026-08-25&group_adults=1&no_rooms=1&order=price",
+   "booking_top": "https://www.booking.com/searchresults.html?ss=Nice&checkin=2026-08-20&checkout=2026-08-25&group_adults=1&no_rooms=1&order=bayesian_review_score",
+   "airbnb": "https://www.airbnb.com/s/Nice/homes?checkin=2026-08-20&checkout=2026-08-25&adults=1",
+   "flight_hours": 1.5,
+   "sea_temp": 25,
+   "dep_time": "07:15",
+   "arr_time": "09:00",
+   "ret_dep_time": "09:45",
+   "timing_flags": [],
+   "airline": "OS",
+   "transfers": 0,
+   "daily_spend": 65,
+   "spend_total": 390,
+   "grand_total": 1142
   },
   {
    "dest": "JMK",
@@ -5595,12 +5691,12 @@
     "dest": "PMI",
     "month": "2026-12",
     "origin": "VIE",
-    "flight": 153,
-    "depart": "2026-12-31",
+    "flight": 149,
+    "depart": "2026-12-29",
     "airline": "FR",
     "hotel_est": 220,
-    "total_est": 373,
-    "url": "https://www.aviasales.com/search/VIE3112PMI03011?t=FR17987337001798742700000150VIEPMI17989806001799061900001355PMIBCNVIE_0f97ea29c5df2a227d70ad1d51b435f9_14731&search_date=14082026&expected_price_uuid=019ffe9f-49a2-8030-efba-acd0f0e12f41&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=B7JzHwtBj_zW3wKL_2IRIw&expected_price_source=share&expected_price_currency=eur&expected_price=153"
+    "total_est": 369,
+    "url": "https://www.aviasales.com/search/VIE2912PMI02011?t=FR17985354001798544400000150VIEPMI17988717001798880700000150PMIVIE_f5011020ec2ff8cf46ddf88b0ee149ad_14480&search_date=16082026&expected_price_uuid=01a00930-13d7-8030-6555-5ea8f184ae31&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=-xnldwwZDwqoh9CwNShtmg&expected_price_source=share&expected_price_currency=eur&expected_price=149"
    },
    {
     "dest": "PMI",
@@ -5630,12 +5726,12 @@
     "dest": "IBZ",
     "month": "2026-08",
     "origin": "VIE",
-    "flight": 135,
-    "depart": "2026-08-22",
+    "flight": 121,
+    "depart": "2026-08-23",
     "airline": "FR",
     "hotel_est": 520,
-    "total_est": 655,
-    "url": "https://www.aviasales.com/search/VIE2208IBZ27081?t=FR17874102001787419800000160VIEIBZ17878293001787838600000155IBZVIE_97c99fcaabf7246cdaa0279f2dfcd3e2_13133&search_date=15082026&expected_price_uuid=01a002cb-d800-8030-2490-586340ac7296&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Vs5doj7L9uN0AZMa_X6QRg&expected_price_source=share&expected_price_currency=eur&expected_price=135"
+    "total_est": 641,
+    "url": "https://www.aviasales.com/search/VIE2308IBZ25081?t=FR17875179001787527500000160VIEIBZ17876862001787695500000155IBZVIE_12bc468f4fb5d7a626b63f3dfd49996c_11785&search_date=15082026&expected_price_uuid=01a0076b-1b35-8030-25e1-8401360059e8&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=SaG49JO6XtiP99VoXtCG-g&expected_price_source=share&expected_price_currency=eur&expected_price=121"
    },
    {
     "dest": "IBZ",
@@ -5658,6 +5754,17 @@
     "hotel_est": 280,
     "total_est": 418,
     "url": "https://www.aviasales.com/search/BTS1610IBZ18101?t=W617921292001792188300000985BTSALCIBZ17923125001792430400001965IBZBLQTIABTS_6c76f839460f798640342f0c89ce6ca5_13148&search_date=11082026&expected_price_uuid=019ff1f1-25d2-8030-e1cf-fb6584c26c68&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=dcQ3tQSaM9TnVPKjmhCIBg&expected_price_source=share&expected_price_currency=eur&expected_price=138"
+   },
+   {
+    "dest": "IBZ",
+    "month": "2026-12",
+    "origin": "VIE",
+    "flight": 245,
+    "depart": "2026-12-29",
+    "airline": "LW",
+    "hotel_est": 280,
+    "total_est": 525,
+    "url": "https://www.aviasales.com/search/VIE2912IBZ02011?t=FR17985240001798671300002455VIEMXPBCNIBZ17989017001798930500000480IBZMADVIE_3cbd9db867544b37ee1c36d5aaea59a5_23764&search_date=16082026&expected_price_uuid=01a00938-29d0-8030-ede3-73351eea40ae&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=_DaC-7PRG8DdTuC1qTPwbg&expected_price_source=share&expected_price_currency=eur&expected_price=245"
    }
   ],
   "AGP": [
@@ -5693,6 +5800,17 @@
     "hotel_est": 200,
     "total_est": 395,
     "url": "https://www.aviasales.com/search/VIE2710AGP07111?t=FR17931324001793202300001165VIECGNAGP17940453001794057000000195AGPVIE_c653302585b40e00960100911ad483bc_19056&search_date=14082026&expected_price_uuid=01a00227-5692-8030-a9fb-d9b7eaad32ac&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=0mqi8fTIaS2bEb3IjczpWg&expected_price_source=share&expected_price_currency=eur&expected_price=195"
+   },
+   {
+    "dest": "AGP",
+    "month": "2026-12",
+    "origin": "VIE",
+    "flight": 336,
+    "depart": "2026-12-27",
+    "airline": "TP",
+    "hotel_est": 200,
+    "total_est": 536,
+    "url": "https://www.aviasales.com/search/VIE2712AGP03011?t=TP17984004001798450500000835VIELISAGP17989959001799088600001545AGPLISVIE_332cd69c0fdf43353add700c2bda4028_32724&search_date=15082026&expected_price_uuid=01a00765-86c5-8030-a285-73d7f1714faf&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=bbKN5pY8UZ5ME7wMV79N9Q&expected_price_source=share&expected_price_currency=eur&expected_price=336"
    },
    {
     "dest": "AGP",
@@ -5772,6 +5890,17 @@
     "hotel_est": 180,
     "total_est": 247,
     "url": "https://www.aviasales.com/search/BTS2011ALC30111?t=W617951532001795164300000185BTSALC17960514001796061300000165ALCBTS_55b4bb3aef6d5b17e86ca6594c350ce0_6411&search_date=13082026&expected_price_uuid=019ffa30-aea5-8030-a396-98eff9a6118e&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=1qrpmBAMJcbnIziOlFEcZA&expected_price_source=share&expected_price_currency=eur&expected_price=67"
+   },
+   {
+    "dest": "ALC",
+    "month": "2026-12",
+    "origin": "VIE",
+    "flight": 158,
+    "depart": "2026-12-29",
+    "airline": "FR",
+    "hotel_est": 180,
+    "total_est": 338,
+    "url": "https://www.aviasales.com/search/VIE2912ALC02011?t=FR17985591001798569900000180VIEALC17988837001798893900000170ALCVIE_ae9d422473b88bdd80feebd02f6169d5_15354&search_date=16082026&expected_price_uuid=01a00938-a530-8030-afae-e88a49299324&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=1FLTapAvWoOt6JeD1zb8dw&expected_price_source=share&expected_price_currency=eur&expected_price=158"
    }
   ],
   "VLC": [
@@ -5790,12 +5919,12 @@
     "dest": "VLC",
     "month": "2026-09",
     "origin": "VIE",
-    "flight": 120,
-    "depart": "2026-09-07",
+    "flight": 85,
+    "depart": "2026-09-14",
     "airline": "LW",
     "hotel_est": 320,
-    "total_est": 440,
-    "url": "https://www.aviasales.com/search/VIE0709VLC15091?t=FR17887827001788858300001260VIEBGYVLC17895129001789602600001495VLCBGYVIE_38def0425c9e7f1106015bec3d7110c8_11408&search_date=12082026&expected_price_uuid=019ff524-5877-8030-2097-e7fe0a5a8213&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=5cZ5Dcue0Zk86GkmF2bgzA&expected_price_source=share&expected_price_currency=eur&expected_price=120"
+    "total_est": 405,
+    "url": "https://www.aviasales.com/search/VIE1409VLC18091?t=W417894121001789508100001600VIEBGYMXPVLC17897697001789845900001270VLCMXPVIE_49edf0e48e38ec6ea8f0b9261c8f96e1_8226&search_date=16082026&expected_price_uuid=01a008a7-12bb-8030-ee52-e7176e3775c2&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=g_cA_T0VWq12c_-xJZRDUw&expected_price_source=share&expected_price_currency=eur&expected_price=85"
    },
    {
     "dest": "VLC",
@@ -5835,13 +5964,13 @@
    {
     "dest": "BCN",
     "month": "2026-09",
-    "origin": "BTS",
-    "flight": 81,
-    "depart": "2026-09-30",
-    "airline": "W6",
+    "origin": "VIE",
+    "flight": 82,
+    "depart": "2026-09-15",
+    "airline": "FR",
     "hotel_est": 420,
-    "total_est": 501,
-    "url": "https://www.aviasales.com/search/BTS3009BCN03101?t=W617907594001790768400000150BTSBCN17910303001791039000000145BCNBTS_82a040bd9c33ffa8184c1d61c06edc7d_7706&search_date=09082026&expected_price_uuid=019fe3f0-b8bc-8030-e7f9-28cb307aaa64&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=SpASMsXsK0JAO9g1cfmgOg&expected_price_source=share&expected_price_currency=eur&expected_price=81"
+    "total_est": 502,
+    "url": "https://www.aviasales.com/search/VIE1509BCN19091?t=FR17895012001789547700000775VIEBGYMXPBCN17898063001789845900000660BCNBGYMXPVIE_f8ccd78ba6812adc464d21a28e19a274_7970&search_date=15082026&expected_price_uuid=01a004b4-74cc-8030-2e35-a5a4169b1705&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=jjqaN6SM7FncUpQtmwvtIg&expected_price_source=share&expected_price_currency=eur&expected_price=82"
    },
    {
     "dest": "BCN",
@@ -5858,12 +5987,12 @@
     "dest": "BCN",
     "month": "2026-11",
     "origin": "BTS",
-    "flight": 43,
-    "depart": "2026-11-25",
+    "flight": 45,
+    "depart": "2026-11-04",
     "airline": "W6",
     "hotel_est": 280,
-    "total_est": 323,
-    "url": "https://www.aviasales.com/search/BTS2511BCN30111?t=W617955972001795606200000150BTSBCN17960409001796050200000155BCNBTS_590ccca494d6fd00ba7f5181216d1269_4066&search_date=09082026&expected_price_uuid=019fe3f1-04aa-8030-609f-c81674104124&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=1ZuwOooPlH5P4x0Q1z6Eqw&expected_price_source=share&expected_price_currency=eur&expected_price=43"
+    "total_est": 325,
+    "url": "https://www.aviasales.com/search/BTS0411BCN13111?t=W617937828001793791800000150BTSBCN17945721001794581400000155BCNBTS_e48f1d17908a1e1a1640e74826aa14c5_4359&search_date=14082026&expected_price_uuid=01a00072-99d9-8030-a527-17b36d1372bb&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=h1RXn3AUv21e1HmoZVANeA&expected_price_source=share&expected_price_currency=eur&expected_price=45"
    },
    {
     "dest": "BCN",
@@ -5973,13 +6102,13 @@
    {
     "dest": "ATH",
     "month": "2026-10",
-    "origin": "BTS",
-    "flight": 68,
-    "depart": "2026-10-02",
-    "airline": "W6",
+    "origin": "VIE",
+    "flight": 132,
+    "depart": "2026-10-08",
+    "airline": "FR",
     "hotel_est": 220,
-    "total_est": 288,
-    "url": "https://www.aviasales.com/search/BTS0210ATH05101?t=W617909709001790982600000135BTSATH17912442001791249300000145ATHBTS_2a1647a4c460e1ec069ba40ab2d3b90c_6452&search_date=09082026&expected_price_uuid=019fe4ec-9755-8030-a1bd-41e877c4028a&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Zde6Xj-7JCsEz9LOskQhsg&expected_price_source=share&expected_price_currency=eur&expected_price=68"
+    "total_est": 352,
+    "url": "https://www.aviasales.com/search/VIE0810ATH11101?t=FR17914416001791493800000810VIEBGYMXPATH17917629001791848700001490ATHCRABRIVIE_bb349de810ff6f7efce8ef50df1ad8f5_12497&search_date=09082026&expected_price_uuid=019fe731-2dd2-8040-6fed-1a56b0e6d42d&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=NhtMUDkDFyde-io_Z30eUw&expected_price_source=share&expected_price_currency=eur&expected_price=132"
    },
    {
     "dest": "ATH",
@@ -6172,13 +6301,13 @@
    {
     "dest": "JTR",
     "month": "2026-09",
-    "origin": "BTS",
-    "flight": 174,
-    "depart": "2026-09-29",
-    "airline": "RR",
+    "origin": "VIE",
+    "flight": 192,
+    "depart": "2026-09-11",
+    "airline": "LW",
     "hotel_est": 600,
-    "total_est": 774,
-    "url": "https://www.aviasales.com/search/BTS2909JTR03101?t=FR17906898001790721900000475BTSATHJTR17909859001791115200002215JTRATHTIABTS_0d4ad151749c00d11f732359a0154ae2_16592&search_date=08082026&expected_price_uuid=019fe324-e11f-8030-2ccc-f2c318798052&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=wnS2zlOM-1LXdzjeZxIYfQ&expected_price_source=share&expected_price_currency=eur&expected_price=174"
+    "total_est": 792,
+    "url": "https://www.aviasales.com/search/VIE1109JTR16091?t=W417891082001789196700001415VIEVCEATHJTR17896014001789640100000705JTRFCOVIE_3bec0da6628e2919100061e2cee6773b_18661&search_date=14082026&expected_price_uuid=019fffd5-f5bb-8030-ae64-7507abcecaf0&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=99GhIPc9-K0WpU6d0u_KUw&expected_price_source=share&expected_price_currency=eur&expected_price=192"
    },
    {
     "dest": "JTR",
@@ -6374,12 +6503,12 @@
     "dest": "PUY",
     "month": "2026-08",
     "origin": "VIE",
-    "flight": 200,
-    "depart": "2026-08-22",
+    "flight": 58,
+    "depart": "2026-08-27",
     "airline": "FR",
     "hotel_est": 320,
-    "total_est": 520,
-    "url": "https://www.aviasales.com/search/VIE2208PUY26081?t=DY17873781001787382000000065VIEPUY17877360001787822100001435PUYOSLVIE_0de0db146bdfb635a22362dd06970c24_19009&search_date=11082026&expected_price_uuid=019ff1b2-eb5b-8030-2fcb-777f2fd4b0a6&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=pB7H_7ODoiIG1iYYpuZGDA&expected_price_source=share&expected_price_currency=eur&expected_price=200"
+    "total_est": 378,
+    "url": "https://www.aviasales.com/search/VIE2708PUY03091?t=FR17878581001787862000000065VIEPUY17884689001788472800000065PUYVIE_c693802704c837cd9eacbf70b4d07496_5650&search_date=16082026&expected_price_uuid=01a00936-497d-8040-a6f8-bf334a28435a&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=0SXR3njxXI2KWGxjcT5dPg&expected_price_source=share&expected_price_currency=eur&expected_price=58"
    },
    {
     "dest": "PUY",
@@ -6610,13 +6739,13 @@
    {
     "dest": "TIA",
     "month": "2026-12",
-    "origin": "BTS",
-    "flight": 138,
-    "depart": "2026-12-25",
-    "airline": "W6",
+    "origin": "VIE",
+    "flight": 153,
+    "depart": "2026-12-28",
+    "airline": "OS",
     "hotel_est": 120,
-    "total_est": 258,
-    "url": "https://www.aviasales.com/search/BTS2512TIA08011?t=W417982249001798313100001470BTSFCOSUFTIA17994042001799432700000475TIAMXPBTS_c41fbae9cbc0c64f424f6ff6ad00c6df_13166&search_date=09082026&expected_price_uuid=019fe506-022e-8030-ed2d-5ea45834976c&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=YSWofnkAzWbs8mNIl1uNCQ&expected_price_source=share&expected_price_currency=eur&expected_price=138"
+    "total_est": 273,
+    "url": "https://www.aviasales.com/search/VIE2812TIA02011?t=JU17985000001798505400000090VIETIA17989023001798986600001405TIABEGVIE_a1c766504fb8785b6d5bba988d35dd59_14881&search_date=16082026&expected_price_uuid=01a0092d-c57c-8030-a429-0101f2c948dc&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=seG0EH8TgVMCS1a1ceJF3w&expected_price_source=share&expected_price_currency=eur&expected_price=153"
    },
    {
     "dest": "TIA",
@@ -6645,13 +6774,13 @@
    {
     "dest": "NAP",
     "month": "2026-09",
-    "origin": "VIE",
-    "flight": 99,
-    "depart": "2026-09-10",
+    "origin": "BTS",
+    "flight": 74,
+    "depart": "2026-09-15",
     "airline": "FR",
     "hotel_est": 400,
-    "total_est": 499,
-    "url": "https://www.aviasales.com/search/VIE1009NAP17091?t=FR17890710001789077000000100VIENAP17896833001789689300000100NAPVIE_ba8d926515180f62220e2b0feed37825_9483&search_date=14082026&expected_price_uuid=019ffeec-1b36-8040-68fe-2342e0c95054&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=zciygf1A3gamvMVt1ybKUw&expected_price_source=share&expected_price_currency=eur&expected_price=99"
+    "total_est": 474,
+    "url": "https://www.aviasales.com/search/BTS1509NAP17091?t=FR17894988001789505400000110BTSNAP17896632001789669200000100NAPBTS_40e460daaeadf99b8b160f4a6af117d9_7192&search_date=16082026&expected_price_uuid=01a00912-8b26-8030-2c76-2fa6fe42e902&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=lyNekw1KcjyAz8BsCrS46A&expected_price_source=share&expected_price_currency=eur&expected_price=74"
    },
    {
     "dest": "NAP",
@@ -6692,12 +6821,12 @@
     "dest": "PMO",
     "month": "2026-10",
     "origin": "VIE",
-    "flight": 130,
-    "depart": "2026-10-16",
-    "airline": "FR",
+    "flight": 112,
+    "depart": "2026-10-04",
+    "airline": "LW",
     "hotel_est": 200,
-    "total_est": 330,
-    "url": "https://www.aviasales.com/search/VIE1610PMO23101?t=FR17921571001792164300000120VIEPMO17927706001792777800000120PMOVIE_c6c7962ce761a0278abba1dabfbef8d9_12621&search_date=15082026&expected_price_uuid=01a00609-549f-8050-ecf8-8833c621b532&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=4VLVBvLYWIzGWORf9pELsQ&expected_price_source=share&expected_price_currency=eur&expected_price=130"
+    "total_est": 312,
+    "url": "https://www.aviasales.com/search/VIE0410PMO11101?t=W417910936001791107400000230VIEVCEPMO17916993001791730200000515PMOMXPLINVIE_306a282e2049cb573b08eea3a57809d0_10891&search_date=15082026&expected_price_uuid=01a00769-ef41-8030-aa42-b75302903c49&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=tFklDaAMmIXIhLKhOtpy8Q&expected_price_source=share&expected_price_currency=eur&expected_price=112"
    },
    {
     "dest": "PMO",
@@ -6749,12 +6878,12 @@
     "dest": "CTA",
     "month": "2026-10",
     "origin": "VIE",
-    "flight": 118,
-    "depart": "2026-10-26",
+    "flight": 114,
+    "depart": "2026-10-04",
     "airline": "LW",
     "hotel_est": 200,
-    "total_est": 318,
-    "url": "https://www.aviasales.com/search/VIE2610CTA31101?t=W417930166001793109900001555VIEOTPCTA17934870001793517600000510CTABLQVIE_8bc312ec50439a3f0bdf60d3f03584bf_11427&search_date=14082026&expected_price_uuid=019fffbf-03e7-8030-a484-dc85bc6f5acd&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=XmtUmdKWgjaM00VgtEftfw&expected_price_source=share&expected_price_currency=eur&expected_price=118"
+    "total_est": 314,
+    "url": "https://www.aviasales.com/search/VIE0410CTA11101?t=W417910936001791119100000425VIEVCECTA17917575001791821100001060CTAMXPVIE_a983d805e49040ceeae0cf383a4b8073_11119&search_date=15082026&expected_price_uuid=01a00753-283c-8030-209a-a43dea57e359&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=3hDM8_ddgXJY_D_nDdg-pg&expected_price_source=share&expected_price_currency=eur&expected_price=114"
    }
   ],
   "CAG": [
@@ -6772,13 +6901,13 @@
    {
     "dest": "CAG",
     "month": "2026-09",
-    "origin": "VIE",
-    "flight": 124,
-    "depart": "2026-09-01",
-    "airline": "LW",
+    "origin": "BTS",
+    "flight": 121,
+    "depart": "2026-09-15",
+    "airline": "AL",
     "hotel_est": 360,
-    "total_est": 484,
-    "url": "https://www.aviasales.com/search/VIE0109CAG07091?t=FR17882418001788333900001535VIEBGYCAG17887743001788858000001395CAGARNVIE_3c45bf7bf1da3a354a602fe2b5b96bc0_11667&search_date=09082026&expected_price_uuid=019fe5e0-ea2a-8030-a3c7-984f28a26a78&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=ITWlnH3ZcSdBqNKxVh9cSw&expected_price_source=share&expected_price_currency=eur&expected_price=124"
+    "total_est": 481,
+    "url": "https://www.aviasales.com/search/BTS1509CAG17091?t=FR17894856001789560600001250BTSCIACAG17896530001789740900001465CAGCIABTS_6ab0fb37c196d092fb4d670a3ce9ac0b_11740&search_date=16082026&expected_price_uuid=01a00912-f318-8030-6190-7f552cb6476b&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=WEaJViXfPizzYkl3AFVpMw&expected_price_source=share&expected_price_currency=eur&expected_price=121"
    }
   ],
   "OLB": [
@@ -7312,12 +7441,12 @@
     "dest": "SSH",
     "month": "2026-12",
     "origin": "VIE",
-    "flight": 474,
-    "depart": "2026-12-30",
-    "airline": "LW",
+    "flight": 405,
+    "depart": "2026-12-25",
+    "airline": "JU",
     "hotel_est": 240,
-    "total_est": 714,
-    "url": "https://www.aviasales.com/search/VIE3012SSH03011?t=W417986176001798750200002150VIEMXPPMOSSH17989791001799093400001965SSHESBSAWTIABEGVIE_edcc0a84cda814d9e67bbe710160933a_45183&search_date=10082026&expected_price_uuid=019fec8c-2c2a-8040-ac18-f57cb6a580ac&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=JB6_ZGTud_SFC0S8SpOjBw&expected_price_source=share&expected_price_currency=eur&expected_price=474"
+    "total_est": 645,
+    "url": "https://www.aviasales.com/search/VIE2512SSH06011?t=W617982108001798282200001130VIEBEGISTSSH17992323001799332200001725SSHSOFBEGVIE_579697b32ff1c16347a1bab9342bc47f_39448&search_date=15082026&expected_price_uuid=01a0071d-f419-8030-2d7d-c82106fef39b&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=j7vB-_Xa0gEB3l9gd2OMZg&expected_price_source=share&expected_price_currency=eur&expected_price=405"
    },
    {
     "dest": "SSH",
@@ -7441,12 +7570,12 @@
     "dest": "MRS",
     "month": "2026-08",
     "origin": "VIE",
-    "flight": 194,
-    "depart": "2026-08-21",
-    "airline": "FR",
+    "flight": 285,
+    "depart": "2026-08-23",
+    "airline": "OS",
     "hotel_est": 360,
-    "total_est": 554,
-    "url": "https://www.aviasales.com/search/VIE2108MRS24081?t=FR17873112001787318400000120VIEMRS17875944001787601300000115MRSVIE_7570c99b271b8696d37b39c1808b4ae0_18450&search_date=08082026&expected_price_uuid=019fe33c-e8b5-8030-69f2-ebf3cc1f5689&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Qn16S4iEIcQgFGzZfdYdZA&expected_price_source=share&expected_price_currency=eur&expected_price=194"
+    "total_est": 645,
+    "url": "https://www.aviasales.com/search/VIE2308MRS26081?t=OS17874648001787479800000250VIEFRAMRS17877750001787781600000110MRSVIE_80b067071bc707d7c32dc0a516fff29d_27720&search_date=14082026&expected_price_uuid=01a000a5-cd48-8030-6c9e-67b6621853ca&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH1%7CR0%7CTBC0&itinerary_key=gpDkEBGMhrhv-NxslRJu4w&expected_price_source=share&expected_price_currency=eur&expected_price=285"
    },
    {
     "dest": "MRS",
@@ -7471,17 +7600,6 @@
     "hotel_est": 380,
     "total_est": 572,
     "url": "https://www.aviasales.com/search/VIE1109MAH13091?t=BY17891082001789198200001500VIEVCEBCNMAH17892969001789423800002115MAHMANBGYVIE_e048f52be90dcb87081925aacfc43979_18137&search_date=09082026&expected_price_uuid=019fe79e-b2b0-8030-a6f7-6e5e33c66139&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=uXx08VDkuK2lvX9Gv6BTtA&expected_price_source=share&expected_price_currency=eur&expected_price=192"
-   },
-   {
-    "dest": "MAH",
-    "month": "2026-10",
-    "origin": "VIE",
-    "flight": 143,
-    "depart": "2026-10-06",
-    "airline": "LW",
-    "hotel_est": 220,
-    "total_est": 363,
-    "url": "https://www.aviasales.com/search/VIE0610MAH10101?t=FR17912655001791329700001070VIEBCNMAH17916231001791663600000675MAHLGWSTNVIE_effbb10a91e0162005b01cfa8541cd4c_13608&search_date=09082026&expected_price_uuid=019fe533-4c68-8030-a776-5d7b3e0868a2&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=uk55Qkmbn1cMi_nCwzqZCQ&expected_price_source=share&expected_price_currency=eur&expected_price=143"
    }
   ],
   "GRO": [
@@ -7508,19 +7626,6 @@
     "hotel_est": 200,
     "total_est": 366,
     "url": "https://www.aviasales.com/search/BTS2109ACE28091?t=FR17900049001790092200001515BTSMXPBCNACE17906235001790675700000810ACELTNSTNBTS_cd43eafb49798fbec5c40d28b56eeed0_15707&search_date=09082026&expected_price_uuid=019fe5ee-14c8-8030-a63f-7171dbfd0d61&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=qFzbDIyTu2Z1zeuKX6pIUw&expected_price_source=share&expected_price_currency=eur&expected_price=166"
-   }
-  ],
-  "BDS": [
-   {
-    "dest": "BDS",
-    "month": "2026-09",
-    "origin": "VIE",
-    "flight": 137,
-    "depart": "2026-09-07",
-    "airline": "LW",
-    "hotel_est": 320,
-    "total_est": 457,
-    "url": "https://www.aviasales.com/search/VIE0709BDS14091?t=FR17887842001788866100001365VIEMXPBGYBDS17893782001789462800001410BDSARNVIE_d1875b17de0c0e08a8908d64fae3c331_13073&search_date=09082026&expected_price_uuid=019fe4ed-0ea7-8030-2dd7-2fc37bf0caeb&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Apv2fVqzyY4jGrPwFWHnmQ&expected_price_source=share&expected_price_currency=eur&expected_price=137"
    }
   ],
   "SUF": [
@@ -7687,6 +7792,19 @@
     "hotel_est": 240,
     "total_est": 836,
     "url": "https://www.aviasales.com/search/VIE3012RMF03011?t=XR17986113001798730100001920VIEOTPCGNRMF17990058001799100600001640RMFMXPVIE_f6245ce7b826c6c7b9d29db7ddcc3779_56749&search_date=10082026&expected_price_uuid=019fec8b-b20d-8040-298c-62436214c7bf&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Nu77sER7pwuiiTiKoPwqYw&expected_price_source=share&expected_price_currency=eur&expected_price=596"
+   }
+  ],
+  "TLV": [
+   {
+    "dest": "TLV",
+    "month": "2026-08",
+    "origin": "BTS",
+    "flight": 382,
+    "depart": "2026-08-23",
+    "airline": "RR",
+    "hotel_est": 480,
+    "total_est": 862,
+    "url": "https://www.aviasales.com/search/BTS2308TLV27081?t=W617875161001787604000001405BTSPMOTLV17878698001787879400000220TLVBTS_6848b54a69954f6b057882e1abbb5ea6_36944&search_date=13082026&expected_price_uuid=019ffadb-b0b1-8030-6f59-25d735b2d322&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=CCYcV0KAkIYCsq-TpEJC7A&expected_price_source=share&expected_price_currency=eur&expected_price=382"
    }
   ],
   "DXB": [
