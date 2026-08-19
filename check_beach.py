@@ -136,8 +136,6 @@ BEACH_DESTINATIONS = {
     "FAO": ("Faro / Algarve", "\U0001F1F5\U0001F1F9 Portugal", "Faro", 55, 95, 290),
     "LIS": ("Lisbon / Cascais", "\U0001F1F5\U0001F1F9 Portugal", "Cascais", 65, 100, 290),
     # Cyprus
-    "LCA": ("Larnaca", "\U0001F1E8\U0001F1FE Cyprus", "Larnaca", 50, 85, 280),
-    "PFO": ("Paphos", "\U0001F1E8\U0001F1FE Cyprus", "Paphos", 50, 85, 280),
     # Bulgaria
     "VAR": ("Varna", "\U0001F1E7\U0001F1EC Bulgaria", "Varna", 35, 65, 200),
     "BOJ": ("Burgas / Sunny Beach", "\U0001F1E7\U0001F1EC Bulgaria", "Burgas", 30, 60, 200),
@@ -166,8 +164,6 @@ BEACH_DESTINATIONS = {
     "KLX": ("Kalamata / Peloponnese", "\U0001F1EC\U0001F1F7 Greece", "Kalamata", 45, 80, 270),
     # Winter sun stretch
     "RMF": ("Marsa Alam", "\U0001F1EA\U0001F1EC Egypt", "Marsa Alam", 35, 60, 300),
-    "TLV": ("Tel Aviv", "\U0001F1EE\U0001F1F1 Israel", "Tel Aviv", 90, 120, 380),
-    "DXB": ("Dubai", "\U0001F1E6\U0001F1EA UAE", "Dubai", 60, 90, 450),
     # Coverage completions
     "OPO": ("Porto / Matosinhos", "\U0001F1F5\U0001F1F9 Portugal", "Matosinhos", 50, 80, 270),
     "RJK": ("Rijeka / Kvarner Bay", "\U0001F1ED\U0001F1F7 Croatia", "Opatija", 45, 80, 240),
@@ -204,15 +200,15 @@ DAILY_SPEND = {
     # France
     "NCE": 65, "MRS": 55,
     # Cyprus + Black Sea
-    "LCA": 45, "PFO": 45, "VAR": 30, "BOJ": 30,
+    "VAR": 30, "BOJ": 30,
     # North Africa + Red Sea + Gulf
     "HRG": 30, "SSH": 30, "RMF": 30, "AGA": 30, "NBE": 28, "DJE": 28,
-    "TLV": 70, "DXB": 65,
+    
 }
 DEFAULT_DAILY_SPEND = int((os.environ.get("DEFAULT_DAILY_SPEND") or "45"))
 
 # Destinations whose high season is winter sun (Nov-Mar) instead of summer
-WINTER_SUN = {"TFS", "LPA", "FUE", "ACE", "HRG", "SSH", "RMF", "AGA", "DXB"}
+WINTER_SUN = {"TFS", "LPA", "FUE", "ACE", "HRG", "SSH", "RMF", "AGA"}
 
 # Static per-destination metadata for the dashboard: approx flight time from
 # VIE (hours) and typical August sea temperature (°C). Used only for filtering
@@ -232,10 +228,10 @@ DEST_META = {
     "OLB": (1.6, 26), "BRI": (1.5, 26), "TPS": (2.0, 27), "RMI": (1.3, 26),
     "GOA": (1.3, 24), "VCE": (1.1, 26), "BDS": (1.6, 26), "AHO": (1.8, 25), "SUF": (1.8, 27),
     "MLA": (2.0, 27), "FAO": (3.4, 22), "LIS": (3.5, 20), "OPO": (3.5, 19),
-    "LCA": (3.3, 28), "PFO": (3.4, 28), "VAR": (1.8, 26), "BOJ": (1.9, 26),
+    "VAR": (1.8, 26), "BOJ": (1.9, 26),
     "NCE": (1.5, 25), "MRS": (1.6, 24),
     "HRG": (4.0, 29), "SSH": (4.2, 29), "RMF": (4.3, 29), "AGA": (4.3, 22),
-    "NBE": (2.3, 26), "DJE": (2.5, 27), "TLV": (3.5, 29), "DXB": (6.0, 33),
+    "NBE": (2.3, 26), "DJE": (2.5, 27), 
 }
 
 # ------------------------------------------------------------ http utils ----
