@@ -35,6 +35,16 @@ jobs:
           TG_TOKEN: ${{ secrets.TG_TOKEN }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
           HOTEL_SPLIT: "1"
+          # Optional repository variables. Leave unset to keep the script defaults:
+          # MIN_COVERAGE=0.10, PARTIAL_COVERAGE=0.50, MAX_TRANSPORT_ERROR_RATE=0.25,
+          # MAX_WORKERS=6, PACE_SECONDS=0.
+          # A thin fare cache publishes a partial board. The job fails only when
+          # coverage is under MIN_COVERAGE or too many calls error.
+          MIN_COVERAGE: ${{ vars.MIN_COVERAGE }}
+          PARTIAL_COVERAGE: ${{ vars.PARTIAL_COVERAGE }}
+          MAX_TRANSPORT_ERROR_RATE: ${{ vars.MAX_TRANSPORT_ERROR_RATE }}
+          MAX_WORKERS: ${{ vars.MAX_WORKERS }}
+          PACE_SECONDS: ${{ vars.PACE_SECONDS }}
         run: python check_beach.py
 
       - name: Commit updated data

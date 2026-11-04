@@ -46,6 +46,14 @@
   .hero p { margin: 8px 0 0; opacity: .82; font-size: 15px; }
   .updated { margin-top: 14px; font-size: 12.5px; opacity: .7; }
   .updated b { opacity: 1; font-weight: 600; }
+  .coverage-note {
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 1.45;
+    background: rgba(255,255,255,.14);
+    border-radius: 8px;
+    padding: 8px 10px;
+  }
 
   .controls {
     background: #fff;
@@ -232,6 +240,7 @@
     <h1>Beach deals from Vienna</h1>
     <p>3–5 day trips · per person · <b>Total</b> = flight + hotel, <b>All-in</b> adds food, drinks &amp; local transport.</p>
     <div class="updated" id="updated"></div>
+    <div class="coverage-note hidden" id="coverage-note"></div>
   </div>
 </header>
 
@@ -728,7 +737,19 @@ async function load() {
   }
 
   const when = raw.generated_at ? new Date(raw.generated_at).toLocaleString("en-GB", {dateStyle:"medium", timeStyle:"short"}) : "unknown";
-  document.getElementById("updated").innerHTML = "Last updated <b>" + when + "</b> · " + state.deals.length + " destination options";
+  let updated = "Last updated <b>" + when + "</b> · " + state.deals.length + " destination options";
+  const cov = raw.coverage;
+  const covDest = cov ? Number(cov.destinations) : 0;
+  const covHit = cov ? Number(cov.destinations_with_fares) : 0;
+  if (covDest > 0 && Number.isFinite(covHit)) {
+    updated += " · cached fares for " + covHit + "/" + covDest + " destinations";
+  }
+  document.getElementById("updated").innerHTML = updated;
+  const noteEl = document.getElementById("coverage-note");
+  if (raw.note) {
+    noteEl.textContent = raw.note;
+    noteEl.classList.remove("hidden");
+  }
 
   const nd = raw.no_direct || [];
   const ndEl = document.getElementById("nodirect");

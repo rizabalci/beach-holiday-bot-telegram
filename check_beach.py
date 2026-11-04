@@ -18,11 +18,16 @@ Logic per run:
   5. Alert when a total beats the destination target, the global threshold, or
      drops ROLLING_DROP_PCT below the destination's rolling average.
   6. Send one Telegram digest, cheapest totals first, grouped by weekend.
+     A thin cached-fare day still sends that digest and refreshes deals.json,
+     with a note that says how many destinations had a fare and how many
+     responses were empty. A broken scan (near-zero coverage, or many HTTP /
+     network failures) keeps the previous deals.json and exits non-zero.
 """
 
 import json
 import os
 import random
+import re
 import sys
 import time
 import urllib.parse
@@ -67,12 +72,26 @@ OVERVIEW_N = int((os.environ.get("OVERVIEW_N") or "73"))
 ALWAYS_DIGEST = (os.environ.get("ALWAYS_DIGEST") or "true").lower() in ("1", "true", "yes")
 PACE_SECONDS = float((os.environ.get("PACE_SECONDS") or "0.0"))
 
-# Parallel flight lookups. The scan is latency-bound (~1s per API call), so
-# fetching sequentially would take hours. 12 workers keeps us well inside the
-# Actions timeout without hammering the API.
-MAX_WORKERS = int((os.environ.get("MAX_WORKERS") or "8"))
+# Parallel flight lookups. Each call takes about a second, so the scan is
+# latency-bound. Recent weekend passes at 8 workers finished in about 10
+# minutes and saw roughly 800 HTTP 429s. Almost every call still got a body;
+# about 160 gave up after retries. 6 workers lowers that pressure and stays
+# well inside the 70-minute job timeout. Override with MAX_WORKERS.
+MAX_WORKERS = int((os.environ.get("MAX_WORKERS") or "6"))
 DRY_RUN = (os.environ.get("DRY_RUN") or "").lower() in ("1", "true", "yes")
 SILENT_REFRESH = (os.environ.get("SILENT_REFRESH") or "").lower() in ("1", "true", "yes")
+
+# Destination-coverage floors, as fractions (0.10 = 10% of destinations).
+# The cached fare API returns HTTP 200 with an empty data list when it has no
+# price for that date. Seasonal airports do this all winter, so a 50% floor
+# failed the job on healthy-but-thin days. Below PARTIAL_COVERAGE we still
+# publish, and we say so in the digest. Below MIN_COVERAGE the result is too
+# small to replace the previous deals.json.
+MIN_COVERAGE = float((os.environ.get("MIN_COVERAGE") or "0.10"))
+PARTIAL_COVERAGE = float((os.environ.get("PARTIAL_COVERAGE") or "0.50"))
+# Share of finished calls that failed transport: a non-retryable HTTP status,
+# or retries exhausted. Empty fare bodies are not transport failures.
+MAX_TRANSPORT_ERROR_RATE = float((os.environ.get("MAX_TRANSPORT_ERROR_RATE") or "0.25"))
 
 # Link shown at the top of each digest so you can compare everything in the browser.
 DASHBOARD_URL = os.environ.get("DASHBOARD_URL") or "https://rizabalci.github.io/beach-holiday-bot-telegram/dashboard.html"
@@ -238,34 +257,215 @@ DEST_META = {
 
 
 # Failure bookkeeping so a silent API problem can never masquerade as
-# "no deals today" again. Counted across threads; GIL makes += safe enough here.
-STATS = {"ok": 0, "empty": 0, "rate_limited": 0, "http_error": 0, "network": 0}
+# "no deals today". Counted across threads; GIL makes += safe enough here.
+#   ok            HTTP 200 that included a priced fare
+#   empty         HTTP 200 with no cached fare (a normal thin-cache answer)
+#   rate_limited  429/503 responses that were retried
+#   http_error    non-retryable HTTP status, or an HTTP 200 error body
+#   network       timeout / reset / DNS on one attempt
+#   gave_up       call exhausted its retries without a usable body
+STATS = {"ok": 0, "empty": 0, "rate_limited": 0, "http_error": 0, "network": 0, "gave_up": 0}
 _first_errors = []
 
 
+def _redact_text(text):
+    """Remove the API token from anything that might be logged."""
+    text = str(text)
+    if TP_TOKEN:
+        text = text.replace(TP_TOKEN, "***")
+    return re.sub(r"(token=)[^&\s]+", r"\1***", text)
+
+
+def _redact_url(url):
+    parts = urllib.parse.urlsplit(url)
+    pairs = urllib.parse.parse_qsl(parts.query, keep_blank_values=True)
+    bits = []
+    for key, value in pairs:
+        shown = "***" if key == "token" else urllib.parse.quote(value, safe="")
+        bits.append(f"{urllib.parse.quote(key, safe='')}={shown}")
+    return urllib.parse.urlunsplit(parts._replace(query="&".join(bits)))
+
+
+def _remember_error(message):
+    if len(_first_errors) < 5:
+        _first_errors.append(_redact_text(message)[:300])
+
+
+def _price_body_kind(data):
+    """Classify a prices_for_dates body as 'ok', 'empty', or 'error'.
+
+    An empty data list on HTTP 200 means the cache has no fare for those dates.
+    """
+    if not isinstance(data, dict):
+        return "error"
+    if data.get("success") is False:
+        return "error"
+    rows = data.get("data")
+    if isinstance(rows, list):
+        if rows and isinstance(rows[0], dict) and rows[0].get("price"):
+            return "ok"
+        return "empty"
+    if data.get("success") is True:
+        return "empty"
+    return "error"
+
+
 def http_get_json(url, timeout=25, attempts=4):
-    """GET with retry + backoff. Returns parsed JSON, or None only after retries."""
+    """GET with retry + backoff. Returns parsed JSON, or None when the call failed.
+
+    A successful response with an empty fare list is returned to the caller and
+    counted as empty, not as ok. None means the call itself failed.
+    """
+    safe_url = _redact_url(url)[:160]
     for attempt in range(attempts):
         req = urllib.request.Request(url, headers={"User-Agent": "beach-holiday-bot/1.0"})
         try:
             with urllib.request.urlopen(req, timeout=timeout) as resp:
-                STATS["ok"] += 1
-                return json.loads(resp.read().decode("utf-8"))
+                raw = resp.read()
         except urllib.error.HTTPError as exc:
-            if exc.code in (429, 503):          # throttled — back off and retry
+            if exc.code in (429, 503):          # rate limited — back off and retry
                 STATS["rate_limited"] += 1
                 time.sleep(2 * (attempt + 1) + random.random())
                 continue
             STATS["http_error"] += 1
-            if len(_first_errors) < 5:
-                _first_errors.append(f"HTTP {exc.code} :: {url[:100]}")
+            _remember_error(f"HTTP {exc.code} :: {safe_url}")
             return None                          # 4xx that retrying won't fix
         except Exception as exc:                 # timeouts, resets, DNS
             STATS["network"] += 1
-            if len(_first_errors) < 5:
-                _first_errors.append(f"{type(exc).__name__}: {exc} :: {url[:100]}")
+            _remember_error(f"{type(exc).__name__}: {exc} :: {safe_url}")
             time.sleep(1 + attempt)
+            continue
+        try:
+            data = json.loads(raw.decode("utf-8"))
+        except (json.JSONDecodeError, UnicodeDecodeError) as exc:
+            STATS["http_error"] += 1
+            _remember_error(f"{type(exc).__name__}: {exc} :: {safe_url}")
+            return None
+        kind = _price_body_kind(data)
+        if kind == "ok":
+            STATS["ok"] += 1
+            return data
+        if kind == "empty":
+            STATS["empty"] += 1
+            return data
+        STATS["http_error"] += 1
+        detail = data.get("error") if isinstance(data, dict) else None
+        _remember_error(f"API error body {detail!r} :: {safe_url}")
+        return None
+    STATS["gave_up"] += 1
     return None
+
+
+def format_api_stats(stats):
+    return (
+        f"  api: {stats['ok']} with price · {stats['empty']} empty · "
+        f"{stats['rate_limited']} rate-limited(retried) · "
+        f"{stats['http_error']} http-error · {stats['network']} network-error · "
+        f"{stats['gave_up']} gave-up"
+    )
+
+
+def scan_health(destinations_with_fares, destination_count, stats,
+                min_coverage=None, partial_coverage=None,
+                max_transport_error_rate=None):
+    """Decide whether a finished weekend scan may replace deals.json.
+
+    publish: write deals.json and send the digest.
+    partial: publish, and tell the reader the board is missing destinations.
+    A scan with no fares, coverage under the floor, or too many transport
+    failures does not publish.
+    """
+    if min_coverage is None:
+        min_coverage = MIN_COVERAGE
+    if partial_coverage is None:
+        partial_coverage = PARTIAL_COVERAGE
+    if max_transport_error_rate is None:
+        max_transport_error_rate = MAX_TRANSPORT_ERROR_RATE
+
+    priced = int(stats.get("ok", 0))
+    empty = int(stats.get("empty", 0))
+    rate_limited = int(stats.get("rate_limited", 0))
+    http_error = int(stats.get("http_error", 0))
+    network = int(stats.get("network", 0))
+    gave_up = int(stats.get("gave_up", 0))
+    finished = priced + empty + http_error + gave_up
+    transport_failures = http_error + gave_up
+    error_rate = (transport_failures / finished) if finished else 1.0
+    coverage = (destinations_with_fares / destination_count) if destination_count else 0.0
+    broken_transport = finished == 0 or error_rate > max_transport_error_rate
+
+    reasons = []
+    if broken_transport:
+        reasons.append(
+            f"transport errors on {transport_failures}/{finished} finished calls "
+            f"({error_rate:.0%}); limit is {max_transport_error_rate:.0%}"
+        )
+    if destinations_with_fares <= 0:
+        reasons.append("no destination returned a fare")
+    elif coverage < min_coverage:
+        reasons.append(
+            f"coverage {destinations_with_fares}/{destination_count} "
+            f"({coverage:.0%}) is below MIN_COVERAGE ({min_coverage:.0%})"
+        )
+
+    health = {
+        "coverage": coverage,
+        "destinations_with_fares": destinations_with_fares,
+        "destinations": destination_count,
+        "priced": priced,
+        "empty": empty,
+        "rate_limited": rate_limited,
+        "http_error": http_error,
+        "network": network,
+        "gave_up": gave_up,
+        "finished": finished,
+        "transport_failures": transport_failures,
+        "error_rate": error_rate,
+        "broken_transport": broken_transport,
+        "publish": not reasons,
+        "partial": False,
+        "reasons": reasons,
+        "note": None,
+    }
+    if health["publish"] and coverage < partial_coverage:
+        health["partial"] = True
+        health["note"] = (
+            f"Partial scan: {destinations_with_fares}/{destination_count} "
+            f"destinations had a cached fare ({coverage:.0%}). "
+            f"{empty} responses were empty (no cached price for those dates). "
+            f"{rate_limited} rate-limit responses were retried. "
+            f"{http_error} HTTP errors, {network} network errors, "
+            f"{gave_up} calls gave up after retries. "
+            f"The board only includes destinations that returned a price."
+        )
+    return health
+
+
+def format_scan_refusal(health):
+    """Log text when a scan must not replace deals.json or send a digest."""
+    lines = ["  ! Not overwriting deals.json or sending a digest."]
+    for reason in health["reasons"]:
+        lines.append(f"    - {reason}")
+    lines.append(
+        "    calls: "
+        f"{health['priced']} with a price, "
+        f"{health['empty']} empty (no cached fare), "
+        f"{health['rate_limited']} rate-limited (retried), "
+        f"{health['http_error']} http-error, "
+        f"{health['network']} network-error, "
+        f"{health['gave_up']} gave up after retries."
+    )
+    if health["broken_transport"]:
+        lines.append(
+            "    Refusing this scan because the API calls failed "
+            "(HTTP errors, network errors, or retries exhausted)."
+        )
+    else:
+        lines.append(
+            "    Refusing this scan because too few destinations had a cached fare. "
+            "Empty responses are missing fares. Rate-limit retries are listed separately above."
+        )
+    return "\n".join(lines)
 
 
 # ------------------------------------------------------------- flights ------
@@ -679,18 +879,18 @@ def main():
                 best_by_dest[d] = deal
     elapsed = time.time() - start_ts
     print(f"  scan finished in {elapsed:.0f}s")
-    print(f"  api: {STATS['ok']} ok · {STATS['rate_limited']} rate-limited(retried) · "
-          f"{STATS['http_error']} http-error · {STATS['network']} network-error")
+    print(format_api_stats(STATS))
     for e in _first_errors:
         print(f"    first errors: {e}")
 
-    coverage = len(best_by_dest) / max(len(BEACH_DESTINATIONS), 1)
-    print(f"  coverage: {len(best_by_dest)}/{len(BEACH_DESTINATIONS)} destinations "
-          f"({coverage:.0%})")
-    if coverage < 0.5:
-        print("  ! Fewer than half the destinations returned data — the API is likely "
-              "throttling. Not overwriting deals.json or sending a digest.")
+    health = scan_health(len(best_by_dest), len(BEACH_DESTINATIONS), STATS)
+    print(f"  coverage: {health['destinations_with_fares']}/{health['destinations']} destinations "
+          f"({health['coverage']:.0%})")
+    if not health["publish"]:
+        print(format_scan_refusal(health))
         sys.exit(1)
+    if health["note"]:
+        print(f"  ! {health['note']}")
 
     # ---- alert selection ----
     alerts = []
@@ -716,7 +916,7 @@ def main():
         print(f"  month overview: {len(months)} destinations covered")
     except Exception as exc:
         print(f"  ! month overview failed: {exc}")
-    write_site_data(all_deals, alerts, months)
+    write_site_data(all_deals, alerts, months, health)
 
     if not alerts and not ALWAYS_DIGEST:
         print("No deals beat targets today. No message sent.")
@@ -731,10 +931,13 @@ def main():
         if OVERVIEW_N > 0 else []
 
     today = date.today().strftime("%d %b %Y")
+    board_word = "Partial board" if health["note"] else "Full board"
     if top_deals:
-        header = (f"\U0001F3D6 <b>Beach Holiday Deals — {today}</b>\n{len(top_deals)} deal(s) beat target today. Full board below.\n\U0001F4CA <a href=\"{DASHBOARD_URL}\">Compare all in browser</a>")
+        header = (f"\U0001F3D6 <b>Beach Holiday Deals — {today}</b>\n{len(top_deals)} deal(s) beat target today. {board_word} below.\n\U0001F4CA <a href=\"{DASHBOARD_URL}\">Compare all in browser</a>")
     else:
-        header = (f"\U0001F3D6 <b>Beach Holiday check-in — {today}</b>\nNo target-beating deals today. Full board of cheapest totals from Vienna:\n\U0001F4CA <a href=\"{DASHBOARD_URL}\">Compare all in browser</a>")
+        header = (f"\U0001F3D6 <b>Beach Holiday check-in — {today}</b>\nNo target-beating deals today. {board_word} of cheapest totals from Vienna:\n\U0001F4CA <a href=\"{DASHBOARD_URL}\">Compare all in browser</a>")
+    if health["note"]:
+        header += "\n\u26A0\uFE0F " + health["note"]
     lines = [header, ""]
 
     def deal_block(d, flame=False):
@@ -782,7 +985,7 @@ def work_days_off(dep_iso, ret_iso):
     return n
 
 
-def write_site_data(all_deals, alerts, months=None):
+def write_site_data(all_deals, alerts, months=None, health=None):
     """deals.json for an optional GitHub Pages dashboard, same pattern as worldwide bot."""
     alert_keys = {(d["dest"], d["depart"], d["origin"], d["nights"]) for d in alerts}
     payload = {
@@ -795,6 +998,20 @@ def write_site_data(all_deals, alerts, months=None):
         ],
         "months": months or {},
     }
+    if health:
+        payload["coverage"] = {
+            "destinations_with_fares": health["destinations_with_fares"],
+            "destinations": health["destinations"],
+            "fraction": round(health["coverage"], 4),
+            "priced_responses": health["priced"],
+            "empty_responses": health["empty"],
+            "rate_limited": health["rate_limited"],
+            "http_error": health["http_error"],
+            "network": health["network"],
+            "gave_up": health["gave_up"],
+            "partial": health["partial"],
+        }
+        payload["note"] = health["note"]
     with open(SITE_DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=1)
 
