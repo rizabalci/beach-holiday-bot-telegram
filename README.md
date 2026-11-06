@@ -28,7 +28,7 @@ Every day at 07:00 UTC the bot:
 
 1. New repo, upload everything (mind the `.github/workflows/` path — create it via terminal with `mkdir -p`, same trap as the other bots).
 2. **Secrets** (Settings → Secrets and variables → Actions → Secrets): `TP_TOKEN`, `TG_TOKEN`, `TG_CHAT_ID` — reuse the ones from the worldwide bot, or make a new @BotFather bot for a separate deal stream.
-3. **Variables** (optional overrides): `ORIGINS`, `SCAN_WEEKENDS`, `TRIP_NIGHTS`, `TOTAL_THRESHOLD_EUR`, `ROLLING_DROP_PCT`, `HOTEL_SPLIT`.
+3. **Variables** (optional overrides): `ORIGINS`, `SCAN_WEEKENDS`, `TRIP_NIGHTS`, `TOTAL_THRESHOLD_EUR`, `ROLLING_DROP_PCT`, `HOTEL_SPLIT`, `MIN_COVERAGE`, `PARTIAL_COVERAGE`, `MAX_TRANSPORT_ERROR_RATE`, `MAX_WORKERS`, `PACE_SECONDS`.
 4. Settings → Actions → General → Workflow permissions → **Read and write**.
 5. Test: Actions → Beach holiday scan → Run workflow → dry_run `true`.
 
@@ -38,6 +38,16 @@ Every day at 07:00 UTC the bot:
 - Per-destination **targets and nightly rates** in `BEACH_DESTINATIONS` are the real signal-to-noise dial. Calibrate nightly rates against what the Booking.com links actually show.
 - `TOTAL_THRESHOLD_EUR` — the global "any beach under €X" catch-all.
 - First 3 days: only target-based alerts. Day 14: rolling-average drop alerts fully settled.
+
+## Thin coverage
+
+Travelpayouts often answers HTTP 200 with an empty `data` list for a seasonal airport once that route drops out of the cached fare calendar. The scanner counts those empty bodies on their own, separate from priced responses and from rate-limit retries.
+
+- At or above `PARTIAL_COVERAGE` (default half of destinations), the digest is the usual full board.
+- From `MIN_COVERAGE` up to that line (default 10%), the job stays green, refreshes `deals.json`, and sends the digest with a partial-data note. The dashboard shows the same note.
+- Below `MIN_COVERAGE`, or when more than `MAX_TRANSPORT_ERROR_RATE` of calls fail with an HTTP error or exhausted retries (default 25%), the job exits 1, keeps the previous `deals.json`, and skips the digest.
+
+Set any of those as a repository variable, or in `.env` for a local run. `MAX_WORKERS` defaults to 6 (it was 8). A weekend pass at 8 workers has been finishing in about 10 minutes and seeing roughly 800 rate-limit responses, so the smaller pool stays inside the 70-minute job limit. `PACE_SECONDS` adds a per-worker pause when you want fewer retries.
 
 ## Cost
 
